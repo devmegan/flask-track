@@ -206,5 +206,8 @@ nav ul a:hover {
     -webkit-text-fill-color: transparent;
 }
 
+#signup-row {
+    margin-bottom: 0px;
+}
 
 
