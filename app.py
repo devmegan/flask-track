@@ -26,7 +26,7 @@ coll_app_stats = mongo.db.app_stats
 """ index """ 
 @app.route('/')
 @app.route('/index')
-def landing():
+def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
