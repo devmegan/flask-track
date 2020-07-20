@@ -29,5 +29,18 @@ coll_app_stats = mongo.db.app_stats
 def index():
     return render_template("index.html")
 
+
+""" login """
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+
+""" signup """ 
+@app.route('/signup')
+def signup():
+    return render_template("signup.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
