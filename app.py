@@ -68,5 +68,16 @@ def signup():
     return render_template("signup.html")
 
 
+""" dashboard """ 
+@app.route('/dashboard/<username>')
+def dashboard(username):
+    # send user to dashboard if username in session and it's theirs
+    if 'username' in session and session['username'] == username:
+        return render_template("dashboard.html")
+    else:
+        flash("Please login to view your dashboard")
+        return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
