@@ -5,18 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--load materialize icons-->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--load materialize css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
     <!--load local css-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
     <title>track</title>
 </head>
 <body>
-    <div class="container">
+<header>
+  <nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="nav-menu-bars">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% block nav_links %}
+        {% endblock %}
+        </ul>
+    </div>
+  </nav>
+   <ul class="sidenav" id="mobile-demo">
+    {% block sidenav_nav_links%}
+    {% endblock %}
+  </ul>
+    </header>
         {% block content %}
         {% endblock %}
-    </div>
     <!--load jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--load materialize js-->
