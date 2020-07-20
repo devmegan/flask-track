@@ -43,3 +43,12 @@ nav ul a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* Index */
+
+#index-carousel-one {
+    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
