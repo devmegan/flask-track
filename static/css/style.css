@@ -7,6 +7,12 @@
     height: 10vh;
     margin-bottom: 0px;
 }
+.input-field input[type=text]:hover:not(.select-dropdown) {
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+}
+.input-field input[type=text]:focus:not(.select-dropdown) {
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+}
 .input-field input[type=password] {
     border: 1.5px solid;
     padding-left: 10px;
@@ -14,6 +20,13 @@
     border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
     height: 10vh;
     margin-bottom: 0px;
+}
+
+.input-field input[type=password]:hover:not(.select-dropdown) {
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+}
+.input-field input[type=password]:focus:not(.select-dropdown) {
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
 }
 
 ::placeholder {
