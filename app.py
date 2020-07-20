@@ -30,10 +30,14 @@ def index():
     return render_template("index.html")
 
 
-""" login """
-@app.route('/login')
+""" login """ 
 def login():
-    return render_template("login.html")
+    if 'username' in session:
+        username=session['username']
+        flash("You are logged in already!")
+        return redirect(url_for('dashboard', username=username))
+    else:
+        return render_template("login.html")
 
 
 """ signup """ 
