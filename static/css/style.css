@@ -107,18 +107,18 @@ nav ul a:hover {
     background-repeat: no-repeat;
 }
 
-/* Log In */
-#login-container {
+/* Log In and Sign Up */
+#login-signup-container {
     background-image: url("../img/blue-green-lowpoly-large.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 90vh;
 }
-#login-card {
+#login-signup-card {
     margin-top: 10vh;
 }
-#login-header {
+#login-signup-header {
     color: rgb(15, 61, 114);
     background: url("../img/blue-lowpoly-small.jpg");
     background-size: cover;
@@ -150,7 +150,7 @@ nav ul a:hover {
     -webkit-text-fill-color: transparent;
 }
 
-#login-card p {
+#login-signup-card p {
     color: rgb(15, 61, 114);
     background: url("../img/blue-lowpoly-small.jpg");
     background-size: cover;
@@ -159,7 +159,7 @@ nav ul a:hover {
     -webkit-text-fill-color: transparent;
 }
 
-#login-card p a:hover {
+#login-signup-card p a:hover {
     color: rgb(79, 175, 154);
     background: url("../img/green-lowpoly-small.jpg");
     background-size: cover;
@@ -167,3 +167,27 @@ nav ul a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+#signup-btn {
+    color: rgb(15, 61, 114);
+    border: 1.5px solid;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    margin-bottom: 2vh;
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#signup-btn:hover {
+    color: rgb(79, 175, 154);
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+    background: url("../img/green-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
