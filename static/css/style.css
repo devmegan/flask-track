@@ -1,3 +1,29 @@
+/* Forms */
+.input-field input[type=text]:not(.select-dropdown) {
+    border: 1.5px solid;
+    padding-left: 10px;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    height: 10vh;
+    margin-bottom: 0px;
+}
+.input-field input[type=password] {
+    border: 1.5px solid;
+    padding-left: 10px;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    height: 10vh;
+    margin-bottom: 0px;
+}
+
+::placeholder {
+    color: rgb(15, 61, 114);  /* placeholder colour if browser doesn't support image text bg */
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /* Nav Bar */
 .nav-wrapper {
     background-color: #f8f8f8;
@@ -66,4 +92,22 @@ nav ul a:hover {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+/* Log In */
+#login-container {
+    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+
+#login-header {
+    color: rgb(15, 61, 114);
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
