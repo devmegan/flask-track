@@ -23,6 +23,11 @@ coll_users = mongo.db.users
 coll_goals = mongo.db.goals
 coll_app_stats = mongo.db.app_stats
 
+""" index """ 
+@app.route('/')
+@app.route('/index')
+def landing():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
