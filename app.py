@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import date, datetime
 from bson.objectid import ObjectId
 from os import path
 if path.exists("env.py"):
@@ -67,7 +68,7 @@ def login_auth():
 def signup():
     # redirect user to dash if already logged in
     if 'username' in session:
-        username=session['username']
+        username = session['username']
         flash("You are logged in already! If you want to register a new account, please log out first.")
         return redirect(url_for('dashboard', username=username))
     else:
