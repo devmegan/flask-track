@@ -11,7 +11,7 @@
             <div class="card s12" id="login-card">
                 <div class="card-content">
                     <span class="card-title center" id="login-header"><strong>Log In</strong></span>
-                    <form action="#" method="POST">
+                    <form action="{{url_for('login_auth')}}" method="POST">
                         <div class="row">
                             <div class="input-field col s8 offset-s2 l6 offset-l3">
                                <input class="white" placeholder="Username" id="username" name="username" type="text" required>
