@@ -22,10 +22,25 @@
     margin-bottom: 0px;
 }
 
-.input-field input[type=password]:hover:not(.select-dropdown) {
+.input-field input[type=password]:hover {
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
 }
-.input-field input[type=password]:focus:not(.select-dropdown) {
+.input-field input[type=password]:focus {
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+}
+
+.input-field input[type=email] {
+    border: 1.5px solid;
+    padding-left: 10px;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    height: 10vh;
+    margin-bottom: 0px;
+}
+.input-field input[type=email]:hover {
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+}
+.input-field input[type=text]:focus {
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
 }
 
@@ -113,7 +128,7 @@ nav ul a:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 90vh;
+    min-height: 90vh;
 }
 #login-signup-card {
     margin-top: 10vh;
@@ -190,4 +205,6 @@ nav ul a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
 
