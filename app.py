@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.config['MONGO_URI'] = os.getenv('MONGO_URI') 
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 mongo = PyMongo(app)
+app.secret_key = os.getenv("SECRET_KEY")
 
 # create mongo collection variables
 coll_users = mongo.db.users
