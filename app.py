@@ -35,6 +35,7 @@ def index():
 
 """ login """
 
+
 @app.route('/login')
 def login():
     if 'username' in session:
@@ -63,7 +64,10 @@ def login_auth():
         flash("It doesn't look like you've registered with us yet. Sign up today!")
         return redirect(url_for("signup"))
 
-""" signup """ 
+
+""" signup """
+
+
 @app.route('/signup')
 def signup():
     # redirect user to dash if already logged in
@@ -73,6 +77,44 @@ def signup():
         return redirect(url_for('dashboard', username=username))
     else:
         return render_template("signup.html")
+
+
+@app.route('/register_user', methods=['POST'])
+def register_user():
+    existing_email = coll_users.find_one({"email": request.form.get('email')})
+    existing_user = coll_users.find_one({"username": request.form.get('username')})
+    # server-side registration validation
+    if request.form.get('password') == request.form.get('passwordcheck'):
+        if not existing_email:
+            if not existing_user:
+                pw_hashed = generate_password_hash(request.form.get('password'))
+                # if it's all good, insert new user into mongo users collection
+                coll_users.insert_one({
+                    'fname': request.form.get('fname'),
+                    'lname': request.form.get('lname'),
+                    'username': request.form.get('username'),
+                    'email': request.form.get('email'),
+                    'password': pw_hashed,
+                    'signup_date': datetime.today(),
+                    'goals_number': 0,
+                    'goals_achieved': 0,
+                    'deposits_number': 0,
+                    'withdrawals_number': 0,
+                    'currency': request.form.get('currency'),
+                    'total_saved': 0,
+                    'total_achieved': 0
+                }) 
+                flash("Please login with your new details")
+                return redirect(url_for("login"))
+            else:
+                flash("Sorry, that username is already taken")
+                return redirect(url_for("signup"))
+        else:
+            flash("Sorry, it looks like that email address is already registered with us")
+            return redirect(url_for("signup"))
+    else:
+        flash("Sorry, it looks like your passwords didn't match")
+        return redirect(url_for("signup"))
 
 
 """ dashboard """ 
