@@ -65,7 +65,13 @@ def login_auth():
 """ signup """ 
 @app.route('/signup')
 def signup():
-    return render_template("signup.html")
+    # redirect user to dash if already logged in
+    if 'username' in session:
+        username=session['username']
+        flash("You are logged in already! If you want to register a new account, please log out first.")
+        return redirect(url_for('dashboard', username=username))
+    else:
+        return render_template("signup.html")
 
 
 """ dashboard """ 
