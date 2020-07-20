@@ -1,0 +1,45 @@
+/* Nav Bar */
+.nav-wrapper {
+    background-color: #f8f8f8;
+}
+nav .brand-logo {
+    color: rgb(15, 61, 114);  /* placeholder colour if browser doesn't support image text bg */
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0px 5vh; 
+}
+nav .brand-logo:hover {
+    color: rgb(79, 175, 154);
+    background: url("../img/green-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#nav-logo-icon {
+    font-size: 130%;
+    margin-top: 2%;
+}
+
+nav ul a {
+    color: rgb(15, 61, 114);
+    font-weight: bold;
+    background: url("../img/blue-lowpoly-small.jpg") no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul a:hover {
+    color: rgb(79, 175, 154);
+    background: url("../img/green-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
