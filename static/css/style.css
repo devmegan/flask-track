@@ -115,7 +115,9 @@ nav ul a:hover {
     background-size: cover;
     height: 90vh;
 }
-
+#login-card {
+    margin-top: 10vh;
+}
 #login-header {
     color: rgb(15, 61, 114);
     background: url("../img/blue-lowpoly-small.jpg");
