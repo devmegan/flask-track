@@ -31,6 +31,7 @@ def index():
 
 
 """ login """ 
+@app.route('/login')
 def login():
     if 'username' in session:
         username=session['username']
