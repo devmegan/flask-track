@@ -132,7 +132,7 @@ nav ul a:hover {
     border: 1.5px solid;
     box-shadow: 0px;
     border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
-    margin-bottom: 0px;
+    margin-bottom: 2vh;
     background: url("../img/blue-lowpoly-small.jpg");
     background-size: cover;
     background-repeat: no-repeat;
