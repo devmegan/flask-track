@@ -1,6 +1,7 @@
 /* Nav Bar */
 .nav-wrapper {
     background-color: #f8f8f8;
+    height: 10vh;
 }
 nav .brand-logo {
     color: rgb(15, 61, 114);  /* placeholder colour if browser doesn't support image text bg */
@@ -45,7 +46,9 @@ nav ul a:hover {
 }
 
 /* Index */
-
+.carousel {
+    height: 90vh;
+}
 #index-carousel-one {
     background-image: url("../img/blue-green-lowpoly-large.jpg");
     background-position: center;
