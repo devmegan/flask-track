@@ -339,40 +339,6 @@ h5 {
     padding-bottom: 10px;
 }
 
-.table-deposit {
-    color: rgb(79, 175, 154);
-    background: url("../img/green-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.table-withdrawal {
-    color: rgb(190, 80, 80);
-    background: url("../img/red-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-th {
-    color: rgb(15, 61, 114);
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-td {
-    color: rgb(15, 61, 114);
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .lowpoly-link {
     color: rgb(45, 111, 185);
     background: url("../img/light-blue-lowpoly-small.jpg");
@@ -415,6 +381,7 @@ td {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 
 .red-lowpoly {
     color: rgb(182, 93, 93);
