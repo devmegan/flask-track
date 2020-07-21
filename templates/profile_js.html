@@ -4,10 +4,19 @@ $('document').ready(function(){
     $("#update-profile-link").click(function(){
         $("#profile-card").addClass("display-none");
         $("#update-profile-card").removeClass("display-none");
-    })
+    });
     $("#update-nav-back").click(function(){
         $("#profile-card").removeClass("display-none");
         $("#update-profile-card").addClass("display-none");
-    })
+    });
+    $("#delete-profile-link").click(function(){
+        $("#update-profile-card").addClass("display-none");
+        $("#delete-profile-card").removeClass("display-none");
+    });
+    $("#delete-nav-back").click(function(){
+        $("#profile-card").removeClass("display-none");
+        $("#delete-profile-card").addClass("display-none");
+    });
 });
+
 </script>
