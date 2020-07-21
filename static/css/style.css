@@ -98,7 +98,7 @@ i {
     -webkit-text-fill-color: transparent;
 }
 .form-red-btn {
-    color: rgb(15, 61, 114);
+    color: rgb(216, 72, 108);
     border: 1.5px solid;
     box-shadow: 0px;
     border-image: url("../img/red-lowpoly-small.jpg") 25 25 round;
@@ -109,7 +109,15 @@ i {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+.form-red-btn:hover {
+    color: rgb(129, 15, 44);
+    border-image: url("../img/dark-red-lowpoly-small.jpg") 25 25 round;
+    background: url("../img/dark-red-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .switch label {
     font-size: calc(35px + 2vh)
 }
