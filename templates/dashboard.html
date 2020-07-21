@@ -38,7 +38,7 @@
         </ul>
     </div>
     <div class="row">
-        <div class="col s12 m8 l6 {% if user.goals_number == 0 %} offset-m3 {% endif %}">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Main Card-->
             <div class="card">
                 <div class="card-content center blue-text">
@@ -63,6 +63,7 @@
                 </div> 
             </div>
             <!--Recent Activity Card-->
+            {% if user.goals_number > 0 %}
             <div class="card">
                 <div class="card-content center blue-text">
                     <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
@@ -106,6 +107,7 @@
                     </table>
                 </div> 
             </div>
+            {% endif %}
         </div> 
     </div>
 </div>
