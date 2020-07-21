@@ -87,10 +87,10 @@
                             </td>
                             {% else %}
                             <td class="table-withdrawal">
-                                <i class="material-icons withdrawals-arrow tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
+                               <i class="material-icons withdrawals-arrow tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
                             </td>
                             {% endif %}
-                            <td class="center">{{ item[2] }}</td>
+                            <td class="center"> <a href="#">{{ item[2] }}</a></td>
                             <td class="right">{{ item[0].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
