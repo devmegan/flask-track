@@ -231,3 +231,33 @@ nav ul a:hover {
     background-size: cover;
     min-height: 90vh;
 }
+
+.dropdown-content li> a> i {
+    margin-right: 0px;
+}
+
+#cards-fab-main-btn {
+height: 14vh;
+width: 14vh;
+line-height: 14vh;
+}
+.btn-floating {
+border-radius: 0px;
+width: 120%;
+}
+
+.goal-fab-card {
+height: 14.5vh;
+width: 14.5vh;
+background-size: cover;
+margin-bottom: 0.5vh;
+}
+
+#goal-fab-ul {
+margin-bottom: 3vh;
+}
+
+#goal-fab-toolbar {
+left: calc(3vw);
+top: 10vh;
+}
