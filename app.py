@@ -148,6 +148,30 @@ def profile(username):
         return redirect(url_for("login"))
 
 
+@app.route('/update_user/<username>', methods=['POST'])
+def update_user(username):
+    existing_email = coll_users.find_one({"email": request.form.get('email')})
+    existing_user = coll_users.find_one({'username': username})
+    # prep currency if user has switched it
+    if request.form.get('currency-switch') == "on":
+        if existing_user['currency'] == "£":
+            currency = "€"
+        else: 
+            currency = "£"
+    # check old pw successfuly confirmed
+    if check_password_hash(existing_user['password'], request.form.get('password')): 
+        # check email address will still be unique to user
+        if not existing_email or request.form.get('email') == existing_user['email']:
+            coll_users.update_one({"username": existing_user['username']},{'$set': {"fname": request.form.get('fname'), "lname": request.form.get('lname'), "email": request.form.get('email'), "currency": currency}})
+            return redirect(url_for('profile', username=username))
+        else: 
+            flash("sorry, it looks like that email address is already registered") 
+            return redirect(url_for('profile', username=username))
+    else: 
+        flash("Sorry, it looks like you entered your existing password incorrectly")
+        return redirect(url_for('profile', username=username))
+
+
 """ logout """
 @app.route('/logout')
 def logout():
