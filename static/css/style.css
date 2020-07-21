@@ -12,6 +12,7 @@ i {
 .display-none {
     display: none;
 }
+
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
@@ -442,4 +443,8 @@ td {
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 90vh;
+}
+
+#profile-container .card {
+    min-height: 85vh;
 }
