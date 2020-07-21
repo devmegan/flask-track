@@ -1,22 +1,18 @@
 <script>
 $('document').ready(function(){
     // nav between profile and update profile cards
-    $("#update-profile-link").click(function(){
-        $("#profile-card").addClass("display-none");
-        $("#update-profile-card").removeClass("display-none");
-    });
-    $("#update-nav-back").click(function(){
-        $("#profile-card").removeClass("display-none");
-        $("#update-profile-card").addClass("display-none");
-    });
-    $("#delete-profile-link").click(function(){
-        $("#update-profile-card").addClass("display-none");
-        $("#delete-profile-card").removeClass("display-none");
-    });
-    $("#delete-nav-back").click(function(){
-        $("#profile-card").removeClass("display-none");
-        $("#delete-profile-card").addClass("display-none");
-    });
+    userProfileNav("#update-profile-link", "#profile-card", "#update-profile-card")
+    userProfileNav("#update-nav-back", "#update-profile-card", "#profile-card")
+    userProfileNav("#update-password-link", "#profile-card", "#update-password-card")
+    userProfileNav("#password-nav-back", "#update-password-card", "#profile-card")
+    userProfileNav("#delete-profile-link", "#update-profile-card", "#delete-profile-card")
+    userProfileNav("#delete-nav-back", "#delete-profile-card", "#profile-card")
 });
 
+function userProfileNav(el1, el2, el3) {
+    $(el1).click(function(){
+        $(el2).addClass("display-none");
+        $(el3).removeClass("display-none");
+    })
+}
 </script>
