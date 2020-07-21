@@ -136,6 +136,17 @@ def dashboard(username):
         flash("Please login to view your dashboard")
         return redirect(url_for("login"))
 
+""" user profile """ 
+@app.route('/profile/<username>')
+def profile(username):
+    if 'username' in session and session['username']==username:  # check to make sure not accessing another usernames account
+        current_user = coll_users.find_one({"username": username})
+        list_goals = list(coll_goals.find({"username": username}))
+        return render_template("profile.html", user=current_user, goals=list_goals)
+    else:
+        flash("Please login to view your profile")
+        return redirect(url_for("login"))
+
 
 """ logout """
 @app.route('/logout')
