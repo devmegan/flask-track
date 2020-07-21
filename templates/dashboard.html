@@ -43,7 +43,7 @@
             <div class="card">
                 <div class="card-content center blue-text">
                     <h4 id="main-card-title" class="center uppercase spaced-text"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
-                    <span><a href="#" class="lowpoly-link modal-trigger center"><strong>View Profile</strong></a></span>
+                    <span><a href="{{url_for('profile', username=user.username)}}" class="lowpoly-link modal-trigger center"><strong>View Profile</strong></a></span>
                     <br />
                     {% if user.goals_number == 0 %}
                     <h6 class="create-goal-prompt spaced-text"><strong>Create a goal to start saving!</strong></h6>
