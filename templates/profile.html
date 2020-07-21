@@ -41,8 +41,8 @@
         <!--Profile Info Card-->
         <div class="col s12 m8 l6" id="profile-card">
             <div class="card">
-                <div class="card-content center blue-text">
-                    <h4 id="main-card-title" class="center uppercase spaced-text"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
+                <div class="card-content center">
+                    <h4 id="main-card-title" class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
                      <strong><a class="modal-trigger lowpoly-link" id="update-profile-link">Update Profile</a><span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="modal-trigger lowpoly-link">Update Password</a></strong>
                      <h5 class="dark-blue-lowpoly"><strong>{{user.username}}</strong></h5>
                     <p class="dark-blue-lowpoly uppercase spaced-text">Username</p>
@@ -58,10 +58,10 @@
         <!--Update Profile Info Card-->
         <div class="col s12 m8 l6 display-none" id="update-profile-card">
             <div class="card">
-                <div class="card-content center blue-text">
-                    <h4 class="center uppercase spaced-text"><strong>Update Profile</strong></h4>
+                <div class="card-content center">
+                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Profile</strong></h4>
                     <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a> <span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="red-lowpoly-link">Delete Profile</a></strong>
-                    <div class="row" id="edit-user-form-container">
+                    <div class="row">
                         <div class="col s12">
                             <form action="{{url_for('update_user', username=user.username)}}" method="POST">
                                 <div class="row">
@@ -105,6 +105,20 @@
                                     <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
                                 </div>
                             </form>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <!--Delete Profile Card-->
+        <div class="col s12 m8 l6" id="delete-profile-card">
+            <div class="card">
+                <div class="card-content center">
+                    <h4 class="center uppercase spaced-text red-lowpoly"><strong>Delete Profile</strong></h4>
+                    <strong><a class="lowpoly-link" id="delete-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
+                    <div class="row">
+                        <div class="col s12">
+                            <!--Form Here-->
                         </div>
                     </div> 
                 </div>
