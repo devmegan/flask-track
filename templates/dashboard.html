@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block nav_links %}
 <li><a href="{{url_for('index')}}">Home</a></li>
-<li><a href="#">Dashboard</a></li>
+<li><a href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a></li>
 {% if user.goals_number != 0 %}
 <li><a class="dropdown-trigger" href="#!" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
 <ul id="nav_goals" class="dropdown-content">
@@ -13,7 +13,7 @@
     {% endif %} 
 </ul>
 {% endif %}
-<li><a href="#">Profile</a></li>
+<li><a href="{{url_for('profile', username=user.username)}}">Profile</a></li>
 <li><a href="{{url_for('logout')}}">Log Out</a></li>
 {% endblock %} 
 {% block content %}
