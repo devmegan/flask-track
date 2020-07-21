@@ -39,11 +39,11 @@
             </ul>
         </div>
         <!--Profile Info Card-->
-        <div class="col s12 m8 l6" id="profile-card">
+        <div class="col s12 m8 offset-m2 l6 offset-l3" id="profile-card">
             <div class="card">
                 <div class="card-content center">
                     <h4 id="main-card-title" class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
-                     <strong><a class="modal-trigger lowpoly-link" id="update-profile-link">Update Profile</a><span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="modal-trigger lowpoly-link">Update Password</a></strong>
+                     <strong><a class="modal-trigger lowpoly-link" id="update-profile-link">Update Profile</a><span class="dark-blue-lowpoly"> | </span><a id="update-password-link" class="lowpoly-link">Update Password</a></strong>
                      <h5 class="dark-blue-lowpoly"><strong>{{user.username}}</strong></h5>
                     <p class="dark-blue-lowpoly uppercase spaced-text">Username</p>
                     <h5 class="dark-blue-lowpoly"><strong>{{user.email}}</strong></h5>
@@ -56,7 +56,7 @@
             </div>
         </div>
         <!--Update Profile Info Card-->
-        <div class="col s12 m8 l6 display-none" id="update-profile-card">
+        <div class="col s12 m8  offset-m2 l6 offset-l3 display-none" id="update-profile-card">
             <div class="card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Profile</strong></h4>
@@ -112,8 +112,48 @@
                 </div>
             </div>
         </div>
+        <!--Update Profile Password Card-->
+        <div class="col s12 m8  offset-m2 l6 offset-l3 display-none" id="update-password-card">
+            <div class="card">
+                <div class="card-content center">
+                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Password</strong></h4>
+                    <strong><a class="lowpoly-link" id="password-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
+                    <div class="row">
+                        <div class="col s12">
+                            <form action="{{url_for('update_user', username=user.username)}}" method="POST">
+                                <div class="row">
+                                    <div class="input-field col s12 m8 offset-m2">
+                                        <input id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
+                                        <label class="dark-blue-lowpoly" for="password">Confirm Current Password</label>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="input-field col s12 m8 offset-m2">
+                                       <input id="newpassword" name="newpassword" type="password" placeholder="New Password" required>
+                                       <label class="dark-blue-lowpoly" for="password">Enter New Password</label>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="input-field col s12 m8 offset-m2">
+                                        <input id="newpasswordcheck" name="newpasswordcheck" type="password" placeholder="Re-Enter New Password" required>
+                                        <label class="dark-blue-lowpoly" for="password">Re-Enter New Password</label>
+                                        <span id='message'></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
+                                        <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
         <!--Delete Profile Card-->
-        <div class="col s12 m8 l6 display-none" id="delete-profile-card">
+        <div class="col s12 m8  offset-m2 l6 offset-l3 display-none" id="delete-profile-card">
             <div class="card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Delete Profile</strong></h4>
