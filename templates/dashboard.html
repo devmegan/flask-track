@@ -75,9 +75,9 @@
                         <table class="highlight">
                         <thead>
                         <tr>
-                            <th class="uppercase grey-text">Amount</th>
-                            <th class="uppercase center grey-text">Goal</th>
-                            <th class="uppercase grey-text right">Date</th>
+                            <th class="uppercase">Amount</th>
+                            <th class="uppercase center">Goal</th>
+                            <th class="uppercase right">Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -106,6 +106,36 @@
                             </tr>
                             {% endfor %}
                         {% endif %}
+                        </tbody>
+                        </table>
+                    </div>
+                </div> 
+            </div>
+            {% endif %}
+            <!--Goals Achieved Card-->
+            {% if user.goals_achieved %}
+            <div class="card">
+                <div class="card-content center">
+                    <h5 class="center uppercase spaced-text gold-lowpoly"><strong>Achieved Goals</strong></h5>
+                      <div class="blue-lowpoly-border">
+                        <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th class="uppercase spaced-text">Goal</th>
+                            <th class="uppercase center spaced-text">Amount</th>
+                            <th class="uppercase right spaced-text">Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in user.goals_achieved | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
+                        {% if loop.index <= 5 %}
+                        <tr>
+                            <td class="gold-lowpoly">{{ item[0] }}</td>
+                            <td class="gold-lowpoly center">{{ user.currency }}{{ item[1] }}</td>
+                            <td class="gold-lowpoly right">{{ item[2].strftime("%d %b, %Y") }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
                         </tbody>
                         </table>
                     </div>
