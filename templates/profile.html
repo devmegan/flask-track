@@ -43,15 +43,17 @@
             <div class="card">
                 <div class="card-content center">
                     <h4 id="main-card-title" class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
-                     <strong><a class="modal-trigger lowpoly-link" id="update-profile-link">Update Profile</a><span class="dark-blue-lowpoly"> | </span><a id="update-password-link" class="lowpoly-link">Update Password</a></strong>
-                     <h5 class="dark-blue-lowpoly"><strong>{{user.username}}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase spaced-text">Username</p>
-                    <h5 class="dark-blue-lowpoly"><strong>{{user.email}}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase spaced-text">Email Address</p>
-                    <h5 class="dark-blue-lowpoly"><strong> {{user.signup_date.strftime('%d-%m-%Y')}}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase spaced-text">Sign Up Date</p>
-                    <h5 class="dark-blue-lowpoly"><strong>{{user.currency}} {% if user.currency == "£" %} GBP {% else %} EUR {% endif %}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase spaced-text">Currency</p>
+                        <strong><a class="lowpoly-link" id="update-profile-link">Update Profile</a><span class="dark-blue-lowpoly"> | </span><a id="update-password-link" class="lowpoly-link">Update Password</a></strong>
+                        <div class="blue-lowpoly-border">
+                            <h5 class="dark-blue-lowpoly"><strong>{{user.username}}</strong></h5>
+                            <p class="dark-blue-lowpoly uppercase spaced-text">Username</p>
+                            <h5 class="dark-blue-lowpoly"><strong>{{user.email}}</strong></h5>
+                            <p class="dark-blue-lowpoly uppercase spaced-text">Email Address</p>
+                            <h5 class="dark-blue-lowpoly"><strong> {{user.signup_date.strftime('%d-%m-%Y')}}</strong></h5>
+                            <p class="dark-blue-lowpoly uppercase spaced-text">Sign Up Date</p>
+                            <h5 class="dark-blue-lowpoly"><strong>{{user.currency}} {% if user.currency == "£" %} GBP {% else %} EUR {% endif %}</strong></h5>
+                            <p class="dark-blue-lowpoly uppercase spaced-text">Currency</p>
+                        </div>
                 </div> 
             </div>
         </div>
@@ -60,55 +62,57 @@
             <div class="card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Profile</strong></h4>
-                    <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a> <span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="red-lowpoly-link" id="delete-profile-link">Delete Profile</a></strong>
-                    <div class="row">
-                        <div class="col s12">
-                            <form action="{{url_for('update_user', username=user.username)}}" method="POST">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="switch" >
-                                            <label class="dark-blue-lowpoly tooltipped" data-position="bottom" data-tooltip="Switch Currency">
-                                                {{ user.currency }}
-                                                <input type="checkbox" id="currency-switch" name="currency-switch">
-                                                <span class="lever"></span>
-                                                {% if user.currency == "£" %} € {% else %} £ {% endif %}
-                                            </label>
+                    <strong><a class="lowpoly-link" id="update-nav-back">Back to Profile</a> <span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="red-lowpoly-link" id="delete-profile-link">Delete Profile</a></strong>
+                    <div class="blue-lowpoly-border">
+                        <div class="row">
+                            <div class="col s12">
+                                <form action="{{url_for('update_user', username=user.username)}}" method="POST">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="switch" >
+                                                <label class="dark-blue-lowpoly tooltipped" data-position="bottom" data-tooltip="Switch Currency">
+                                                    {{ user.currency }}
+                                                    <input type="checkbox" id="currency-switch" name="currency-switch">
+                                                    <span class="lever"></span>
+                                                    {% if user.currency == "£" %} € {% else %} £ {% endif %}
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                        <input value="{{user.fname}}" id="fname" name="fname" type="text" required>
-                                        <label for="fname" class="dark-blue-lowpoly">First Name</label>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input value="{{user.fname}}" id="fname" name="fname" type="text" required>
+                                            <label for="fname" class="dark-blue-lowpoly">First Name</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                    <input value="{{user.lname}}" id="lname" name="lname" type="text" required>
-                                    <label for="lname" class="dark-blue-lowpoly">Last Name</label>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                        <input value="{{user.lname}}" id="lname" name="lname" type="text" required>
+                                        <label for="lname" class="dark-blue-lowpoly">Last Name</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                        <input value="{{user.email}}" id="email" name="email" type="email" required>
-                                        <label class="dark-blue-lowpoly" for="email">Email Address</label>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input value="{{user.email}}" id="email" name="email" type="email" required>
+                                            <label class="dark-blue-lowpoly" for="email">Email Address</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                        <input id="password" name="password" type="password" placeholder="Confirm Password" required>
-                                        <label class="dark-blue-lowpoly" for="password">Confirm Password</label>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="password" name="password" type="password" placeholder="Confirm Password" required>
+                                            <label class="dark-blue-lowpoly" for="password">Confirm Password</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
-                                        <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
+                                            <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> 
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,38 +121,41 @@
             <div class="card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Password</strong></h4>
-                    <strong><a class="lowpoly-link" id="password-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
-                    <div class="row">
-                        <div class="col s12">
-                            <form action="{{url_for('update_user', username=user.username)}}" method="POST">
-                                <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                        <input id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
-                                        <label class="dark-blue-lowpoly" for="password">Confirm Current Password</label>
+                    <a class="lowpoly-link" id="password-nav-back"><strong>Back to Profile</strong></a>
+                    <div class="blue-lowpoly-border">
+                        <div class="row">
+                            <div class="col s12">
+                            <i class="material-icons dark-blue-lowpoly" id="update-pw-icon">lock_outline</i>
+                                <form action="{{url_for('update_user', username=user.username)}}" method="POST">
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
+                                            <label class="dark-blue-lowpoly" for="password">Confirm Current Password</label>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                       <input id="newpassword" name="newpassword" type="password" placeholder="New Password" required>
-                                       <label class="dark-blue-lowpoly" for="password">Enter New Password</label>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                        <input id="newpassword" name="newpassword" type="password" placeholder="New Password" required>
+                                        <label class="dark-blue-lowpoly" for="password">Enter New Password</label>
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="row">
-                                    <div class="input-field col s12 m8 offset-m2">
-                                        <input id="newpasswordcheck" name="newpasswordcheck" type="password" placeholder="Re-Enter New Password" required>
-                                        <label class="dark-blue-lowpoly" for="password">Re-Enter New Password</label>
-                                        <span id='message'></span>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="newpasswordcheck" name="newpasswordcheck" type="password" placeholder="Re-Enter New Password" required>
+                                            <label class="dark-blue-lowpoly" for="password">Re-Enter New Password</label>
+                                            <span id='message'></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
-                                        <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
+                                            <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> 
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,24 +164,26 @@
             <div class="card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Delete Profile</strong></h4>
-                    <strong><a class="lowpoly-link" id="delete-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
-                    <div class="row">
-                        <div class="col s12">
-                            <h5 class="silver-lowpoly">Are you sure you want to delete your profile and goals forever?</h5>
-                            <p class="silver-lowpoly uppercase spaced-text para-small"> Any current goals and progress will be removed.</p>
+                    <a class="lowpoly-link" id="delete-nav-back"><strong>Back to Profile</strong></a>
+                        <div class="row">
+                            <div class="col s12">
+                                <h5 class="silver-lowpoly">Are you sure you want to delete your profile and goals forever?</h5>
+                                <p class="silver-lowpoly uppercase spaced-text para-small"> Any current goals and progress will be removed.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m8 offset-m2">
-                            <p class="silver-lowpoly uppercase spaced-text"><b>Please Confirm Your Password to Delete Profile</b></p>
-                            </br>
-                            <input id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" required>
+                        <div class="blue-lowpoly-border">
+                        <div class="row">
+                            <div class="input-field col s12 m8 offset-m2">
+                                <p class="silver-lowpoly uppercase spaced-text"><b>Please Confirm Your Password to Delete Profile</b></p>
+                                </br>
+                                <input id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" required>
+                            </div>
                         </div>
-                    </div>
-                     <div class="row">
-                        <div class="col s12">
-                            <button class="btn waves-effect waves-light update-btn"><strong>Cancel</strong></button>
-                            <a class="btn waves-effect waves-dark form-red-btn" href="{{url_for('delete_user', username=user.username)}}"><strong>Delete</strong></a>
+                        <div class="row">
+                            <div class="col s12">
+                                <button class="btn waves-effect waves-light update-btn"><strong>Cancel</strong></button>
+                                <a class="btn waves-effect waves-dark form-red-btn" href="{{url_for('delete_user', username=user.username)}}"><strong>Delete</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>
