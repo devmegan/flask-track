@@ -402,6 +402,22 @@ td {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.red-lowpoly-link {
+    color: rgb(182, 93, 93);
+    background: url("../img/dark-red-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.red-lowpoly-link:hover {
+    color: rgb(172, 42, 42);
+    background: url("../img/red-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /* User Profile */
 #profile-container {
     background-image: url("../img/blue-green-lowpoly-large.jpg");
