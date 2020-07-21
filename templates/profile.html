@@ -45,13 +45,13 @@
                     <h4 id="main-card-title" class="center uppercase spaced-text"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
                      <strong><a class="modal-trigger lowpoly-link" id="update-profile-link">Update Profile</a><span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="modal-trigger lowpoly-link">Update Password</a></strong>
                      <h5 class="dark-blue-lowpoly"><strong>{{user.username}}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase">Username</p>
+                    <p class="dark-blue-lowpoly uppercase spaced-text">Username</p>
                     <h5 class="dark-blue-lowpoly"><strong>{{user.email}}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase">Email Address</p>
+                    <p class="dark-blue-lowpoly uppercase spaced-text">Email Address</p>
                     <h5 class="dark-blue-lowpoly"><strong> {{user.signup_date.strftime('%d-%m-%Y')}}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase">Sign Up Date</p>
+                    <p class="dark-blue-lowpoly uppercase spaced-text">Sign Up Date</p>
                     <h5 class="dark-blue-lowpoly"><strong>{{user.currency}} {% if user.currency == "£" %} GBP {% else %} EUR {% endif %}</strong></h5>
-                    <p class="dark-blue-lowpoly uppercase">Currency</p>
+                    <p class="dark-blue-lowpoly uppercase spaced-text">Currency</p>
                 </div> 
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="card">
                 <div class="card-content center blue-text">
                     <h4 class="center uppercase spaced-text"><strong>Update Profile</strong></h4>
-                    <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
+                    <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a> <span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="red-lowpoly-link">Delete Profile</a></strong>
                     <div class="row" id="edit-user-form-container">
                         <div class="col s12">
                             <form action="{{url_for('update_user', username=user.username)}}" method="POST">
