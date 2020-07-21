@@ -58,6 +58,50 @@
                     {% endif %}
                 </div> 
             </div>
+            <!--Recent Activity Card-->
+            <div class="card">
+                <div class="card-content center blue-text">
+                    <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
+                    <span><a href="#" class="savings-card-link modal-trigger center"><strong>View Full Savings History</strong></a></span>
+                    <!--Savings History Table-->
+                        <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th class="uppercase grey-text">Amount</th>
+                            <th class="uppercase center grey-text">Goal</th>
+                            <th class="uppercase grey-text right">Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in user_savings_history | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
+                        {% if loop.index <= 5 %}
+                        <tr>
+                            {% if item[1] > 0 %}
+                            <td class="table-deposit">
+                                <i class="material-icons deposits-arrow tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong>
+                            </td>
+                            {% else %}
+                            <td class="table-withdrawal">
+                                <i class="material-icons withdrawals-arrow tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
+                            </td>
+                            {% endif %}
+                            <td class="center">{{ item[2] }}</td>
+                            <td class="right">{{ item[0].strftime("%d %b, %Y") }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        {% if (user_savings_history | length) < 5 %}
+                            {% for number in range ((user_savings_history | length), 6) %}
+                            <tr class="grey lighten-4 placeholder-rows">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div> 
+            </div>
         </div> 
     </div>
 </div>
