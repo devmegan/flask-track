@@ -10,7 +10,7 @@ if path.exists("env.py"):
     import env
     print("env.py imported")
 
-""" congig new app """ 
+""" config new app """ 
 
 # config flask
 app = Flask(__name__)
