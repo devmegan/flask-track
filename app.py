@@ -172,6 +172,16 @@ def update_user(username):
         return redirect(url_for('profile', username=username))
 
 
+
+@app.route('/delete_user/<username>')
+def delete_user(username):
+    user_to_delete = coll_users.find_one()
+    coll_users.remove({'username': username})
+    coll_goals.remove({'username': username})
+    session.clear()
+    flash("Your profile has been deleted from this app")
+    return redirect(url_for('index'))
+
 """ logout """
 @app.route('/logout')
 def logout():
