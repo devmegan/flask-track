@@ -284,6 +284,7 @@ h5 {
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    padding-bottom: 10px;
 }
 
 table {
@@ -349,4 +350,20 @@ td {
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.dark-blue-lowpoly {
+    color: rgb(15, 61, 114);
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* User Profile */
+#profile-container {
+    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 90vh;
 }
