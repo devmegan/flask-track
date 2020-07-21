@@ -381,7 +381,14 @@ h5 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+.green-lowpoly {
+    color: rgb(101, 179, 107);
+    background: url("../img/green-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+}
 
 .red-lowpoly {
     color: rgb(182, 93, 93);
