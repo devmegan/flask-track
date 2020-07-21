@@ -1,6 +1,7 @@
 <script>
 // drop down for nav menu 
 $(".dropdown-trigger").dropdown();
+$("#cards-fab").floatingActionButton();
 {% with flashes=get_flashed_messages() %}
     {% if flashes %}
         {% for flash in flashes %}
