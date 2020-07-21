@@ -122,7 +122,9 @@ def register_user():
 def dashboard(username):
     # send user to dashboard if username in session and it's theirs
     if 'username' in session and session['username'] == username:
-        return render_template("dashboard.html")
+        current_user = coll_users.find_one({"username": username})
+        list_goals = list(coll_goals.find({"username": username}))
+        return render_template("dashboard.html", user=current_user, goals=list_goals)
     else:
         flash("Please login to view your dashboard")
         return redirect(url_for("login"))
