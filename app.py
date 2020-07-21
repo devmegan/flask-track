@@ -172,6 +172,23 @@ def update_user(username):
         return redirect(url_for('profile', username=username))
 
 
+@app.route('/change_password/<username>', methods=['POST'])
+def change_password(username):
+    existing_user = coll_users.find_one({'username': username})
+    # if old pw correct and new passwords match, insert new pw hash into mongo
+    if check_password_hash(existing_user['password'], request.form.get('oldpassword')):  
+        if request.form.get('newpassword') == request.form.get('newpasswordcheck'): 
+            pw_hashed = generate_password_hash(request.form.get('newpassword')) 
+            coll_users.update_one({"username": existing_user['username']},{'$set': {"password": pw_hashed}})
+            flash("Your password has been updated")
+            return redirect(url_for('profile', username=username))
+        else: 
+            flash("Sorry, it looks like your new passwords didn't match")
+            return redirect(url_for('profile', username=username))
+    else:
+        flash("Sorry, it looks like you entered your old password incorrectly")
+        return redirect(url_for('profile', username=username))
+
 
 @app.route('/delete_user/<username>')
 def delete_user(username):
@@ -181,6 +198,7 @@ def delete_user(username):
     session.clear()
     flash("Your profile has been deleted from this app")
     return redirect(url_for('index'))
+
 
 """ logout """
 @app.route('/logout')
