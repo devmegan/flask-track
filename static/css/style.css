@@ -8,6 +8,10 @@ i {
 .spaced-text {
     letter-spacing: 2px;
 }
+
+.display-none {
+    display: none;
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
@@ -71,6 +75,45 @@ i {
     border: 1.5px solid;
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round !important;
 }
+
+.update-btn {
+    color: rgb(15, 61, 114);
+    border: 1.5px solid;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    margin-bottom: 2vh;
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.update-btn:hover {
+    color: rgb(79, 175, 154);
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
+    background: url("../img/green-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.form-red-btn {
+    color: rgb(15, 61, 114);
+    border: 1.5px solid;
+    box-shadow: 0px;
+    border-image: url("../img/red-lowpoly-small.jpg") 25 25 round;
+    margin-bottom: 2vh;
+    background: url("../img/red-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.switch label {
+    font-size: calc(35px + 2vh)
+}
+
 /* Nav Bar */
 
 nav .nav-wrapper {
