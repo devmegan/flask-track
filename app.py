@@ -124,7 +124,14 @@ def dashboard(username):
     if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
-        return render_template("dashboard.html", user=current_user, goals=list_goals)
+        user_savings_history = []
+        for goal in list_goals:
+            if goal['savings_history']: # don't execute if no savings activity yet
+                for item in goal['savings_history']:
+                    item.append(goal['goal_name'])
+                    user_savings_history.append(item)
+        user_savings_history.sort(key=lambda x: x[0])  # sort total savings by date
+        return render_template("dashboard.html", user=current_user, goals=list_goals, user_savings_history=user_savings_history)
     else:
         flash("Please login to view your dashboard")
         return redirect(url_for("login"))
