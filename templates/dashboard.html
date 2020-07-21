@@ -41,25 +41,27 @@
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Main Card-->
             <div class="card">
-                <div class="card-content center blue-text">
-                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
-                    <span><a href="{{url_for('profile', username=user.username)}}" class="lowpoly-link modal-trigger center"><strong>View Profile</strong></a></span>
-                    <br />
-                    {% if user.goals_number == 0 %}
-                    <h6 class="create-goal-prompt spaced-text"><strong>Create a goal to start saving!</strong></h6>
-                    <a href="#add-goal-modal" class="btn modal-trigger center spaced-text waves-effect waves-white create-goal-btn"><strong>Create Goal</strong></a>
-                    {% elif  user.goals_number == 1 %}
-                    <h5 class="uppercase spaced-text">1 Goal</h5>
-                    <br>
-                    {% else %}
-                    <h5 class="uppercase spaced-text">{{ user.goals_number }} Goals</h5>
-                    {% if user.goals_achieved == 1 %}
-                    <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved}} Goal Achieved</h6>
-                    {% elif user.goals_achieved > 1 %}
-                    <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved}} Goals Achieved</h6>
-                    {% endif %}
-                    <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
-                    {% endif %}
+                <div class="card-content center">
+                    <div class="blue-lowpoly-border">
+                        <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
+                        <span><a href="{{url_for('profile', username=user.username)}}" class="lowpoly-link modal-trigger center"><strong>View Profile</strong></a></span>
+                        <br />
+                        {% if user.goals_number == 0 %}
+                        <h6 class="create-goal-prompt spaced-text"><strong>Create a goal to start saving!</strong></h6>
+                        <a href="#add-goal-modal" class="btn modal-trigger center spaced-text waves-effect waves-white create-goal-btn"><strong>Create Goal</strong></a>
+                        {% elif  user.goals_number == 1 %}
+                        <h5 class="uppercase spaced-text">1 Goal</h5>
+                        <br>
+                        {% else %}
+                        <h5 class="uppercase spaced-text">{{ user.goals_number }} Goals</h5>
+                        {% if user.goals_achieved == 1 %}
+                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved}} Goal Achieved</h6>
+                        {% elif user.goals_achieved > 1 %}
+                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved}} Goals Achieved</h6>
+                        {% endif %}
+                        <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
+                        {% endif %}
+                    </div>
                 </div> 
             </div>
             <!--Recent Activity Card-->
@@ -69,6 +71,7 @@
                     <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
                     <span><a href="#" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
                     <!--Savings History Table-->
+                    <div class="blue-lowpoly-border">
                         <table class="highlight">
                         <thead>
                         <tr>
@@ -104,7 +107,8 @@
                             {% endfor %}
                         {% endif %}
                         </tbody>
-                    </table>
+                        </table>
+                    </div>
                 </div> 
             </div>
             {% endif %}
