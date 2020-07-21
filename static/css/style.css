@@ -1,3 +1,7 @@
+/* General */
+.uppercase {
+    text-transform: uppercase;
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
@@ -62,12 +66,9 @@
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round !important;
 }
 /* Nav Bar */
-nav {
-    height: 10vh;
-}
+
 nav .nav-wrapper {
     background-color: #f8f8f8;
-    height: 10vh;
 }
 nav .brand-logo {
     color: rgb(15, 61, 114);  /* placeholder colour if browser doesn't support image text bg */
@@ -222,4 +223,11 @@ nav ul a:hover {
     margin-bottom: 0px;
 }
 
-
+/* Dashboard */
+#dash-container {
+    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 90vh;
+}
