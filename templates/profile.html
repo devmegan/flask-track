@@ -56,11 +56,11 @@
             </div>
         </div>
         <!--Update Profile Info Card-->
-        <div class="col s12 m8 l6">
-            <div class="card" id="update-profile-card">
+        <div class="col s12 m8 l6 display-none" id="update-profile-card">
+            <div class="card">
                 <div class="card-content center blue-text">
-                    <h4 id="main-card-title" class="center uppercase spaced-text"><strong>Update Profile</strong></h4>
-                    <strong><a class="lowpoly-link"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
+                    <h4 class="center uppercase spaced-text"><strong>Update Profile</strong></h4>
+                    <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
                     <div class="row" id="edit-user-form-container">
                         <div class="col s12">
                             <form action="{{url_for('update_user', username=user.username)}}" method="POST">
@@ -112,9 +112,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block include_js_html %}
-<script>
-$("#update-profile-link").click("")
-</script>
 {% endblock %}
