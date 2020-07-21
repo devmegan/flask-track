@@ -17,4 +17,27 @@
 <li><a href="{{url_for('logout')}}">Log Out</a></li>
 {% endblock %} 
 {% block content %}
+<div class="container-fluid" id="dash-container">
+    <div class="fixed-action-btn" id="cards-fab">
+        <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
+        <i class="large material-icons">dashboard</i>
+        </a>
+        <ul id="goal-fab-ul">
+        {% if (goals | length) < 4%}
+        <li>
+            <a class="btn-floating darken-1 goal-fab-card"
+            ><i class="material-icons">add</i></a
+            >
+        </li>
+        {% endif %} {% for goal in goals %}
+        <li>
+            <a class="btn-floating darken-1 goal-fab-card" style="background-image: url({{ goal.image_url }})"></a>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>            
+</div>
+{% endblock %} 
+{% block include_js_html %}
+{% include 'dash_js.html'%}
 {% endblock %}
