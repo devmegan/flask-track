@@ -54,10 +54,10 @@
                         <br>
                         {% else %}
                         <h5 class="uppercase spaced-text">{{ user.goals_number }} Goals</h5>
-                        {% if user.goals_achieved == 1 %}
-                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved}} Goal Achieved</h6>
-                        {% elif user.goals_achieved > 1 %}
-                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved}} Goals Achieved</h6>
+                        {% if (user.goals_achieved | length) == 1 %}
+                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length }} Goal Achieved</h6>
+                        {% elif (user.goals_achieved | length) > 1 %}
+                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length}} Goals Achieved</h6>
                         {% endif %}
                         <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
                         {% endif %}
