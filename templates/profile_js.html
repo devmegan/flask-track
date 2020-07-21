@@ -1,0 +1,13 @@
+<script>
+$('document').ready(function(){
+    // nav between profile and update profile cards
+    $("#update-profile-link").click(function(){
+        $("#profile-card").addClass("display-none");
+        $("#update-profile-card").removeClass("display-none");
+    })
+    $("#update-nav-back").click(function(){
+        $("#profile-card").removeClass("display-none");
+        $("#update-profile-card").addClass("display-none");
+    })
+});
+</script>
