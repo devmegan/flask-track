@@ -52,8 +52,20 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.invalid {
+    border: 1.5px solid;
+    border-image: url("../img/red-lowpoly-small.jpg") 25 25 round !important;
+}
+
+.valid {
+    border: 1.5px solid;
+    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round !important;
+}
 /* Nav Bar */
-.nav-wrapper {
+nav {
+    height: 10vh;
+}
+nav .nav-wrapper {
     background-color: #f8f8f8;
     height: 10vh;
 }
