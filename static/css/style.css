@@ -299,6 +299,11 @@ height: 14vh;
 width: 14vh;
 line-height: 14vh;
 }
+
+.btn-floating.btn-large i {
+    font-size: 6vh;
+    line-height: 14vh;
+}
 .btn-floating {
 border-radius: 0px;
 width: 120%;
