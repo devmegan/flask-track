@@ -323,3 +323,30 @@ td {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.lowpoly-link {
+    color: rgb(45, 111, 185);
+    background: url("../img/light-blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lowpoly-link:hover {
+    color: rgb(78, 171, 207);
+    background: url("../img/very-light-blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-lowpoly {
+    color:#D4AF37;
+    background: url("../img/gold-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
