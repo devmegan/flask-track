@@ -1,4 +1,6 @@
 <script>
+// drop down for nav menu 
+$(".dropdown-trigger").dropdown();
 {% with flashes=get_flashed_messages() %}
     {% if flashes %}
         {% for flash in flashes %}
