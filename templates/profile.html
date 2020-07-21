@@ -38,6 +38,23 @@
             {% endfor %}
             </ul>
         </div>
+        <!--Profile Info Card-->
+        <div class="col s12 m8 l6">
+            <div class="card">
+                <div class="card-content center blue-text">
+                    <h4 id="main-card-title" class="center uppercase spaced-text"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
+                     <strong><a href="#edit-user-modal" class="modal-trigger lowpoly-link">Edit Profile</a><span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="modal-trigger lowpoly-link">Update Password</a></strong>
+                     <h5 class="dark-blue-lowpoly"><strong>{{user.username}}</strong></h5>
+                    <p class="dark-blue-lowpoly uppercase">Username</p>
+                    <h5 class="dark-blue-lowpoly"><strong>{{user.email}}</strong></h5>
+                    <p class="dark-blue-lowpoly uppercase">Email Address</p>
+                    <h5 class="dark-blue-lowpoly"><strong> {{user.signup_date.strftime('%d-%m-%Y')}}</strong></h5>
+                    <p class="dark-blue-lowpoly uppercase">Sign Up Date</p>
+                    <h5 class="dark-blue-lowpoly"><strong>{{user.currency}} {% if user.currency == "£" %} GBP {% else %} EUR {% endif %}</strong></h5>
+                    <p class="dark-blue-lowpoly uppercase">Currency</p>
+                </div> 
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %} 
