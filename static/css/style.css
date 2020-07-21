@@ -412,7 +412,7 @@ td {
 }
 .red-lowpoly-link {
     color: rgb(182, 93, 93);
-    background: url("../img/dark-red-lowpoly-small.jpg");
+    background: url("../img/red-lowpoly-small.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
@@ -420,7 +420,7 @@ td {
 }
 .red-lowpoly-link:hover {
     color: rgb(172, 42, 42);
-    background: url("../img/red-lowpoly-small.jpg");
+    background: url("../img/dark-red-lowpoly-small.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
