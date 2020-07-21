@@ -5,6 +5,9 @@
 i {
     vertical-align: -2px; /*Change this to adjust the icon*/
 }
+.spaced-text {
+    letter-spacing: 2px;
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
