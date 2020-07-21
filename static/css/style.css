@@ -394,6 +394,14 @@ td {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.silver-lowpoly {
+    color:rgb(199, 198, 198);
+    background: url("../img/silver-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .dark-blue-lowpoly {
     color: rgb(15, 61, 114);
     background: url("../img/blue-lowpoly-small.jpg");
@@ -405,7 +413,7 @@ td {
 
 .red-lowpoly {
     color: rgb(182, 93, 93);
-    background: url("../img/dark-red-lowpoly-small.jpg");
+    background: url("../img/red-lowpoly-small.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
