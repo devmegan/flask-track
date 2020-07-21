@@ -60,7 +60,7 @@
             <div class="card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Profile</strong></h4>
-                    <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a> <span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="red-lowpoly-link">Delete Profile</a></strong>
+                    <strong><a class="lowpoly-link" id="update-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a> <span class="dark-blue-lowpoly"> | </span><a href="#change-pw-modal" class="red-lowpoly-link" id="delete-profile-link">Delete Profile</a></strong>
                     <div class="row">
                         <div class="col s12">
                             <form action="{{url_for('update_user', username=user.username)}}" method="POST">
@@ -113,15 +113,22 @@
             </div>
         </div>
         <!--Delete Profile Card-->
-        <div class="col s12 m8 l6" id="delete-profile-card">
+        <div class="col s12 m8 l6 display-none" id="delete-profile-card">
             <div class="card">
                 <div class="card-content center">
-                    <h4 class="center uppercase spaced-text red-lowpoly"><strong>Delete Profile</strong></h4>
+                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Delete Profile</strong></h4>
                     <strong><a class="lowpoly-link" id="delete-nav-back"><i class="material-icons tiny">arrow_back</i>Back to Profile</a>
                     <div class="row">
                         <div class="col s12">
-                            <h5>Are you sure you want to delete your profile and goals forever?</h5>
-                            <p class="silver-lowpoly uppercase spaced-text"> Any current goals and progress will be removed.</p>
+                            <h5 class="silver-lowpoly">Are you sure you want to delete your profile and goals forever?</h5>
+                            <p class="silver-lowpoly uppercase spaced-text para-small"> Any current goals and progress will be removed.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m8 offset-m2">
+                            <p class="silver-lowpoly uppercase spaced-text"><b>Please Confirm Your Password to Delete Profile</b></p>
+                            </br>
+                            <input id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" required>
                         </div>
                     </div>
                      <div class="row">
