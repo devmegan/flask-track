@@ -163,12 +163,13 @@ def update_user(username):
         # check email address will still be unique to user
         if not existing_email or request.form.get('email') == existing_user['email']:
             coll_users.update_one({"username": existing_user['username']},{'$set': {"fname": request.form.get('fname'), "lname": request.form.get('lname'), "email": request.form.get('email'), "currency": currency}})
+            flash("Your profile has been updated")
             return redirect(url_for('profile', username=username))
         else: 
-            flash("sorry, it looks like that email address is already registered") 
+            flash("Sorry, it looks like that email address is already registered") 
             return redirect(url_for('profile', username=username))
     else: 
-        flash("Sorry, it looks like you entered your existing password incorrectly")
+        flash("It looks like you entered your existing password incorrectly")
         return redirect(url_for('profile', username=username))
 
 
