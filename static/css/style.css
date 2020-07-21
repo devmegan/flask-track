@@ -21,6 +21,7 @@ i {
     border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
     height: 10vh;
     margin-bottom: 0px;
+    width: 95%;
 }
 .input-field input[type=text]:hover:not(.select-dropdown) {
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
@@ -35,6 +36,7 @@ i {
     border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
     height: 10vh;
     margin-bottom: 0px;
+    width: 95%;
 }
 
 .input-field input[type=password]:hover {
@@ -51,6 +53,7 @@ i {
     border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
     height: 10vh;
     margin-bottom: 0px;
+    width: 95%;
 }
 .input-field input[type=email]:hover {
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
@@ -452,4 +455,18 @@ td {
 
 #profile-container .card {
     min-height: 85vh;
+}
+
+.blue-lowpoly-border {
+    color: rgb(15, 61, 114);
+    border: 3px solid;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    margin: 2vh;
+    padding: 2vh;
+}
+
+#update-pw-icon {
+    font-size: 6vh;
+    margin-bottom: 2vh
 }
