@@ -2,6 +2,9 @@
 .uppercase {
     text-transform: uppercase;
 }
+i {
+    vertical-align: -2px; /*Change this to adjust the icon*/
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
