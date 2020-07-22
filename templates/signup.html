@@ -10,60 +10,70 @@
         <div class="col s12 m8 offset-m2">
             <div class="card s12" id="login-signup-card">
                 <div class="card-content">
-                    <span class="card-title center" id="login-signup-header"><strong>Sign Up</strong></span>
-                    <form action="{{url_for('register_user')}}" method="POST">
-                        <div class="row center" id="currency-options-row">
-                            <p class="helper-text white-text">Which currency are you saving in?</p>
-                            <label>
-                                <input name="currency" value="€" id="€" name="€" type="radio" required/>
-                                <span class="currency-option"><strong>€</strong></span>
-                            </label>
-                            <label>
-                                <input name="currency" value="£" id="£" name="£" type="radio" required/>
-                                <span class="currency-option"><strong>£</strong></span>
-                            </label>
+                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Sign Up</strong></h4>
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="blue-lowpoly-border">
+                                <form action="{{url_for('register_user')}}" method="POST">
+                                    <div class="row">
+                                        <div class="col s12 center">
+                                            <div class="switch" >
+                                                <label class="dark-blue-lowpoly">
+                                                    £ 
+                                                    <input type="checkbox" id="currency" name="currency">
+                                                    <span class="lever"></span>
+                                                    €
+                                                </label>
+                                                <p class="uppercase spaced-text">Select Currency</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 l5 offset-l1">
+                                            <input id="fname" name="fname" placeholder="First Name" type="text" max-length="20" required>
+                                            <span class="helper-text" data-error="Please enter your first name">First Name</span>
+                                        </div>
+                                        <div class="input-field col s12 l5">
+                                            <input id="lname" name="lname" placeholder="Last Name" type="text" max-length="20" required>
+                                            <span class="helper-text" data-error="Please enter your last name" >Last Name</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 l5 offset-l1">
+                                            <input id="username" placeholder="Username" name="username" class="validate" type="text" min-length="5" maxlength="10" required>
+                                            <span class="helper-text" data-error="Username must have 5 characters or more" data-success="Username">Username</span>
+                                        </div>
+                                        <div class="input-field col s12 l5">
+                                            <input id="email" name="email" class="validate" placeholder="Email Address" type="email" required data-error="Please Enter Valid Email Address">
+                                            <span class="helper-text" data-error="Please use a valid email address" data-success="Email Address">Email Address</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 l5 offset-l1">
+                                            <input id="password" name="password" placeholder="Password" type="password" pattern=".{6,}" required>
+                                            <span class="helper-text" data-error="Please use a valid email address" data-success="Email Address">Password (6+ characters)</span>
+                                        </div>
+                                        <div class="input-field col s12 l5">
+                                            <input id="passwordcheck" name="passwordcheck" placeholder="Re-Enter Password" type="password" required>
+                                            <span class="helper-text" data-error="Passwords don't match" data-success="Passwords Match">Re-Enter Password</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 center">
+                                            <button class="btn waves-effect waves-blue form-action-btn" type="submit" id="signup-btn" name="action"><strong>Sign Up</strong></button>
+                                            <p>Already have an account? <a href="{{ url_for('login') }}"><strong class="action-text">Log In!</strong></a></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <span class="helper-text white-text">First Name</span>
-                                <input id="fname" name="fname" placeholder="First Name" type="text" required>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <span class="helper-text white-text" >Last Name</span>
-                                <input id="lname" name="lname" placeholder="Last Name" type="text" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <span class="helper-text white-text">Username</span>
-                                <input id="username" placeholder="Username" name="username" type="text" min-length="5" maxlength="10" required>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <span class="helper-text white-text">Email Address</span>
-                                <input id="email" name="email" placeholder="Email Address" type="email" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <span class="helper-text white-text">Password</span>
-                                <input id="password" name="password" placeholder="Password" type="password" pattern=".{6,}" required>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <span class="helper-text white-text">Retype Password</span>
-                                <input id="passwordcheck" name="passwordcheck" placeholder="Retype Password" type="password" required>
-                            </div>
-                        <span id="message"></span>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 center">
-                                <button class="btn waves-effect waves-light form-action-btn white" type="submit" id="signup-btn" name="action"><strong>Sign Up</strong></button>
-                                <p class="">Already have an account? <a href="{{ url_for('login') }}"><strong class="action-text">Log In!</strong></a></p>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% block include_js_html %}
+    {% include 'signup_js.html' %}
+{% endblock %}
 {% endblock %}
