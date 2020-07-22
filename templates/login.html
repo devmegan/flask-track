@@ -10,25 +10,33 @@
         <div class="col s12 m6 offset-m3">
             <div class="card s12" id="login-signup-card">
                 <div class="card-content">
-                    <span class="card-title center" id="login-signup-header"><strong>Log In</strong></span>
-                    <form action="{{url_for('login_auth')}}" method="POST">
-                        <div class="row">
-                            <div class="input-field col s8 offset-s2 l6 offset-l3">
-                               <input class="white" placeholder="Username" id="username" name="username" type="text" required>
+                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Log In</strong></h4>
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="blue-lowpoly-border">
+                                <form action="{{url_for('login_auth')}}" method="POST">
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input class="white" placeholder="Username" id="username" name="username" type="text" required>
+                                            <label class="dark-blue-lowpoly" for="username">Username</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input class="white" placeholder="Password" id="password" name="password" type="password" required>
+                                            <label class="dark-blue-lowpoly" for="password">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 center">
+                                            <button class="btn waves-effect waves-light form-action-btn white" type="submit" id="login-btn" name="action"><strong>Log In</strong></button>
+                                            <p class="">Don't have an account yet? <a href="{{ url_for('signup') }}"><strong class="action-text">Sign Up!</strong></a></p>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s8 offset-s2 l6 offset-l3">
-                                <input class="white" placeholder="Password" id="password" name="password" type="password" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 center">
-                                <button class="btn waves-effect waves-light form-action-btn white" type="submit" id="login-btn" name="action"><strong>Log In</strong></button>
-                                <p class="">Don't have an account yet? <a href="{{ url_for('signup') }}"><strong class="action-text">Sign Up!</strong></a></p>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
