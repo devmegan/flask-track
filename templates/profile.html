@@ -70,12 +70,13 @@
                                     <div class="row">
                                         <div class="col s12">
                                             <div class="switch" >
-                                                <label class="dark-blue-lowpoly tooltipped" data-position="bottom" data-tooltip="Switch Currency">
+                                                <label class="dark-blue-lowpoly">
                                                     {{ user.currency }}
                                                     <input type="checkbox" id="currency-switch" name="currency-switch">
                                                     <span class="lever"></span>
                                                     {% if user.currency == "£" %} € {% else %} £ {% endif %}
                                                 </label>
+                                                <p class="uppercase spaced-text">Switch Currency</p>
                                             </div>
                                         </div>
                                     </div>
@@ -126,7 +127,7 @@
                         <div class="row">
                             <div class="col s12">
                             <i class="material-icons dark-blue-lowpoly" id="update-pw-icon">lock_outline</i>
-                                <form action="{{url_for('update_user', username=user.username)}}" method="POST">
+                                <form action="{{url_for('update_password', username=user.username)}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
                                             <input id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
