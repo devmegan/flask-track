@@ -29,11 +29,9 @@ i {
 }
 .input-field input[type=text]:hover:not(.select-dropdown) {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
-    border-width: 2px
 }
 .input-field input[type=text]:focus:not(.select-dropdown) {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
-    border-width: 2px
 }
 .input-field input[type=password] {
     border: 1.5px solid;
@@ -47,11 +45,9 @@ i {
 
 .input-field input[type=password]:hover {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
-    border-width: 2px
 }
 .input-field input[type=password]:focus {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
-    border-width: 2px
 }
 
 .input-field input[type=email] {
@@ -65,11 +61,9 @@ i {
 }
 .input-field input[type=email]:hover {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
-    border-width: 2px
 }
 .input-field input[type=email]:focus {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
-    border-width: 2px
 }
 
 ::placeholder {
