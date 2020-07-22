@@ -173,8 +173,8 @@ def update_user(username):
         return redirect(url_for('profile', username=username))
 
 
-@app.route('/change_password/<username>', methods=['POST'])
-def change_password(username):
+@app.route('/update_password/<username>', methods=['POST'])
+def update_password(username):
     existing_user = coll_users.find_one({'username': username})
     # if old pw correct and new passwords match, insert new pw hash into mongo
     if check_password_hash(existing_user['password'], request.form.get('oldpassword')):  
