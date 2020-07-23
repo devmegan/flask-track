@@ -130,6 +130,23 @@ i {
     font-size: calc(35px + 2vh)
 }
 
+.switch label .lever {
+    /* right side of switch */
+   background-color: #164E87;
+}
+.switch label input[type=checkbox]:checked+.lever {
+    /* left side of switch */
+   background-color: #69AED8;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+    /* switch on */
+   background-color: #164E87;
+}
+.switch label .lever:after {
+    /* switch on */
+   background-color: #69AED8;
+}
+
 /* Nav Bar */
 
 nav .nav-wrapper {
