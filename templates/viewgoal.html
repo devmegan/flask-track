@@ -106,7 +106,24 @@
                 </div> 
             </div>
             {% endif %}
+            <!--Progress Doughnut Card-->
+            {% if goal.savings_history %}
+            <div class="card">
+                <div class="card-content center blue-text">
+                    <h5 class="center uppercase spaced-text"><strong>Progress</strong></h5>
+                    <span><a href="#" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
+                    <!--Savings History Table-->
+                    <div class="blue-lowpoly-border">
+                      chart here
+                    </div>
+                </div> 
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
+{% endblock %}
+{% block include_js_html %}
+<!--load chart.js-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 {% endblock %}
