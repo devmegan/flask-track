@@ -141,6 +141,24 @@ def dashboard(username):
         flash("Please login to view your dashboard")
         return redirect(url_for("login"))
 
+
+""" user goals """ 
+
+
+@app.route('/view_goal/<username>/<goal_id>')
+def goal_view(username, goal_id):
+    # check to make sure not accessing another usernames account
+    if 'username' in session and session['username']==username:
+        current_user = coll_users.find_one({"username": username})
+        list_goals = list(coll_goals.find({"username": username}))
+        current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)}) # convert goal id into bson, then find id in mongo db that matches it
+        return render_template("viewgoal.html", user=current_user, goal=current_goal, goals=list_goals)
+    else:
+        flash("Please login to view your goals")
+        return redirect(url_for("login"))
+
+
+
 """ user profile """ 
 @app.route('/profile/<username>')
 def profile(username):
