@@ -131,10 +131,10 @@
                                 <div class="center">
                                     <i class="material-icons dark-blue-lowpoly" id="update-pw-icon">lock_outline</i>
                                 </div>
-                                <form action="{{url_for('update_password', username=user.username)}}" method="POST">
+                                <form id="update-pw-form" action="{{url_for('update_password', username=user.username)}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input class="reload-reset validate" minlength="6" id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
+                                            <input class="reload-reset" id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
                                             <span class="helper-text spaced-text" data-error="Please confirm your current password">Current password</span>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                     <div class="row center">
                                         <div class="col s12">
                                             <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
-                                            <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
+                                            <button class="btn waves-effect waves-dark update-btn" id="update-pw-submit" type="submit" name="action">Update</button>
                                         </div>
                                     </div>
                                 </form>
