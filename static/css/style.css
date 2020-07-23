@@ -1,4 +1,5 @@
 /* General */
+
 .uppercase {
     text-transform: uppercase;
 }
@@ -414,6 +415,15 @@ h5 {
 .red-lowpoly {
     color: rgb(182, 93, 93);
     background: url("../img/red-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+}
+
+.white-lowpoly {
+    color: rgb(235, 235, 235);
+    background: url("../img/white-lowpoly-small.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
