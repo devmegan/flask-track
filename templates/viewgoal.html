@@ -110,11 +110,36 @@
             {% if goal.savings_history %}
             <div class="card">
                 <div class="card-content center blue-text">
-                    <h5 class="center uppercase spaced-text"><strong>Progress</strong></h5>
-                    <span><a href="#" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
-                    <!--Savings History Table-->
-                    <div class="blue-lowpoly-border">
-                      chart here
+                     <!--Progress Dougnut Chart-->
+                           <div class="chart-wrapper">
+                                <canvas id="goal-progress-pie"></canvas>      
+                                <div class="chart-text">
+                                    <h4 class="dark-blue-lowpoly">{{ goal.percent_progress }}%</h4>
+                                    <span class="dark-blue-lowpoly uppercase spaced-text">saved</span>
+                                </div>
+                            </div>
+                            <h4 class="center uppercase dark-blue-lowpoly" style="letter-spacing: 10px; margin-top: 50px;"><strong>Progress</strong></h4>
+                  
+                            <div class="gold-lowpoly spaced-text">
+                            <strong>
+                            {% if goal.percent_progress < 25 %}
+                            {% elif goal.percent_progress < 33 %}
+                            You're close to saving a third of your total!
+                            {% elif goal.percent_progress < 50 %}
+                            You're nearly half way there!
+                            {% elif goal.percent_progress < 60 %}
+                            You're over half way to achieving your goal!
+                            {% elif goal.percent_progress > 75 %}
+                            You're in the final quarter!
+                            {% elif goal.percent_progres == 100 %}
+                            Congratulations! You've reached your goal!
+                            {% else %}
+                            Congratulations! You've exceeded your goal! 
+                            {% endif %}
+                            </strong>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div> 
             </div>
@@ -126,4 +151,5 @@
 {% block include_js_html %}
 <!--load chart.js-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+{% include 'viewgoal_js.html' %}
 {% endblock %}
