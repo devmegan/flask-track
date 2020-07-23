@@ -5,7 +5,7 @@
 <li><a class="dropdown-trigger" href="#!" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
 <ul id="nav_goals" class="dropdown-content">
     {% for goal in goals %}
-    <li><a href="#" class="uppercase">{{goal.goal_name}}</a></li>
+    <li><a href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" class="uppercase">{{goal.goal_name}}</a></li>
     {% endfor %}
     {% if user.goals_number < 4 %}
     <li class="divider"></li>
@@ -17,4 +17,96 @@
 <li><a href="{{url_for('logout')}}">Log Out</a></li>
 {% endblock %} 
 {% block content %}
+<div class="container-fluid" id="goals-container">
+    <!--Fab Menu-->
+    <div class="fixed-action-btn" id="cards-fab">
+        <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
+        <i class="large material-icons">dashboard</i>
+        </a>
+        <ul id="goal-fab-ul">
+        {% if (goals | length) < 4%}
+        <li>
+            <a class="btn-floating darken-1 goal-fab-card"
+            ><i class="material-icons">add</i></a
+            >
+        </li>
+        {% endif %} {% for goal in goals %}
+        <li>
+            <a class="btn-floating darken-1 goal-fab-card" style="background-image: url({{ goal.image_url }})"></a>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <!--Main Card-->
+            <div class="card">
+                <div class="card-content center">
+                    <div class="blue-lowpoly-border">
+                    <img src="{{goal.image_url}}" class="goal-image">
+                        <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ goal.goal_name }}</strong></h4>
+                        <span><a href="#" class="lowpoly-link modal-trigger center"><strong>Edit Goal</strong></a></span>
+                    </div>
+                </div> 
+            </div>
+            <!--Deposit/Withdraw Cards-->
+            <div class="row">
+            <div class="col s6">
+                <div class="card">
+                <div class="card-content center" style="background-color: #9a3c57; height: 24vh;">
+                    <i class="material-icons green-lowpoly" style="font-size: 45px"><strong>arrow_downward</strong></i>
+                    <h6 class="center uppercase green-lowpoly"><strong>Withdraw Savings</strong></h6>
+                </div> 
+            </div>
+            </div>
+            <div class="col s6">
+                <div class="card" style="background-color: #372b5f; height: 24vh;">
+                <div class="card-content center">
+                    <i class="material-icons green-lowpoly" style="font-size: 45px">arrow_upward</i>    
+                    <h6 class="center uppercase green-lowpoly"><strong>Deposit Savings</strong></h6>
+                </div> 
+            </div>
+        </div> 
+            </div>
+            <!--Recent Activity Card-->
+            {% if goal.savings_history %}
+            <div class="card">
+                <div class="card-content center blue-text">
+                    <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
+                    <span><a href="#" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
+                    <!--Savings History Table-->
+                    <div class="blue-lowpoly-border">
+                        <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th class="uppercase spaced-text">Amount</th>
+                            <th class="uppercase right spaced-text">Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in goal.savings_history | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
+                        {% if loop.index <= 5 %}
+                        <tr>
+                            {% if item[1] > 0 %}
+                            <td class="table-deposit green-lowpoly">
+                                <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong>
+                            </td>
+                            {% else %}
+                            <td class="table-withdrawal red-lowpoly">
+                               <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
+                            </td>
+                            {% endif %}
+                            <td class="right dark-blue-lowpoly">{{ item[0].strftime("%d %b, %Y") }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        </tbody>
+                        </table>
+                    </div>
+                </div> 
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
