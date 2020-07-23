@@ -191,14 +191,26 @@ def update_password(username):
         return redirect(url_for('profile', username=username))
 
 
-@app.route('/delete_user/<username>')
+@app.route('/delete_user/<username>', methods=['POST'])
 def delete_user(username):
-    user_to_delete = coll_users.find_one()
-    coll_users.remove({'username': username})
-    coll_goals.remove({'username': username})
-    session.clear()
-    flash("Your profile has been deleted from this app")
-    return redirect(url_for('index'))
+    user_to_delete = coll_users.find_one({'username': username})
+    # prevent users deleting test account
+    if username != "testacc" and username != "ascipio" and username != "ladama":
+        flash(username)
+        # only delete if user has confirmed password
+        if check_password_hash(user_to_delete['password'], request.form.get('password_delete')):
+            coll_users.remove({'username': username})
+            coll_goals.remove({'username': username})
+            session.clear()
+            flash("Your profile has been deleted from this app")
+            return redirect(url_for('index'))
+        else:
+            # redirect user to profile if incorrect password
+            flash("That looks like the wrong password. Please try again.")
+            return redirect(url_for('profile', username=username))
+    else:
+        flash(username + " is a test account. You can't delete it.")
+        return redirect(url_for('profile', username=username))
 
 
 """ logout """
