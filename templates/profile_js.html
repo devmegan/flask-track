@@ -35,8 +35,8 @@ $('document').ready(function(){
         }   
     })
     //clientside validation: update password
-    $("#password_delete").on({
-        focusout: function(){
+    $("#oldpassword").on({
+       focusout: function(){
             if (!$(this).val()){
                 $(this).addClass("invalid");
             }
@@ -57,8 +57,47 @@ $('document').ready(function(){
             }
         }   
     })
-})
+    // clientside signup form validation: new password
+     $("#newpassword").on({
+        focusout: function(){
+            if ($(this).val().length < 6){
+                $(this).addClass("invalid").attr("data-error", "Password must use 6+ characters");
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 6) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Password must use 6+ characters")
+                }
+            } 
+            if ($(this).val() == $("#newpasswordcheck").val()) {
+                $(this).removeClass("valid").addClass("invalid").attr("data-error", "Passwords don't match")
+                $("#newpasswordcheck").removeClass("valid").addClass("invalid").attr("data-error", "Passwords don't match")
+            }
+        }, 
+        keyup: function(){
+            if($(this).val().length > 5){
+                if ($("#newpasswordcheck").val() == $(this).val()) {
+                    $("#newpasswordcheck").removeClass("invalid").addClass("valid")
+                    $(this).removeClass("invalid").addClass("valid")
+                } if ($(this).val().length == 0){
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a password")
+                }
+            }
+        }
+    })
 
+    $("#newpasswordcheck").on("keyup", function (e) {
+        if ($(this).val().length > 5 && $(this).val() != $("#newpassword").val()) {
+            $(this).removeClass("valid").addClass("invalid")
+            $("#newpassword").removeClass("valid").addClass("invalid").next().attr("data-error", "Passwords don't match")
+        } else if ($(this).val().length > 5 && $(this).val() == $("#newpassword").val()){
+            $(this).removeClass("invalid").addClass("valid")
+            $("#newpassword").removeClass("invalid").addClass("valid").next().attr("data-success", "Passwords match")
+        }
+    });
+//
+})
 function userProfileNav(el1, el2, el3) {
     $(el1).click(function(){
         $(el2).addClass("display-none");
