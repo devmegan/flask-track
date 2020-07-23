@@ -1,0 +1,41 @@
+<script>
+$(document).ready(function(){
+    progressPie({{ goal.percent_progress }})
+})
+function progressPie (progress){
+// progress chart on viewgoal template
+  var ctx = document.getElementById("goal-progress-pie").getContext('2d');
+  var gradient = ctx.createLinearGradient(0, 0, 0, 1000);
+    gradient.addColorStop(0, 'rgba(37, 105, 161, 1')
+    gradient.addColorStop(0.3, 'rgba(33, 173, 96, 1');
+    gradient.addColorStop(1, 'rgba(24, 201, 128, 1');
+    var gradientBorder = ctx.createLinearGradient(0, 0, 0, 1000);
+    gradientBorder.addColorStop(0, 'rgba(37, 105, 161, 1');
+    gradientBorder.addColorStop(0.3, 'rgba(37, 159, 161, 1');
+    gradientBorder.addColorStop(1, 'rgba(35, 145, 150, 1');
+  var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['% progress', '% remaining'],
+        datasets: [{
+            data: [progress, (100 - progress)],
+            // data: [100], // uncomment to check progress chart gradient at 100%
+            backgroundColor: [
+                gradient,
+                'rgba(167, 180, 181, 1)'
+            ],
+            borderColor: [
+                gradientBorder,
+                'rgba(250, 250, 250, 1)'
+            ],
+            borderWidth: 1
+        }],
+    },
+    options: {
+        legend: {
+            display: false
+        }
+    }
+});
+}
+</script>
