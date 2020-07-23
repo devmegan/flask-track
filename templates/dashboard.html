@@ -5,7 +5,7 @@
 <li><a class="dropdown-trigger" href="#!" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
 <ul id="nav_goals" class="dropdown-content">
     {% for goal in goals %}
-    <li><a href="#" class="uppercase">{{goal.goal_name}}</a></li>
+    <li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" class="uppercase">{{goal.goal_name}}</a></li>
     {% endfor %}
     {% if user.goals_number < 4 %}
     <li class="divider"></li>
