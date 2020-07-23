@@ -456,8 +456,27 @@ h5 {
     margin: 2vh;
     padding: 2vh;
 }
+.red-lowpoly-border {
+    color: rgb(151, 16, 84);
+    border: 3px dashed;
+    box-shadow: 0px;
+    border-image: url("../img/red-lowpoly-small.jpg") 25 25 round;
+    padding: 2vh;
+}
 
 #update-pw-icon {
     font-size: 6vh;
     margin-bottom: 2vh
+}
+
+/* View Goal */
+#goals-container {
+    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 90vh;
+}
+.goal-image {
+    width: 100%;
 }
