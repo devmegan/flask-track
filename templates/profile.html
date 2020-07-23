@@ -120,34 +120,37 @@
         <!--Update Profile Password Card-->
         <div class="col s12 m8  offset-m2 l6 offset-l3 display-none" id="update-password-card">
             <div class="card">
-                <div class="card-content center">
-                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Update Password</strong></h4>
-                    <a class="lowpoly-link" id="password-nav-back"><strong>Back to Profile</strong></a>
+                <div class="card-content">
+                    <div class="center">
+                        <h4 class="uppercase spaced-text dark-blue-lowpoly"><strong>Update Password</strong></h4>
+                        <a class="lowpoly-link" id="password-nav-back"><strong>Back to Profile</strong></a>
+                    </div>
                     <div class="blue-lowpoly-border">
                         <div class="row">
                             <div class="col s12">
-                            <i class="material-icons dark-blue-lowpoly" id="update-pw-icon">lock_outline</i>
+                                <div class="center">
+                                    <i class="material-icons dark-blue-lowpoly" id="update-pw-icon">lock_outline</i>
+                                </div>
                                 <form action="{{url_for('update_password', username=user.username)}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
-                                            <label class="dark-blue-lowpoly" for="password">Confirm Current Password</label>
+                                            <input class="reload-reset validate" minlength="6" id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
+                                            <span class="helper-text spaced-text" data-error="Please confirm your current password">Current password</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                        <input id="newpassword" name="newpassword" type="password" placeholder="New Password" required>
-                                        <label class="dark-blue-lowpoly" for="password">Enter New Password</label>
+                                        <input class="reload-reset" minlength="6" id="newpassword" name="newpassword" type="password" placeholder="New Password" required>
+                                        <span class="helper-text spaced-text" data-error="Enter your new password (6+ characters)">New password</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input id="newpasswordcheck" name="newpasswordcheck" type="password" placeholder="Re-Enter New Password" required>
-                                            <label class="dark-blue-lowpoly" for="password">Re-Enter New Password</label>
-                                            <span id='message'></span>
+                                            <input class="reload-reset validate" minlength="6" id="newpasswordcheck" name="newpasswordcheck" type="password" placeholder="Re-Enter New Password" required>
+                                            <span class="helper-text left spaced-text">Re-Enter new password</span>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row center">
                                         <div class="col s12">
                                             <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
                                             <button class="btn waves-effect waves-dark update-btn" type="submit" name="action">Update</button>
@@ -178,7 +181,7 @@
                                 <div class="input-field col s12 m8 offset-m2">
                                     <p class="silver-lowpoly uppercase spaced-text"><b>Please confirm your password to delete your profile</b></p>
                                     </br>
-                                    <input class="validate" id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" minlength="6" required>
+                                    <input class="validate reload-reset" id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" minlength="6" required>
                                     <span class="helper-text spaced-text" data-error="Please confirm your password"></span>
                                 </div>
                             </div>
