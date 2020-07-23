@@ -60,7 +60,7 @@ $('document').ready(function(){
     // clientside signup form validation: new password
      $("#newpassword").on({
         focusout: function(){
-            if ($(this).val().length < 6){
+            if ($(this).val().length < 6) {
                 $(this).addClass("invalid").attr("data-error", "Password must use 6+ characters");
             }
         },
@@ -69,34 +69,51 @@ $('document').ready(function(){
                 if ($(this).val().length == 6) {
                     $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Password must use 6+ characters")
                 }
-            } 
-            if ($(this).val() == $("#newpasswordcheck").val()) {
-                $(this).removeClass("valid").addClass("invalid").attr("data-error", "Passwords don't match")
-                $("#newpasswordcheck").removeClass("valid").addClass("invalid").attr("data-error", "Passwords don't match")
             }
         }, 
         keyup: function(){
-            if($(this).val().length > 5){
-                if ($("#newpasswordcheck").val() == $(this).val()) {
-                    $("#newpasswordcheck").removeClass("invalid").addClass("valid")
-                    $(this).removeClass("invalid").addClass("valid")
-                } if ($(this).val().length == 0){
-                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a password")
-                }
+            if ($(this).val().length == 6){
+                $(this).removeClass("invalid").addClass("valid")
             }
         }
     })
 
-    $("#newpasswordcheck").on("keyup", function (e) {
-        if ($(this).val().length > 5 && $(this).val() != $("#newpassword").val()) {
-            $(this).removeClass("valid").addClass("invalid")
-            $("#newpassword").removeClass("valid").addClass("invalid").next().attr("data-error", "Passwords don't match")
-        } else if ($(this).val().length > 5 && $(this).val() == $("#newpassword").val()){
-            $(this).removeClass("invalid").addClass("valid")
-            $("#newpassword").removeClass("invalid").addClass("valid").next().attr("data-success", "Passwords match")
+    $("#newpasswordcheck").on({
+        focusout: function(){
+            if ($(this).val() != $("#newpassword").val() && $("#newpassword").val().length > 6){
+                $(this).removeClass("valid").addClass("invalid")
+            }
+            if ($(this).val().length < 6 && $("#newpassword").val().length > 6){
+                $(this).addClass("invalid")
+            } else if ($(this).val().length > 6 && $("#newpassword").val() == $(this).val()){
+                $(this).addClass("valid").next().attr("data-success", "Passwords match")
+            }
+        }, 
+        keyup: function(){
+            if($(this).hasClass("valid")){
+                $(this).removeClass("valid").addClass("invalid")
+            }
+             if ($(this).val().length > 6 && $("#newpassword").val() == $(this).val()){
+                $(this).removeClass("invalid").addClass("valid").next().attr("data-success", "Passwords match")
+            }
+        }
+    })
+    $('#update-pw-submit').click(function(e) {
+    // validate form input before submitting form
+        e.preventDefault();
+        if (!$("#oldpassword, #newpassword, #newpasswordcheck").val()){
+            M.toast({html: 'Please make sure all fields are filled in'})
+        } else if ($("#oldpassword").val().length < 6) {
+            M.toast({html: 'Your existing password isn\'t entered correctly'})
+        } else if ($("#newpassword").val() != $("#newpasswordcheck").val()){
+            alert("no matchy")
+            M.toast({html: 'It looks like your new passwords don\'t match'})
+        } else if ($("#newpassword").val().length < 6){
+            M.toast({html: 'Your new password must be longer than 6 characters'})
+        } else {
+            $("#update-pw-form").submit();
         }
     });
-//
 })
 function userProfileNav(el1, el2, el3) {
     $(el1).click(function(){
