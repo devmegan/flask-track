@@ -83,6 +83,11 @@ def signup():
 def register_user():
     existing_email = coll_users.find_one({"email": request.form.get('email')})
     existing_user = coll_users.find_one({"username": request.form.get('username')})
+    # prep currency switch val
+    if request.form.get('currency') == "on":
+        currency = "€"
+    else:
+        currency = "£"
     # server-side registration validation
     if request.form.get('password') == request.form.get('passwordcheck'):
         if not existing_email:
@@ -100,7 +105,7 @@ def register_user():
                     'goals_achieved': 0,
                     'deposits_number': 0,
                     'withdrawals_number': 0,
-                    'currency': request.form.get('currency'),
+                    'currency': currency,
                     'total_saved': 0,
                     'total_achieved': 0
                 }) 
