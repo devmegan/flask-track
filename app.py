@@ -161,8 +161,10 @@ def update_user(username):
     if request.form.get('currency-switch') == "on":
         if existing_user['currency'] == "£":
             currency = "€"
-        else: 
+        else:
             currency = "£"
+    else: 
+        currency = existing_user['currency']
     # check old pw successfuly confirmed
     if check_password_hash(existing_user['password'], request.form.get('password')): 
         # check email address will still be unique to user
