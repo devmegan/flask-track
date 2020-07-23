@@ -7,7 +7,34 @@ $('document').ready(function(){
     userProfileNav("#password-nav-back", "#update-password-card", "#profile-card")
     userProfileNav("#delete-profile-link", "#update-profile-card", "#delete-profile-card")
     userProfileNav("#delete-nav-back", "#delete-profile-card", "#profile-card")
-    // clienside validation: delete user 
+    // clear input fields and validation classes on navigating away from card
+     $("#delete-nav-back, #password-nav-back").click(function(){
+        $('.reload-reset').val("").removeClass("valid invalid");
+    })
+    // clientside validation: delete user 
+    $("#password_delete").on({
+        focusout: function(){
+            if (!$(this).val()){
+                $(this).addClass("invalid");
+            }
+            $(this).removeClass("valid") // never want this to show as valid as not doing clientside password auth
+        }, 
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 6 ) {
+                    $(this).addClass("invalid");
+                }
+            }
+        },
+        keyup: function(e){ 
+            if ($(this).val().length == 0) {
+                $(this).addClass("invalid");
+            } else if ($(this).val().length == 6) {
+                $(this).removeClass("invalid");
+            }
+        }   
+    })
+    //clientside validation: update password
     $("#password_delete").on({
         focusout: function(){
             if (!$(this).val()){
