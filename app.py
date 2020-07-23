@@ -163,7 +163,7 @@ def update_user(username):
             currency = "€"
         else:
             currency = "£"
-    else: 
+    else:
         currency = existing_user['currency']
     # check old pw successfuly confirmed
     if check_password_hash(existing_user['password'], request.form.get('password')): 
@@ -203,7 +203,6 @@ def delete_user(username):
     user_to_delete = coll_users.find_one({'username': username})
     # prevent users deleting test account
     if username != "testacc" and username != "ascipio" and username != "ladama":
-        flash(username)
         # only delete if user has confirmed password
         if check_password_hash(user_to_delete['password'], request.form.get('password_delete')):
             coll_users.remove({'username': username})
