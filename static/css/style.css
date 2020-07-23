@@ -18,7 +18,8 @@ i {
 
 .waves-effect.waves-blue .waves-ripple {
     background-color: rgba(8, 191, 182, 0.5);
-  }
+}
+
   
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
@@ -195,6 +196,11 @@ nav ul a:hover {
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Footer */
+footer i {
+    vertical-align: -5px;
 }
 
 /* Index */
