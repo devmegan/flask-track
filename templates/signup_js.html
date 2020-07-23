@@ -135,7 +135,6 @@ $(document).ready(function(){
     $('#signup-btn').click(function(e) {
     // validate form input before submitting form
         e.preventDefault();
-        alert("p")
         if ($("#fname, #lname, #username, #email, #password, #passwordcheck").hasClass("invalid")){
             M.toast({html: 'It looks like some fields don\'t have a valid input'})
         } else {
