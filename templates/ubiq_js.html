@@ -1,8 +1,17 @@
 <script>
+// set position of goals fab away from nav
+$(document).scroll(function() {
+    footerHeightOffset = $('.page-footer').height() + 10
+    if($('#cards-fab').offset().top + $('#cards-fab').height() >= $('.page-footer').offset().top - 15)
+        $('#cards-fab').css("margin-bottom", footerHeightOffset);
+    if($(document).scrollTop() + window.innerHeight < $('.page-footer').offset().top)
+        $('#cards-fab').css("margin-bottom", "0px"); // restore when you scroll up
+});
 // drop down for nav menu 
 $(".dropdown-trigger").dropdown();
 $("#cards-fab").floatingActionButton();
 $('.tooltipped').tooltip();
+//handle flasks flashed messages
 {% with flashes=get_flashed_messages() %}
     {% if flashes %}
         {% for flash in flashes %}
