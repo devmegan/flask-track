@@ -51,8 +51,9 @@
     <div class="carousel-item " id="index-carousel-two" href="#two!">
         <div class="row white" style="margin-top: 25vh;">
             <div class="col s12">
-                <h3 class="spaced-text dark-blue-lowpoly" style="padding: 10px"><strong>£{{ "{:,.2f}".format(app_stats.saved_total)}} saved so far</strong></h3>
+                <h3 class="spaced-text dark-blue-lowpoly" style="padding: 10px"><strong>{% if user %}{{ user.currency}}{% else %}£{% endif %}{{ "{:,.2f}".format(app_stats.saved_total)}} saved so far</strong></h3>
                 {% if user %}
+                <h5 class="dark-blue-lowpoly uppercase spaced-text">{{ user.currency}}{{ "{:,.2f}".format(user.total_currently_saved) }} of this is yours!</h5>
                 {% else %}
                 <h5 class="dark-blue-lowpoly uppercase spaced-text">How much could you save?</h5>
                 {% endif %}
@@ -71,7 +72,7 @@
                         <h5 class="dark-blue-lowpoly uppercase spaced-text">Start saving and soon it will be {{ "{:,}".format(app_stats.achieved_goals + 1)}}</h5>
                         {% endif %}
                      {% elif (user.goals_achieved | length) == 1 %}
-                      <h5 class="dark-blue-lowpoly uppercase spaced-text">{{ user.goals_achieved | length }} of them is yours! </h5>
+                      <h5 class="dark-blue-lowpoly uppercase spaced-text">One of them is yours! </h5>
                      {% else %}
                      <h5 class="dark-blue-lowpoly uppercase spaced-text">{{ user.goals_achieved | length }} of them are yours! </h5>
                     {% endif %}
