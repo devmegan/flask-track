@@ -8,14 +8,32 @@
 <div class="container-fluid">
   <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
-        <a class="waves-effect waves-light btn jumbotron-btn" href="{{ url_for('signup') }}">Sign up</a>
-        <a class="waves-effect waves-light btn jumbotron-btn" href="{{ url_for('login') }}">Log In</a>
+        <a class="waves-effect waves-light btn jumbotron-btn white blue-text index-btn" href="{{ url_for('signup') }}"><span class="index-btn-text">Sign up</span></a>
+        <a class="waves-effect waves-light btn jumbotron-btn white blue-text index-btn" href="{{ url_for('login') }}"><span class="index-btn-text">Log In</span></a>
     </div>
     <div class="carousel-item" id="index-carousel-one" href="#one!">
+        <div class="row white" style="margin-top: 25vh;">
+            <div class="col s12">
+                <h3 class="spaced-text dark-blue-lowpoly"><strong>{{ "{:,}".format(app_stats.users_total)}} savers use track</strong></h3>
+                <h5 class="dark-blue-lowpoly uppercase spaced-text">We'd love you to make it <strong>{{ "{:,}".format(app_stats.users_total + 1)}}</strong></h5>
+            </div>     
+        </div>
     </div>
     <div class="carousel-item " id="index-carousel-two" href="#two!">
+        <div class="row white" style="margin-top: 25vh;">
+            <div class="col s12">
+                <h3 class="spaced-text dark-blue-lowpoly"><strong>£{{ "{:,.2f}".format(app_stats.saved_total)}} saved so far</strong></h3>
+                <h5 class="dark-blue-lowpoly uppercase spaced-text">How much could you save?</h5>
+            </div>     
+        </div>
     </div>
     <div class="carousel-item" id="index-carousel-three" href="#three!">
+       <div class="row white" style="margin-top: 25vh;">
+            <div class="col s12">
+                <h3 class="spaced-text dark-blue-lowpoly"><strong>{{ "{:,}".format(app_stats.achieved_goals)}} goals achieved</strong></h3>
+                <h5 class="dark-blue-lowpoly uppercase spaced-text">Track can help you achieve yours too </h5>
+            </div>     
+        </div>
     </div>
   </div>
 </div>
