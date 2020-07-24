@@ -68,7 +68,7 @@
             <div class="card">
                 <div class="card-content center blue-text">
                     <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
-                    <span><a href="#" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
+                    <span><a href="{{ url_for('savingshistory', username=user.username ) }}" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
                     <!--Savings History Table-->
                     <div class="blue-lowpoly-border">
                         <table class="highlight">
@@ -92,7 +92,7 @@
                                <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
                             </td>
                             {% endif %}
-                            <td class="center dark-blue-lowpoly"> <a href="#">{{ item[2] }}</a></td>
+                            <td class="center dark-blue-lowpoly"><a href="">{{ item[2] }}</a></td>
                             <td class="right dark-blue-lowpoly">{{ item[0].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
