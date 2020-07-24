@@ -202,6 +202,12 @@ nav ul a:hover {
 footer i {
     vertical-align: -5px;
 }
+footer a {
+    color: #9dc1c0;
+}
+footer a:hover {
+    color: #4ccfcf;
+}
 
 /* Index */
 .carousel {
@@ -331,6 +337,7 @@ footer i {
 height: 14vh;
 width: 14vh;
 line-height: 14vh;
+background-color: #be965f !important; /* materialize red class already set to important */
 }
 
 .btn-floating.btn-large i {
