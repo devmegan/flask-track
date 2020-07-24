@@ -47,8 +47,13 @@
                         <span><a href="{{url_for('profile', username=user.username)}}" class="lowpoly-link modal-trigger center"><strong>View Profile</strong></a></span>
                         <br />
                         {% if user.goals_number == 0 %}
-                        <h6 class="create-goal-prompt spaced-text"><strong>Create a goal to start saving!</strong></h6>
-                        <a href="#add-goal-modal" class="btn modal-trigger center spaced-text waves-effect waves-white create-goal-btn"><strong>Create Goal</strong></a>
+                        <h6 class="create-goal-prompt spaced-text uppercase">Create a goal to start saving!</h6>
+                        <div class="row">
+                            <div class="input-field col s12 m8 offset-m2">
+                                <input id="create-goal-name" name="create-goal-name" type="text" placeholder="Goal Name" required>
+                            </div>
+                        </div>
+                        <a class="btn white blue-text modal-trigger center spaced-text waves-effect waves-white update-btn" id="create-goal-btn"><strong>Create Goal</strong></a>
                         {% elif  user.goals_number == 1 %}
                         <h5 class="uppercase spaced-text">1 Goal</h5>
                         <br>
