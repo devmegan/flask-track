@@ -90,6 +90,7 @@ i {
 .index-btn {
     padding: 0px;
     margin: 10px;
+    font-size: calc(12px + 1vh);
 }
 .index-btn-text {
     padding: 10px 20px;
