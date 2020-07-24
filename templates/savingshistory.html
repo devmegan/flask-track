@@ -18,6 +18,49 @@
 {% endblock %} 
 {% block content %}
 <div class="container-fluid" id="history-container">
+<div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+        {% if user.deposits_number > 0 %}
+        <div class="card">
+            <div class="card-content center blue-text">
+                <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Savings History</strong></h4>
+                <a id="print-history-btn"><i class="material-icons lowpoly-link">print</i></a><br />
+                <span><a href="{{ url_for('dashboard', username=user.username) }}" class="center lowpoly-link"><strong>Back to Dashboard</strong></a></span>
+                <!--Savings History Table-->
+                <div class="blue-lowpoly-border">
+                    <table class="highlight">
+                    <thead>
+                    <tr>
+                        <th class="uppercase spaced-text">Amount</th>
+                        <th class="uppercase center spaced-text">Goal</th>
+                        <th class="uppercase right spaced-text">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in user_savings_history | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
+                    <tr>
+                        {% if item[1] > 0 %}
+                        <td class="table-deposit green-lowpoly">
+                            <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong>
+                        </td>
+                        {% else %}
+                        <td class="table-withdrawal red-lowpoly">
+                            <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
+                        </td>
+                        {% endif %}
+                        <td class="center dark-blue-lowpoly"> <a href="#">{{ item[2] }}</a></td>
+                        <td class="right dark-blue-lowpoly">{{ item[0].strftime("%d %b, %Y") }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div>
+        {% endif %}
+    </div>
+    </div>
+</div>
 {% endblock %}
 {% block include_js_html %}
 {% endblock %}
