@@ -38,6 +38,22 @@ i {
 .input-field input[type=text]:focus:not(.select-dropdown) {
     border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
 }
+
+.input-field input[type=number] {
+    border: 1.5px solid;
+    padding-left: 10px;
+    box-shadow: 0px;
+    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
+    height: 10vh;
+    margin-bottom: 0px;
+    width: 95%;
+}
+.input-field input[type=number]{
+    border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
+}
+.input-field input[type=number] {
+    border-image: url("../img/light-blue-lowpoly-small.jpg") 25 25 round;
+}
 .input-field input[type=password] {
     border: 1.5px solid;
     padding-left: 10px;
