@@ -241,8 +241,6 @@ footer a:hover {
 #index-carousel-two {
     background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 #index-carousel-three {
     background-image: url("../img/blue-green-highpoly-large.jpg");
