@@ -163,8 +163,29 @@ def goal_view(username, goal_id):
         return redirect(url_for("login"))
 
 
+""" savings history """
+
+
+@app.route('/savingshistory/<username>/<historytype>')
+def savingshistory(username, historytype):
+    if 'username' in session and session['username'] == username:
+        current_user = coll_users.find_one({"username": username})
+        if historytype == "fullhistory":
+            flash("fullhistory")
+            return render_template("savingshistory.html", user=current_user)
+        elif historytype == "goalhistory":
+            flash("goal history")
+            return render_template("savingshistory.html", user=current_user)
+        else:
+            return redirect(url_for("dashboard", username=username))
+    else:
+        flash("Please login to view your savings history")
+        return redirect(url_for("login"))
+
 
 """ user profile """ 
+
+
 @app.route('/profile/<username>')
 def profile(username):
     if 'username' in session and session['username']==username:  # check to make sure not accessing another usernames account
