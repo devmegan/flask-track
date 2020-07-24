@@ -87,7 +87,26 @@ i {
     border: 1.5px solid;
     border-image: url("../img/green-lowpoly-small.jpg") 25 25 round !important;
 }
-
+.index-btn {
+    padding: 0px;
+}
+.index-btn-text {
+    padding: 10px 20px;
+    color: rgb(15, 61, 114);
+    background: url("../img/blue-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.index-btn-text:hover {
+    color: rgb(79, 175, 154);
+    background: url("../img/green-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .update-btn {
     color: rgb(15, 61, 114);
     border: 1.5px solid;
@@ -220,7 +239,7 @@ footer a:hover {
     background-repeat: no-repeat;
 }
 #index-carousel-two {
-    background-image: url("../img/blue-green-midpoly-large.jpg");
+    background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
