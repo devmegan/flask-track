@@ -385,6 +385,18 @@ left: calc(3vw);
 top: 10vh;
 }
 
+/* new user card */
+
+.create-goal-prompt {
+    margin-top: 50px;
+}
+#create-goal-name {
+    text-align: center;
+}
+#create-goal-btn {
+    margin-top: 25px;
+}
+
 
 h5 {
     color: rgb(15, 61, 114);
