@@ -123,7 +123,7 @@ $(document).ready(function(){
     })
 
     $("#passwordcheck").on("keyup", function (e) {
-        if ($(this).val().length > 5 && $(this).val() != $("#password").val()) {
+        if ($(this).val().length > 4 && $(this).val() != $("#password").val()) {
             $(this).removeClass("valid").addClass("invalid")
             $("#password").removeClass("valid").addClass("invalid").next().attr("data-error", "Passwords don't match")
         } else if ($(this).val().length > 5 && $(this).val() == $("#password").val()){
