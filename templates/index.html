@@ -72,7 +72,11 @@
             <div class="col s12">
                 <h3 class="spaced-text dark-blue-lowpoly" style="padding: 10px"><strong>{% if user %}{{ user.currency}}{% else %}£{% endif %}{{ "{:,.2f}".format(app_stats.saved_total)}} saved so far</strong></h3>
                 {% if user %}
+                {% if user.total_currently_saved > 0 %}
                 <h5 class="dark-blue-lowpoly uppercase spaced-text">{{ user.currency}}{{ "{:,.2f}".format(user.total_currently_saved) }} of this is yours!</h5>
+                {% else %}
+                <h5 class="dark-blue-lowpoly uppercase spaced-text">Start saving towards a new goal to be a part of it</h5>
+                {% endif %}
                 {% else %}
                 <h5 class="dark-blue-lowpoly uppercase spaced-text">How much could you save?</h5>
                 {% endif %}
