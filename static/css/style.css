@@ -516,3 +516,10 @@ h5 {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+/* Savings History*/
+#history-container {
+    background-image: url("../img/repeatable-lowpoly.jpg");
+    background-position: center;
+    min-height: 90vh;
+}
