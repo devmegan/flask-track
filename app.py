@@ -112,7 +112,7 @@ def register_user():
                     'deposits_number': 0,
                     'withdrawals_number': 0,
                     'currency': currency,
-                    'total_saved': 0,
+                    'total_currently_saved': 0,
                     'total_achieved': 0
                 }) 
                 flash("Please login with your new details")
