@@ -1,6 +1,7 @@
 /* General */
 .container-fluid .row {
     margin-bottom: 0px;
+    padding-top: 5vh;
 }
 .uppercase {
     text-transform: uppercase;
