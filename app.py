@@ -166,18 +166,26 @@ def goal_view(username, goal_id):
 """ savings history """
 
 
-@app.route('/savingshistory/<username>/<historytype>')
-def savingshistory(username, historytype):
+@app.route('/savingshistory/<username>', defaults={'goal_id': ''})
+@app.route("/savingshistory/<username>/<goal_id>")
+def savingshistory(username, goal_id):
     if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
-        if historytype == "fullhistory":
+        if not goal_id:
             flash("fullhistory")
-            return render_template("savingshistory.html", user=current_user)
-        elif historytype == "goalhistory":
+            list_goals = list(coll_goals.find({"username": username}))
+            user_savings_history = []
+            for goal in list_goals:
+                if goal['savings_history']: # don't execute if no savings activity yet
+                    for item in goal['savings_history']:
+                        item.append(goal['goal_name'])
+                        user_savings_history.append(item)
+                        user_savings_history.sort(key=lambda x: x[0])  # sort total savings by date
+            return render_template("savingshistory.html", user=current_user, user_savings_history=user_savings_history, historytype="user")
+        elif goal_id:
             flash("goal history")
-            return render_template("savingshistory.html", user=current_user)
-        else:
-            return redirect(url_for("dashboard", username=username))
+            current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)})
+            return render_template("savingshistory.html", user=current_user, historytype="goal", goal=current_goal)
     else:
         flash("Please login to view your savings history")
         return redirect(url_for("login"))
