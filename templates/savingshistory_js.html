@@ -1,2 +1,13 @@
 <script>
+$("#print-history-btn").click(function(){
+    $('.print-transform').removeClass("dark-blue-lowpoly red-lowpoly green-lowpoly lowpoly-link").css("color", "black")
+    window.print();
+    setTimeout(transformBack(), 0);
+})
+function transformBack(){
+        $('h4, h6, td, th').addClass("dark-blue-lowpoly")
+        $('.table-withdrawal').addClass('red-lowpoly')
+        $('.table-deposit').addClass('green-lowpoly')
+        $('a').addClass("lowpoly-link")
+}
 </script>
