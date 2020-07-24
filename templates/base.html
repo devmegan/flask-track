@@ -40,13 +40,13 @@
           <div class="container-fluid">
             <div class="row" style="margin-bottom: 0px;">
               <div class="col l6 s12">
-                <h5 class="white-lowpoly uppsercase" style="margin: 0px 0px 5px 10px;"><strong>track</strong> <i class="material-icons">trending_up</i></h5>
+                <h5 class="white-lowpoly" style="margin: 0px 0px 5px 10px;"><strong>track</strong> <i class="material-icons">trending_up</i></h5>
               </div>
-              <div class="col l4 s12">
-                  <a class="grey-text text-lighten-3" href="#!">Home</a> |
-                  <a class="grey-text text-lighten-3" href="#!">Dashboard</a> |
-                  <a class="grey-text text-lighten-3" href="#!">Profile</a> |
-                  <a class="grey-text text-lighten-3" href="#!">Sign Out</a>
+              <div class="col l4 offset-l2 s12 right-align">
+                  <a class="" href="{{ url_for('index') }}">Home</a> |
+                  <a class="" href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a> |
+                  <a class="" href="{{ url_for('profile', username=user.username) }}">Profile</a> |
+                  <a class="" href="{{url_for('logout')}}">Log Out</a>
               </div>
             </div>
           </div>
