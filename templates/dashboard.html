@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block nav_links %}
+{% extends 'base.html' %} 
+{% block nav_links %}
 <li><a href="{{url_for('index')}}">Home</a></li>
 <li><a href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a></li>
 {% if user.goals_number != 0 %}
@@ -19,7 +20,7 @@
 {% block content %}
 <div class="container-fluid" id="dash-container">
     <!--Fab Menu-->
-    <div class="fixed-action-btn" id="cards-fab">
+    <div class="fixed-action-btn hide-on-small-only" id="cards-fab">
         <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
         <i class="large material-icons">dashboard</i>
         </a>
