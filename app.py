@@ -30,7 +30,12 @@ coll_app_stats = mongo.db.app_stats
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html")
+    if 'username' in session: 
+        username=session['username']
+        current_user = coll_users.find_one({"username": username})
+        return render_template("index.html", user=current_user)
+    else:
+        return render_template("index.html")
 
 
 """ login """
