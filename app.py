@@ -108,7 +108,7 @@ def register_user():
                     'password': pw_hashed,
                     'signup_date': datetime.today(),
                     'goals_number': 0,
-                    'goals_achieved': 0,
+                    'goals_achieved': [],
                     'deposits_number': 0,
                     'withdrawals_number': 0,
                     'currency': currency,
