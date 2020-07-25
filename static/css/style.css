@@ -218,6 +218,11 @@ i {
    background-color: #69AED8;
 }
 
+/* Flashed Messages*/
+.flash {
+    background-color: rgb(241, 100, 18);
+}
+
 /* Nav Bar */
 
 nav .nav-wrapper {
