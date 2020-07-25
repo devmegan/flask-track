@@ -97,31 +97,29 @@
                                         </div>
                                         <div class="input-field col s12 l5">
                                         <div class="row" id="radio-row">
-                                        <div class="col s12 ">
-                                        <span class="helper-text spaced-text dark-blue-lowpoly">How would you like to set the image for your goal?</span>
+                                            <div class="col s12 ">
+                                            <span class="helper-text spaced-text dark-blue-lowpoly">How would you like to set the image for your goal?</span>
+                                            </div>
+                                            <div class="col s6">
+                                                <label>
+                                                    <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" />
+                                                    <span class="tooltipped dark-blue-lowpoly" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
+                                                </label>
+                                            </div>
+                                            <div class="col s6">
+                                                <label>
+                                                <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio"/>
+                                                    <span class="tooltipped dark-blue-lowpoly" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="col s6">
-                                             <label>
-                                                <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" />
-                                                <span class="tooltipped" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
-                                            </label>
-                                        </div>
-                                        <div class="col s6">
-                                             <label>
-                                              <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio"/>
-                                                <span class="tooltipped" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
-                                             </label>
-                                        </div>
-
-                                        </div>
-                                           
                                      </div>
                                    </div>
                                    <div class="row">
                                    <div class="input-field col s12 l10 offset-l1" id="keywordurl-input-field">
                                         <input type="hidden" id="search_keyword" name="search_keyword" value="">
                                             <input id="image_url" name="image_url" type="text" disabled placeholder="Keyword or URL">
-                                            <span class="helper-text left spaced-text">Select keyword or URL to unfreeze me</span>
+                                            <span class="helper-text left spaced-text" id="frozen-span">Select keyword or URL to unfreeze me</span>
                                         </div>
                                     </div>
                                     <div class="row center">
@@ -179,7 +177,7 @@
         </div>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Recent Activity Card-->
-            {% if user.goals_number > 0 %}
+            {% if user.deposits_number > 0 %}
             <div class="card">
                 <div class="card-content center blue-text">
                     <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
@@ -284,7 +282,7 @@ $('#create-goal-btn').click(function(){
 $('input:radio[name="img-method"]').change(function () {
     $("#image_url").removeAttr("disabled")
      if ($(this).val() == "keyword") {
-        $("#image_url").attr("placeholder", "Enter Your Keyword").attr("type", "text").next().text('Enter Your Keyword (i.e. "beach", "car")')
+        $("#image_url").attr("placeholder", "Enter Your Keyword").attr("type", "text").next().text('Enter Your Keyword (i.e. "beach", "car", "birthday")')
     } 
     else { 
         $("#image_url").attr("placeholder", "Enter Your Image URL").attr("type", "url").next().text('Enter Image Url ("https://...")')
