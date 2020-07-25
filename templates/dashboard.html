@@ -245,6 +245,16 @@ $('#create-goal-submit').click(function(e) {
             $('#search_keyword').val(search_keyword)
             $("#create-goal-form").submit();
         });
+    }  else {
+        /* check if it looks like an image url - basic client side security*/
+        given_url = $('#image_url').val()
+        given_url_extension = given_url.split('.').pop();
+        if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
+            $("#add-goal-form").submit();
+        }
+        else {
+            alert("That doesn't look like an image URL")
+            }
     }
 })
 
