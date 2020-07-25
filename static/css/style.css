@@ -31,6 +31,11 @@ i {
 .row {
     margin-bottom: 0px;
 }
+
+.preloader-wrapper.big {
+    height: 25vh;
+    width: 25vh;
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
@@ -599,5 +604,8 @@ h5 {
 @media only screen and (min-width: 992px) {
     #keywordurl-input-field {
     padding: 0px;
+}
+#frozen-span {
+    padding-left: 10px;
 }
 }
