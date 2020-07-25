@@ -411,7 +411,18 @@ line-height: 14vh;
 background-color: #de425b !important; /* materialize red class already set to important */
 }
 
+.goal-fab-card {  
+    background-color: #ecc01e !important; 
+}
+
+.goal-fab-card:hover {
+    background-color: #87c00d !important;
+}
 .btn-floating.btn-large i {
+    font-size: 6vh;
+    line-height: 14vh;
+}
+.goal-fab-card i {
     font-size: 6vh;
     line-height: 14vh;
 }
