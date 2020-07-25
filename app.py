@@ -175,7 +175,6 @@ def insert_goal():
     # prepare end_date var for insertion into mongodb 
     str_end_date = request.form.get('end_date')
     date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
-    flash(search_keyword)
     # prepare start and goal var for insertion into mongodb
     end_total = float(request.form.get('end_total'))
     # insert new goal into mongodb 
@@ -200,7 +199,6 @@ def insert_goal():
         "rec_name": "keyword_image_pairs"}, 
         {'$push': {"pairs": new_pair}}
     )
-    user_current_goals(1)
     return redirect(url_for('dashboard', username=username))
 
 
