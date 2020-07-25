@@ -18,6 +18,23 @@
 {% endblock %} 
 {% block content %}
 <div class="container-fluid" id="history-container">
+<!--Fab Menu-->
+        <div class="fixed-action-btn" id="cards-fab">
+            <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
+            <i class="large material-icons">dashboard</i>
+            </a>
+            <ul id="goal-fab-ul">
+            {% if (goals | length) < 4%}
+            <li>
+                <a class="btn-floating darken-1 goal-fab-card" href="{{ url_for('dashboard', username=user.username, add_goal='add') }}"><i class="material-icons">add</i></a>
+            </li>
+            {% endif %} {% for goal in goals %}
+            <li>
+                <a class="btn-floating darken-1 goal-fab-card" style="background-image: url({{ goal.image_url }})"></a>
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
 <div class="row">
     <div class="col s12 m8 offset-m2 l6 offset-l3">
         {% if user.deposits_number > 0 %}
