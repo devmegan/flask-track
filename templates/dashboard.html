@@ -137,6 +137,46 @@
                 </div> 
             </div>
         </div>
+        <div class="col s12 center display-none" id="spinner-col">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                    <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                    <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                    <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                    <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Recent Activity Card-->
             {% if user.goals_number > 0 %}
@@ -256,6 +296,7 @@ $('#create-goal-submit').click(function(e) {
     e.preventDefault();
     if ($('input:radio[name="img-method"]:checked').val() == "keyword") {
         $("#create-goal-card").addClass("display-none")
+        $("#spinner-col").removeClass("display-none")
         var search_keyword = $('input:text[name="image_url"]').val();
         fetch(`https://source.unsplash.com/1600x900/?${search_keyword}`).then((response)=> { 
             var fetched_url = response.url
@@ -280,7 +321,5 @@ $('#create-goal-submit').click(function(e) {
         }
     }
 })
-
-
 </script>
 {% endblock %}
