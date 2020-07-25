@@ -220,7 +220,7 @@ i {
 
 /* Flashed Messages*/
 .flash {
-    background-color: rgb(241, 100, 18);
+    background-color: #de425b;
     font-weight: bold;
 }
 
@@ -408,7 +408,7 @@ footer a:hover {
 height: 14vh;
 width: 14vh;
 line-height: 14vh;
-background-color: #be965f !important; /* materialize red class already set to important */
+background-color: #de425b !important; /* materialize red class already set to important */
 }
 
 .btn-floating.btn-large i {
