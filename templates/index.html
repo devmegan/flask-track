@@ -11,7 +11,7 @@
     {% endfor %}
     {% if user.goals_number < 4 %}
     <li class="divider"></li>
-    <li><a href="#add-goal-modal" class="modal-trigger uppercase"><i class="material-icons">add_box</i>New</a></li>
+    <li><a href="{{ url_for('dashboard', username=user.username, add_goal='add') }}" class="uppercase"><i class="material-icons">add_box</i>New</a></li>
     {% endif %} 
 </ul>
 {% endif %}
