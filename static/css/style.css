@@ -28,6 +28,9 @@ i {
     background-color: #05a780
 }
   
+.row {
+    margin-bottom: 0px;
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
