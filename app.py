@@ -171,7 +171,7 @@ def goal_view(username, goal_id):
 @app.route('/insert_goal', methods=['POST'])
 def insert_goal():
     """ insert new goal into goals collection """
-    username=session['username']
+    username = session['username']
     search_keyword = str(request.form.get('search_keyword'))
     # prepare end_date var for insertion into mongodb 
     str_end_date = request.form.get('end_date')
@@ -324,9 +324,13 @@ def logout():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    # note that we set the 404 status explicitly
-    return render_template("404.html"), 404
-
+    if 'username' in session: 
+        username = session['username']
+        current_user = coll_users.find_one({"username": username})
+        list_goals = list(coll_goals.find({"username": username}))
+        return render_template("404.html", user=current_user, goals=list_goals), 404
+    else: 
+        return render_template("404.html"), 404
 """ helper functions """
 
 
