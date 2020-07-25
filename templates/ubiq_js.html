@@ -15,7 +15,7 @@ $('.tooltipped').tooltip();
 {% with flashes=get_flashed_messages() %}
     {% if flashes %}
         {% for flash in flashes %}
-            M.toast({html: "{{ flash }}", classes: 'orange accent-4' });
+            M.toast({html: "{{ flash }}", classes: 'flash' });
         {% endfor %}
     {% endif %}
 {% endwith %}
