@@ -21,6 +21,12 @@ i {
     background-color: rgba(8, 191, 182, 0.5);
 }
 
+.datepicker-date-display {
+    background-color: #396fae;
+}
+.datepicker-table td.is-selected {
+    background-color: #05a780
+}
   
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
