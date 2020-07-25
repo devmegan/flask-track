@@ -221,6 +221,7 @@ i {
 /* Flashed Messages*/
 .flash {
     background-color: rgb(241, 100, 18);
+    font-weight: bold;
 }
 
 /* Nav Bar */
