@@ -208,8 +208,9 @@
 
  //open datepicker on focusing on date field 
  $("#end_date").focus(function(){
-    $("end_date").open();
+    $('#end_date').click();
  })
+
 $('#create-goal-btn').click(function(){
     if ($("#create-goal-name").val()){
         $("goal-name").attr("value", $("#create-goal-name").val())
