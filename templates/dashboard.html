@@ -27,8 +27,7 @@
         <ul id="goal-fab-ul">
         {% if (goals | length) < 4%}
         <li>
-            <a class="btn-floating darken-1 goal-fab-card"><i class="material-icons">add</i></a
-            >
+            <a class="btn-floating goal-fab-card" id="add_goal_fab_card"><i class="material-icons">add</i></a>
         </li>
         {% endif %} {% for goal in goals %}
         <li>
@@ -318,6 +317,11 @@ $('#create-goal-submit').click(function(e) {
             alert("That doesn't look like an image URL")
         }
     }
+})
+
+$("#add_goal_fab_card").click(function(){
+    $("#create-goal-card").removeClass("display-none")
+    $(".card:not('#create-goal-card')").addClass("display-none")
 })
 </script>
 {% endblock %}
