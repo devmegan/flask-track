@@ -96,18 +96,25 @@
                                             <span class="helper-text left spaced-text">Goal End Date</span>
                                         </div>
                                         <div class="input-field col s12 l5">
-                                            <span class="helper-text spaced-text">How would you like to set your goal's image?</span>
-                                            <br>
-                                            <label>
+                                        <div class="row">
+                                        <div class="col s12">
+                                        <span class="helper-text spaced-text">How would you like to set the image for your goal?</span>
+                                        </div>
+                                        <div class="col s6">
+                                             <label>
                                                 <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" />
                                                 <span class="tooltipped" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
                                             </label>
-                                            <label>
-                                                <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio"/>
-                                                <span class="tooltipped" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
-                                            </label>
-                                            <br>
                                         </div>
+                                        <div class="col s6">
+                                             <label>
+                                              <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio"/>
+                                                <span class="tooltipped" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
+                                             </label>
+                                        </div>
+                                        </div>
+                                           
+                                     </div>
                                    </div>
                                    <div class="row">
                                         <input type="hidden" id="search_keyword" name="search_keyword" value="3487">
@@ -207,7 +214,14 @@
 {% block include_js_html %}
 {% include 'dash_js.html'%}
 <script>
- $('.datepicker').datepicker();
+ $('.datepicker').datepicker({
+     // set default date to goal end date
+        setDefaultDate: new Date(),
+        // prevent selecting end date before todays date
+        minDate: new Date(),
+        // only allow years to be current/future years
+        yearRange: [2020, 2030]
+ });
  $('.tooltipped').tooltip();
 
  //open datepicker on focusing on date field 
