@@ -199,6 +199,7 @@ def insert_goal():
         "rec_name": "keyword_image_pairs"}, 
         {'$push': {"pairs": new_pair}}
     )
+    coll_users.update_one()
     return redirect(url_for('dashboard', username=username))
 
 
@@ -318,5 +319,18 @@ def logout():
     return redirect(url_for("index"))
 
 
+""" helper functions """
+
+
+def user_current_goals(direction):
+    """ increase/decrease number of total goals in app when goal is added/deleted """
+    username = session['username']
+    user = coll_users.find_one({"username": username})
+    new_goals_number = user['goals_number'] + direction
+    coll_users.update_one({"username": username}, {'$set': {"goals_number": new_goals_number}})
+    app_current_goals(direction)
+    return 
+
+    
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
