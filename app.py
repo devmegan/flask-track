@@ -164,6 +164,46 @@ def goal_view(username, goal_id):
         return redirect(url_for("login"))
 
 
+""" insert new goal """ 
+
+
+@app.route('/insert_goal', methods=['POST'])
+def insert_goal():
+    """ insert new goal into goals collection """
+    username=session['username']
+    search_keyword = str(request.form.get('search_keyword'))
+    # prepare end_date var for insertion into mongodb 
+    str_end_date = request.form.get('end_date')
+    date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
+    flash(search_keyword)
+    # prepare start and goal var for insertion into mongodb
+    end_total = float(request.form.get('end_total'))
+    # insert new goal into mongodb 
+    coll_goals.insert_one({
+        'username': username,
+        'goal_name':request.form.get('goal_name'),
+        'image_url':request.form.get('image_url'),
+        'current_total': 0,
+        'end_total': end_total,
+        'percent_progress': 0, 
+        'start_date': datetime.today(),
+        'deposits_number': 0,
+        'withdrawals_number': 0,
+        'savings_history': [],
+        'end_date': date_end_date,
+        'achieved': False
+    })
+    if search_keyword: 
+        """push anonymised list of keywords and returned images to db"""
+        new_pair = [search_keyword, request.form.get('image_url')] # mongodb wont take tuples
+        coll_app_stats.update_one({
+        "rec_name": "keyword_image_pairs"}, 
+        {'$push': {"pairs": new_pair}}
+    )
+    user_current_goals(1)
+    return redirect(url_for('dashboard', username=username))
+
+
 """ savings history """
 
 
