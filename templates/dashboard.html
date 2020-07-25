@@ -320,8 +320,12 @@ $('#create-goal-submit').click(function(e) {
 })
 
 $("#add_goal_fab_card").click(function(){
+   showCreateGoal()
+})
+
+function showCreateGoal(){
     $("#create-goal-card").removeClass("display-none")
     $(".card:not('#create-goal-card')").addClass("display-none")
-})
+}
 </script>
 {% endblock %}
