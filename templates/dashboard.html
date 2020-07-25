@@ -77,7 +77,7 @@
                     <div class="blue-lowpoly-border">
                         <div class="row">
                             <div class="col s12">
-                                 <form id="update-pw-form" action="{{url_for('update_password', username=user.username)}}" method="POST">
+                                 <form id="update-pw-form" action="{{url_for('insert_goal')}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
                                             <input class="reload-reset" minlength="1" maxlength="30" id="goal-name" name="goal-name" type="text" placeholder="Goal Name" required>
@@ -101,11 +101,11 @@
                                             <span class="helper-text spaced-text">How would you like to set your goal's image?</span>
                                             <br>
                                             <label>
-                                                <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" checked />
+                                                <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" />
                                                 <span class="tooltipped" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
                                             </label>
                                             <label>
-                                                <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio" checked />
+                                                <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio"/>
                                                 <span class="tooltipped" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
                                             </label>
                                             <br>
@@ -228,6 +228,19 @@ $('input:radio[name="img-method"]').change(function () {
         $("#image_url").attr("placeholder", "Enter Your Image URL").attr("type", "url").next().text('Enter Image Url ("https://...")')
     }  
 }) 
+//fetch image by url 
+$('#add-goal-submit-btn').click(function(e) {
+    e.preventDefault();
+    if ($('input:text[name="keyword"]')) {
+        var search_term = $('input:text[name="image_url"]').val();
+        fetch(`https://source.unsplash.com/1600x900/?${search_term}`).then((response)=> { 
+            var new_url = response.url
+            alert.log(new_url)
+            $('#image_url').val(new_url) ;
+            $("#add-goal-form").submit();
+        });
+    }
+})
 
 
 </script>
