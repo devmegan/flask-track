@@ -79,25 +79,21 @@
                             <div class="col s12">
                                  <form id="create-goal-form" action="{{url_for('insert_goal')}}" method="POST">
                                     <div class="row">
-                                        <div class="input-field col s12 m8 offset-m2">
+                                        <div class="input-field col s12 l5 offset-l1">
                                             <input class="reload-reset" minlength="1" maxlength="30" id="goal_name" name="goal_name" type="text" placeholder="Goal Name" required>
                                             <span class="helper-text left spaced-text" data-error="Please enter a name for your goal">Goal Name</span>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12 m8 offset-m2">
+                                        <div class="input-field col s12 l5">
                                             <input class="reload-reset validate" value="0.00" id="end_total" name="end_total" type="text" required>
                                             <span class="helper-text left spaced-text">Goal Total ({{ user.currency }})</span>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="input-field col s12 m8 offset-m2">
+                                        <div class="input-field col s12 l5 offset-l1">
                                             <input id="end_date" name="end_date" type="text" class="datepicker" placeholder="Goal End Date">
                                             <span class="helper-text left spaced-text">Goal End Date</span>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12">
+                                        <div class="input-field col s12 l5">
                                             <span class="helper-text spaced-text">How would you like to set your goal's image?</span>
                                             <br>
                                             <label>
@@ -113,7 +109,7 @@
                                    </div>
                                    <div class="row">
                                         <input type="hidden" id="search_keyword" name="search_keyword" value="3487">
-                                        <div class="input-field col s12 m8 offset-m2">
+                                        <div class="input-field col s12 m10 offset-m1">
                                             <input id="image_url" name="image_url" type="text" disabled placeholder="Keyword or URL">
                                             <span class="helper-text left spaced-text">Select keyword or URL to unfreeze me</span>
                                         </div>
@@ -209,6 +205,11 @@
 <script>
  $('.datepicker').datepicker();
  $('.tooltipped').tooltip();
+
+ //open datepicker on focusing on date field 
+ $("#end_date").focus(function(){
+    $("end_date").open();
+ })
 $('#create-goal-btn').click(function(){
     if ($("#create-goal-name").val()){
         $("goal-name").attr("value", $("#create-goal-name").val())
