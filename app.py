@@ -129,8 +129,9 @@ def register_user():
 
 
 """ dashboard """ 
-@app.route('/dashboard/<username>')
-def dashboard(username):
+@app.route('/dashboard/<username>/', defaults={'add_goal': ''})
+@app.route('/dashboard/<username>/<add_goal>')
+def dashboard(username, add_goal):
     # send user to dashboard if username in session and it's theirs
     if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
@@ -142,7 +143,7 @@ def dashboard(username):
                     item.append(goal['goal_name'])
                     user_savings_history.append(item)
         user_savings_history.sort(key=lambda x: x[0])  # sort total savings by date
-        return render_template("dashboard.html", user=current_user, goals=list_goals, user_savings_history=user_savings_history)
+        return render_template("dashboard.html", user=current_user, goals=list_goals, user_savings_history=user_savings_history, add_goal=add_goal)
     else:
         flash("Please login to view your dashboard")
         return redirect(url_for("login"))
