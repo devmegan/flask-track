@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Main Card-->
-            <div class="card">
+            <div class="card display-none" id="main-card">
                 <div class="card-content center">
                     <div class="blue-lowpoly-border">
                         <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
@@ -51,6 +51,7 @@
                         <div class="row">
                             <div class="input-field col s12 m8 offset-m2">
                                 <input id="create-goal-name" name="create-goal-name" type="text" placeholder="Goal Name" required>
+                                <span class="helper-text spaced-text" data-error="Enter a name to create goal"></span>       
                             </div>
                         </div>
                         <a class="btn white blue-text modal-trigger center spaced-text waves-effect waves-white update-btn" id="create-goal-btn"><strong>Create Goal</strong></a>
@@ -66,6 +67,65 @@
                         {% endif %}
                         <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
                         {% endif %}
+                    </div>
+                </div> 
+            </div>
+            <!--Create Goal Card-->
+            <div class="card" id="create-goal-card">
+                <div class="card-content center">
+                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Create Goal</strong></h4>
+                    <div class="blue-lowpoly-border">
+                        <div class="row">
+                            <div class="col s12">
+                                 <form id="update-pw-form" action="{{url_for('update_password', username=user.username)}}" method="POST">
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input class="reload-reset" minlength="1" maxlength="30" id="goal-name" name="goal-name" type="text" placeholder="Goal Name" required>
+                                            <span class="helper-text left spaced-text" data-error="Please enter a name for your goal">Goal Name</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input class="reload-reset validate" value="0.00" id="end_total" name="end_total" type="text" required>
+                                            <span class="helper-text left spaced-text">Goal Total ({{ user.currency }})</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="end_date" name="end_date" type="text" class="datepicker" placeholder="Goal End Date">
+                                            <span class="helper-text left spaced-text">Goal End Date</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <span class="helper-text spaced-text">How would you like to set your goal's image?</span>
+                                            <br>
+                                            <label>
+                                                <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" checked />
+                                                <span class="tooltipped" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
+                                            </label>
+                                            <label>
+                                                <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio" checked />
+                                                <span class="tooltipped" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
+                                            </label>
+                                            <br>
+                                        </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="end_date" name="end_date" type="text" disabled placeholder="Keyword or URL">
+                                            <span class="helper-text left spaced-text">Select keyword or URL to unfreeze me</span>
+                                        </div>
+                                    </div>
+                                    <div class="row center">
+                                        <div class="col s12">
+                                            <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
+                                            <button class="btn waves-effect waves-dark update-btn" id="update-pw-submit" type="submit" name="action">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> 
                     </div>
                 </div> 
             </div>
@@ -145,4 +205,17 @@
 {% endblock %} 
 {% block include_js_html %}
 {% include 'dash_js.html'%}
+<script>
+ $('.datepicker').datepicker();
+ $('.tooltipped').tooltip();
+$('#create-goal-btn').click(function(){
+    if ($("#create-goal-name").val()){
+        $("goal-name").attr("value", $("#create-goal-name").val())
+        $("#create-goal-card").removeClass("display-none")
+        $("#main-card").addClass("display-none")
+    } else {
+        $("#create-goal-name").addClass("invalid")
+    }
+})
+</script>
 {% endblock %}
