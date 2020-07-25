@@ -34,8 +34,7 @@
         <ul id="goal-fab-ul">
         {% if (goals | length) < 4%}
         <li>
-            <a class="btn-floating darken-1 goal-fab-card"><i class="material-icons">add</i></a
-            >
+            <a class="btn-floating darken-1 goal-fab-card" href="{{ url_for('dashboard', username=user.username, add_goal='add') }}"><i class="material-icons">add</i></a>
         </li>
         {% endif %} {% for goal in goals %}
         <li>
