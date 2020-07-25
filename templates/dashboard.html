@@ -77,7 +77,7 @@
                     <div class="blue-lowpoly-border">
                         <div class="row">
                             <div class="col s12">
-                                 <form id="update-pw-form" action="{{url_for('insert_goal')}}" method="POST">
+                                 <form id="create-goal-form" action="{{url_for('insert_goal')}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
                                             <input class="reload-reset" minlength="1" maxlength="30" id="goal-name" name="goal-name" type="text" placeholder="Goal Name" required>
@@ -120,7 +120,7 @@
                                     <div class="row center">
                                         <div class="col s12">
                                             <button class="btn waves-effect waves-light form-red-btn">Cancel</button>
-                                            <button class="btn waves-effect waves-dark update-btn" id="update-pw-submit" type="submit" name="action">Update</button>
+                                            <button class="btn waves-effect waves-dark update-btn" id="create-goal-submit" type="submit" name="action">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -222,22 +222,28 @@ $('#create-goal-btn').click(function(){
 $('input:radio[name="img-method"]').change(function () {
     $("#image_url").removeAttr("disabled")
      if ($(this).val() == "keyword") {
-        $("#image_url").attr("placeholder", "Enter Your Keyword").attr("type", "text").next().text('Enter Your Keyword (i.e. "holiday", "car")')
+        $("#image_url").attr("placeholder", "Enter Your Keyword").attr("type", "text").next().text('Enter Your Keyword (i.e. "beach", "car")')
     } 
     else { 
         $("#image_url").attr("placeholder", "Enter Your Image URL").attr("type", "url").next().text('Enter Image Url ("https://...")')
     }  
 }) 
 //fetch image by url 
-$('#add-goal-submit-btn').click(function(e) {
+$('#create-goal-submit').click(function(e) {
+    "stop form submitting, fetch url of image related to keyword"
     e.preventDefault();
-    if ($('input:text[name="keyword"]')) {
-        var search_term = $('input:text[name="image_url"]').val();
-        fetch(`https://source.unsplash.com/1600x900/?${search_term}`).then((response)=> { 
-            var new_url = response.url
-            alert.log(new_url)
-            $('#image_url').val(new_url) ;
-            $("#add-goal-form").submit();
+    if ($('input:radio[name="img-method"]:checked').val() == "keyword") {
+        var search_keyword = $('input:text[name="image_url"]').val();
+        fetch(`https://source.unsplash.com/1600x900/?${search_keyword}`).then((response)=> { 
+            var fetched_url = response.url
+            if (fetched_url == "https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200"){
+                /* if the fetch returns an "image not found" url, going to use a placeholder savings image instead */
+                fetched_url = "https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            }
+            $('#image_url').val(fetched_url);
+            /* save keyword in hidden form input - keyword and image url will be stored as anonymised array in mongo*/ 
+            $('#search_keyword').val(search_keyword)
+            $("#create-goal-form").submit();
         });
     }
 })
