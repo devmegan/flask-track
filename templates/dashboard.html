@@ -18,7 +18,7 @@
 <li><a href="{{url_for('logout')}}">Log Out</a></li>
 {% endblock %} 
 {% block content %}
-<div class="container-fluid" id="dash-container">
+<div class="container-fluid page-container" id="dash-container">
     <!--Fab Menu-->
     <div class="fixed-action-btn hide-on-small-only" id="cards-fab">
         <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Main Card-->
-            <div class="card display-none" id="main-card">
+            <div class="card" id="main-card">
                 <div class="card-content center">
                     <div class="blue-lowpoly-border">
                         <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
@@ -73,7 +73,7 @@
         </div>
         <div class="col s12 m8 offset-m2">
             <!--Create Goal Card-->
-            <div class="card" id="create-goal-card">
+            <div class="card display-none" id="create-goal-card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Create Goal</strong></h4>
                     <div class="blue-lowpoly-border">
@@ -82,7 +82,7 @@
                                  <form id="create-goal-form" action="{{url_for('insert_goal')}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 l5 offset-l1">
-                                            <input class="reload-reset" minlength="1" maxlength="30" id="goal_name" name="goal_name" type="text" placeholder="Goal Name" required>
+                                            <input value="" class="reload-reset" minlength="1" maxlength="30" id="goal_name" name="goal_name" type="text" placeholder="Goal Name" required>
                                             <span class="helper-text left spaced-text" data-error="Please enter a name for your goal">Goal Name</span>
                                         </div>
                                         <div class="input-field col s12 l5">
@@ -96,9 +96,9 @@
                                             <span class="helper-text left spaced-text">Goal End Date</span>
                                         </div>
                                         <div class="input-field col s12 l5">
-                                        <div class="row">
-                                        <div class="col s12">
-                                        <span class="helper-text spaced-text">How would you like to set the image for your goal?</span>
+                                        <div class="row" id="radio-row">
+                                        <div class="col s12 ">
+                                        <span class="helper-text spaced-text dark-blue-lowpoly">How would you like to set the image for your goal?</span>
                                         </div>
                                         <div class="col s6">
                                              <label>
@@ -112,13 +112,14 @@
                                                 <span class="tooltipped" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
                                              </label>
                                         </div>
+
                                         </div>
                                            
                                      </div>
                                    </div>
                                    <div class="row">
-                                        <input type="hidden" id="search_keyword" name="search_keyword" value="3487">
-                                        <div class="input-field col s12 m10 offset-m1">
+                                   <div class="input-field col s12 l10 offset-l1" id="keywordurl-input-field">
+                                        <input type="hidden" id="search_keyword" name="search_keyword" value="">
                                             <input id="image_url" name="image_url" type="text" disabled placeholder="Keyword or URL">
                                             <span class="helper-text left spaced-text">Select keyword or URL to unfreeze me</span>
                                         </div>
@@ -231,7 +232,7 @@
 
 $('#create-goal-btn').click(function(){
     if ($("#create-goal-name").val()){
-        $("goal-name").attr("value", $("#create-goal-name").val())
+        $("#goal_name").val($("#create-goal-name").val())
         $("#create-goal-card").removeClass("display-none")
         $("#main-card").addClass("display-none")
     } else {
@@ -254,6 +255,7 @@ $('#create-goal-submit').click(function(e) {
     "stop form submitting, fetch url of image related to keyword"
     e.preventDefault();
     if ($('input:radio[name="img-method"]:checked').val() == "keyword") {
+        $("#create-goal-card").addClass("display-none")
         var search_keyword = $('input:text[name="image_url"]').val();
         fetch(`https://source.unsplash.com/1600x900/?${search_keyword}`).then((response)=> { 
             var fetched_url = response.url
