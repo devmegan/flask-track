@@ -113,7 +113,7 @@
                                    </div>
                                    <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input id="end_date" name="end_date" type="text" disabled placeholder="Keyword or URL">
+                                            <input id="image_url" name="image_url" type="text" disabled placeholder="Keyword or URL">
                                             <span class="helper-text left spaced-text">Select keyword or URL to unfreeze me</span>
                                         </div>
                                     </div>
@@ -217,5 +217,18 @@ $('#create-goal-btn').click(function(){
         $("#create-goal-name").addClass("invalid")
     }
 })
+
+// set img url input 
+$('input:radio[name="img-method"]').change(function () {
+    $("#image_url").removeAttr("disabled")
+     if ($(this).val() == "keyword") {
+        $("#image_url").attr("placeholder", "Enter Your Keyword").attr("type", "text").next().text('Enter Your Keyword (i.e. "holiday", "car")')
+    } 
+    else { 
+        $("#image_url").attr("placeholder", "Enter Your Image URL").attr("type", "url").next().text('Enter Image Url ("https://...")')
+    }  
+}) 
+
+
 </script>
 {% endblock %}
