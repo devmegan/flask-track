@@ -457,6 +457,19 @@ $("#time-stats-card").hover(function() {
             alert("That doesn't look like an image URL")
             }
     })
+
+$('.datepicker').datepicker({
+            // set default date to goal end date
+            setDefaultDate: '{{ goal.end_date.strftime("%b %d, %Y") }}',
+            // prevent selecting end date before todays date
+            minDate: new Date({{ date_today.strftime('%Y,%m,%d') }}),
+            // only allow years to be current/future years
+            yearRange: [2020, 2030]
+        });
+    //open datepicker on focusing on date field 
+ $("#end_date").focus(function(){
+    $('#end_date').click();
+ })
 </script>
 {% include 'viewgoal_js.html' %}
 {% endblock %}
