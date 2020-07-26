@@ -190,20 +190,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for item in user_savings_history | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
+                        {% for item in user.user_savings_history | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
                         {% if loop.index <= 5 %}
                         <tr>
-                            {% if item[1] > 0 %}
+                            {% if item[2] > 0 %}
                             <td class="table-deposit green-lowpoly">
-                                <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong>
+                                <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[2]) }}</strong>
                             </td>
                             {% else %}
                             <td class="table-withdrawal red-lowpoly">
-                               <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
+                               <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[2]) }}</strong>
                             </td>
                             {% endif %}
-                            <td class="center dark-blue-lowpoly"><a href="">{{ item[2] }}</a></td>
-                            <td class="right dark-blue-lowpoly">{{ item[0].strftime("%d %b, %Y") }}</td>
+                            <td class="center dark-blue-lowpoly"><a href="">{{ item[0] }}</a></td>
+                            <td class="right dark-blue-lowpoly">{{ item[1].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
                         {% endfor %}
