@@ -138,7 +138,6 @@ def dashboard(username, add_goal):
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
         user_savings_history = current_user['user_savings_history']
-        flash(user_savings_history)
         return render_template("dashboard.html", user=current_user, goals=list_goals, add_goal=add_goal, user_savings_history=user_savings_history)
     else:
         flash("Please login to view your dashboard")
