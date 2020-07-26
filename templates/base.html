@@ -17,16 +17,23 @@
   <nav>
     <div class="nav-wrapper">
         <a href="#" class="brand-logo"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="nav-menu-bars">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons" id="nav-menu-bars">menu</i></a>
+        <ul class="right hide-on-med-and-down">
         {% block nav_links %}
+
         {% endblock %}
         </ul>
     </div>
   </nav>
-   <ul class="sidenav" id="mobile-demo">
-    {% block sidenav_nav_links%}
-    {% endblock %}
+   <ul class="sidenav" id="mobile-nav">
+   {% if user %}
+        {% block sidenav_nav_links%}
+        {% endblock %}
+    {% else %}
+        <li><a href="{{url_for('index')}}" class="active">Home</a></li>
+        <li><a href="{{url_for('login')}}">Login </a></li>
+        <li><a href="{{url_for('signup')}}">Sign Up</a></li>
+    {% endif %}
   </ul>
     </header>
         {% block content %}
