@@ -138,10 +138,58 @@
                             {% endif %}
                             </strong>
                             </div>
-                        </div>
-                    </div>
-                    </div>
-                </div> 
+                </div>
+            </div>
+            {% endif %}
+            <!--Deposit/Withdrawal Stats-->
+            {% if goal.savings_history %}
+            <div class="card">
+                <div class="card-content">
+                <div class="row">
+                                    <div class="col s6">
+                                        {% if goal.deposits_number == 0 %}
+                                        <h5 id="smallest-deposit"><strong>{{user.currency }}--</strong></h5>
+                                        {% else %}
+                                        <h5 id="smallest-deposit"><strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | min)) }}</strong></h5>
+                                        {% endif %}
+                                        <h6 class="insight-description"> Smallest Deposit</h6>
+                                        {% if goal.deposits_number == 0 %}
+                                        <h5 id="biggest-deposit"> <strong>{{user.currency }}--</strong></h5>
+                                        {% else %}
+                                        <h5 id="biggest-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | max)) }}</strong></h5>
+                                        {% endif %}
+                                        <h6 class="insight-description"> Biggest Deposit</h6>
+                                        {% if goal.deposits_number == 0 %}
+                                        <h5 id="avg-deposit"> <strong>{{user.currency }}--</strong></h5>
+                                        {% else %}
+                                        <h5 id="avg-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_deposit) }}</strong></h5>
+                                        {% endif %}
+                                        <h6 class="insight-description"> Average Deposit</h6>  
+                                    </div>
+                                    <div class="col s6" style="text-align: right">
+                                        {% if goal.withdrawals_number == 0 %}
+                                        <h5 id="smallest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                                        {% else %}
+                                        <h5 id="smallest-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_withdrawals | min)) }}</strong></h5>
+                                        {% endif %}
+                                        <h6 class="insight-description"> Smallest Withdrawal</h6>
+                                        {% if goal.withdrawals_number == 0 %}
+                                        <h5 id="biggest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                                        {% else %}
+                                        <h5 id="biggest-withdrawal"> <strong>{{user.currency}}{{ "{:,.2f}".format((all_withdrawals | max)) }}</strong></h5>
+                                        {% endif %}
+                                        <h6 class="insight-description"> Biggest Withdrawal</h6>
+                                        {% if goal.withdrawals_number == 0 %}
+                                        <h5 id="avg-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                                        {% else %}
+                                        <h5 id="avg-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_withdrawal) }}</strong></h5>
+                                        {% endif %}
+                                        <h6 class="insight-description"> Average Withdrawal</h6>
+                                    </div>
+                                </div>
+
+    
+                </div>
             </div>
             {% endif %}
         </div>
