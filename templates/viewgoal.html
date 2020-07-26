@@ -45,26 +45,28 @@
                         <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ goal.goal_name }}</strong></h4>
                         <span><a href="#" class="lowpoly-link modal-trigger center"><strong>Edit Goal</strong></a></span>
                     </div>
-                </div> 
+                    </div> 
             </div>
-            <!--Deposit/Withdraw Cards-->
-            <div class="row">
-            <div class="col s6">
-                <div class="card">
-                <div class="card-content center" style="background-color: #9a3c57; height: 24vh;">
-                    <i class="material-icons green-lowpoly" style="font-size: 45px"><strong>arrow_downward</strong></i>
-                    <h6 class="center uppercase green-lowpoly"><strong>Withdraw Savings</strong></h6>
-                </div> 
-            </div>
-            </div>
-            <div class="col s6">
-                <div class="card" style="background-color: #372b5f; height: 24vh;">
+            <!--Deposit/Withdraw Card-->
+            <div class="card">
                 <div class="card-content center">
-                    <i class="material-icons green-lowpoly" style="font-size: 45px">arrow_upward</i>    
-                    <h6 class="center uppercase green-lowpoly"><strong>Deposit Savings</strong></h6>
+                 {% if not goal.achieved %}
+                            <div style="margin-bottom: 10px; margin-top: 10px;">
+                                <h6 class="left progress-bar-label"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved</strong> </h6>
+                                <h6 class="right progress-bar-label"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>
+                                <br>
+                                <div class="progress">
+                                    <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
+                                </div>
+                                <h6 class="center progress-bar-label"><strong>{{user.currency}}{{("{:,.2f}".format(goal.end_total))}} total</strong></h6>
+                            </div>
+                            {% else %}
+                                <p><strong>Congratulations!</strong></p>
+                                <p>You've reached your goal and saved {{user.currency}}{{goal.end_total}}</p>
+                            {% endif %}
+                    <button class="btn waves-effect waves-light form-red-btn" type="button" id="create-goal-cancel">Withdraw</button>
+                    <button class="btn waves-effect waves-dark update-btn" id="create-goal-submit" type="submit" name="action">Deposit</button>
                 </div> 
-            </div>
-        </div> 
             </div>
             <!--Recent Activity Card-->
             {% if goal.savings_history %}
