@@ -210,7 +210,7 @@ def update_goal(goal_id):
     str_end_date = request.form.get('end_date')
     date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
     # prepare start and goal var for insertion into mongodb
-    end_total = float(request.form.get('end_total'))
+    end_total = float(request.form.get('end_total').replace(",", ""))
     if end_total <= goal_to_update['current_total']: 
         achieved_bool = True
         coll_users.update_one({"username": username}, {'$set': {'goals_achieved': (current_user['goals_achieved'] + 1),
