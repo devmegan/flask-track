@@ -37,39 +37,73 @@
     </div>
     <div class="row" style="">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
+             <!--Deposit Card-->
+            <div class="card">
+                <div class="card-content center">
+                  <h4 class="indigo-text">Deposit</h4>
+                    <h6 class="light-blue-text uppercase">Current Total: {{ user.currency }}{{ "{:,.2f}".format(goal.current_total) }} </h6>
+                    <form action="{{url_for('update_savings', goal_id=goal._id, action='deposit')}}" method="POST">
+                        <p class="prefix light-blue-text"> {{ user.currency }} </p>
+                        <input value="0.00" min="0.00" max="{{ '{:,.2f}'.format(goal.end_total)}}" id="deposit_value" name="deposit_value" type="number" step="0.01">
+                        <a id="deposit-5" class="waves-effect waves-light btn-small blue lighten-2">{{ user.currency }}5</a>
+                        <a id="deposit-10" class="waves-effect waves-light btn-small blue lighten-1">{{ user.currency }}10</a>
+                        <a id="deposit-25" class="waves-effect waves-light btn-small blue">{{ user.currency }}25</a>
+                        <a id="deposit-50" class="waves-effect waves-light btn-small blue darken-1">{{ user.currency }}50</a>
+                        <button class="btn waves-effect waves-light blue darken-2" type="submit" name="action">Deposit</button>
+                    </form>
+                </div>
+            </div>  
+            <!--Withdraw Card-->
+            <div class="card">
+                <div class="card-content center">
+                 <h4 class="deep-orange-text text-accent-4">Withdraw</h4>
+            <h6 class="deep-orange-text text-accent-2 uppercase">Up to {{ user.currency }}{{ "{:,.2f}".format(goal.current_total) }} </h6>
+                    <form action="{{url_for('update_savings', goal_id=goal._id, action='withdraw')}}" method="POST">
+                        <p class="prefix deep-orange-text text-accent-2"> {{ user.currency }} </p>
+                        <input value="0.00" min="0.00" max="{{ '{:,.2f}'.format(goal.current_total) }}" id="withdraw_value" name="withdraw_value" type="number" step="0.01">
+                        <a id="withdraw-5" class="waves-effect waves-light btn-small deep-orange lighten-2 {% if goal.current_total < 5 %} disabled {% endif %}">{{ user.currency }}5</a>
+                        <a id="withdraw-10" class="waves-effect waves-light btn-small deep-orange lighten-1 {% if goal.current_total < 10 %} disabled {% endif %}">{{ user.currency }}10</a>
+                        <a id="withdraw-25" class="waves-effect waves-light btn-small deep-orange {% if goal.current_total < 25 %} disabled {% endif %}">{{ user.currency }}25</a>
+                        <a id="withdraw-50" class="waves-effect waves-light btn-small deep-orange darken-1 {% if goal.current_total < 50 %} disabled {% endif %}">{{ user.currency }}50</a>
+                   
+                        <button class="btn waves-effect waves-light deep-orange darken-2" type="submit" name="action">Withdraw</button>
+            </form>
+                </div>
+            </div>
+
             <!--Edit Goal Card-->
             <div class="card">
                 <div class="card-content center">
                   <h4 class="indigo-text center">Edit Goal</h4>
-        <div class="row">
-        <form action="{{url_for('update_goal', goal_id=goal._id)}}" method="POST"class="col s12">
-                <div class="row">
-                    <div class="input-field col s12 m6 offset-m3">
-                        <input id="goal_name" name="goal_name" type="text" value="{{goal.goal_name}}" required>
-                        <label for="goal_name" class="indigo-text">Goal Name</label>
-                    </div>
-                    <div class="input-field col s12 m6 offset-m3">
-                        <input id="image_url" name="image_url" type="text" value="{{goal.image_url}}" required>
-                        <label for="image_url" class="indigo-text">Goal Image URL</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m6 offset-m3">
-                        <input id="end_total" name="end_total" type="text" value="{{'{:,.2f}'.format(goal.end_total) }}" required>
-                        <label for="end_total" class="indigo-text">Goal Total ({{user.currency}}):</label>
-                    </div>
-                </div>
-                <div class="row">
-                        <div class="input-field col s12 m6 offset-m3">
-                            <input id="end_date" name="end_date" type="text" class="datepicker" value='{{ goal.end_date.strftime("%b %d, %Y") }}' required>
-                            <label for="icon_prefix" class="indigo-text">Goal End Date</label>
+                    <div class="row">
+                    <form action="{{url_for('update_goal', goal_id=goal._id)}}" method="POST"class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12 m6 offset-m3">
+                                    <input id="goal_name" name="goal_name" type="text" value="{{goal.goal_name}}" required>
+                                    <label for="goal_name" class="indigo-text">Goal Name</label>
+                                </div>
+                                <div class="input-field col s12 m6 offset-m3">
+                                    <input id="image_url" name="image_url" type="text" value="{{goal.image_url}}" required>
+                                    <label for="image_url" class="indigo-text">Goal Image URL</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m6 offset-m3">
+                                    <input id="end_total" name="end_total" type="text" value="{{'{:,.2f}'.format(goal.end_total) }}" required>
+                                    <label for="end_total" class="indigo-text">Goal Total ({{user.currency}}):</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col s12 m6 offset-m3">
+                                        <input id="end_date" name="end_date" type="text" class="datepicker" value='{{ goal.end_date.strftime("%b %d, %Y") }}' required>
+                                        <label for="icon_prefix" class="indigo-text">Goal End Date</label>
+                                    </div>
+                            </div>
+                            <div class="col s12 center">
+                            <button class="btn waves-effect waves-light modal-close teal lighten-2">Cancel</button>
+                            <button class="btn waves-effect waves-light indigo" type="submit" id="edit-goal-submit-btn" name="action">Edit Goal</button>
                         </div>
-                </div>
-                  <div class="col s12 center">
-                <button class="btn waves-effect waves-light modal-close teal lighten-2">Cancel</button>
-                <button class="btn waves-effect waves-light indigo" type="submit" id="edit-goal-submit-btn" name="action">Edit Goal</button>
-            </div>
-        </div>
+                    </div>
                 </div> 
             </div>
             <!--Main Card-->
