@@ -15,7 +15,7 @@
 <header>
   <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
+        <a href="{{ url_for('dashboard', username=user.username) }}" class="brand-logo"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
         <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons" id="nav-menu-bars">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{{url_for('index')}}">Home</a></li>
