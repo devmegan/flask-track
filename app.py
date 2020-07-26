@@ -459,10 +459,9 @@ def user_current_goals(direction):
 
 def app_current_goals(direction):
     """ increase/decrease number of total goals in app when goal is added/deleted """
-    username = session['username']
-    user = coll_users.find_one({"username": username})
-    new_goals_number = user['goals_number'] + direction
-    coll_users.update_one({"username": username}, {'$set': {"goals_number": new_goals_number}})
+    app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
+    new_goals_current = app_stats['goals_current'] + direction
+    coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"goals_current": new_goals_current}})
     return 
 
 def user_total_saved(username, update_value):
