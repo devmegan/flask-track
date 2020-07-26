@@ -192,7 +192,7 @@ def goal_view(username, goal_id):
             else:
                 avg_needed_perday = (current_goal['end_total'])
             forecast_remaining_days = "unforcastable"  
-        return render_template("viewgoal.html", user=current_user, goal=current_goal, goals=list_goals, avg_deposit=avg_deposit, avg_withdrawal=avg_withdrawal, all_deposits=all_deposits, all_withdrawals=all_withdrawals, date_today=date_today)
+        return render_template("viewgoal.html", user=current_user, goal=current_goal, goals=list_goals, avg_deposit=avg_deposit, avg_withdrawal=avg_withdrawal, all_deposits=all_deposits, all_withdrawals=all_withdrawals, date_today=date_today, avg_needed_perday=avg_needed_perday, avg_saved_perday=avg_saved_perday, forecast_remaining_days=forecast_remaining_days)
     else:
         flash("Please login to view your goals")
         return redirect(url_for("login"))
