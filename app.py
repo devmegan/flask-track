@@ -230,6 +230,8 @@ def update_savings(goal_id, action):
         achieved = False
 
     updated_savings_history = [datetime.today(), update_value]
+    user_updated_savings_history = [goal_to_update['goal_name'], datetime.today(), update_value]
+
     coll_goals.update_one({
         "_id": ObjectId(goal_id)}, 
         {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved}}
@@ -238,6 +240,7 @@ def update_savings(goal_id, action):
         "_id": ObjectId(goal_id)},
         # add new savings update to end of array (unshift not supported by mongodb) 
         {'$push': {"savings_history": updated_savings_history}})
+    coll_users.update_one({"username": username}, {'$push': {"user_savings_history": user_updated_savings_history}})
     flash_currency = user_total_saved(username, update_value)
     flash(flash_currency + ('%.2f' % abs(update_value)) + action_complete)
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
