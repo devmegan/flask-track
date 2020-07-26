@@ -34,7 +34,8 @@ def index():
     if 'username' in session: 
         username=session['username']
         current_user = coll_users.find_one({"username": username})
-        return render_template("index.html", user=current_user, app_stats=app_stats)
+        list_goals = list(coll_goals.find({"username": username}))
+        return render_template("index.html", user=current_user, app_stats=app_stats, goals=list_goals)
     else:
         return render_template("index.html", app_stats=app_stats)
 
@@ -237,6 +238,7 @@ def update_savings(goal_id, action):
     flash_currency = user_total_saved(username, update_value)
     flash(flash_currency + ('%.2f' % abs(update_value)) + action_complete)
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
+
 
 """ edit goal """
 
