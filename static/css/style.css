@@ -635,12 +635,16 @@ h5 {
     background-position: center;
     min-height: 90vh;
 }
-
+@media only screen and (max-width: 600px) {
+    .footer-col {
+        text-align: center;
+    }
+}
 @media only screen and (min-width: 992px) {
-    #keywordurl-input-field {
-    padding: 0px;
-}
-#frozen-span {
-    padding-left: 10px;
-}
+        #keywordurl-input-field {
+        padding: 0px;
+    }
+    #frozen-span {
+        padding-left: 10px;
+    }
 }
