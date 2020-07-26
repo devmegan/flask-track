@@ -56,7 +56,12 @@
                                 {% endif %}
                             {% endfor %}
                         {% else %}
+                        {% if user.goals_number == 0%}
+                        <h6 class="uppercase spaced-text dark-blue-lowpoly">No Current Goals</h6>
+                        <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" id="add-goal-btn"><strong>Create new goal</strong></a>
+                        {% else %}
                         <h5 class="uppercase spaced-text">{{ user.goals_number }} Goals</h5>
+                        {% endif %}
                         {% endif %}
                         {% if (user.goals_achieved | length) == 1 %}
                         <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length }} Goal Achieved</h6>
@@ -317,7 +322,7 @@ $('#create-goal-submit').click(function(e) {
     }
 })
 
-$("#add_goal_fab_card").click(function(){
+$("#add_goal_fab_card, #add-goal-btn").click(function(){
    showCreateGoal()
 })
 
