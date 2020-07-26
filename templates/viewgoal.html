@@ -192,6 +192,35 @@
                 </div>
             </div>
             {% endif %}
+              <!--Deposit/Withdrawal Stats-->
+            {% if goal.savings_history %}
+            <div class="card">
+                <div class="card-content">
+                    <canvas id="goal-deposits-gauge"></canvas>    
+                    <div class="center">
+                        <div class="row">
+                            <div class="col s6"> 
+                                <h4><i class="material-icons deposits-arrow">arrow_upward</i><strong class="deposits-main-figure">{{ goal.deposits_number }}</strong></h4>
+                                <h6 class="uppercase" id="deposits-label"> Deposit{% if goal.deposits_number != 1 %}s{% endif %}</h6>
+                            </div>
+                            <div class="col s6">
+                                <h4><i class="material-icons withdrawals-arrow">arrow_downward</i><strong class="withdrawals-main-figure">{{ goal.withdrawals_number }}</strong></h4>
+                                <h6 class="uppercase" id="withdrawals-label">Withdrawal{% if goal.withdrawals_number != 1 %}s{% endif %}</h6>
+                            </div>
+                        {% if not goal.savings_history %}
+                        <div class="grey valign-wrapper view goal-card-overlay">
+                            <div>
+                                <h5 class="center-align">Make your first deposit to activate savings insights</h5>
+                                <a href="#update-savings-modal" class="modal-trigger btn light-blue darken-2">Deposit</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -199,5 +228,55 @@
 {% block include_js_html %}
 <!--load chart.js-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+depositsGauge('goal-deposits-gauge', {{ goal.deposits_number }}, {{ goal.withdrawals_number }})
+function depositsGauge (elemId, deposits, withdrawals){
+  var ctx = document.getElementById(elemId).getContext('2d');
+  // create the gradient for the line/area part of chart
+    var gradientDeposit = ctx.createLinearGradient(500, 0, 0, 0);
+    gradientDeposit.addColorStop(0, 'rgba(0, 167, 155, 0.7')
+    gradientDeposit.addColorStop(0.2, 'rgba(41, 222, 165, 0.7')
+    gradientDeposit.addColorStop(1, 'rgba(17, 207, 195, 0.7')
+    var gradientDepositBorder = ctx.createLinearGradient(500, 0, 0, 0);
+    gradientDepositBorder.addColorStop(0, 'rgba(0, 167, 155, 1')
+    gradientDepositBorder.addColorStop(0.2, 'rgba(41, 222, 165, 0.7')
+    gradientDepositBorder.addColorStop(1, 'rgba(17, 207, 195, 0.7')
+    var gradientWithdrawal = ctx.createLinearGradient(500, 0,0, 0);
+    gradientWithdrawal.addColorStop(0.2, 'rgba(238, 9, 121, 0.7') 
+    gradientWithdrawal.addColorStop(0, 'rgba(244, 107, 69, 0.7')
+    gradientWithdrawal.addColorStop(1, 'rgba(229, 57, 35, 0.7')
+    var gradientWithdrawalBorder = ctx.createLinearGradient(500, 0, 0, 0);
+    gradientWithdrawalBorder.addColorStop(0.1, 'rgba(238, 9, 121, 0.9') 
+    gradientWithdrawalBorder.addColorStop(0, 'rgba(244, 107, 69, 0.9')
+    gradientWithdrawalBorder.addColorStop(1, 'rgba(229, 57, 35, 0.9') 
+  var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Deposits', 'Withdrawals'],
+        datasets: [{
+            label: 'Deposits/Withdrawals',
+            data: [deposits, withdrawals],
+            backgroundColor: [
+                gradientDeposit,
+                gradientWithdrawal
+            ],
+            borderColor: [
+                gradientDepositBorder,
+                gradientWithdrawalBorder
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom'
+        },
+      // these options make it a gauge chart/half doughnut
+          rotation: 1 * Math.PI,
+    circumference: 1 * Math.PI
+    }
+});
+}
+</script>
 {% include 'viewgoal_js.html' %}
 {% endblock %}
