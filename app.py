@@ -290,7 +290,7 @@ def insert_goal():
     str_end_date = request.form.get('end_date')
     date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
     # prepare start and goal var for insertion into mongodb
-    end_total = float(request.form.get('end_total'))
+    end_total = float(request.form.get('end_total').replace(',', ''))
     # insert new goal into mongodb 
     coll_goals.insert_one({
         'username': username,
