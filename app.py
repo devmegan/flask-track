@@ -159,7 +159,24 @@ def goal_view(username, goal_id):
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
         current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)}) # convert goal id into bson, then find id in mongo db that matches it
-        return render_template("viewgoal.html", user=current_user, goal=current_goal, goals=list_goals)
+        
+        all_deposits =[]
+        all_withdrawals = []
+        for item in current_goal['savings_history']:
+                if item[1] > 0:
+                    all_deposits.append(item[1])
+                if item[1] < 0:
+                    all_withdrawals.append(abs(item[1]))
+        # prep deposit/withdrawal stats
+        if current_goal['deposits_number'] != 0: # check there has been savings activity
+            avg_deposit = sum(all_deposits)/len(all_deposits)
+        else: 
+            avg_deposit = 0
+        if current_goal['withdrawals_number'] != 0:
+            avg_withdrawal = sum(all_withdrawals)/len(all_withdrawals)
+        else: 
+            avg_withdrawal = 0
+        return render_template("viewgoal.html", user=current_user, goal=current_goal, goals=list_goals, avg_deposit=avg_deposit, avg_withdrawal=avg_withdrawal, all_deposits=all_deposits, all_withdrawals=all_withdrawals)
     else:
         flash("Please login to view your goals")
         return redirect(url_for("login"))
