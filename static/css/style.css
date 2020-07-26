@@ -590,11 +590,9 @@ h5 {
 
 /* View Goal */
 #goals-container {
-    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 90vh;
+    background-repeat: repeat;
 }
 .goal-image {
     width: 100%;
