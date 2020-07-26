@@ -192,7 +192,7 @@
                 </div>
             </div>
             {% endif %}
-              <!--Deposit/Withdrawal Gauge-->
+            <!--Deposit/Withdrawal Gauge-->
             {% if goal.savings_history %}
             <div class="card">
                 <div class="card-content">
@@ -215,6 +215,74 @@
                             </div>
                         </div>
                         {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!--Savings Forecast-->
+            {% if goal.savings_history %}
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="uppercase spaced-text center geo-card-3" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>     
+                        <div class="row">
+                            <div class="col s6">
+                                <span id="user-savings-figure"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
+                                <br>
+                                <span class="grey-text uppercase"><strong>Average weekly savings </strong></span>
+                                <span class="grey-text"></br>{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
+                            </div>
+                            <div class="col s6" id="needed-savings-col">
+                              <span id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7))}}</strong></span>
+                               <br />
+                               <span class="grey-text uppercase"><strong>Needed weekly savings </strong></span>
+                                <span class="grey-text"></br>{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
+                            </div>
+                        </div>
+                        {% if forecast_remaining_days != "unforcastable" %}
+                        {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
+                        <div class="center">
+                            <div class="green-highlight-gradient forecast-highlight">
+                                <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal <br>
+                                <strong>{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }}</strong> days before your chosen date 
+                            </div>
+                            <div class="card-action">
+                                <span class="grey-text uppercase">Want to increase your goal?</span>
+                                <a href="#edit-goal-modal" class="modal-trigger center uppercase savings-card-link"><strong>Edit Goal</strong></a></span>
+                            </div>
+                        </div>
+                        {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
+                        <div class="center">
+                            <div class="green-highlight-gradient forecast-highlight">
+                                <span>You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days.</span>
+                                <br>
+                                <strong>That's right on time!</strong>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="center">
+                        <div class="red-highlight-gradient forecast-highlight">
+                            <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal <br> <strong>{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date
+                        </div>
+                        <div class="card-action">
+                            <span class="grey-text uppercase">Need to extend your end date?</span>
+                            <a href="#edit-goal-modal" class="modal-trigger center uppercase savings-card-link"><strong>Edit Goal</strong></a></span>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+             <!--Time Remaining-->
+            {% if goal.savings_history %}
+            <div class="card">
+                <div class="card-content">
+                    
+                            <i class="material-icons" id="time-stats-icon">date_range</i>
+                            <h5 class="center uppercase" id="time-stats-one">Day <strong class="indigo-text text-darken-1">{{ (date_today - goal.start_date.date()).days }}</strong> of <strong class="indigo-text text-darken-2">{{ (goal.end_date.date() - goal.start_date.date()).days }}</strong> </h5>
+                            <h5 class="center uppercase display-none" id="time-stats-two"><strong class="indigo-text text-darken-1">{{ (goal.end_date.date() - date_today).days }}</strong> days left</strong></h5>
+                            <p class="center"><strong>{{goal.start_date.strftime("%d %b, %Y")}} - {{goal.end_date.strftime("%d %b, %Y") }}</strong></p>
                         </div>
                     </div>
                 </div>
