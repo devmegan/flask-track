@@ -418,6 +418,32 @@ $(document).ready(function(){
 $("#time-stats-card").hover(function() {
     $("#time-stats-one, #time-stats-two").toggleClass("display-none");
 });
+
+
+ $("#withdraw-5").click(function(){
+            $("#withdraw_value").val("5.00")
+        });
+        $("#withdraw-10").click(function(){
+            $("#withdraw_value").val("10.00")
+        });
+        $("#withdraw-25").click(function(){
+            $("#withdraw_value").val("25.00")
+        });
+        $("#withdraw-50").click(function(){
+            $("#withdraw_value").val("50.00")
+        });
+        $("#deposit-5").click(function(){
+            $("#deposit_value").val("5.00")
+        });
+        $("#deposit-10").click(function(){
+            $("#deposit_value").val("10.00")
+        });
+        $("#deposit-25").click(function(){
+            $("#deposit_value").val("25.00")
+        });
+        $("#deposit-50").click(function(){
+            $("#deposit_value").val("50.00")
+        });
 </script>
 {% include 'viewgoal_js.html' %}
 {% endblock %}
