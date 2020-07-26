@@ -198,6 +198,35 @@ def goal_view(username, goal_id):
         return redirect(url_for("login"))
 
 
+
+""" edit goal """
+
+@app.route('/update_goal/<goal_id>', methods=['POST'])
+def update_goal(goal_id):
+    username = session['username']
+    current_user = coll_users.find_one({"username": username})
+    goal_to_update = coll_goals.find_one({"_id": ObjectId(goal_id)})
+    # prepare end_date var for insertion into mongodb 
+    str_end_date = request.form.get('end_date')
+    date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
+    # prepare start and goal var for insertion into mongodb
+    end_total = float(request.form.get('end_total'))
+    if end_total <= goal_to_update['current_total']: 
+        achieved_bool = True
+        coll_users.update_one({"username": username}, {'$set': {'goals_achieved': (current_user['goals_achieved'] + 1),
+        'total_value_achieved': (current_user['total_value_achieved'] + goal_to_update['current_total'])}})
+        app_goals_achieved(1, goal_to_update['current_total'])
+    else: 
+        percent_progress = (goal_to_update['current_total'] / end_total) * 100
+        coll_goals.update_one({'_id': ObjectId(goal_id)}, {'$set': {
+            'goal_name':request.form.get('goal_name'), 'image_url':request.form.get('image_url'),
+            'end_total': end_total,
+            'percent_progress': percent_progress,
+            'end_date': date_end_date,
+        }})
+    return redirect(url_for('goal_view', username=username, goal_id=goal_id))
+
+
 """ insert new goal """ 
 
 
