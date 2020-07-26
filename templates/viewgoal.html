@@ -106,6 +106,18 @@
                     </div>
                 </div> 
             </div>
+                <!--Delete Goal Card-->
+            <div class="card">
+                <div class="card-content center">
+                  <h4 class="indigo-text center">Delete Goal</h4>
+                    <div class="row">
+                        <h6 class="light-blue-text uppercase">{{ goal.goal_name }} </h6>
+                        <p>Are you sure you want to delete your goal forever?</p>
+                        <button class="btn waves-effect waves-light modal-close teal lighten-2">Cancel</button>
+                        <a href="{{url_for('delete_goal', goal_id=goal._id)}}" class="modal-action modal-close waves-effect waves-red btn red lighten-1">Delete</a>   
+                    </div>
+                </div> 
+            </div>
             <!--Main Card-->
             <div class="card">
                 <div class="card-content center">
