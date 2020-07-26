@@ -464,7 +464,7 @@ $('.datepicker').datepicker({
             // prevent selecting end date before todays date
             minDate: new Date({{ date_today.strftime('%Y,%m,%d') }}),
             // only allow years to be current/future years
-            yearRange: [2020, 2030]
+            yearRange: [2020, 2100]
         });
     //open datepicker on focusing on date field 
  $("#end_date").focus(function(){
