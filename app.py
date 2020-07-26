@@ -227,6 +227,17 @@ def update_goal(goal_id):
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
 
+
+""" delete goal """
+
+@app.route('/delete_goal/<goal_id>')
+def delete_goal(goal_id):
+    username=session['username']
+    coll_goals.remove({'_id': ObjectId(goal_id)})
+    user_current_goals(-1)
+    app_current_goals(-1)
+    return redirect(url_for('dashboard', username=username))
+
 """ insert new goal """ 
 
 
