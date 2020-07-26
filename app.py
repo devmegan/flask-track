@@ -197,7 +197,46 @@ def goal_view(username, goal_id):
         flash("Please login to view your goals")
         return redirect(url_for("login"))
 
+""" deposit or withdraw """
 
+
+@app.route('/update_savings/<goal_id>/<action>', methods=['POST'])
+def update_savings(goal_id, action):
+    username = session['username']
+    goal_to_update = coll_goals.find_one({"_id": ObjectId(goal_id)})
+    old_end_total = goal_to_update['end_total']
+    if action == 'withdraw':
+        update_value = 0 - float(request.form.get('withdraw_value'))
+        deposits = goal_to_update['deposits_number']
+        withdrawals = goal_to_update['withdrawals_number'] + 1
+        action_complete = " withdrawn"
+    else:
+        update_value = float(request.form.get('deposit_value'))
+        deposits = goal_to_update['deposits_number'] + 1
+        withdrawals = goal_to_update['withdrawals_number']
+        action_complete = " deposited"
+
+    updated_savings = goal_to_update['current_total'] + update_value
+    percent_progress = int((updated_savings/old_end_total) * 100)
+
+    # check to see if goal will now be reached
+    if (updated_savings >= goal_to_update['end_total']):
+        achieved = True
+    else:
+        achieved = False
+
+    updated_savings_history = [datetime.today(), update_value]
+    coll_goals.update_one({
+        "_id": ObjectId(goal_id)}, 
+        {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved}}
+    )
+    coll_goals.update_one({
+        "_id": ObjectId(goal_id)},
+        # add new savings update to end of array (unshift not supported by mongodb) 
+        {'$push': {"savings_history": updated_savings_history}})
+    flash_currency = user_total_saved(username, update_value)
+    flash(flash_currency + ('%.2f' % abs(update_value)) + action_complete)
+    return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
 """ edit goal """
 
@@ -424,6 +463,14 @@ def app_current_goals(direction):
     new_goals_number = user['goals_number'] + direction
     coll_users.update_one({"username": username}, {'$set': {"goals_number": new_goals_number}})
     return 
+
+def user_total_saved(username, update_value):
+    """ increase/decreases user total saved """
+    user = coll_users.find_one({"username": username})
+    new_saved_total = user['total_currently_saved'] + update_value
+    coll_users.update_one({"username": username}, {'$set': {"total_currently_saved": new_saved_total}})
+    user_currency = user['currency']
+    return user_currency
 
 
 if __name__ == "__main__":
