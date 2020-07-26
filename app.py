@@ -168,7 +168,7 @@ def goal_view(username, goal_id):
                 if item[1] < 0:
                     all_withdrawals.append(abs(item[1]))
         # prep deposit/withdrawal stats
-         date_today = date.today()
+        date_today = date.today()
         if current_goal['deposits_number'] != 0: # check there has been savings activity
             avg_deposit = sum(all_deposits)/len(all_deposits)
         else: 
@@ -177,6 +177,21 @@ def goal_view(username, goal_id):
             avg_withdrawal = sum(all_withdrawals)/len(all_withdrawals)
         else: 
             avg_withdrawal = 0
+        if current_goal['current_total'] != 0:
+            if ((date_today - current_goal['start_date'].date()).days) != 0:
+                avg_saved_perday = current_goal['current_total'] / ((date_today - current_goal['start_date'].date()).days)
+                avg_needed_perday = current_goal['end_total'] / ((current_goal['end_date'].date() - date_today).days)
+            else: 
+                avg_saved_perday = current_goal['current_total']
+                avg_needed_perday = avg_needed_perday = current_goal['end_total']
+            forecast_remaining_days = (current_goal['end_total'] - current_goal['current_total']) / avg_saved_perday
+        else: 
+            avg_saved_perday = 0
+            if ((current_goal['end_date'].date() - date_today).days) != 0:
+                avg_needed_perday = (current_goal['end_total']) / ((current_goal['end_date'].date() - date_today).days)
+            else:
+                avg_needed_perday = (current_goal['end_total'])
+            forecast_remaining_days = "unforcastable"  
         return render_template("viewgoal.html", user=current_user, goal=current_goal, goals=list_goals, avg_deposit=avg_deposit, avg_withdrawal=avg_withdrawal, all_deposits=all_deposits, all_withdrawals=all_withdrawals, date_today=date_today)
     else:
         flash("Please login to view your goals")
