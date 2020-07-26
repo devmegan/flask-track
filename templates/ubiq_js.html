@@ -8,7 +8,11 @@ $(document).scroll(function() {
         $('#cards-fab').css("margin-bottom", "0px"); // restore when you scroll up
 });
 // drop down for nav menu 
-$(".dropdown-trigger").dropdown();
+$(".dropdown-trigger").dropdown({
+    constrainWidth: false,
+    coverTrigger: false,
+    hover: true
+});
 $('.sidenav').sidenav();
 $("#cards-fab").floatingActionButton();
 $('.tooltipped').tooltip();
