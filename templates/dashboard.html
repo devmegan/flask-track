@@ -37,7 +37,15 @@
                         </div>
                         <a class="btn white blue-text modal-trigger center spaced-text waves-effect waves-white update-btn" id="create-goal-btn"><strong>Create Goal</strong></a>
                         {% elif  user.goals_number == 1 %}
-                        <h5 class="uppercase spaced-text">1 Goal</h5>
+                        {% for goal in goals %}
+                         <h5 class="uppercase spaced-text gold-lowpoly">
+                            {{ goal.goal_name }}
+                        </h5>
+                         <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Start Saving!</strong></a>
+                            <br /><br>
+                        <p class="blue-text text-darken-3 spaced-text" >You'll recieve more savings insights as soon as you make your first deposit</p>
+                        
+                        {% endfor %}
                         <br>
                         {% else %}
                         <h5 class="uppercase spaced-text">{{ user.goals_number }} Goals</h5>
