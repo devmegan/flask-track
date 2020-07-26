@@ -404,10 +404,20 @@ def page_not_found(e):
         return render_template("404.html", user=current_user, goals=list_goals), 404
     else: 
         return render_template("404.html"), 404
+
+
 """ helper functions """
 
 
 def user_current_goals(direction):
+    """ increase/decrease number of total goals in app when goal is added/deleted """
+    username = session['username']
+    user = coll_users.find_one({"username": username})
+    new_goals_number = user['goals_number'] + direction
+    coll_users.update_one({"username": username}, {'$set': {"goals_number": new_goals_number}})
+    return 
+
+def app_current_goals(direction):
     """ increase/decrease number of total goals in app when goal is added/deleted """
     username = session['username']
     user = coll_users.find_one({"username": username})
