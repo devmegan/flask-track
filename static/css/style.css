@@ -272,6 +272,11 @@ nav .brand-logo:hover {
     margin-top: 2%;
 }
 
+.dropdown-trigger i {
+    margin-left: 0px;
+    margin-top: 2px;
+}
+
 nav ul a {
     color: rgb(15, 61, 114);
     font-weight: bold;
