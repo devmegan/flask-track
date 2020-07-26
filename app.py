@@ -308,11 +308,8 @@ def insert_goal():
     })
     if search_keyword: 
         """push anonymised list of keywords and returned images to db"""
-        new_pair = [search_keyword, request.form.get('image_url')] # mongodb wont take tuples
-        coll_app_stats.update_one({
-        "rec_name": "keyword_image_pairs"}, 
-        {'$push': {"pairs": new_pair}}
-    )
+        new_pair = [search_keyword, request.form.get('image_url')]  # mongodb wont take tuples
+        coll_app_stats.update_one({"rec_name": "keyword_image_pairs"}, {'$push': {"pairs": new_pair}})
     user_current_goals(1)
     return redirect(url_for('dashboard', username=username))
 
