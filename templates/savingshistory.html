@@ -1,21 +1,4 @@
-{% extends 'base.html' %} {% block nav_links %}
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a></li>
-{% if user.goals_number != 0 %}
-<li><a class="dropdown-trigger" href="#!" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
-<ul id="nav_goals" class="dropdown-content">
-    {% for goal in goals %}
-    <li><a href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" class="uppercase">{{goal.goal_name}}</a></li>
-    {% endfor %}
-    {% if user.goals_number < 4 %}
-    <li class="divider"></li>
-    <li><a href="{{ url_for('dashboard', username=user.username, add_goal='add') }}" class="uppercase"><i class="material-icons">add_box</i>New</a></li>
-    {% endif %} 
-</ul>
-{% endif %}
-<li><a href="{{url_for('profile', username=user.username)}}">Profile</a></li>
-<li><a href="{{url_for('logout')}}">Log Out</a></li>
-{% endblock %} 
+{% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid" id="history-container">
 <!--Fab Menu-->
