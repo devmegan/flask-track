@@ -37,6 +37,41 @@
     </div>
     <div class="row" style="">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <!--Edit Goal Card-->
+            <div class="card">
+                <div class="card-content center">
+                  <h4 class="indigo-text center">Edit Goal</h4>
+        <div class="row">
+        <form action="{{url_for('update_goal', goal_id=goal._id)}}" method="POST"class="col s12">
+                <div class="row">
+                    <div class="input-field col s12 m6 offset-m3">
+                        <input id="goal_name" name="goal_name" type="text" value="{{goal.goal_name}}" required>
+                        <label for="goal_name" class="indigo-text">Goal Name</label>
+                    </div>
+                    <div class="input-field col s12 m6 offset-m3">
+                        <input id="image_url" name="image_url" type="text" value="{{goal.image_url}}" required>
+                        <label for="image_url" class="indigo-text">Goal Image URL</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m6 offset-m3">
+                        <input id="end_total" name="end_total" type="text" value="{{'{:,.2f}'.format(goal.end_total) }}" required>
+                        <label for="end_total" class="indigo-text">Goal Total ({{user.currency}}):</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <input id="end_date" name="end_date" type="text" class="datepicker" value='{{ goal.end_date.strftime("%b %d, %Y") }}' required>
+                            <label for="icon_prefix" class="indigo-text">Goal End Date</label>
+                        </div>
+                </div>
+                  <div class="col s12 center">
+                <button class="btn waves-effect waves-light modal-close teal lighten-2">Cancel</button>
+                <button class="btn waves-effect waves-light indigo" type="submit" id="edit-goal-submit-btn" name="action">Edit Goal</button>
+            </div>
+        </div>
+                </div> 
+            </div>
             <!--Main Card-->
             <div class="card">
                 <div class="card-content center">
