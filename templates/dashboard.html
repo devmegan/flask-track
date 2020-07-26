@@ -237,7 +237,7 @@
                         {% if loop.index <= 5 %}
                         <tr>
                             <td class="gold-lowpoly">{{ item[0] }}</td>
-                            <td class="gold-lowpoly center">{{ user.currency }}{{ item[1] }}</td>
+                            <td class="gold-lowpoly center">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</td>
                             <td class="gold-lowpoly right">{{ item[2].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
