@@ -127,8 +127,8 @@
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
                     <div id="progress-labels">
-                        <h6 class="left dark-blue-lowpoly">{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </h6>
-                        <h6 class="right dark-blue-lowpoly">{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</h6>   
+                        <h6 class="left dark-blue-lowpoly"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </strong></h6>
+                        <h6 class="right dark-blue-lowpoly"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
                     </div>
                 </div> 
             </div>
@@ -264,23 +264,18 @@
                             </div>
                 </div>
             </div>
-            <style>
-            #deposit-withdraw-mini-card {
-                padding: 10px;
-            }
-            </style>
             <!--Deposit/Withdraw Cards-->
             <div class="row">
                 <div class="col s6">
-                    <div class="card deposit-withdraw-mini-card">
-                        <div class="card-content center">
+                    <div class="card">
+                        <div class="card-content center" id="deposit-mini-card">
                     <a style="background-color: #0ca578" class="waves-effect waves-light btn jumbotron-btn white-text" href="#"><strong>Deposit</strong></a>
                         </div>
                     </div>
                 </div>
                 <div class="col s6">
-            <div class="card deposit-withdraw-mini-card">
-                <div class="card-content center">
+            <div class="card">
+                <div class="card-content center" id="withdraw-mini-card">
                     <a style="background-color: #de425b" class="waves-effect waves-light btn jumbotron-btnwhite-text" href="#"><strong>Withdraw</strong></a>
                 </div>
             </div>
@@ -289,11 +284,11 @@
             </div>
             <!--Time Remaining-->
             <div class="card">
-                <div class="card-content" id="time-stats-card">
-                    <i class="material-icons" id="time-stats-icon">date_range</i>
-                    <h5 class="center uppercase" id="time-stats-one">Day <strong class="indigo-text text-darken-1">{{ (date_today - goal.start_date.date()).days }}</strong> of <strong class="indigo-text text-darken-2">{{ (goal.end_date.date() - goal.start_date.date()).days }}</strong> </h5>
-                    <h5 class="center uppercase display-none" id="time-stats-two"><strong class="indigo-text text-darken-1">{{ (goal.end_date.date() - date_today).days }}</strong> days left</strong></h5>
-                    <p class="center"><strong>{{goal.start_date.strftime("%d %b, %Y")}} - {{goal.end_date.strftime("%d %b, %Y") }}</strong></p>
+                <div class="card-content center" id="time-stats-card">
+                    <i class="material-icons blue-grey-text text-darken-2">date_range</i>
+                    <h5 class="center uppercase spaced-text" id="time-stats-one">Day <strong class="dark-blue-lowpoly">{{ (date_today - goal.start_date.date()).days }}</strong> of <strong class="indigo-text text-darken-2">{{ (goal.end_date.date() - goal.start_date.date()).days }}</strong> </h5>
+                    <h5 class="center uppercase spaced-text display-none" id="time-stats-two"><strong class="dark-blue-lowpoly">{{ (goal.end_date.date() - date_today).days }}</strong> days left</h5>
+                    <h6 class="center blue-grey-text text-darken-2"><strong>{{goal.start_date.strftime("%d %b, %Y")}} - {{goal.end_date.strftime("%d %b, %Y") }}</strong></h6>
                 </div>
             </div>
              {% if goal.deposits_number != 0%}
