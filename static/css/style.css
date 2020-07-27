@@ -643,6 +643,11 @@ padding: 0px;
 #title-card .card-content {
 padding: 10px;
 }
+
+#title-card .card-content h5 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 .goal-image {
     width: 100%;
 }
