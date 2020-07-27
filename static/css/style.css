@@ -674,6 +674,10 @@ padding: 10px;
 #withdraw-mini-card {
         padding: 10px 0px;
 }
+
+#time-stats-card i {
+    font-size: 3rem
+}
 #progress-labels h6 {
     margin-top: 0px;
 }
