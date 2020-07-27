@@ -423,10 +423,8 @@ footer a:hover {
 
 /* Dashboard */
 #dash-container {
-    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     min-height: 90vh;
 }
 
@@ -591,10 +589,8 @@ h5 {
 }
 /* User Profile */
 #profile-container {
-    background-image: url("../img/blue-green-lowpoly-large.jpg");
+    background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     min-height: 90vh;
 }
 
