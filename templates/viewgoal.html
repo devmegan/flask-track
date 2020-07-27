@@ -116,6 +116,7 @@
                 <div class="card-content center">
                     <img src="{{goal.image_url}}" class="goal-image">
                     <h4 class="uppercase spaced-text dark-blue-lowpoly" id=><strong>{{ goal.goal_name }} - {{user.currency}}{{("{:,.2f}".format(goal.end_total))}} GOAL</strong></h4>
+                     <a href="" class="center lowpoly-link"><strong>Edit Goal</strong></a>
                      <div class="progress">
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
