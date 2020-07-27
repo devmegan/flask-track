@@ -102,6 +102,15 @@
                     </div>
                 </div> 
             </div>
+            {% if goal.achieved %}
+            <!--achieved goal card-->
+            <div class="card" id="achieved-goal-card">
+                <div class="card-content center">
+                <h3 class="gold-lowpoly"><strong>Congratulations!</strong></h3>
+                <h5 class="gold-lowpoly">You've reached your goal and saved {{user.currency}}{{"{:,.2f}".format(goal.end_total)}}</h5>
+                </div> 
+            </div>
+            {% endif %}
             <!--Main Card-->
             <div class="card" id="goal-main-card">
                 <div class="card-content center">
