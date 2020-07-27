@@ -270,6 +270,8 @@ nav .brand-logo:hover {
 #nav-logo-icon {
     font-size: 130%;
     margin-top: 2%;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .dropdown-trigger i {
