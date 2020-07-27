@@ -544,6 +544,15 @@ h5 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.repeatable-lowpoly-text {
+     color: rgb(15, 61, 114);
+    background: url("../img/repeatable-lowpoly-small.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .green-lowpoly {
     color: rgb(101, 179, 107);
     background: url("../img/green-lowpoly-small.jpg");
@@ -650,8 +659,12 @@ h5 {
 .progress {
     margin-bottom: 2px;
     margin-top: 30px;
+    height: 5px;
+    background-color: #a7b4b5
 }
-
+.progress .determinate {
+    background: linear-gradient(to right, rgb(48 126 171), #22c59a);
+}
 #achieved-goal-card h3 {
     padding-bottom: 10px;
 }
