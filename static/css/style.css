@@ -359,20 +359,16 @@ footer a:hover {
     height: 90vh;
 }
 #index-carousel-one {
-    background-image: url("../img/blue-green-lowpoly-large.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg,  rgba(141,255,191,1) 0%, rgba(34,121,195,1) 100%);
 }
 #index-carousel-two {
-    background-image: url("../img/repeatable-lowpoly.jpg");
-    background-position: center;
+    background: rgb(47,186,103);
+    background: radial-gradient(circle, rgba(141,255,191,1) 0%, rgba(40,153,180,1) 100%);
 }
 #index-carousel-three {
-    background-image: url("../img/blue-green-highpoly-large.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+     background: rgba(141,255,191,1);
+    background: linear-gradient(270deg, rgba(141,255,191,1) 0%, rgba(34,121,195,1) 100%);
 }
 
 /* Log In and Sign Up */
