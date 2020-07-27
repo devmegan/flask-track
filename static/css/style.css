@@ -650,6 +650,7 @@ padding: 10px;
 }
 .goal-image {
     width: 100%;
+    border-radius: 4px;
 }
 .chart-wrapper {
   position: relative;
