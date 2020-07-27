@@ -691,6 +691,11 @@ padding: 10px;
     .footer-col {
         text-align: center;
     }
+
+    .nav-wrapper a {
+        margin-left: 15px;
+        margin-right: 0px;
+    }
 }
 @media only screen and (min-width: 992px) {
         #keywordurl-input-field {
