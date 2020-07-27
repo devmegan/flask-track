@@ -156,7 +156,7 @@
                             </td>
                             {% else %}
                             <td class="table-withdrawal red-lowpoly">
-                               <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong><h6>
+                               <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong></h6>
                             </td>
                             {% endif %}
                             <td class="right dark-blue-lowpoly"><h6><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></h6></td>
