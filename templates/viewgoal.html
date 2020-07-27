@@ -151,15 +151,15 @@
                         {% if loop.index <= 5 %}
                         <tr>
                             {% if item[1] > 0 %}
-                            <td class="table-deposit green-lowpoly">
+                            <td class="table-deposit">
                                 <h6><i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
                             </td>
                             {% else %}
-                            <td class="table-withdrawal red-lowpoly">
+                            <td class="table-withdrawal">
                                <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong></h6>
                             </td>
                             {% endif %}
-                            <td class="right dark-blue-lowpoly"><h6><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></h6></td>
+                            <td class="right blue-grey-text text-darken-1"><h6><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></h6></td>
                         </tr>
                         {% endif %}
                         {% endfor %}
