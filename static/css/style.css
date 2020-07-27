@@ -641,6 +641,22 @@ h5 {
   text-align: center;
 }
 
+#progress-labels h6 {
+    margin-top: 0px;
+}
+#goal-main-card h4 {
+    margin-bottom: 40px;
+}
+#goal-main-card {
+    padding-bottom: 50px;
+}
+.progress {
+    margin-bottom: 2px;
+}
+
+#achieved-goal-card h3 {
+    padding-bottom: 10px;
+}
 /* Savings History*/
 #history-container {
     background-image: url("../img/repeatable-lowpoly.jpg");
