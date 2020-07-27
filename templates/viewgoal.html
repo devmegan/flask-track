@@ -3,7 +3,7 @@
 
 <div class="container-fluid page-container" id="goals-container">
     <!--Fab Menu-->
-    <div class="fixed-action-btn" id="cards-fab">
+    <div class="fixed-action-btn hide-on-small-only" id="cards-fab">
         <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
         <i class="large material-icons">dashboard</i>
         </a>
@@ -117,12 +117,12 @@
                     <img src="{{goal.image_url}}" class="goal-image">
                     <h4 class="uppercase spaced-text dark-blue-lowpoly" id=><strong>{{ goal.goal_name }} - {{user.currency}}{{("{:,.2f}".format(goal.end_total))}} GOAL</strong></h4>
                      <a href="" class="center lowpoly-link"><strong>Edit Goal</strong></a>
-                     <div class="progress">
+                    <div class="progress">
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
                     <div id="progress-labels">
-                        <h6 class="left grey-text text-darken-2"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved</strong> </h6>
-                        <h6 class="right grey-text text-darken-2"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
+                        <h6 class="left repeatable-lowpoly-text"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved</strong> </h6>
+                        <h6 class="right repeatable-lowpoly-text"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
                     </div>
                 </div> 
             </div>
