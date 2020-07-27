@@ -495,16 +495,6 @@ top: 10vh;
 }
 
 
-h5 {
-    color: rgb(15, 61, 114);
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding-bottom: 10px;
-}
-
 .lowpoly-link {
     color: rgb(45, 111, 185);
     background: url("../img/light-blue-lowpoly-small.jpg");
