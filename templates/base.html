@@ -56,30 +56,25 @@
         <li><a href="{{url_for('signup')}}">Sign Up</a></li>
     {% endif %}
   </ul>
-    </header>
+</header>
         {% block content %}
         {% endblock %}
-        <style>
-        .page-footer {
-            background-color: #1b579b;
-        }
-        </style>
-    <footer class="page-footer">
+    <footer class="page-footer background-blue">
           <div class="container-fluid">
             <div class="row" style="margin-bottom: 0px;">
               <div class="col s12 m6 l6 footer-col">
-                <h5 class="white-lowpoly" style="margin: 0px 0px 5px 10px;"><strong>track</strong> <i class="material-icons">trending_up</i></h5>
+                <h5 class="header-white" style="margin: 0px 0px 5px 10px;"><strong>track</strong> <i class="material-icons">trending_up</i></h5>
               </div>
               <div class="col s12 m6 l4 offset-l2 right-align footer-col">
                     {% if user %}
-                    <a class="" href="{{ url_for('index') }}">Home</a> |
-                    <a class="" href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a> |
-                    <a class="" href="{{ url_for('profile', username=user.username) }}">Profile</a> |
-                    <a class="" href="{{url_for('logout')}}">Log Out</a>
+                    <a class="header-white" href="{{ url_for('index') }}">Home</a> |
+                    <a class="header-white" href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a> |
+                    <a class="header-white" href="{{ url_for('profile', username=user.username) }}">Profile</a> |
+                    <a class="header-white" href="{{url_for('logout')}}">Log Out</a>
                     {% else %}
-                    <a class="" href="{{ url_for('index') }}">Home</a> |
-                    <a class="" href="{{ url_for('login') }}">Log In</a> |
-                    <a class="" href="{{ url_for('signup') }}">Sign Up</a> 
+                    <a class="header-white" href="{{ url_for('index') }}">Home</a> |
+                    <a class="header-white" href="{{ url_for('login') }}">Log In</a> |
+                    <a class="header-white" href="{{ url_for('signup') }}">Sign Up</a> 
                     {% endif %}
               </div>
             </div>
