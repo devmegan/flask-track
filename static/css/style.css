@@ -624,6 +624,7 @@ h5 {
     background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
     background-repeat: repeat;
+    padding-left: 20px;
 }
 
 #title-card {
