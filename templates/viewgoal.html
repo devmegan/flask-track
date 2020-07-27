@@ -132,10 +132,10 @@
             <!--Deposit/Withdraw Cards-->
             <div class="row hide-on-large-only">
                 <div class="col s6 center">
-                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn"><strong>Deposit</strong></a>
+                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn-sm"><strong>Deposit</strong></a>
                 </div>
                 <div class="col s6">
-                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn"><strong>Withdraw</strong></a>
+                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn-sm"><strong>Withdraw</strong></a>
                 </div>
             </div>
             <!--Recent Activity Card-->
@@ -524,13 +524,13 @@ $('.datepicker').datepicker({
     $('#end_date').click();
  })
 
- $("#deposit-btn").click(function(){
+ $("#deposit-btn, #deposit-btn-sm").click(function(){
     $("#deposit-card").removeClass("display-none")
-    $(".card:not('#deposit-card'), #deposit-btn, #withdraw-btn").addClass("display-none")
+    $(".card:not('#deposit-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
  })
   $("#withdraw-btn").click(function(){
     $("#withdraw-card").removeClass("display-none")
-    $(".card:not('#withdraw-card'), #deposit-btn, #withdraw-btn").addClass("display-none")
+    $(".card:not('#withdraw-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
  })
 </script>
 {% include 'viewgoal_js.html' %}
