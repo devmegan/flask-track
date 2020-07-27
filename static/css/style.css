@@ -41,11 +41,49 @@ i {
 }
 
 /* Colours */
-
+.header-blue-lighter {
+    color: #318ddb;
+}
 .header-blue {
     color: #2279c3;
 }
+.header-green-lighter {
+    color: #2fd392;
+}
+.header-green {
+    color: #26b57c;
+}
 
+.header-blue-darker {
+    color: #1f6fb2;
+}
+.header-green-darker {
+    color: #1f9566;
+}
+.header-red-lighter {
+    color: #e46378
+}
+.header-red {
+    color: #de425b;
+}
+.header-red-darker {
+    color: #d42541;
+}
+.blue-border {
+    color:#539fe1;
+    border: 3px solid;
+    box-shadow: 0px;
+    margin-top: 2vh;
+    padding: 2vh;
+}
+
+.grey-border {
+    color: #bcc8d2;
+    border: 3px solid;
+    box-shadow: 0px;
+    padding: 2vh;
+    margin-top: 2vh;
+}
 .header-gold {
     color: #9e7b21;
 }
@@ -56,6 +94,10 @@ i {
 
 .background-green {
     background-color: #26b57c;
+}
+
+.card-link:hover {
+    color: #195a91;
 }
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
@@ -607,14 +649,6 @@ top: 10vh;
     min-height: 85vh;
 }
 
-.blue-lowpoly-border {
-    color: rgb(15, 61, 114);
-    border: 3px solid;
-    box-shadow: 0px;
-    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
-    margin: 2vh;
-    padding: 2vh;
-}
 .red-lowpoly-border {
     color: rgb(151, 16, 84);
     border: 3px dashed;
@@ -669,7 +703,7 @@ padding: 10px;
     margin-bottom: 0px;
     font-size: 2rem;
 }
- #deposit-btn {
+#deposit-btn {
     width: 100%;
     height: 10vh;
     line-height: 10vh;
@@ -731,43 +765,15 @@ padding: 10px;
 #savings-forecast-header {
     margin-bottom: 30px;
 }
-.table-deposit {
-    color: #0c915c;
-}
-.table-withdrawal {
-    color: #db324c
-}
-.deposits-arrow {
-    color: #25c19a;
-}
-#deposits-label {
-    color: #19876b;
-}
-.withdrawals-arrow {
-    color: #de425b;
-}
-#withdrawals-label {
-    color: #a23546;
-}
-#smallest-deposit {
-    color: #0FB58F;
-}
-#biggest-deposit {
-    color: #0c915c;
-}
-#avg-deposit {
-    color: #0a7f50;
-}
-#smallest-withdrawal {
-    color: #e46478;
-}
-#biggest-withdrawal {
-    color: #db324c;
-}
-#avg-withdrawal {
-    color: #b31f36;
+
+#savings-forecast-text {
+    margin-bottom: 30px;
+    line-height: 2;
 }
 
+#savings-forecast-prompt {
+    margin-bottom: 30px;
+}
 .insight-description {
     font-size: 0.85rem;
 }
