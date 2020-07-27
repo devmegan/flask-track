@@ -231,7 +231,7 @@
                            <div class="chart-wrapper">
                                 <canvas id="goal-progress-pie"></canvas>      
                                 <div class="chart-text">
-                                    <h4 class="dark-blue-lowpoly">{{ goal.percent_progress }}%</h4>
+                                    <h4 class="dark-blue-lowpoly">{{ goal.percent_progress | int }}%</h4>
                                     <span class="dark-blue-lowpoly uppercase spaced-text">saved</span>
                                 </div>
                             </div>
@@ -266,14 +266,14 @@
                 <div class="col s6">
             <div class="card">
                 <div class="card-content center">
-                             <button class="btn waves-effect waves-light form-red-btn" type="button" id="create-goal-cancel">Withdraw</button>
+                    <a style="background-color: #de425b" class="waves-effect waves-light btn jumbotron-btnwhite-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Withdraw</strong></a>
                 </div>
             </div>
         </div>
         <div class="col s6">
             <div class="card">
                 <div class="card-content center">
-                <button class="btn waves-effect waves-dark update-btn" id="create-goal-submit" type="submit" name="action">Deposit</button>
+               <a style="background-color: #0ca578" class="waves-effect waves-light btn jumbotron-btn white-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Deposit</strong></a>
                 </div>
             </div>
         </div>
