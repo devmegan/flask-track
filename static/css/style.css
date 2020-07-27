@@ -690,6 +690,9 @@ padding: 10px;
 #achieved-goal-card h3 {
     padding-bottom: 10px;
 }
+#achieved-goal-card h5 {
+    padding-bottom: 5px;
+}
 
   #user-savings-figure {
     font-size: calc(15px + 1vmin);
