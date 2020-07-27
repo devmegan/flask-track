@@ -21,8 +21,6 @@
     </div>
     <div class="row" style="">
         <div class="col s12 m8 offset-m2 l6">
-        
-
              <!--Deposit Card-->
             <div class="card display-none">
                 <div class="card-content center">
@@ -115,8 +113,8 @@
             <!--Main Card-->
              <div class="card" id="title-card">
                 <div class="card-content center">
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} dark-blue-lowpoly {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} dark-blue-lowpoly {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} header-blue {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} header-blue {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
                 </div>
              </div>
             <div class="card" id="goal-main-card">
@@ -126,8 +124,8 @@
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
                     <div id="progress-labels">
-                        <h6 class="left dark-blue-lowpoly"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </strong></h6>
-                        <h6 class="right dark-blue-lowpoly"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
+                        <h6 class="left header-blue"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </strong></h6>
+                        <h6 class="right header-blue"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
                     </div>
                 </div> 
             </div>
@@ -135,15 +133,15 @@
             {% if goal.savings_history %}
             <div class="card">
                 <div class="card-content center blue-text">
-                    <h5 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Recent Activity</strong></h5>
-                    <span><a href="{{ url_for('savingshistory', username=user.username, goal_id=goal._id) }}"" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
+                    <h5 class="center uppercase spaced-text header-blue-darker"><strong>Recent Activity</strong></h5>
+                    <span><a href="{{ url_for('savingshistory', username=user.username, goal_id=goal._id) }}" class="center header-blue card-link"><strong>View Full Savings History</strong></a></span>
                     <!--Savings History Table-->
-                    <div class="blue-lowpoly-border">
+                    <div class="grey-border">
                         <table class="highlight">
                         <thead>
                         <tr>
-                            <th class="uppercase spaced-text">Amount</th>
-                            <th class="uppercase right spaced-text">Date</th>
+                            <th class="uppercase spaced-text header-blue-darker">Amount</th>
+                            <th class="uppercase right spaced-text header-blue-darker">Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -151,12 +149,12 @@
                         {% if loop.index <= 5 %}
                         <tr>
                             {% if item[1] > 0 %}
-                            <td class="table-deposit">
-                                <h6><i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
+                            <td>
+                                <h6 class="header-green"><i class="material-icons tiny header-green-darker">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
                             </td>
                             {% else %}
-                            <td class="table-withdrawal">
-                               <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong></h6>
+                            <td>
+                               <h6 class="header-red"><i class="material-icons tiny header-red-darker">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong></h6>
                             </td>
                             {% endif %}
                             <td class="right blue-grey-text text-darken-1"><h6><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></h6></td>
@@ -173,7 +171,7 @@
              <!--Savings Forecast-->
             <div class="card">
                 <div class="card-content">
-                    <h5 class="uppercase spaced-text center dark-blue-lowpoly" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>     
+                    <h5 class="uppercase spaced-text center blue-header" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>     
                     <div class="row">
                         <div class="col s6" id="user-savings-col">
                             {% if avg_needed_perday > avg_saved_perday %}
@@ -185,7 +183,7 @@
                             <span class="blue-grey-text text-darken-1">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
                         </div>
                         <div class="col s6" id="needed-savings-col">
-                            <span class=" dark-blue-lowpoly" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7))}}</strong></span>
+                            <span class="blue-header" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7))}}</strong></span>
                             <span class="uppercase blue-grey-text text-darken-2"><strong>Needed weekly savings</strong></span>
                             <span class="blue-grey-text text-darken-1">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
                         </div>
@@ -238,14 +236,13 @@
                            <div class="chart-wrapper">
                                 <canvas id="goal-progress-pie"></canvas>      
                                 <div class="chart-text">
-                                    <h4 class="dark-blue-lowpoly">{{ goal.percent_progress | int }}%</h4>
-                                    <span class="dark-blue-lowpoly uppercase">saved</span>
+                                    <h4 class="header-blue">{{ goal.percent_progress | int }}%</h4>
+                                    <span class="header-blue uppercase">saved</span>
                                 </div>
                             </div>
-                            <h4 class="center uppercase dark-blue-lowpoly" style="letter-spacing: 10px; margin-top: 50px;">Progress</h4>
+                            <h4 class="center uppercase header-blue" style="letter-spacing: 10px; margin-top: 50px;">Progress</h4>
                   
-                            <div class="gold-lowpoly spaced-text">
-                            <strong>
+                            <div class="header-gold spaced-text uppercase">
                             {% if goal.percent_progress == 0 %}
                             Make your first deposit and watch your progress increase!
                             {% elif goal.percent_progress < 25 %}
@@ -267,25 +264,16 @@
                             {% elif goal.percent_progress > 100 %}
                             Congratulations! You've exceeded your goal! 
                             {% endif %}
-                            </strong>
                             </div>
                 </div>
             </div>
             <!--Deposit/Withdraw Cards-->
             <div class="row">
-                <div class="col s6">
-                    <div class="card">
-                        <div class="card-content center" id="deposit-mini-card">
-                    <a style="background-color: #0ca578" class="waves-effect waves-light btn jumbotron-btn white-text" href="#"><strong>Deposit</strong></a>
-                        </div>
-                    </div>
+                <div class="col s6 center">
+                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn" href="#"><strong>Deposit</strong></a>
                 </div>
                 <div class="col s6">
-            <div class="card">
-                <div class="card-content center" id="withdraw-mini-card">
-                    <a style="background-color: #de425b" class="waves-effect waves-light btn jumbotron-btnwhite-text" href="#"><strong>Withdraw</strong></a>
-                </div>
-            </div>
+                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn" href="#"><strong>Withdraw</strong></a>
                 </div>
                 
             </div>
@@ -293,8 +281,8 @@
             <div class="card">
                 <div class="card-content center" id="time-stats-card">
                     <i class="material-icons blue-grey-text text-darken-2">date_range</i>
-                    <h5 class="center uppercase spaced-text" id="time-stats-one">Day <strong class="dark-blue-lowpoly">{{ (date_today - goal.start_date.date()).days }}</strong> of <strong class="indigo-text text-darken-2">{{ (goal.end_date.date() - goal.start_date.date()).days }}</strong> </h5>
-                    <h5 class="center uppercase spaced-text display-none" id="time-stats-two"><strong class="dark-blue-lowpoly">{{ (goal.end_date.date() - date_today).days }}</strong> days left</h5>
+                    <h5 class="center uppercase spaced-text blue-grey-text text-darken-3" id="time-stats-one">Day <strong class="header-blue-darker">{{ (date_today - goal.start_date.date()).days }}</strong> of <strong class="header-blue">{{ (goal.end_date.date() - goal.start_date.date()).days }}</strong> </h5>
+                    <h5 class="center uppercase spaced-text display-none blue-grey-text text-darken-3" id="time-stats-two"><strong class="header-blue">{{ (goal.end_date.date() - date_today).days }}</strong> days left</h5>
                     <h6 class="center blue-grey-text text-darken-2"><strong>{{goal.start_date.strftime("%d %b, %Y")}} - {{goal.end_date.strftime("%d %b, %Y") }}</strong></h6>
                 </div>
             </div>
@@ -306,12 +294,12 @@
                     <div class="center">
                         <div class="row">
                             <div class="col s6"> 
-                                <h4><i class="material-icons deposits-arrow">arrow_upward</i><strong class=" green-lowpoly deposits-main-figure">{{ goal.deposits_number }}</strong></h4>
-                                <h6 class="uppercase" id="deposits-label"> Deposit{% if goal.deposits_number != 1 %}s{% endif %}</h6>
+                                <h4 class="header-green"><i class="material-icons header-green-darker">arrow_upward</i><strong>{{ goal.deposits_number }}</strong></h4>
+                                <h6 class="uppercase header-green-darker"> Deposit{% if goal.deposits_number != 1 %}s{% endif %}</h6>
                             </div>
                             <div class="col s6">
-                                <h4><i class="material-icons withdrawals-arrow">arrow_downward</i><strong class="red-lowpoly withdrawals-main-figure">{{ goal.withdrawals_number }}</strong></h4>
-                                <h6 class="uppercase" id="withdrawals-label">Withdrawal{% if goal.withdrawals_number != 1 %}s{% endif %}</h6>
+                                <h4 class="header-red"><i class="material-icons header-red-darker">arrow_downward</i><strong>{{ goal.withdrawals_number }}</strong></h4>
+                                <h6 class="uppercase header-red-darker">Withdrawal{% if goal.withdrawals_number != 1 %}s{% endif %}</h6>
                             </div>
                         </div>
                     </div>
@@ -325,41 +313,41 @@
                 <div class="row">
                 <div class="col s6">
                     {% if goal.deposits_number == 0 %}
-                    <h5 class="green-text" id="smallest-deposit"><strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-green-lighter" id="smallest-deposit"><strong>{{user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 id="smallest-deposit"><strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | min)) }}</strong></h5>
+                    <h5 class="header-green-lighter" id="smallest-deposit"><strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | min)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Smallest Deposit</h6>
                     {% if goal.deposits_number == 0 %}
-                    <h5 id="biggest-deposit"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-green" id="biggest-deposit"> <strong>{{user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 id="biggest-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | max)) }}</strong></h5>
+                    <h5 class="header-green" id="biggest-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | max)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Biggest Deposit</h6>
                     {% if goal.deposits_number == 0 %}
-                    <h5 id="avg-deposit"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-green-darker" id="avg-deposit"> <strong>{{user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 id="avg-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_deposit) }}</strong></h5>
+                    <h5 class="header-green-darker" id="avg-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_deposit) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Average Deposit</h6>  
                 </div>
                 <div class="col s6" style="text-align: right">
                     {% if goal.withdrawals_number == 0 %}
-                    <h5 id="smallest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 id="smallest-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_withdrawals | min)) }}</strong></h5>
+                    <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_withdrawals | min)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Smallest Withdrawal</h6>
                     {% if goal.withdrawals_number == 0 %}
-                    <h5 id="biggest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-red" id="biggest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 id="biggest-withdrawal"> <strong>{{user.currency}}{{ "{:,.2f}".format((all_withdrawals | max)) }}</strong></h5>
+                    <h5 class="header-red" id="biggest-withdrawal"> <strong>{{user.currency}}{{ "{:,.2f}".format((all_withdrawals | max)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Biggest Withdrawal</h6>
                     {% if goal.withdrawals_number == 0 %}
-                    <h5 id="avg-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-red-darker" id="avg-withdrawal"> <strong>{{user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 id="avg-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_withdrawal) }}</strong></h5>
+                    <h5 class="header-red-darker" id="avg-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_withdrawal) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Average Withdrawal</h6>
                 </div>
