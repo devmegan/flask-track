@@ -49,10 +49,7 @@
                                 <br>
                                 {% else %}
                                 <br>
-                                <p class="uppercase spaced-text">Saving towards one goal</h6>
-                                {% for goal in goals %}
-                                <h5 class="uppercase spaced-text gold-lowpoly">{{ goal.goal_name }}</h5>
-                                {% endfor %}
+                                <h6 class="uppercase spaced-text">Saving towards one goal: <strong>{{ goal.goal_name }}</strong> </h6>
                                 {% endif %}
                             {% endfor %}
                         {% else %}
@@ -60,15 +57,15 @@
                         <h6 class="uppercase spaced-text dark-blue-lowpoly">No Current Goals</h6>
                         <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" id="add-goal-btn"><strong>Create new goal</strong></a>
                         {% else %}
-                        <h5 class="uppercase spaced-text">{{ user.goals_number }} Goals</h5>
+                        <h5 class="uppercase spaced-text">Saving towards {{ user.goals_number }} Goals</h5>
                         {% endif %}
                         {% endif %}
+                        <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
                         {% if (user.goals_achieved | length) == 1 %}
                         <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length }} Goal Achieved</h6>
                         {% elif (user.goals_achieved | length) > 1 %}
                         <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length}} Goals Achieved</h6>
                         {% endif %}
-                        <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
                     </div>
                 </div> 
             </div>
