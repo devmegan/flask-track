@@ -114,7 +114,8 @@ def register_user():
                     'withdrawals_number': 0,
                     'currency': currency,
                     'total_currently_saved': 0,
-                    'total_achieved': 0
+                    'total_achieved': 0,
+                    'user_savings_history': []
                 }) 
                 flash("Please login with your new details")
                 return redirect(url_for("login"))
