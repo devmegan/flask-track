@@ -233,7 +233,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for item in user.goals_achieved | sort(reverse=true) %} <!--reverse item order as can only push to mongodb array -->
+                        {% for item in user.goals_achieved | reverse %} <!--reverse item order as can only push to mongodb array -->
                         {% if loop.index <= 5 %}
                         <tr>
                             <td class="gold-lowpoly">{{ item[0] }}</td>
