@@ -660,6 +660,20 @@ padding: 10px;
     font-size: 2rem;
 }
 
+#deposit-mini-card  a {
+    padding: 20px 30px;
+    line-height: 2px;
+}
+#withdraw-mini-card  a {
+    padding: 20px 20px;
+    line-height: 2px;
+}
+#deposit-mini-card {
+        padding: 10px 0px;
+}
+#withdraw-mini-card {
+        padding: 10px 0px;
+}
 #progress-labels h6 {
     margin-top: 0px;
 }
