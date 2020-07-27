@@ -644,14 +644,12 @@ h5 {
 #progress-labels h6 {
     margin-top: 0px;
 }
-#goal-main-card h4 {
-    margin-bottom: 40px;
-}
 #goal-main-card {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 .progress {
     margin-bottom: 2px;
+    margin-top: 30px;
 }
 
 #achieved-goal-card h3 {
