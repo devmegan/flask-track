@@ -338,10 +338,8 @@ footer a:hover {
 
 /* Log In and Sign Up */
 #login-signup-container {
-    background-image: url("../img/blue-green-lowpoly-large.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
     min-height: 90vh;
 }
 #login-signup-card {
@@ -426,8 +424,8 @@ footer a:hover {
 
 /* Dashboard */
 #dash-container {
-    background-image: url("../img/repeatable-lowpoly.jpg");
-    background-position: center;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
     min-height: 90vh;
 }
 
@@ -582,8 +580,8 @@ top: 10vh;
 }
 /* User Profile */
 #profile-container {
-    background-image: url("../img/repeatable-lowpoly.jpg");
-    background-position: center;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
     min-height: 90vh;
 }
 
@@ -614,9 +612,9 @@ top: 10vh;
 
 /* View Goal */
 #goals-container {
-    background-image: url("../img/repeatable-lowpoly.jpg");
-    background-position: center;
-    background-repeat: repeat;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
+    min-height: 90vh;
 }
 
 #title-card {
@@ -753,8 +751,8 @@ padding: 10px;
 }
 /* Savings History*/
 #history-container {
-    background-image: url("../img/repeatable-lowpoly.jpg");
-    background-position: center;
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
     min-height: 90vh;
 }
 @media only screen and (max-width: 390px) {
