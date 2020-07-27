@@ -107,7 +107,7 @@
             <!--achieved goal card-->
             <div class="card" id="achieved-goal-card">
                 <div class="card-content center">
-                <h3 class="gold-lowpoly"><strong>Congratulations!</strong></h3>
+                <h3 class="gold-lowpoly uppercase spaced-text"><strong>Congratulations!</strong></h3>
                 <h5 class="gold-lowpoly">You've reached your goal and saved {{user.currency}}{{"{:,.2f}".format(goal.end_total)}}</h5>
                 </div> 
             </div>
@@ -115,8 +115,8 @@
             <!--Main Card-->
              <div class="card" id="title-card">
                 <div class="card-content center">
-                    <h5 class="uppercase spaced-text center dark-blue-lowpoly"><strong>{{goal.goal_name}}</strong></h5>
-                    <h5 class="uppercase spaced-text center dark-blue-lowpoly">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} dark-blue-lowpoly {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} dark-blue-lowpoly {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
                 </div>
              </div>
             <div class="card" id="goal-main-card">
@@ -130,60 +130,6 @@
                         <h6 class="right dark-blue-lowpoly"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
                     </div>
                 </div> 
-            </div>
-             <!--Savings Forecast-->
-            <div class="card">
-                <div class="card-content">
-                    <h5 class="uppercase spaced-text center" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>     
-                    <div class="row">
-                        <div class="col s6" id="user-savings-col">
-                            {% if avg_needed_perday > avg_saved_perday %}
-                            <span id="user-savings-figure" class="red-lowpoly"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
-                            {% else %}
-                            <span id="user-savings-figure" class="green-lowpoly"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
-                            {% endif %}
-                            <span class="blue-grey-text text-darken-2 uppercase "><strong>Average weekly savings</strong></span>
-                            <span class="blue-grey-text text-darken-1">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
-                        </div>
-                        <div class="col s6" id="needed-savings-col">
-                            <span class=" dark-blue-lowpoly" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7))}}</strong></span>
-                            <span class="uppercase blue-grey-text text-darken-2"><strong>Needed weekly savings</strong></span>
-                            <span class="blue-grey-text text-darken-1">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
-                        </div>
-                    </div>
-                    {% if forecast_remaining_days != "unforcastable" %}
-                    {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
-                    <div class="center">
-                        <div class="green-highlight-gradient forecast-highlight">
-                            <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal <br>
-                            <strong>{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }}</strong> days before your chosen date 
-                        </div>
-                        <div class="card-action">
-                            <span class="grey-text uppercase">Want to increase your goal?</span>
-                            <a href="" class="center uppercase savings-card-link"><strong>Edit Goal</strong></a>
-                        </div>
-                    </div>
-                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
-                    <div class="center">
-                        <div class="green-highlight-gradient forecast-highlight">
-                            <span>You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days.</span>
-                            <br>
-                            <strong>That's right on time!</strong>
-                        </div>
-                    </div>
-                    {% else %}
-                    <div class="center">
-                        <div class="red-highlight-gradient forecast-highlight">
-                            <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal <br> <strong>{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date
-                        </div>
-                        <div class="card-action">
-                            <span class="grey-text uppercase">Need to extend your end date?</span>
-                            <a href="#edit-goal-modal" class="modal-trigger center uppercase savings-card-link"><strong>Edit Goal</strong></a></span>
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endif %}
-                </div>
             </div>
             <!--Recent Activity Card-->
             {% if goal.savings_history %}
@@ -223,6 +169,64 @@
                 </div> 
             </div>
             {% endif %}
+             <!--Savings Forecast-->
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="uppercase spaced-text center" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>     
+                    <div class="row">
+                        <div class="col s6" id="user-savings-col">
+                            {% if avg_needed_perday > avg_saved_perday %}
+                            <span id="user-savings-figure" class="red-lowpoly"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
+                            {% else %}
+                            <span id="user-savings-figure" class="green-lowpoly"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
+                            {% endif %}
+                            <span class="blue-grey-text text-darken-2 uppercase "><strong>Average weekly savings</strong></span>
+                            <span class="blue-grey-text text-darken-1">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
+                        </div>
+                        <div class="col s6" id="needed-savings-col">
+                            <span class=" dark-blue-lowpoly" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7))}}</strong></span>
+                            <span class="uppercase blue-grey-text text-darken-2"><strong>Needed weekly savings</strong></span>
+                            <span class="blue-grey-text text-darken-1">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col s12">
+                                {% if forecast_remaining_days != "unforcastable" %}
+                    {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
+                    <div class="center">
+                        <div class="green-highlight-gradient forecast-highlight">
+                            <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal <br>
+                            <strong>{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }}</strong> days before your chosen date 
+                        </div>
+                        <div class="card-action">
+                            <span class="grey-text uppercase">Want to increase your goal?</span>
+                            <a href="" class="center uppercase savings-card-link"><strong>Edit Goal</strong></a>
+                        </div>
+                    </div>
+                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
+                    <div class="center">
+                        <div class="green-highlight-gradient forecast-highlight">
+                            <span>You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days.</span>
+                            <br>
+                            <strong>That's right on time!</strong>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="center">
+                        <div class="red-highlight-gradient forecast-highlight">
+                            <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal <br> <strong>{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date
+                        </div>
+                        <div class="card-action">
+                            <span class="grey-text uppercase">Need to extend your end date?</span>
+                            <a href="#edit-goal-modal" class="modal-trigger center uppercase savings-card-link"><strong>Edit Goal</strong></a></span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col s12 m8 offset-m2 l4">
             <!--Progress Doughnut Card-->
@@ -300,11 +304,11 @@
                     <div class="center">
                         <div class="row">
                             <div class="col s6"> 
-                                <h4><i class="material-icons deposits-arrow">arrow_upward</i><strong class="deposits-main-figure">{{ goal.deposits_number }}</strong></h4>
+                                <h4><i class="material-icons deposits-arrow">arrow_upward</i><strong class=" green-lowpoly deposits-main-figure">{{ goal.deposits_number }}</strong></h4>
                                 <h6 class="uppercase" id="deposits-label"> Deposit{% if goal.deposits_number != 1 %}s{% endif %}</h6>
                             </div>
                             <div class="col s6">
-                                <h4><i class="material-icons withdrawals-arrow">arrow_downward</i><strong class="withdrawals-main-figure">{{ goal.withdrawals_number }}</strong></h4>
+                                <h4><i class="material-icons withdrawals-arrow">arrow_downward</i><strong class="red-lowpoly withdrawals-main-figure">{{ goal.withdrawals_number }}</strong></h4>
                                 <h6 class="uppercase" id="withdrawals-label">Withdrawal{% if goal.withdrawals_number != 1 %}s{% endif %}</h6>
                             </div>
                         </div>
@@ -374,13 +378,13 @@ function depositsGauge (elemId, deposits, withdrawals){
   var ctx = document.getElementById(elemId).getContext('2d');
   // create the gradient for the line/area part of chart
     var gradientDeposit = ctx.createLinearGradient(500, 0, 0, 0);
-    gradientDeposit.addColorStop(0, 'rgba(0, 167, 155, 0.7')
+    gradientDeposit.addColorStop(0, 'rgba(38,146,148, 0.7')
     gradientDeposit.addColorStop(0.2, 'rgba(41, 222, 165, 0.7')
-    gradientDeposit.addColorStop(1, 'rgba(17, 207, 195, 0.7')
+    gradientDeposit.addColorStop(1, 'rgba(47,148,146, 0.7')
     var gradientDepositBorder = ctx.createLinearGradient(500, 0, 0, 0);
     gradientDepositBorder.addColorStop(0, 'rgba(0, 167, 155, 1')
     gradientDepositBorder.addColorStop(0.2, 'rgba(41, 222, 165, 0.7')
-    gradientDepositBorder.addColorStop(1, 'rgba(17, 207, 195, 0.7')
+    gradientDepositBorder.addColorStop(1, 'rgba(47,148,146, 0.7')
     var gradientWithdrawal = ctx.createLinearGradient(500, 0,0, 0);
     gradientWithdrawal.addColorStop(0.2, 'rgba(238, 9, 121, 0.7') 
     gradientWithdrawal.addColorStop(0, 'rgba(244, 107, 69, 0.7')
