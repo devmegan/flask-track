@@ -232,7 +232,7 @@
                                 <canvas id="goal-progress-pie"></canvas>      
                                 <div class="chart-text">
                                     <h4 class="dark-blue-lowpoly">{{ goal.percent_progress | int }}%</h4>
-                                    <span class="dark-blue-lowpoly uppercase spaced-text">saved</span>
+                                    <span class="dark-blue-lowpoly uppercase spaced-text hide-on-small-only">saved</span>
                                 </div>
                             </div>
                             <h4 class="center uppercase dark-blue-lowpoly" style="letter-spacing: 10px; margin-top: 50px;">Progress</h4>
@@ -249,31 +249,39 @@
                             You're nearly half way there!
                             {% elif goal.percent_progress == 50 %}
                             You're half way to achieving your goal!
-                            {% elif goal.percent_progress < 60 %}
+                            {% elif goal.percent_progress < 64 %}
                             You're over half way to achieving your goal!
+                            {% elif goal.percent_progress < 70 %}
+                            You're over two thirds of the way to achieving your goal!
                             {% elif goal.percent_progress > 75 %}
                             You're in the final quarter!
                             {% elif goal.percent_progres == 100 %}
                             Congratulations! You've reached your goal!
-                            {% else %}
+                            {% elif goal.percent_progress > 100 %}
                             Congratulations! You've exceeded your goal! 
                             {% endif %}
                             </strong>
                             </div>
                 </div>
             </div>
+            <style>
+            #deposit-withdraw-mini-card {
+                padding: 10px;
+            }
+            </style>
+            <!--Deposit/Withdraw Cards-->
             <div class="row">
                 <div class="col s6">
-            <div class="card">
+            <div class="card deposit-withdraw-mini-card">
                 <div class="card-content center">
-                    <a style="background-color: #de425b" class="waves-effect waves-light btn jumbotron-btnwhite-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Withdraw</strong></a>
+                    <a style="background-color: #de425b" class="waves-effect waves-light btn jumbotron-btnwhite-text" href="#"><strong>Withdraw</strong></a>
                 </div>
             </div>
         </div>
         <div class="col s6">
-            <div class="card">
+            <div class="card deposit-withdraw-mini-card">
                 <div class="card-content center">
-               <a style="background-color: #0ca578" class="waves-effect waves-light btn jumbotron-btn white-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Deposit</strong></a>
+               <a style="background-color: #0ca578" class="waves-effect waves-light btn jumbotron-btn white-text" href="#"><strong>Deposit</strong></a>
                 </div>
             </div>
         </div>
