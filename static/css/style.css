@@ -45,7 +45,14 @@ i {
     color: #318ddb;
 }
 .header-blue {
-    color: #2279c3;
+    color: #2279c3 !important;
+}
+.background-blue {
+    background-color: #2279c3;
+}
+
+.header-white {
+    color: #fefefe;
 }
 .header-green-lighter {
     color: #2fd392;
@@ -311,23 +318,9 @@ nav .nav-wrapper {
     -webkit-text-fill-color: transparent;
 }
 
-nav .brand-logo {
-    color: rgb(15, 61, 114);  /* placeholder colour if browser doesn't support image text bg */
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0px 5vh; 
-}
 
 nav .brand-logo:hover {
-    color: rgb(79, 175, 154);
-    background: url("../img/green-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+   
 }
 
 #nav-logo-icon {
@@ -345,23 +338,9 @@ nav .brand-logo:hover {
 .dropdown-trigger:focus {
     outline: none;
 }
-nav ul a {
-    color: rgb(15, 61, 114);
-    font-weight: bold;
-    background: url("../img/blue-lowpoly-small.jpg") no-repeat;
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
 nav ul a:hover {
     color: rgb(79, 175, 154);
-    background: url("../img/green-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 /* Footer */
