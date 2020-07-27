@@ -627,7 +627,6 @@ h5 {
     background-image: url("../img/repeatable-lowpoly.jpg");
     background-position: center;
     background-repeat: repeat;
-    padding-left: 20px;
 }
 
 #title-card {
@@ -720,6 +719,18 @@ padding: 10px;
     margin-bottom: 30px;
 }
 
+.deposits-arrow {
+    color: #25c19a;
+}
+#deposits-label {
+    color: #19876b;
+}
+.withdrawals-arrow {
+    color: #de425b;
+}
+#withdrawals-label {
+    color: #a23546;
+}
 /* Savings History*/
 #history-container {
     background-image: url("../img/repeatable-lowpoly.jpg");
@@ -747,6 +758,9 @@ padding: 10px;
     }
     #frozen-span {
         padding-left: 10px;
+    }
+    #goals-container {
+        padding-left: 20px;
     }
     
 }
