@@ -721,6 +721,24 @@ padding: 10px;
 #withdrawals-label {
     color: #a23546;
 }
+#smallest-deposit {
+    color: #0FB58F;
+}
+#biggest-deposit {
+    color: #0c915c;
+}
+#avg-deposit {
+    color: #0a7f50;
+}
+#smallest-withdrawal {
+    color: #e46478;
+}
+#biggest-withdrawal {
+    color: #db324c;
+}
+#avg-withdrawal {
+    color: #b31f36;
+}
 /* Savings History*/
 #history-container {
     background-image: url("../img/repeatable-lowpoly.jpg");
