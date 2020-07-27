@@ -178,11 +178,11 @@
                             <div class="center">
                                 <div>
                                     {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
-                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">Your recent savings activity suggests it will only be <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> until you meet your goal - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
+                                    <h6 class="blue-grey-text text-darken-2" id="savings-forecast-text">Your recent savings activity suggests it will only be <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> until you meet your goal - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
                                     {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
-                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days - <strong>That's right on time!</strong></h6>
+                                    <h6 class="blue-grey-text text-darken-2" id="savings-forecast-text">You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days - <strong>That's right on time!</strong></h6>
                                     {% else %}
-                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">Your recent savings activity suggests it will be <strong class="header-red-darken">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
+                                    <h6 class="blue-grey-text text-darken-2" id="savings-forecast-text">Your recent savings activity suggests it will be <strong class="header-red-darken">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
                                     {% endif %}
                                 </div>
                             </div>
