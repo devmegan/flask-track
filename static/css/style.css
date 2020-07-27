@@ -739,6 +739,10 @@ padding: 10px;
 #avg-withdrawal {
     color: #b31f36;
 }
+
+.insight-description {
+    font-size: 0.85rem;
+}
 /* Savings History*/
 #history-container {
     background-image: url("../img/repeatable-lowpoly.jpg");
