@@ -684,6 +684,11 @@ padding: 10px;
     background-position: center;
     min-height: 90vh;
 }
+@media only screen and (max-width: 390px) {
+    .chart-text span {
+        display: none;
+    }
+}
 @media only screen and (max-width: 600px) {
     .footer-col {
         text-align: center;
@@ -701,4 +706,5 @@ padding: 10px;
     #frozen-span {
         padding-left: 10px;
     }
+    
 }
