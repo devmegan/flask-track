@@ -169,7 +169,7 @@
             {% endif %}
             {% if not goal.achieved %}
              <!--Savings Forecast-->
-            <div class="card">
+            <div class="card hide-on-med-and-down">
                 <div class="card-content">    
                     <div class="row">
                         <div class="col s12">
@@ -214,14 +214,13 @@
                         <div class="col s6" id="needed-savings-col">
                             <span class="header-blue-lighter">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
                             <span class="header-blue" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7)) }}/week </strong></span>
-                            <span class="uppercase blue-grey-text text-darken-2"><strong>Goal's needed savings</strong></span>
+                            <span class="uppercase blue-grey-text text-darken-2"><strong>Savings to reach Goal</strong></span>
                         </div>
                     </div>
                     </div>
-                </div>
-            
+            </div>
             {% endif %}
-    </div>
+        </div>
         <div class="col s12 m8 offset-m2 l4">
             <!--Progress Doughnut Card-->
             <div class="card">
@@ -346,6 +345,59 @@
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Average Withdrawal</h6>
                 </div>
             </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if not goal.achieved %}
+             <!--Savings Forecast-->
+            <div class="card hide-on-large-only">
+                <div class="card-content">    
+                    <div class="row">
+                        <div class="col s12">
+                            <h5 class="center uppercase spaced-text header-blue" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>
+                            {% if forecast_remaining_days != "unforcastable" %}
+                            <div class="center">
+                                <div>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
+                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">Your recent savings activity suggests it will only be <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> until you meet your goal - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
+                                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
+                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days - <strong>That's right on time!</strong></h6>
+                                    {% else %}
+                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">Your recent savings activity suggests it will be <strong class="header-red-darken">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center">
+                        {% if forecast_remaining_days != "unforcastable" %}
+                        {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
+                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Want to increase your goal? <a href="" class="uppercase savings-card-link header-blue card-link"><strong>Edit Goal</strong></a></p>
+                        {% elif (forecast_remaining_days| round(0, 'ceil') | int) > ((goal.end_date.date() - date_today).days) %}
+                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Need to extend your end date? <a href="" class="uppercase savings-card-link header-blue card-link"><strong>Edit Goal</strong></a></p>
+                        {% endif %}
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6" id="user-savings-col">
+                            {% if avg_needed_perday > avg_saved_perday %}
+                            <span class="header-red-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
+                            <span id="user-savings-figure" class="header-red"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}/week</strong></span>  
+                            {% else %}
+                            <span class="header-green-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
+                            <span id="user-savings-figure" class="header-green"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
+                            {% endif %}
+                            <span class="blue-grey-text text-darken-2 uppercase "><strong>Your average savings</strong></span>
+                        </div>
+                        <div class="col s6" id="needed-savings-col">
+                            <span class="header-blue-lighter">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
+                            <span class="header-blue" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7)) }}/week </strong></span>
+                            <span class="uppercase blue-grey-text text-darken-2"><strong>Savings to reach Goal</strong></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endif %}
