@@ -652,10 +652,15 @@ padding: 10px;
 
 .chart-text {
   position:absolute;
-  top: 47%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.chart-text h4 {
+    margin-bottom: 0px;
+    font-size: 2rem;
 }
 
 #progress-labels h6 {
