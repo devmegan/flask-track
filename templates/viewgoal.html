@@ -239,7 +239,10 @@
                   
                             <div class="gold-lowpoly spaced-text">
                             <strong>
-                            {% if goal.percent_progress < 25 %}
+                            {% if goal.percent_progress == 0 %}
+                            Make your first deposit and watch your progress increase!
+                            {% elif goal.percent_progress < 25 %}
+                            You're on the way to saving a quarter of your total!
                             {% elif goal.percent_progress < 33 %}
                             You're close to saving a third of your total!
                             {% elif goal.percent_progress < 50 %}
