@@ -708,7 +708,12 @@ padding: 10px;
 #savings-forecast-header {
     margin-bottom: 30px;
 }
-
+.table-deposit {
+    color: #0c915c;
+}
+.table-withdrawal {
+    color: #db324c
+}
 .deposits-arrow {
     color: #25c19a;
 }
