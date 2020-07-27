@@ -674,10 +674,17 @@ padding: 10px;
     height: 10vh;
     line-height: 10vh;
 }
+#deposit-btn:hover {
+    background-color: #1f9566;
+}
 #withdraw-btn {
     width: 100%;
     height: 10vh;
     line-height: 10vh;
+}
+
+#withdraw-btn:hover {
+    background-color: #d42541;
 }
 
 #time-stats-card i {
