@@ -287,6 +287,7 @@
                     <p class="center"><strong>{{goal.start_date.strftime("%d %b, %Y")}} - {{goal.end_date.strftime("%d %b, %Y") }}</strong></p>
                 </div>
             </div>
+             {% if goal.deposits_number != 0%}
              <!--Deposit/Withdrawal Gauge-->
             <div class="card">
                 <div class="card-content">
@@ -305,6 +306,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% if goal.deposits_number != 0%}
              <!--Deposit/Withdrawal Stats-->
             <div class="card">
