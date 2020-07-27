@@ -22,7 +22,7 @@
     <div class="row" style="">
         <div class="col s12 m8 offset-m2 l6">
              <!--Deposit Card-->
-            <div class="card display-none">
+            <div class="card display-none" id="deposit-card">
                 <div class="card-content center">
                   <h4 class="indigo-text">Deposit</h4>
                     <h6 class="light-blue-text uppercase">Current Total: {{ user.currency }}{{ "{:,.2f}".format(goal.current_total) }} </h6>
@@ -38,7 +38,7 @@
                 </div>
             </div>  
             <!--Withdraw Card-->
-            <div class="card display-none">
+            <div class="card display-none" id="withdraw-card">
                 <div class="card-content center">
                  <h4 class="deep-orange-text text-accent-4">Withdraw</h4>
             <h6 class="deep-orange-text text-accent-2 uppercase">Up to {{ user.currency }}{{ "{:,.2f}".format(goal.current_total) }} </h6>
@@ -514,6 +514,15 @@ $('.datepicker').datepicker({
     //open datepicker on focusing on date field 
  $("#end_date").focus(function(){
     $('#end_date').click();
+ })
+
+ $("#deposit-btn").click(function(){
+    $("#deposit-card").removeClass("display-none")
+    $(".card:not('#deposit-card'), #deposit-btn, #withdraw-btn").addClass("display-none")
+ })
+  $("#withdraw-btn").click(function(){
+    $("#withdraw-card").removeClass("display-none")
+    $(".card:not('#withdraw-card'), #deposit-btn, #withdraw-btn").addClass("display-none")
  })
 </script>
 {% include 'viewgoal_js.html' %}
