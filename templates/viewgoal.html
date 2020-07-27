@@ -301,14 +301,6 @@
                                 <h4><i class="material-icons withdrawals-arrow">arrow_downward</i><strong class="withdrawals-main-figure">{{ goal.withdrawals_number }}</strong></h4>
                                 <h6 class="uppercase" id="withdrawals-label">Withdrawal{% if goal.withdrawals_number != 1 %}s{% endif %}</h6>
                             </div>
-                        {% if not goal.savings_history %}
-                        <div class="grey valign-wrapper view goal-card-overlay">
-                            <div>
-                                <h5 class="center-align">Make your first deposit to activate savings insights</h5>
-                                <a href="#update-savings-modal" class="modal-trigger btn light-blue darken-2">Deposit</a>
-                            </div>
-                        </div>
-                        {% endif %}
                         </div>
                     </div>
                 </div>
