@@ -738,6 +738,10 @@ padding: 10px;
     background-color: #d42541;
 }
 
+.goal-card-back i {
+    vertical-align: -1vh;
+}
+
 #time-stats-card i {
     font-size: 3rem
 }
