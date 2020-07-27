@@ -1,4 +1,7 @@
 /* General */
+h3{ 
+font-size: calc(15px + 2vmin)
+}
 .page-container {
     margin-bottom: 0px;
     padding-top: 5vh;
