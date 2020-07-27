@@ -715,6 +715,14 @@ padding: 10px;
 #deposit-btn-sm:hover {
     background-color: #1f9566;
 }
+
+#deposit-input {
+    margin-bottom: 5vmin;
+}
+
+.quick-cards-row {
+    margin-bottom: 5vmin;
+}
 #withdraw-btn {
     width: 100%;
     height: 10vh;
