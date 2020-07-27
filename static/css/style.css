@@ -39,6 +39,24 @@ i {
     height: 25vh;
     width: 25vh;
 }
+
+/* Colours */
+
+.header-blue {
+    color: #2279c3;
+}
+
+.header-gold {
+    color: #9e7b21;
+}
+
+.background-red {
+ background-color: #de425b;
+}
+
+.background-green {
+    background-color: #26b57c;
+}
 /* Forms */
 .input-field input[type=text]:not(.select-dropdown) {
     border: 1.5px solid;
