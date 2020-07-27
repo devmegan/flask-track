@@ -552,8 +552,8 @@ $('.datepicker').datepicker({
  })
 
  $(".goal-card-back").click(function(){
-    $(".card:not('#withdraw-card, #edit-goal-card, #delete-goal-card, #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn')").removeClass("display-none")
-    $("#withdraw-card, #deposit-card, #edit-goal-card, #delete-goal-card, #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+    $(".card:not('#withdraw-card, #edit-goal-card, #delete-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").removeClass("display-none")
+    $("#withdraw-card, #deposit-card, #edit-goal-card, #delete-goal-card").addClass("display-none")
  })
 </script>
 {% include 'viewgoal_js.html' %}
