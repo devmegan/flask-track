@@ -13,7 +13,7 @@
             </li>
             {% endif %} {% for goal in goals %}
             <li>
-                <a class="btn-floating darken-1 goal-fab-card" style="background-image: url({{ goal.image_url }})"></a>
+                <a class="btn-floating darken-1 goal-fab-card" href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" style="background-image: url({{ goal.image_url }})"></a>
             </li>
             {% endfor %}
             </ul>
