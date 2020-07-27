@@ -635,6 +635,14 @@ h5 {
     background-position: center;
     background-repeat: repeat;
 }
+
+#title-card {
+padding: 0px;
+
+}
+#title-card .card-content {
+padding: 10px;
+}
 .goal-image {
     width: 100%;
 }
