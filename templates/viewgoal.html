@@ -129,6 +129,15 @@
                     </div>
                 </div> 
             </div>
+            <!--Deposit/Withdraw Cards-->
+            <div class="row hide-on-large-only">
+                <div class="col s6 center">
+                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn"><strong>Deposit</strong></a>
+                </div>
+                <div class="col s6">
+                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn"><strong>Withdraw</strong></a>
+                </div>
+            </div>
             <!--Recent Activity Card-->
             {% if goal.savings_history %}
             <div class="card">
@@ -261,14 +270,13 @@
                 </div>
             </div>
             <!--Deposit/Withdraw Cards-->
-            <div class="row">
+            <div class="row hide-on-med-and-down">
                 <div class="col s6 center">
-                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn" href="#"><strong>Deposit</strong></a>
+                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn"><strong>Deposit</strong></a>
                 </div>
                 <div class="col s6">
-                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn" href="#"><strong>Withdraw</strong></a>
+                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn"><strong>Withdraw</strong></a>
                 </div>
-                
             </div>
             <!--Time Remaining-->
             <div class="card">
