@@ -642,6 +642,8 @@ padding: 10px;
 .goal-image {
     width: 100%;
     border-radius: 4px;
+    height: 40vh;
+    object-fit: cover;
 }
 .chart-wrapper {
   position: relative;
@@ -696,6 +698,25 @@ padding: 10px;
 #achieved-goal-card h3 {
     padding-bottom: 10px;
 }
+
+  #user-savings-figure {
+    font-size: calc(15px + 1vmin);
+}
+#needed-savings-figure {
+    font-size: calc(15px + 1vmin);
+    display: block;
+}
+#user-savings-col span {
+    display:block;
+}
+#needed-savings-col span {
+    display: block;
+    text-align: right;
+}
+#savings-forecast-header {
+    margin-bottom: 30px;
+}
+
 /* Savings History*/
 #history-container {
     background-image: url("../img/repeatable-lowpoly.jpg");
