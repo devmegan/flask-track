@@ -35,7 +35,7 @@
                                 <span class="helper-text spaced-text" data-error="Enter a name to create goal"></span>       
                             </div>
                         </div>
-                        <a class="btn white header-blue modal-trigger center waves-effect waves-white" id="create-goal-btn"><strong>Create Goal</strong></a>
+                        <a class="btn blue-btn center waves-effect waves-white" id="create-goal-btn"><strong>Create Goal</strong></a>
                         {% elif user.goals_number == 1 %}
                             {% for goal in goals %}
                                 <!--Shows if user hasn't made any deposits towards only goal-->
@@ -43,7 +43,7 @@
                                 <h5 class="uppercase spaced-text header-gold">
                                 {{ goal.goal_name }}
                                 </h5>
-                                <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Start Saving!</strong></a>
+                                <a class="waves-effect waves-light btn blue-btn" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Start Saving!</strong></a>
                                 <br /><br>
                                 <p class="blue-text text-darken-3 spaced-text" >You'll recieve more savings insights as soon as you make your first deposit</p>
                                 <br>
@@ -55,7 +55,7 @@
                         {% else %}
                         {% if user.goals_number == 0%}
                         <h6 class="uppercase spaced-text header-blue">No Current Goals</h6>
-                        <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" id="add-goal-btn"><strong>Create new goal</strong></a>
+                        <a class="waves-effect waves-light blue-btn" id="add-goal-btn"><strong>Create new goal</strong></a>
                         {% else %}
                         <h5 class="uppercase spaced-text header-blue-darker">Saving towards {{ user.goals_number }} Goals</h5>
                         {% endif %}
@@ -123,8 +123,8 @@
                                     </div>
                                     <div class="row center">
                                         <div class="col s12">
-                                            <button class="btn waves-effect waves-light form-red-btn" type="button" id="create-goal-cancel">Cancel</button>
-                                            <button class="btn waves-effect waves-dark update-btn" id="create-goal-submit" type="submit" name="action">Create Goal</button>
+                                            <button class="btn waves-effect waves-light red-btn" type="button" id="create-goal-cancel">Cancel</button>
+                                            <button class="btn waves-effect waves-dark blue-btn" id="create-goal-submit" type="submit" name="action">Create Goal</button>
                                         </div>
                                     </div>
                                 </form>
