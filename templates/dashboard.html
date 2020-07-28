@@ -233,9 +233,9 @@
                         {% for item in user.goals_achieved | reverse %} <!--reverse item order as can only push to mongodb array -->
                         {% if loop.index <= 5 %}
                         <tr>
-                            <td class="header-gold">{{ item[1] }}</td>
-                            <td class="header-gold center">{{ user.currency }}{{ "{:,.2f}".format(item[2]) }}</td>
-                            <td class="header-gold right">{{ item[3].strftime("%d %b, %Y") }}</td>
+                            <td class="header-gold">{{ item[0] }}</td>
+                            <td class="header-gold center">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</td>
+                            <td class="header-gold right">{{ item[2].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
                         {% endfor %}
