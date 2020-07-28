@@ -4,11 +4,11 @@
   <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
         {% if user %}
-            <a class="waves-effect waves-light btn jumbotron-btn white blue-text index-btn" href="{{ url_for('dashboard', username=user.username) }}"><span class="index-btn-text"><strong>Dashboard</strong></span></a>
-             <a class="waves-effect waves-light btn jumbotron-btn white blue-text index-btn" href="{{ url_for('dashboard', username=user.username) }}"><span class="index-btn-text"><strong>Goals</strong></span></a>
+            <a class="waves-effect waves-light btn jumbotron-btn white blue-text header-blue" href="{{ url_for('dashboard', username=user.username) }}"><strong>Dashboard</strong></a>
+             <a class="waves-effect waves-light btn jumbotron-btn white blue-text header-blue" href="{{ url_for('dashboard', username=user.username) }}"><strong>Goals</strong></a>
         {% else %}
-        <a class="waves-effect waves-light btn jumbotron-btn white blue-text index-btn" href="{{ url_for('signup') }}"><span class="index-btn-text"><strong>Sign up</strong></span></a>
-        <a class="waves-effect waves-light btn jumbotron-btn white blue-text index-btn" href="{{ url_for('login') }}"><span class="index-btn-text"><strong>Log In</strong></span></a>
+        <a class="waves-effect waves-light btn jumbotron-btn white header-blue" href="{{ url_for('signup') }}"><strong>Sign up</span></a>
+        <a class="waves-effect waves-light btn jumbotron-btn white header-blue" href="{{ url_for('login') }}"><strong>Log In</span></a>
         {% endif %}
     </div>
     <div class="carousel-item" id="index-carousel-one" href="#one!">
