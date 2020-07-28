@@ -45,11 +45,11 @@
                                 </h5>
                                 <a class="waves-effect waves-light btn blue-btn" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Start Saving!</strong></a>
                                 <br /><br>
-                                <p class="blue-text text-darken-3 spaced-text" >You'll recieve more savings insights as soon as you make your first deposit</p>
+                                <p class="header-blue-darker spaced-text" >You'll recieve more savings insights as soon as you make your first deposit</p>
                                 <br>
                                 {% else %}
                                 <br>
-                                <h6 class="uppercase spaced-text">Saving towards one goal: <strong>{{ goal.goal_name }}</strong> </h6>
+                                <h6 class="uppercase spaced-text header-blue">Saving towards one goal: <strong class="header-blue-darker">{{ goal.goal_name }}</strong> </h6>
                                 {% endif %}
                             {% endfor %}
                         {% else %}
@@ -179,16 +179,16 @@
             {% if user.deposits_number > 0 %}
             <div class="card">
                 <div class="card-content center blue-text">
-                    <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
-                    <span><a href="{{ url_for('savingshistory', username=user.username ) }}" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
+                    <h5 class="center uppercase spaced-text header-blue"><strong>Recent Activity</strong></h5>
+                    <span><a href="{{ url_for('savingshistory', username=user.username ) }}" class="center header-blue-lighter card-link"><strong>View Full Savings History</strong></a></span>
                     <!--Savings History Table-->
                     <div class="grey-border">
                         <table class="highlight">
                         <thead>
                         <tr>
-                            <th class="uppercase spaced-text">Amount</th>
-                            <th class="uppercase center spaced-text">Goal</th>
-                            <th class="uppercase right spaced-text">Date</th>
+                            <th class="uppercase spaced-text header-blue-darker">Amount</th>
+                            <th class="uppercase center spaced-text header-blue-darker">Goal</th>
+                            <th class="uppercase right spaced-text header-blue-darker">Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -204,8 +204,8 @@
                                <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[2]) }}</strong>
                             </td>
                             {% endif %}
-                            <td class="center header-blue">{{ item[0] }}</td>
-                            <td class="right header-blue">{{ item[1].strftime("%d %b, %Y") }}</td>
+                            <td class="center header-blue-darker">{{ item[0] }}</td>
+                            <td class="right blue-grey-text text-darken-1">{{ item[1].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
                         {% endfor %}
