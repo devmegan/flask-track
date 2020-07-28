@@ -124,7 +124,7 @@
             <div class="card" id="achieved-goal-card">
                 <div class="card-content center">
                 <h3 class="header-gold uppercase spaced-text"><strong>Congratulations!</strong></h3>
-                <h5 class="header-gold">You've reached your goal and saved {{user.currency}}{{"{:,.2f}".format(goal.end_total)}}</h5>
+                <h5 class="header-gold">You've reached your goal and saved {{user.currency}}{{"{:,.2f}".format(goal.current_total)}}</h5>
                 </div> 
             </div>
             {% endif %}
@@ -142,8 +142,8 @@
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
                     <div id="progress-labels">
-                        <h6 class="left header-blue"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </strong></h6>
-                        <h6 class="right header-blue"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
+                        <h6 class="left {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </strong></h6>
+                        <h6 class="right {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
                     </div>
                 </div> 
             </div>
