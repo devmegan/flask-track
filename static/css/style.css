@@ -758,5 +758,8 @@ padding: 10px;
     #goals-container {
         padding-left: 20px;
     }
+    nav .brand-logo {
+        margin-left: 3vw
+    }
     
 }
