@@ -215,14 +215,13 @@ def update_savings(goal_id, action):
 
     updated_savings = goal_to_update['current_total'] + update_value
     percent_progress = int((updated_savings/old_end_total) * 100)
-
+    achieved = goal_to_update['achieved']
     # check to see if goal will now be reached
-    if (updated_savings >= goal_to_update['end_total']):
-        achieved = True
-        user_goals_achieved = [goal_to_update['_id'],goal_to_update['goal_name'], updated_savings,  datetime.today()]
-        coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
-    else:
-        achieved = False
+    if not goal_to_update['achieved']:
+        if (updated_savings >= goal_to_update['end_total']):
+            achieved = True
+            user_goals_achieved = [goal_to_update['goal_name'], updated_savings,  datetime.today()]
+            coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
 
     updated_savings_history = [datetime.today(), update_value]
     user_updated_savings_history = [goal_to_update['goal_name'], datetime.today(), update_value]
