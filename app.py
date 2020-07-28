@@ -219,7 +219,7 @@ def update_savings(goal_id, action):
     # check to see if goal will now be reached
     if (updated_savings >= goal_to_update['end_total']):
         achieved = True
-        user_goals_achieved = [goal_to_update['goal_name'], updated_savings,  datetime.today()]
+        user_goals_achieved = [goal_to_update['_id'],goal_to_update['goal_name'], updated_savings,  datetime.today()]
         coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
     else:
         achieved = False
