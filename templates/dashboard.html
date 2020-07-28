@@ -27,7 +27,7 @@
                         <h4 class="center uppercase spaced-text header-blue"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
                         <span><a href="{{url_for('profile', username=user.username)}}" class="header-blue-lighter card-link modal-trigger center"><strong>View Profile</strong></a></span>
                         <br />
-                        {% if user.deposits_number == 0 %}
+                        {% if user.goals_number == 0 and user.deposits_number == 0 %}
                         <h6 class="create-goal-prompt spaced-text uppercase header-blue-darker">Create a goal to start saving!</h6>
                         <div class="row">
                             <div class="input-field col s12 m8 offset-m2">
