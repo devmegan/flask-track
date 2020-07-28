@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %} 
 {% block nav_links %}
 {% if user %}
@@ -24,5 +25,26 @@
 {% endif %}
 {% endblock %}
 {% block content %}
-<h1>404</h1>
+<div class="container-fluid page-container" id="dash-container">
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card" id="main-card">
+            <div class="card-content center">
+            <h1 class="header-blue"><strong>404</strong></h1>
+            <h2 class="header-blue uppercase spaced-text">Page Not Found</h2>
+            <i class="material-icons medium header-blue">bug_report</i>
+            <div class="row">
+                <div class="col s12">
+                    {% if user %}
+                    <a href="{{ url_for('dashboard', username=user.username) }}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong><span class="hide-on-med-and-down">Back to </span>Dashboard</strong></a>
+                    {% else %}
+                    <a href="{{url_for('index')}}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong>Back to Home</strong></a>
+                    {% endif %}
+                </div>
+            </div>    
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 {% endblock %}
