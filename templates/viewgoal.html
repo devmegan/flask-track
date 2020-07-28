@@ -275,14 +275,12 @@
                             You're half way to achieving your goal!
                             {% elif goal.percent_progress < 64 %}
                             You're over half way to achieving your goal!
-                            {% elif goal.percent_progress < 70 %}
+                            {% elif goal.percent_progress < 75 %}
                             You're over two thirds of the way to achieving your goal!
-                            {% elif goal.percent_progress > 75 %}
+                            {% elif goal.percent_progress < 100 %}
                             You're in the final quarter!
-                            {% elif goal.percent_progres == 100 %}
+                            {% elif goal.achieved %}
                             Congratulations! You've reached your goal!
-                            {% elif goal.percent_progress > 100 %}
-                            Congratulations! You've exceeded your goal! 
                             {% endif %}
                             </div>
                 </div>
