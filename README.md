@@ -35,4 +35,21 @@ Based on the four user stories set out above, there are five main goals for this
 - Allow users to increase/decrease their goal total
 - Allow uesrs to extend/bring forwards their end date
 
+### Wireframes
+These wireframes were sketched at the starat of the design process:
+- [Landing Page](</>)
+- [Log In Page](</>)
+- [Sign Up Page](</>)
+- [Dashboard](</>)
+- [Goal View](</>)
+- [User Profile](</>)
+- [Savings History](</>)
 
+Based on the preliminary sketches above, seven sets of wireframes were created using [Miro](https://miro.com/):
+- [Landing Page](</>)
+- [Log In Page](</>)
+- [Sign Up Page](</>)
+- [Dashboard](</>)
+- [Goal View](</>)
+- [User Profile](</>)
+- [Savings History](</>)
