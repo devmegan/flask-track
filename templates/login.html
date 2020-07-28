@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container-fluid page-container" id="login-signup-container">
     <div class="row">
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
             <div class="card s12" id="login-signup-card">
                 <div class="card-content">
                     <div class="grey-border">
@@ -11,13 +11,13 @@
                             <div class="col s10 offset-s1">
                                 <form action="{{url_for('login_auth')}}" method="POST">
                                     <div class="row">
-                                        <div class="input-field col s12 m8 offset-m2">
+                                        <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
                                             <input class="white" placeholder="Username" id="username" name="username" type="text" required>
                                             <span class="helper-text spaced-text">Username</span>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="input-field col s12 m8 offset-m2">
+                                        <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
                                             <input class="white" placeholder="Password" id="password" name="password" type="password" required>
                                             <span class="helper-text spaced-text">Password</span>
                                         </div>
