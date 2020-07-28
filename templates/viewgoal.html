@@ -123,16 +123,16 @@
             <!--achieved goal card-->
             <div class="card" id="achieved-goal-card">
                 <div class="card-content center">
-                <h3 class="gold-lowpoly uppercase spaced-text"><strong>Congratulations!</strong></h3>
-                <h5 class="gold-lowpoly">You've reached your goal and saved {{user.currency}}{{"{:,.2f}".format(goal.end_total)}}</h5>
+                <h3 class="header-gold uppercase spaced-text"><strong>Congratulations!</strong></h3>
+                <h5 class="header-gold">You've reached your goal and saved {{user.currency}}{{"{:,.2f}".format(goal.end_total)}}</h5>
                 </div> 
             </div>
             {% endif %}
             <!--Main Card-->
              <div class="card" id="title-card">
                 <div class="card-content center">
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} header-blue {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} gold-lowpoly {% else %} header-blue {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
                 </div>
              </div>
             <div class="card" id="goal-main-card">
