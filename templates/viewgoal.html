@@ -435,57 +435,19 @@
 <!--load chart.js-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script>
-depositsGauge('goal-deposits-gauge', {{ goal.deposits_number }}, {{ goal.withdrawals_number }})
-function depositsGauge (elemId, deposits, withdrawals){
-  var ctx = document.getElementById(elemId).getContext('2d');
-  // create the gradient for the line/area part of chart
-    var gradientDeposit = ctx.createLinearGradient(500, 0, 0, 0);
-    gradientDeposit.addColorStop(0, 'rgba(38,146,148, 0.7')
-    gradientDeposit.addColorStop(0.2, 'rgba(41, 222, 165, 0.7')
-    gradientDeposit.addColorStop(1, 'rgba(47,148,146, 0.7')
-    var gradientDepositBorder = ctx.createLinearGradient(500, 0, 0, 0);
-    gradientDepositBorder.addColorStop(0, 'rgba(0, 167, 155, 1')
-    gradientDepositBorder.addColorStop(0.2, 'rgba(41, 222, 165, 0.7')
-    gradientDepositBorder.addColorStop(1, 'rgba(47,148,146, 0.7')
-    var gradientWithdrawal = ctx.createLinearGradient(500, 0,0, 0);
-    gradientWithdrawal.addColorStop(0.2, 'rgba(238, 9, 121, 0.7') 
-    gradientWithdrawal.addColorStop(0, 'rgba(244, 107, 69, 0.7')
-    gradientWithdrawal.addColorStop(1, 'rgba(229, 57, 35, 0.7')
-    var gradientWithdrawalBorder = ctx.createLinearGradient(500, 0, 0, 0);
-    gradientWithdrawalBorder.addColorStop(0.1, 'rgba(238, 9, 121, 0.9') 
-    gradientWithdrawalBorder.addColorStop(0, 'rgba(244, 107, 69, 0.9')
-    gradientWithdrawalBorder.addColorStop(1, 'rgba(229, 57, 35, 0.9') 
-  var myChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Deposits', 'Withdrawals'],
-        datasets: [{
-            label: 'Deposits/Withdrawals',
-            data: [deposits, withdrawals],
-            backgroundColor: [
-                gradientDeposit,
-                gradientWithdrawal
-            ],
-            borderColor: [
-                gradientDepositBorder,
-                gradientWithdrawalBorder
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        legend: {
-            position: 'bottom'
-        },
-      // these options make it a gauge chart/half doughnut
-          rotation: 1 * Math.PI,
-    circumference: 1 * Math.PI
-    }
-});
-}
-$(document).ready(function(){
-    
-})
+$("#deposit-btn, #deposit-btn-sm").click(function(){
+    $("#deposit-card").removeClass("display-none")
+    $(".card:not('#deposit-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+ })
+  $("#withdraw-btn").click(function(){
+    $("#withdraw-card").removeClass("display-none")
+    $(".card:not('#withdraw-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+ })
+
+ $(".goal-card-back").click(function(){
+    $(".card:not('#withdraw-card, #edit-goal-card, #delete-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").removeClass("display-none")
+    $("#withdraw-card, #deposit-card, #edit-goal-card, #delete-goal-card").addClass("display-none")
+ })
 $("#time-stats-card").hover(function() {
     $("#time-stats-one, #time-stats-two").toggleClass("display-none");
 });
@@ -540,20 +502,6 @@ $('.datepicker').datepicker({
     //open datepicker on focusing on date field 
  $("#end_date").focus(function(){
     $('#end_date').click();
- })
-
- $("#deposit-btn, #deposit-btn-sm").click(function(){
-    $("#deposit-card").removeClass("display-none")
-    $(".card:not('#deposit-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
- })
-  $("#withdraw-btn").click(function(){
-    $("#withdraw-card").removeClass("display-none")
-    $(".card:not('#withdraw-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
- })
-
- $(".goal-card-back").click(function(){
-    $(".card:not('#withdraw-card, #edit-goal-card, #delete-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").removeClass("display-none")
-    $("#withdraw-card, #deposit-card, #edit-goal-card, #delete-goal-card").addClass("display-none")
  })
 </script>
 {% include 'viewgoal_js.html' %}
