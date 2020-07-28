@@ -214,7 +214,10 @@ def update_savings(goal_id, action):
         action_complete = " deposited"
 
     updated_savings = goal_to_update['current_total'] + update_value
-    percent_progress = int((updated_savings/old_end_total) * 100)
+    if int((updated_savings/old_end_total) * 100) > 100:
+        percent_progress = 100
+    else:
+        percent_progress = int((updated_savings/old_end_total) * 100)
     achieved = goal_to_update['achieved']
     # check to see if goal will now be reached
     if not goal_to_update['achieved']:
