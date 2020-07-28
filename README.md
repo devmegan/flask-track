@@ -19,7 +19,7 @@ The application will be deployed to Heroku and will be accessible here: </>.
      - [Navigation](#navigation)
      - [Landing Page](#landing-page)
      - [Log In](#log-in)
-     - [Sign Up]#(#sign-up)
+     - [Sign Up](#sign-up)
      - [Dashboard](#dashboard)
      - [Goal View](#goal-view)
      - [User Profile](#user-profile)
