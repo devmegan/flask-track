@@ -349,7 +349,9 @@ nav .brand-logo:hover {
 .dropdown-trigger:focus {
     outline: none;
 }
-
+nav ul a {
+    font-weight: 600;
+}
 nav ul a:hover {
     color: rgb(79, 175, 154);
 }
