@@ -23,24 +23,24 @@
             <!--Main Card-->
             <div class="card" id="main-card">
                 <div class="card-content center">
-                    <div class="blue-lowpoly-border">
-                        <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
-                        <span><a href="{{url_for('profile', username=user.username)}}" class="lowpoly-link modal-trigger center"><strong>View Profile</strong></a></span>
+                    <div class="grey-border">
+                        <h4 class="center uppercase spaced-text header-blue"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
+                        <span><a href="{{url_for('profile', username=user.username)}}" class="header-blue-lighter card-link modal-trigger center"><strong>View Profile</strong></a></span>
                         <br />
                         {% if user.deposits_number == 0 %}
-                        <h6 class="create-goal-prompt spaced-text uppercase">Create a goal to start saving!</h6>
+                        <h6 class="create-goal-prompt spaced-text uppercase header-blue-darker">Create a goal to start saving!</h6>
                         <div class="row">
                             <div class="input-field col s12 m8 offset-m2">
                                 <input id="create-goal-name" name="create-goal-name" type="text" placeholder="Goal Name" required>
                                 <span class="helper-text spaced-text" data-error="Enter a name to create goal"></span>       
                             </div>
                         </div>
-                        <a class="btn white blue-text modal-trigger center spaced-text waves-effect waves-white update-btn" id="create-goal-btn"><strong>Create Goal</strong></a>
+                        <a class="btn white header-blue modal-trigger center waves-effect waves-white" id="create-goal-btn"><strong>Create Goal</strong></a>
                         {% elif user.goals_number == 1 %}
                             {% for goal in goals %}
                                 <!--Shows if user hasn't made any deposits towards only goal-->
                                 {% if goal.deposits_number == 0 %}
-                                <h5 class="uppercase spaced-text gold-lowpoly">
+                                <h5 class="uppercase spaced-text header-gold">
                                 {{ goal.goal_name }}
                                 </h5>
                                 <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}"><strong>Start Saving!</strong></a>
@@ -54,17 +54,17 @@
                             {% endfor %}
                         {% else %}
                         {% if user.goals_number == 0%}
-                        <h6 class="uppercase spaced-text dark-blue-lowpoly">No Current Goals</h6>
+                        <h6 class="uppercase spaced-text header-blue">No Current Goals</h6>
                         <a class="waves-effect waves-light btn jumbotron-btn blue darken-1 white-text" id="add-goal-btn"><strong>Create new goal</strong></a>
                         {% else %}
-                        <h5 class="uppercase spaced-text">Saving towards {{ user.goals_number }} Goals</h5>
+                        <h5 class="uppercase spaced-text header-blue-darker">Saving towards {{ user.goals_number }} Goals</h5>
                         {% endif %}
                         {% endif %}
-                        <h5 class="uppercase"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
+                        <h5 class="uppercase header-blue-darker"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
                         {% if (user.goals_achieved | length) == 1 %}
-                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length }} Goal Achieved</h6>
+                        <h6 class="uppercase spaced-text header-gold">{{ user.goals_achieved | length }} Goal Achieved</h6>
                         {% elif (user.goals_achieved | length) > 1 %}
-                        <h6 class="uppercase spaced-text gold-lowpoly">{{ user.goals_achieved | length}} Goals Achieved</h6>
+                        <h6 class="uppercase spaced-text header-gold">{{ user.goals_achieved | length}} Goals Achieved</h6>
                         {% endif %}
                     </div>
                 </div> 
@@ -74,8 +74,8 @@
             <!--Create Goal Card-->
             <div class="card display-none" id="create-goal-card">
                 <div class="card-content center">
-                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Create Goal</strong></h4>
-                    <div class="blue-lowpoly-border">
+                    <h4 class="center uppercase spaced-text header-blue"><strong>Create Goal</strong></h4>
+                    <div class="grey-border">
                         <div class="row">
                             <div class="col s12">
                                  <form id="create-goal-form" action="{{url_for('insert_goal')}}" method="POST">
@@ -97,18 +97,18 @@
                                         <div class="input-field col s12 l5">
                                         <div class="row" id="radio-row">
                                             <div class="col s12 ">
-                                            <span class="helper-text spaced-text dark-blue-lowpoly">How would you like to set the image for your goal?</span>
+                                            <span class="helper-text spaced-text header-blue">How would you like to set the image for your goal?</span>
                                             </div>
                                             <div class="col s6">
                                                 <label>
                                                     <input class="with-gap tooltipped" data-position="bottom" data-tooltip="I am a tooltip" name="img-method" id="url" value="url" type="radio" />
-                                                    <span class="tooltipped dark-blue-lowpoly" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
+                                                    <span class="tooltipped header-blue" data-position="bottom" data-tooltip="If you have a specific image for your goal, you can upload it by its URL">URL</span>
                                                 </label>
                                             </div>
                                             <div class="col s6">
                                                 <label>
                                                 <input class="with-gap" name="img-method" id="keyword" value="keyword" type="radio"/>
-                                                    <span class="tooltipped dark-blue-lowpoly" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
+                                                    <span class="tooltipped header-blue" data-position="bottom" data-tooltip="We'll pick an image for you related to your goal. You can always change it later">Keyword</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -182,7 +182,7 @@
                     <h5 class="center uppercase spaced-text"><strong>Recent Activity</strong></h5>
                     <span><a href="{{ url_for('savingshistory', username=user.username ) }}" class="center lowpoly-link"><strong>View Full Savings History</strong></a></span>
                     <!--Savings History Table-->
-                    <div class="blue-lowpoly-border">
+                    <div class="grey-border">
                         <table class="highlight">
                         <thead>
                         <tr>
@@ -196,16 +196,16 @@
                         {% if loop.index <= 5 %}
                         <tr>
                             {% if item[2] > 0 %}
-                            <td class="table-deposit green-lowpoly">
+                            <td class="table-deposit header-green">
                                 <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[2]) }}</strong>
                             </td>
                             {% else %}
-                            <td class="table-withdrawal red-lowpoly">
+                            <td class="table-withdrawal header-red">
                                <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[2]) }}</strong>
                             </td>
                             {% endif %}
-                            <td class="center dark-blue-lowpoly">{{ item[0] }}</td>
-                            <td class="right dark-blue-lowpoly">{{ item[1].strftime("%d %b, %Y") }}</td>
+                            <td class="center header-blue">{{ item[0] }}</td>
+                            <td class="right header-blue">{{ item[1].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
                         {% endfor %}
@@ -219,23 +219,23 @@
             {% if user.goals_achieved %}
             <div class="card">
                 <div class="card-content center">
-                    <h5 class="center uppercase spaced-text gold-lowpoly"><strong>Achieved Goals</strong></h5>
-                      <div class="blue-lowpoly-border">
+                    <h5 class="center uppercase spaced-text header-gold"><strong>Achieved Goals</strong></h5>
+                      <div class="header-blue">
                         <table class="highlight">
                         <thead>
                         <tr>
-                            <th class="uppercase spaced-text dark-blue-lowpoly">Goal</th>
-                            <th class="uppercase center spaced-text dark-blue-lowpoly">Amount</th>
-                            <th class="uppercase right spaced-text dark-blue-lowpoly">Date</th>
+                            <th class="uppercase spaced-text header-blue">Goal</th>
+                            <th class="uppercase center spaced-text header-blue">Amount</th>
+                            <th class="uppercase right spaced-text header-blue">Date</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for item in user.goals_achieved | reverse %} <!--reverse item order as can only push to mongodb array -->
                         {% if loop.index <= 5 %}
                         <tr>
-                            <td class="gold-lowpoly">{{ item[0] }}</td>
-                            <td class="gold-lowpoly center">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</td>
-                            <td class="gold-lowpoly right">{{ item[2].strftime("%d %b, %Y") }}</td>
+                            <td class="header-gold">{{ item[0] }}</td>
+                            <td class="header-gold center">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</td>
+                            <td class="header-gold right">{{ item[2].strftime("%d %b, %Y") }}</td>
                         </tr>
                         {% endif %}
                         {% endfor %}
