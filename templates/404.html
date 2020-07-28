@@ -38,7 +38,7 @@
                     {% if user %}
                     <a href="{{ url_for('dashboard', username=user.username) }}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong><span class="hide-on-med-and-down">Back to </span>Dashboard</strong></a>
                     {% else %}
-                    <a href="{{url_for('index')}}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong>Back to Home</strong></a>
+                    <a href="{{url_for('index')}}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong><span class="hide-on-med-and-down">Back to </span> Home</strong></a>
                     {% endif %}
                 </div>
             </div>    
