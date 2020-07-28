@@ -333,6 +333,8 @@ If the user tries to access their user profile but they are not in session, they
 - On larger devices, toats are displayed to the user in the top right-hand corner of the screen. 
 
 ### Footer
+The footer is displayed across the bottom of every page and takes up the full width of the viewport.  
+
 <img src="readme-assets/img/footer-sm-loggedout.jpg" style="margin: 0;">
 <img src="readme-assets/img/footer-sm-loggedin.jpg" style="margin: 0;">  
 
