@@ -5,8 +5,8 @@
         <div class="col s12 m6 offset-m3">
             <div class="card s12" id="login-signup-card">
                 <div class="card-content">
-                    <div class="blue-lowpoly-border">
-                        <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Log In</strong></h4>
+                    <div class="grey-border">
+                        <h4 class="center uppercase spaced-text header-blue"><strong>Log In</strong></h4>
                         <div class="row">
                             <div class="col s10 offset-s1">
                                 <form action="{{url_for('login_auth')}}" method="POST">
@@ -24,8 +24,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12 center">
-                                            <button class="btn waves-effect waves-light form-action-btn white" type="submit" id="login-btn" name="action"><strong>Log In</strong></button>
-                                            <p class="">Don't have an account yet? <a href="{{ url_for('signup') }}"><strong class="action-text">Sign Up!</strong></a></p>
+                                            <button class="btn waves-effect waves-light blue-btn" type="submit" id="login-btn" name="action"><strong>Log In</strong></button>
+                                            <p class="header-blue-darker">Don't have an account yet? <a href="{{ url_for('signup') }}"><strong class="header-blue-lighter card-link">Sign Up!</strong></a></p>
                                         </div>
                                     </div>
                                 </form>

@@ -5,15 +5,15 @@
         <div class="col s12 m8 offset-m2">
             <div class="card s12" id="login-signup-card">
                 <div class="card-content">
-                    <h4 class="center uppercase spaced-text dark-blue-lowpoly"><strong>Sign Up</strong></h4>
+                    <h4 class="center uppercase spaced-text header-blue"><strong>Sign Up</strong></h4>
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="blue-lowpoly-border">
+                            <div class="grey-border">
                                 <form action="{{url_for('register_user')}}" id="register-user-form" method="POST">
                                     <div class="row">
                                         <div class="col s12 center">
                                             <div class="switch" >
-                                                <label class="dark-blue-lowpoly">
+                                                <label class="header-blue">
                                                     £ 
                                                     <input type="checkbox" id="currency" name="currency">
                                                     <span class="lever"></span>
@@ -55,8 +55,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12 center">
-                                            <button class="btn waves-effect waves-blue form-action-btn" type="submit" id="signup-btn" name="action"><strong>Sign Up</strong></button>
-                                            <p>Already have an account? <a href="{{ url_for('login') }}"><strong class="action-text">Log In!</strong></a></p>
+                                            <button class="btn waves-effect waves-blue blue-btn" type="submit" name="action"><strong>Sign Up</strong></button>
+                                            <p class="header-blue-darker">Already have an account? <a href="{{ url_for('login') }}"><strong class="header-blue-lighter card-link">Log In!</strong></a></p>
                                         </div>
                                     </div>
                                 </form>
