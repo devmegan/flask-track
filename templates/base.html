@@ -20,7 +20,7 @@
         {% else %}
         <a href="{{ url_for('index') }}" class="brand-logo header-blue"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
         {% endif %}
-        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons" id="nav-menu-bars">menu</i></a>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons header-blue" id="nav-menu-bars">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{{url_for('index')}}" class="header-blue">Home</a></li>
             {% if user %}
