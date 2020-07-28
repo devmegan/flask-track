@@ -8,10 +8,10 @@ The application will be deployed to Heroku and will be accessible here: </>.
 
 ## Contents
 1. [UX](#ux)
-  - [Users](#users)
-  - [User Stories](#user-stories)
-  - [Goals](#resulting-goals)
-  - [Wireframes](#wireframes)
+    - [Users](#users)
+    - [User Stories](#user-stories)
+    - [Goals](#resulting-goals)
+    - [Wireframes](#wireframes)
 
 ## UX
 ### Users
