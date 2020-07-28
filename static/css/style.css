@@ -311,23 +311,6 @@ nav .nav-wrapper {
     background-color: #f8f8f8;
 }
 
-#nav-menu-bars {
-    color: rgb(15, 61, 114);  /* placeholder colour if browser doesn't support image text bg */
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#nav-menu-bars:hover {
-    color: rgb(79, 175, 154);
-    background: url("../img/green-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
 
 nav .brand-logo:hover {
