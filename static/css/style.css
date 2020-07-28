@@ -264,6 +264,9 @@ nav ul a:hover {
 }
 
 /* Footer */
+footer {
+    padding-bottom: 2vh;
+}
 footer i {
     vertical-align: -5px;
 }
