@@ -300,8 +300,9 @@ footer a:hover {
 #login-signup-card {
     margin-top: 5vh;
 }
-
-
+#login-signup-btn {
+    margin-bottom: 2vh;
+}
 
 
 #signup-row {
