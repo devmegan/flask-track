@@ -56,8 +56,10 @@ Based on the preliminary sketches above, seven sets of wireframes were created u
 - [Savings History](</>)
 
 ## Information Architecture 
-All app, user and goals data are stored in three MongoDB collections, ```"app_stats"```, ```"users"```, and ```"goals"```. MongoDB is a non-relational database, and the users and goals collections are linked by the user's username, which is unique. Tables showing the architecture of each collection are shown below:
+All app, user and goals data are stored in three MongoDB collections, ```"app_stats"```, ```"users"```, and ```"goals"```. MongoDB is a non-relational database, and the users and goals collections are linked by the user's username, which is unique to the user. Tables showing the architecture of each collection are shown below:
 
 <img src="readme-assets/img/mongo-architecture.jpg" style="margin: 0;">
+
+
 
 
