@@ -123,7 +123,7 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - If the user is in session, each card displays a mockup to differnt parts of the app (dashboard, profile, savings history) to provide quick links to the user to reach each page. 
 
 ### Log In 
-</>
+<img src="readme-assets/img/login-mockup.jpg" style="margin: 0;">
 - The log in page presents the user with a card containing the login form. At the top of the card is the log in header. 
 - The log in form has two input fields, username and password. Each field is identified to the user by placeholder text and helper-text.
 - Below the form is a Log In button which submits the form for server-side user authentification.
