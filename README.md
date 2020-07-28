@@ -28,6 +28,22 @@ The application will be deployed to Heroku and will be accessible here: </>.
      - [Flashed Messages](#flashed-messages)
      - [Footer](#footer)
      - [Future Features](#future-features)
+5. [Technologies Used](#technologies-used)
+    - [Frameworks](#frameworks)
+    - [Template Engines](#template-engines)
+    - [Databases](#databases)
+    - [Backend Libraries](#backend-librarires)
+    - [Frontend Libraries](#frontend-libraries)
+    - [Languages](#languages)
+    - [Development Tools](#development-tools)
+    - [Testing Tools](#testing-tools)
+6. [Testing](#testing)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
+    - [Content and Code](#content-and-code)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
+
  
 
 ## UX
@@ -198,6 +214,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Progress Doughnut Card
 - The progress chart is visible as soon as the user creates the goal. The chart itself displays the users progress towards completing their goal. 
+- This doughnut chart is provided by [chart.js](https://www.chartjs.org/). 
 - The text inside the progress chart lets the user know what percentage of their end total they have already saved. 
 - Text below the progress header in the card gives the user some basic feedback on how close they are to completing their goal (one quarter, one third, half way...). If the user has completed their goal, this text congratulates them on reaching their target. 
 
@@ -215,6 +232,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Deposits Gauge 
 - Once the user has made their first deposit towards the goal, the deposits gauge card becomes visbile. This card shows the user the number of deposits and withdrawals they have made. 
+- This deposits gauge is a doughnut chart provided by [chart.js](https://www.chartjs.org/), and set to display across only 180 degrees, to transform it into the gauge shape. 
 - The deposits portion of the gauge is on the left-hand side. Below this side, the number of deposits is displayed in text. 
 - The withdrawals portion of the guage is on the right-hand side. Below this side, the number of withdrwals is displayed in text. 
 
@@ -326,12 +344,53 @@ If the user tries to access their user profile but they are not in session, they
 2. I would like to provide login/signup validation to the client before the form submits by making AJAX calls after the user stops typing for a period of time. 
 3. A users password is currently only restricted by the minimum length of six characters. I would like to improve user security by making sure the user is including a mix of characters, and that their password does not match their name, e.t.c. I would also like to offer a way for users to reset their password if it has been forgotten. 
 
+## Technologies Used
+### Frameworks 
+- [Flask Framework](https://palletsprojects.com/p/flask/) used as a python framework to develop the track app. Not only does this act as the microserver for the app.
+### Template Engines 
+- [Jinja](https://palletsprojects.com/p/jinja/) to display data from the backend of the app and apply conditions to the HTML code. 
+### Databases 
+- [MongoDB](https://www.mongodb.com) to provide the database which backs this app. 
+### Backend Libraries
+- [PyMongo](https://pymongo.readthedocs.io/en/stable/) to allow the Python app to communicate with MongoDB. 
+- [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) to bridge between Flask and PyMongo and simplify writing CRUD functions for MongoDB in Python. 
+- [Werkzeug.Security](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) to hash passwords on signup/password update so that they are not stored in plain-text in MongoDB and to confirm passwords on updating records.  
+- [datetime](https://docs.python.org/3/library/datetime.html) to provide a python library for manipulating dates across the app. 
+### Frontend Libraries
+- [jQuery](https://jquery.com/) to make the app's elements interactive and provide DOM manipulation. 
+- [chart.js](https://www.chartjs.org/) to provide the JavaScript charts for the view goal page. 
+- [Materialize CSS 1.0.0](https://materializecss.com/) to create the responsive grid structure of the app, provide pre-styled page elements and to easily apply inline SASS styles. Also used to supply the JavaScript driven toasts for flashed messages, form validation and date pickers. 
+### Languages
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) to create the app elements. 
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) to style the app elements. 
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), paired with [jQuery](), to make the app interactive.
+- [Python](https://docs.python.org/3/) to work with the Flask web framework. 
+### Development Tools
+- [GitHub](http://github.com/) and [Gitpod](https://gitpod.io/) to develop the app's code and provide version control. 
+- [Heroku](https://www.heroku.com/) to deploy the app via Heroku's cloud platform. 
+### Testing Tools
+For information about the testing of this app and the testing tools used, see the separate [testing.md](TESTING.md) file. 
+### Content
+- [Unsplash](https://unsplash.com/) to provide the image URLs for goals where the image is set by keyword. 
+- [Smart Mockups](https://smartmockups.com/) to create the app mockups used on the index page of the app. 
+- [AmIResponsive] to create the mockups used in the readme.
 
 
+## Testing 
+For information about the testing of this webpage, see the separate [testing.md](TESTING.md) file
 
+## Deployment
+This site was developed as GitHub repository using GitPod. It has been deployed to Heroku. 
 
+## Credits
 
+### Content and Code
+All the content and code for this app has been written by myself. 
 
+### Media
+- The six mockups of the app used on the index page for the site were made using - [Smart Mockups](https://smartmockups.com/). 
+- The mockups used in this readme were masde using [AmIResponsive](). 
+- The goal images set by user keyword are fetched from [Unsplash](https://unsplash.com/). 
 
-
-
+### Acknowledgements
+This project was created an app for submission to the [Code Institute](https://codeinstitute.net/) and is for educational use only. 
