@@ -50,7 +50,12 @@ i {
 .background-blue {
     background-color: #2279c3;
 }
-
+.blue-btn {
+    background-color: #1f6fb2;
+}
+.blue-btn:hover {
+    background-color: #318ddb;
+}
 .header-white {
     color: #fefefe;
 }
@@ -380,55 +385,11 @@ footer a:hover {
 #login-signup-card {
     margin-top: 5vh;
 }
-#login-signup-header {
-    color: rgb(15, 61, 114);
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.blue-btn:hover {
+
 }
 
-#login-btn {
-    color: rgb(15, 61, 114);
-    border: 1.5px solid;
-    box-shadow: 0px;
-    border-image: url("../img/blue-lowpoly-small.jpg") 25 25 round;
-    margin-bottom: 2vh;
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#login-btn:hover {
-    color: rgb(79, 175, 154);
-    border-image: url("../img/green-lowpoly-small.jpg") 25 25 round;
-    background: url("../img/green-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#login-signup-card p {
-    color: rgb(15, 61, 114);
-    background: url("../img/blue-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#login-signup-card p a:hover {
-    color: rgb(79, 175, 154);
-    background: url("../img/green-lowpoly-small.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
 #signup-btn {
     color: rgb(15, 61, 114);
