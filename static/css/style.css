@@ -719,6 +719,20 @@ padding: 10px;
     background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
     min-height: 90vh;
 }
+
+/* 404 */
+#container-404 {
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
+    min-height: 90vh;
+}
+#btn-404 {
+    padding: 5vh;
+    margin: 5vh;
+    line-height: calc(36px - 5vh);
+
+}
+
 @media only screen and (max-width: 390px) {
     .chart-text span {
         display: none;
