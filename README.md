@@ -311,7 +311,7 @@ If the user tries to access their user profile but they are not in session, they
     - In the second column is the date the activity occured on. 
 
 ### 404
-</>
+<img src="readme-assets/img/404-mockup.jpg" style="margin: 0;">
 - If the user tries to route to an unfound page and a 404 error message is returned, flask reroutes the user to the 404 page.
 - The 404 Page just informs the user that there has been an error finding the page they requested.
 - If the user is not logged in, a button redirects the user back to the landing page. 
