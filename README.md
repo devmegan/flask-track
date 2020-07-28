@@ -14,7 +14,7 @@ The application will be deployed to Heroku and will be accessible here: </>.
     - [Wireframes](#wireframes)
  2. [Information Architecture](#information-architecture)
  3. [Design Choices](#design-choices)
-     - [Colours]
+     - [Colours](#colours)
  4. [Features](#features)
      - [Navigation](#navigation)
      - [Landing Page](#landing-page)
