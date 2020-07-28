@@ -333,8 +333,14 @@ If the user tries to access their user profile but they are not in session, they
 - On larger devices, toats are displayed to the user in the top right-hand corner of the screen. 
 
 ### Footer
-</>
-- On mobile and tablet devices, the brand logo is displayed in the center of the footer, with the footer links below it.
+<img src="readme-assets/img/footer-sm-loggedout.jpg" style="margin: 0;">
+<img src="readme-assets/img/footer-sm-loggedin.jpg" style="margin: 0;">  
+
+- On mobile and tablet devices, the brand logo is displayed in the center of the footer, with the footer links below it.  
+
+<img src="readme-assets/img/footer-md-up-loggedout.jpg" style="margin: 0;">
+<img src="readme-assets/img/footer-md-up-loggedin.jpg" style="margin: 0;">  
+
 - On large screen devices, the brand logo is aligned to the left-hand side of the footer, with the footer links aligned to the right-hand side of the footer. 
 - If the user is not logged in, the brand logo links to the index page and the footer links displayed are for the home page, the log in page and the sign up page. 
 - If the user is in session, the brand logo links to the user's dashboard. The footer links displayed are for the index page, the user's dashboard and profile, and a link that logs the user out.
