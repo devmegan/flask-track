@@ -130,8 +130,7 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - Below the form is a Log In button which submits the form for server-side user authentification.
 - Below the login button is a link which redirects the user to the sign up page, and the user is prompted to sign up if they do not have an account yet.
 
-<img src="readme-assets/img/login-valid.jpg" style="margin: 0; width: 45%;"> 
-<img src="readme-assets/img/login-invalid.jpg" style="margin: 0; width: 45%;"> 
+<img src="readme-assets/img/login-validation.jpg" style="margin: 0;">
 
 - Client-side validation adds valid/invalid classes to the login form fields depending on user input. The jQuery that manages this validation can be found in the [login.js](#static/js/login.js) file. 
 
