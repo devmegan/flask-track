@@ -51,13 +51,13 @@
                                     <div class="row">
                                         <div class="col s12">
                                             <div class="switch" >
-                                                <label class="header-blue">
-                                                    {{ user.currency }}
+                                                <label>
+                                                    <span id="switch-off" class="header-blue">{{ user.currency }}</span>
                                                     <input type="checkbox" id="currency-switch" name="currency-switch">
                                                     <span class="lever"></span>
-                                                    {% if user.currency == "£" %} € {% else %} £ {% endif %}
+                                                    <span id="switch-on">{% if user.currency == "£" %} € {% else %} £ {% endif %}</span>
                                                 </label>
-                                                <p class="uppercase spaced-text">Switch Currency</p>
+                                                <p class="uppercase spaced-text header-blue-darker">Switch Currency</p>
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@
                                 <div class="input-field col s12 m8 offset-m2">
                                     <p class="header-blue-darker uppercase spaced-text"><b>Please confirm your password to delete your profile</b></p>
                                     </br>
-                                    <input class="validate reload-reset" id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" minlength="6" required>
+                                    <input class="reload-reset" id="password_delete" name="password_delete" type="password" placeholder="Confirm Password" minlength="6" required>
                                     <span class="helper-text spaced-text" data-error="Please confirm your password"></span>
                                 </div>
                             </div>
