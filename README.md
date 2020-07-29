@@ -310,9 +310,12 @@ If the user tries to access their user profile but they are not in session, they
 - Server-side validation also validates the inputs of the form upon submission. 
 - Once the password is updated, the user is redirected to the main profile card and a flashed message feedsback to the user that their password has been updated. 
 #### Delete Profile
+
+<img src="readme-assets/img/profile/deleteprofile.jpg" style="margin: 0;">
+
 - When the user navigates to the delete profile card, they are asked if they are sure they want to delete their profile. 
 - The user must succesfully confirm their password before they delete their profile. The form will not submit if there is no password entered, or if the entered password is less than six characters (as this is the minimum possible password length). 
-- On succesfully deleting their profile, the user is logged out and redirected to the index page.
+- On succesfully deleting their profile, the user is logged out and redirected to the index page. The user's record is deleted from MongoDB and the user is no longer able to login to track with those details. 
 
 ### Savings History
 - The savings history page has one card on it. There is a savings history header at the top of the card. 
