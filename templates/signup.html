@@ -69,6 +69,6 @@
     </div>
 </div>
 {% block include_js_html %}
-    {% include 'signup_js.html' %}
+<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
 {% endblock %}
 {% endblock %}
