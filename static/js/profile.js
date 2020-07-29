@@ -109,7 +109,6 @@ $('document').ready(function(){
         } else if ($("#oldpassword").val().length < 6) {
             M.toast({html: 'Your existing password isn\'t entered correctly', classes: 'flash'})
         } else if ($("#newpassword").val() != $("#newpasswordcheck").val()){
-            alert("no matchy")
             M.toast({html: 'It looks like your new passwords don\'t match', classes: 'flash'})
         } else if ($("#newpassword").val().length < 6){
             M.toast({html: 'Your new password must be longer than 6 characters', classes: 'flash'})
