@@ -1,5 +1,9 @@
 <script>
 $(document).ready(function(){
+    // change currency colours on switch
+    $("#currency").on("click", function(){
+        $("#switch-off, #switch-on").toggleClass("header-blue")
+    })
     // clientside validation for signup form: first/last name
      $("#fname, #lname").on({
         focusout: function(){
