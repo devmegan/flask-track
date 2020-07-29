@@ -164,47 +164,59 @@ $('document').ready(function(){
             }
         }   
     })
-    // clientside validation: new password
-     $("#newpassword").on({
+     // clientside password update validation: password
+    $("#newpassword").on({
         focusout: function(){
-            if ($(this).val().length < 6) {
-                $(this).addClass("invalid").attr("data-error", "Password must use 6+ characters");
+            if (!$(this).val()){
+                $(this).removeClass("valid").addClass("invalid");
             }
         },
         keydown: function(e){
             if (e.key === "Backspace" || e.key === "Delete"){
+                $("#newpasswordcheck").removeClass("valid")
                 if ($(this).val().length == 6) {
-                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Password must use 6+ characters")
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Password must be 6+ characters")
                 }
             }
         }, 
         keyup: function(){
-            if ($(this).val().length == 6){
+            if($(this).val().length > 5){
                 $(this).removeClass("invalid").addClass("valid")
+                if ($("#newpasswordcheck").val() == $(this).val()) {
+                    $("#newpasswordcheck").removeClass("invalid").addClass("valid")
+                }
+            } else if ($(this).val().length == 0){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a password")
             }
         }
     })
-    // clientside validation: new password check 
+    // clientside password update validation: password check
     $("#newpasswordcheck").on({
         focusout: function(){
-            if ($(this).val() != $("#newpassword").val() && $("#newpassword").val().length > 6){
-                $(this).removeClass("valid").addClass("invalid")
-            }
-            if ($(this).val().length < 6 && $("#newpassword").val().length > 6){
-                $(this).addClass("invalid")
-            } else if ($(this).val().length > 6 && $("#newpassword").val() == $(this).val()){
-                $(this).addClass("valid").next().attr("data-success", "Passwords match")
+            if ($(this).val().length < 5) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Password must be 6+ characters")
+            } else if ($(this).val().length < 5 && $("#newpassword").val().length > 5 && $(this).val() != $("#newpassword").val()) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "passwords don't match")
             }
         }, 
-        keyup: function(){
-            if($(this).hasClass("valid")){
-                $(this).removeClass("valid").addClass("invalid")
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                $("#newpasswordcheck").removeClass("valid")
+                if ($(this).val().length == 6) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Password must be 6+ characters")
+                }
             }
-             if ($(this).val().length > 6 && $("#newpassword").val() == $(this).val()){
+        }, 
+        keyup: function(e) {
+            if ($(this).val().length > 5 && $(this).val() != $("#newpassword").val()) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Passwords don't match")
+                $("#newpassword").removeClass("valid").addClass("invalid").next().attr("data-error", "Passwords don't match")
+            } else if ($(this).val().length > 5 && $("#newpassword").val().length > 5 && $(this).val() == $("#newpassword").val()) {
                 $(this).removeClass("invalid").addClass("valid").next().attr("data-success", "Passwords match")
+                $("#newpassword").removeClass("invalid").addClass("valid").next().attr("data-success", "Passwords match")
             }
         }
-    })
+    });
     // validate form input before submitting form
     $('#update-pw-submit').click(function(e) {
         e.preventDefault();
