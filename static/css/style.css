@@ -115,7 +115,7 @@ i {
 }
 
 .card-link:hover {
-    color: #195a91;
+    color: #195a91 !important;
 }
 /* Forms */
 .input-field input[type=text] {
