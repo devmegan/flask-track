@@ -276,6 +276,9 @@ footer a {
 footer a:hover {
     color: #4ccfcf;
 }
+#footer-brand-logo {
+    margin: 0px 0px 5px 10px;
+}
 
 /* Index */
 .carousel {
