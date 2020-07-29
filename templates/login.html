@@ -12,13 +12,13 @@
                                 <form action="{{url_for('login_auth')}}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-                                            <input class="white" placeholder="Username" id="username" name="username" type="text" required>
+                                            <input class="white validate" placeholder="Username" id="username" name="username" type="text" required>
                                             <span class="helper-text spaced-text">Username</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m10 offset-m1 l8 offset-l2">
-                                            <input class="white" placeholder="Password" id="password" name="password" type="password" required>
+                                            <input class="white validate" placeholder="Password" id="password" name="password" type="password" required>
                                             <span class="helper-text spaced-text">Password</span>
                                         </div>
                                     </div>
@@ -37,4 +37,7 @@
         </div>
     </div>
 </div>
+{% block include_js_html %}
+    {% include 'login_js.html' %}
+{% endblock %}
 {% endblock %}
