@@ -123,7 +123,7 @@ i {
     text-align: left;
 }
 .input-field input[type=text] {
-    border: 2px solid #2279c3;
+    border: 2px solid #2279c3 !important;
     padding-left: 10px;
     box-shadow: 0px;
     height: 10vh;
@@ -131,13 +131,13 @@ i {
     width: 95%;
 }
 .input-field input[type=text]:hover {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=text]:focus {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=number] {
-    border: 1px solid #2279c3;
+    border: 1px solid #2279c3 !important;
     padding-left: 10px;
     box-shadow: 0px;
     height: 10vh;
@@ -145,13 +145,13 @@ i {
     width: 95%;
 }
 .input-field input[type=number]:hover {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=number]:focus {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=url] {
-    border: 2px solid #2279c3;
+    border: 2px solid #2279c3 !important;
     padding-left: 10px;
     box-shadow: 0px;
     height: 10vh;
@@ -159,13 +159,13 @@ i {
     width: 95%;
 }
 .input-field input[type=url]:hover {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=url]:focus {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=password] {
-    border: 2px solid #2279c3;
+    border: 2px solid #2279c3 !important;
     padding-left: 10px;
     box-shadow: 0px;
     height: 10vh;
@@ -173,13 +173,13 @@ i {
     width: 95%;
 }
 .input-field input[type=password]:hover {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=password]:focus {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=email] {
-    border: 2px solid #2279c3;
+    border: 2px solid #2279c3 !important;
     padding-left: 10px;
     box-shadow: 0px;
     height: 10vh;
@@ -187,10 +187,10 @@ i {
     width: 95%;
 }
 .input-field input[type=email]:hover {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 .input-field input[type=email]:focus {
-    border: 2.5px solid #1f6fb2;
+    border: 2.5px solid #1f6fb2 !important;
 }
 
 .invalid {
