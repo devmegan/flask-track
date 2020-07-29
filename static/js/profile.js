@@ -1,9 +1,5 @@
 $('document').ready(function(){
-     // change currency colours on switch
-    $("#currency-switch").on("click", function(){
-        $("#switch-off, #switch-on").toggleClass("header-blue")
-    })
-    // nav between profile and update profile cards
+/* Navigation betwwen Profile Cards */
     userProfileNav("#update-profile-link", "#profile-card", "#update-profile-card")
     userProfileNav("#update-nav-back", "#update-profile-card", "#profile-card")
     userProfileNav("#update-password-link", "#profile-card", "#update-password-card")
@@ -14,6 +10,45 @@ $('document').ready(function(){
      $("#delete-nav-back, #password-nav-back").click(function(){
         $('.reload-reset').val("").removeClass("valid invalid");
     })
+
+/* Update Profile Form Elements */
+     // change currency colours on switch
+    $("#currency-switch").on("click", function(){
+        $("#switch-off, #switch-on").toggleClass("header-blue")
+    })
+
+/* Update Profile Form Valiation */
+    //clientside validation: fname 
+    //clientside validation: lname
+    //clientside validation: email
+    //clientside validation: pw confirm 
+    $("#password").on({
+        focusout: function(){
+             if (!$(this).val()){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter your password");
+            } else if ($(this).val().length < 6) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length} characters`);
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length < 7) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length - 1} characters`)
+                }
+            } else if ($(this).val().length < 5 && $(this).hasClass("invalid")) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length + 1} characters`)
+            }
+        }, 
+        keyup: function(){
+            if($(this).val().length > 5){
+                $(this).removeClass("invalid").addClass("valid")
+            } else if ($(this).val().length == 0){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter your password")
+            }
+        }
+    }); 
+
+/* Delete User Form Validation */
     // clientside validation: delete user 
     $("#password_delete").on({
         focusout: function(){
@@ -40,6 +75,8 @@ $('document').ready(function(){
             }
         }
     });
+
+/* Update Password Form Validation */
     //clientside validation: update password
     $("#oldpassword").on({
        focusout: function(){
@@ -63,7 +100,7 @@ $('document').ready(function(){
             }
         }   
     })
-    // clientside signup form validation: new password
+    // clientside validation: new password
      $("#newpassword").on({
         focusout: function(){
             if ($(this).val().length < 6) {
@@ -83,7 +120,7 @@ $('document').ready(function(){
             }
         }
     })
-
+    // clientside validation: new password check 
     $("#newpasswordcheck").on({
         focusout: function(){
             if ($(this).val() != $("#newpassword").val() && $("#newpassword").val().length > 6){
@@ -104,8 +141,8 @@ $('document').ready(function(){
             }
         }
     })
-    $('#update-pw-submit').click(function(e) {
     // validate form input before submitting form
+    $('#update-pw-submit').click(function(e) {
         e.preventDefault();
         if (!$("#oldpassword, #newpassword, #newpasswordcheck").val()){
             M.toast({html: 'Please make sure all fields are filled in', classes: 'flash'})
@@ -122,6 +159,7 @@ $('document').ready(function(){
 })
 
 function userProfileNav(el1, el2, el3) {
+    // nav between user profile cards
     $(el1).click(function(){
         $(el2).addClass("display-none");
         $(el3).removeClass("display-none");
