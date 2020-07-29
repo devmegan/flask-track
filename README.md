@@ -132,7 +132,7 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 
 <img src="readme-assets/img/login-validation.jpg" style="margin: 0;">
 
-- Client-side validation adds valid/invalid classes to the login form fields depending on user input. The jQuery that manages this validation can be found in the [login.js](#static/js/login.js) file. 
+- Client-side validation adds valid/invalid classes to the login form fields depending on user input. The jQuery that manages this validation can be found in the [login.js](static/js/login.js) file. 
 
 <img src="readme-assets/img/login-invalid-flashes.jpg" style="margin: 0;">
 
