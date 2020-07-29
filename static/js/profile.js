@@ -21,6 +21,31 @@ $('document').ready(function(){
     //clientside validation: fname 
     //clientside validation: lname
     //clientside validation: email
+     $("#email").on({
+        focusout: function(){
+            if (!$(this).val()){
+                $(this).addClass("invalid");
+            } else if (!$(this).val().includes("@")) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a valid email address")
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 1) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter an email address")
+                } else if ($(this).val().slice(-1) == "@") {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please use a valid email address")
+                }
+            }
+        }, 
+        keyup: function(){
+            if ($(this).val().includes("@") && $(this).val().charAt(0) != "@" && !$(this).val().endsWith("@")){
+                $(this).removeClass("invalid").addClass("valid")
+            } else if ($(this).val().length == 0) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter an email address");
+            }
+        }
+    })
     //clientside validation: pw confirm 
     $("#password").on({
         focusout: function(){
