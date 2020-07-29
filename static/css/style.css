@@ -260,7 +260,8 @@ nav ul a {
     font-weight: 600;
 }
 nav ul a:hover {
-    color: rgb(79, 175, 154);
+    background-color: #2279c3;
+    color: #f8f8f8 !important;
 }
 
 /* Footer */
