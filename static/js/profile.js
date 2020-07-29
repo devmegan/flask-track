@@ -18,8 +18,47 @@ $('document').ready(function(){
     })
 
 /* Update Profile Form Valiation */
-    //clientside validation: fname 
-    //clientside validation: lname
+    //clientside validation: fname and lname 
+    // clientside validation for signup form: first/last name
+    $("#fname, #lname").on({
+        focusout: function(){
+            if (!$(this).val()){
+                $(this).addClass("invalid");
+            } else if ($(this).val().length == 1) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please don't use initials")
+
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 2 ) {
+                    $(this).removeClass("valid").addClass("invalid")
+                    $(this).next().attr("data-error", "Please don't use initials")
+                } else if($(this).val().length == 1) {
+                    $(this).removeClass("valid").addClass("invalid")
+                    if ($(this).is("#fname")) {
+                        $(this).next().attr("data-error", "Please enter your first name")
+                    } else {
+                        $(this).next().attr("data-error", "Please enter your last name")
+                    }
+                }
+            }
+        },
+        keyup: function(e){
+            if ($(this).val().length > 1){
+                $(this).removeClass("invalid").addClass("valid");
+            } else if ($(this).val().length == 0) {
+                // works if user highlights and deletes whole value
+                $(this).removeClass("valid").addClass("invalid");
+                if ($(this).is("#fname")) {
+                    $(this).next().attr("data-error", "Please enter your first name")
+                } else {
+                    $(this).next().attr("data-error", "Please enter your last name")
+                }
+
+            }
+        }
+    });
     //clientside validation: email
      $("#email").on({
         focusout: function(){
