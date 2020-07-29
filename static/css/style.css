@@ -263,7 +263,10 @@ nav ul a:hover {
     background-color: #2279c3;
     color: #f8f8f8 !important;
 }
-
+.sidenav li>a:hover {
+    background-color: #2279c3;
+    color: #f8f8f8 !important;
+}
 /* Footer */
 footer {
     padding-bottom: 2vh;
