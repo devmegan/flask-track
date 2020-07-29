@@ -128,8 +128,17 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - The log in page presents the user with a card containing the login form. At the top of the card is the log in header. 
 - The log in form has two input fields, username and password. Each field is identified to the user by placeholder text and helper-text.
 - Below the form is a Log In button which submits the form for server-side user authentification.
-- Below the login button is a link which redirects the user to the sign up page, and the user is prompted to sign up if they do not have an account yet. 
-- Client-side validation prevents the user from submitting the log in form with empty fields. 
+- Below the login button is a link which redirects the user to the sign up page, and the user is prompted to sign up if they do not have an account yet.
+
+<img src="readme-assets/img/login-invalid.jpg" style="margin: 0;">  
+
+- Client-side validation prevents the user from submitting the log in form with empty or invalid fields.
+
+<img src="readme-assets/img/login-invalid-flash-username.jpg" style="margin: 0;"> 
+<img src="readme-assets/img/login-invalid-flash-password.jpg" style="margin: 0;"> 
+<img src="readme-assets/img/login-invalid-flash-both.jpg" style="margin: 0;">  
+
+- If the user does try to submit the form with invalid inputs, a message is flashed to the user feedingback which field(s) are invalid. 
 - If the user attempts to log in with a username that does not exist, they are redirected to the sign up page and a flashed message prompts the user to sign up. 
 - If the user attempts to log in with a username that does exist, but with the incorrect password, they are redirected to the login page and a flashed message feedsback to the user that the password was incorrect. 
 - If the user logs in successfully, they are redirected to their dashboard. 
