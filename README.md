@@ -290,7 +290,7 @@ If the user tries to access their user profile but they are not in session, they
 #### Update Profile
 - At the top of the update profile card, the update profile header is displayed. Below this are two links, one takes the user back to the main profile card. The other takes them to the delete profile card. 
 
-<img src="readme-assets/img/profile/updateprofile-prepopulated.jpg" style="height: 200px; margin: 0;"> 
+<img src="readme-assets/img/profile/updateprofile-prepopulated.jpg" height="250"> 
 
 - The update user form has five input fields. They allow the user to switch currency, edit their first name, last name and email address. The form is prepopulated with the users data (other than password) for easy editing.
 - The user is unable to update their username, as this forms the relation between a user's record and their goals in the MongoDB collections.
@@ -311,7 +311,7 @@ If the user tries to access their user profile but they are not in session, they
 - Once the password is updated, the user is redirected to the main profile card and a flashed message feedsback to the user that their password has been updated. 
 #### Delete Profile
 
-<img src="readme-assets/img/profile/deleteprofile.jpg" style="height: 200px; margin: 0;">
+<img src="readme-assets/img/profile/deleteprofile.jpg" height="250">
 
 - When the user navigates to the delete profile card, they are asked if they are sure they want to delete their profile. 
 - The user must succesfully confirm their password before they delete their profile. The form will not submit if there is no password entered, or if the entered password is less than six characters (as this is the minimum possible password length). 
