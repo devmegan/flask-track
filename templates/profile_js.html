@@ -1,5 +1,9 @@
 <script>
 $('document').ready(function(){
+    // change currency colours on switch
+    $("#currency-switch").on("click", function(){
+        $("#switch-off, #switch-on").toggleClass("header-blue")
+    })
     // nav between profile and update profile cards
     userProfileNav("#update-profile-link", "#profile-card", "#update-profile-card")
     userProfileNav("#update-nav-back", "#update-profile-card", "#profile-card")
