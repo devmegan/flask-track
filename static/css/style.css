@@ -499,6 +499,9 @@ top: 10vh;
     margin-bottom: 2vh
 }
 
+#delete-user-form {
+    margin-top: 8vh;
+}
 /* View Goal */
 #goals-container {
     background: rgb(34,121,195);
