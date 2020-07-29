@@ -120,6 +120,7 @@ i {
 /* Forms */
 .helper-text {
     width: 100%;
+    text-align: left;
 }
 .input-field input[type=text] {
     border: 2px solid #2279c3;
