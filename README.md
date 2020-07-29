@@ -287,22 +287,33 @@ If the user tries to access their user profile but they are not in session, they
 - Below the heading, the users username, email address, signup date and chosen currency are displayed. 
 - Clicking on the update profile link hides the main card and displays the update profile card to the user.
 - Clicking on the update password link hides the main card and displays the update password card to the user.
-#### Update Profile 
+#### Update Profile
 - At the top of the update profile card, the update profile header is displayed. Below this are two links, one takes the user back to the main profile card. The other takes them to the delete profile card. 
-- The update user form has five input fields. They allow the user to switch currency, edit their first name, last name and email address. The user is unable to update their username, as this forms the relation between a user's record and their goals in the MongoDB collections.
+
+<img src="readme-assets/img/profile/updateprofile-prepopulated.jpg" style="margin: 0;"> 
+
+- The update user form has five input fields. They allow the user to switch currency, edit their first name, last name and email address. The form is prepopulated with the users data (other than password) for easy editing.
+- The user is unable to update their username, as this forms the relation between a user's record and their goals in the MongoDB collections.
+
+<img src="readme-assets/img/profile/updateprofile-validation.jpg" style="margin: 0;"> 
+
 - The update profile form is validated. All fields must be filled in before the form will submit. 
 - The user must confirm their password for their user profile information to be updated. If they do not succesffuly confirm their password, their record is not updated in MongoDB and a flashed message feedsback to the user that the password was incorrect. 
-- One the form is succesffuly submitted, the user is redirected to their profile page and the main card is displayed. 
-#### Delete Profile
-- When the user navigates to the delete profile card, they are asked if they are sure they want to delete their profile. 
-- The user must succesfully confirm their password before they delete their profile. The form will not submit if there is no password entered, or if the entered password is less than six characters (as this is the minimum possible password length). 
-- On succesfully deleting their profile, the user is logged out and redirected to the index page. 
+- One the form is succesffuly submitted, the user is redirected to their profile page and the main card is displayed.  
 #### Update Password 
+
+<img src="readme-assets/img/profile/updatepassword-validate.jpg" style="margin: 0;">
+
 - At the top of the update password card, the update password header is displayed. Below this is one link, which takes the user back to their profile. 
 - There are three input fields in the update password form. The first asks the user to confirm their current password. The next two ask the user to input their new password and confirm their new password.
 - Client-side validation requires that the current password entered is six characters or more, as this is the minimum password length. It also requires that the new password and confirm new password inputs match. Instant feedback about this is provided to the user. 
 - Server-side validation also validates the inputs of the form upon submission. 
 - Once the password is updated, the user is redirected to the main profile card and a flashed message feedsback to the user that their password has been updated. 
+#### Delete Profile
+- When the user navigates to the delete profile card, they are asked if they are sure they want to delete their profile. 
+- The user must succesfully confirm their password before they delete their profile. The form will not submit if there is no password entered, or if the entered password is less than six characters (as this is the minimum possible password length). 
+- On succesfully deleting their profile, the user is logged out and redirected to the index page.
+
 ### Savings History
 - The savings history page has one card on it. There is a savings history header at the top of the card. 
 - The user's first name and last name are also displayed below the header. 
@@ -320,7 +331,7 @@ If the user tries to access their user profile but they are not in session, they
     - In the second column is the date the activity occured on. 
 
 ### 404
-<img src="readme-assets/img/404-mockup.jpg" style="margin: 0;">
+<img src="readme-assets/img/404/404-mockup.jpg" style="margin: 0;">
 - If the user tries to route to an unfound page and a 404 error message is returned, flask reroutes the user to the 404 page.
 - The 404 Page just informs the user that there has been an error finding the page they requested.
 - If the user is not logged in, a button redirects the user back to the landing page. 
