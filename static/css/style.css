@@ -190,11 +190,11 @@ i {
 }
 
 .invalid {
-    border: 2px solid #de425b;
+    border: 2px solid #de425b !important;
 }
 
 .valid {
-    border: 2px solid #26b57c;
+    border: 2px solid #26b57c !important;
 }
 .index-btn {
     padding: 0px;
