@@ -92,7 +92,7 @@ Based on the preliminary sketches above, seven sets of wireframes were created u
 ## Information Architecture 
 All app, user and goals data are stored in three MongoDB collections, ```"app_stats"```, ```"users"```, and ```"goals"```. MongoDB is a non-relational database, and the users and goals collections are linked by the user's username, which is unique to the user. Tables showing the architecture of each collection are shown below:
 
-<img src="readme-assets/img/mongo-architecture.jpg" style="margin: 0;">
+<img src="readme-assets/img/mongodb/mongo-architecture.jpg" style="margin: 0;">
 
 ## Design Choices
 
@@ -123,42 +123,31 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - If the user is in session, each card displays a mockup to differnt parts of the app (dashboard, profile, savings history) to provide quick links to the user to reach each page. 
 
 ### Log In 
-<img src="readme-assets/img/login-mockup.jpg" style="margin: 0;">  
+<img src="readme-assets/img/login/login-mockup.jpg" style="margin: 0;">  
 
 - The log in page presents the user with a card containing the login form. At the top of the card is the log in header. 
 - The log in form has two input fields, username and password. Each field is identified to the user by placeholder text and helper-text.
 - Below the form is a Log In button which submits the form for server-side user authentification.
 - Below the login button is a link which redirects the user to the sign up page, and the user is prompted to sign up if they do not have an account yet.
 
-<img src="readme-assets/img/login-validation.jpg" style="margin: 0;">
+<img src="readme-assets/img/login/login-validation.jpg" style="margin: 0;">
 
-- Client-side validation adds valid/invalid classes to the login form fields depending on user input. The jQuery that manages this validation can be found in the [login.js](static/js/login.js) file. 
-
-<img src="readme-assets/img/login-invalid-flashes.jpg" style="margin: 0;">
-
+- Client-side validation adds valid/invalid classes to the login form fields depending on user input. The jQuery that manages this validation can be found in the [login.js](static/js/login.js) file.  
 - Client-side validation prevents the user from submitting the log in form with empty or invalid fields. If the user does try to submit the form with invalid inputs, a message is flashed to the user feedingback which field(s) are invalid. 
-
-<img src="readme-assets/img/login-unregistered.jpg" style="margin: 0;">
 - If the user attempts to log in with a username that does not exist, they are redirected to the sign up page and a flashed message prompts the user to sign up. 
-
-<img src="readme-assets/img/login-wrongpassword.jpg" style="margin: 0;">
-
 - If the user attempts to log in with a username that does exist, but with the incorrect password, they are redirected to the login page and a flashed message feedsback to the user that the password was incorrect. 
 - If the user logs in successfully, they are redirected to their dashboard. 
-
-<img src="readme-assets/img/login-insession.jpg" style="margin: 0;">
-
 - If the user tries to access the log in page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
 
 ### Sign Up
-<img src="readme-assets/img/signup-mockup.jpg" style="margin: 0;">
+<img src="readme-assets/img/signup/signup-mockup.jpg" style="margin: 0;">
 
 - The sign up page presents the user with a card containing the sign up form. At the top of the card is the sign up header.  
 - The form has seven input fields: a currency switch, first name, last name, username, email address, password and password check. Each field is identified to the user by placeholder text and helper-text.   
 - Below the form is the sign up button, which submits the form for server-side validation and if successful, inserts the new user into the users collection in MongoDB.   
 - Below the sign up button is a link which redirects the user to the log in page, and the user is prompted to log in if they already have an account. 
 
-<img src="readme-assets/img/signup-validation.jpg" style="margin: 0;">
+<img src="readme-assets/img/signup/signup-validation.jpg" style="margin: 0;">
 
 - Client-side validation prevents the user from submitting the sign up form with any empty or invalid fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match.   
 - jQuery provides instant validation feedback to the user as they focus out of the input fields, and on keyup/keydown in fields with validation errors. The jQuery for this can be found in the [signup.js](static/js/signup.js) file. 
