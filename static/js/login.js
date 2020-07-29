@@ -48,4 +48,17 @@ $(document).ready(function(){
             }
         }
     })
+     $('#login-signup-btn').click(function(e) {
+    // validate form input before submitting form
+        e.preventDefault();
+        if ($("#username").hasClass("invalid") && $("#password").hasClass("invalid")){
+            M.toast({html: 'Please make sure your username and password are valid', classes: 'flash'})
+        } else if ($("#username").hasClass("invalid")) {
+            M.toast({html: 'Please make sure your username is valid', classes: 'flash'})
+        } else if ($("#password").hasClass("invalid")) {
+            M.toast({html: 'Please make sure your password is valid', classes: 'flash'})
+        } else {
+            $("#login-form").submit();
+        }
+    });
 })
