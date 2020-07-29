@@ -26,7 +26,7 @@
             {% if user %}
             <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue">Dashboard</a></li>
             {% if user.goals_number != 0 %}
-            <li><a class="dropdown-trigger header-blue" href="#!" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger header-blue" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
             <ul id="nav_goals" class="dropdown-content">
                 {% for goal in goals %}
                 <li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" class="header-blue-lighter">{{goal.goal_name}}</a></li>
@@ -47,11 +47,22 @@
     </div>
   </nav>
    <ul class="sidenav" id="mobile-nav">
-   {% if user %}
-        {% block sidenav_nav_links%}
-        {% endblock %}
+        <li><a href="{{url_for('index')}}" class="header-blue">Home</a></li>
+            {% if user %}
+            <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue">Dashboard</a></li>
+            {% if user.goals_number != 0 %}
+                <li class="divider"></li>
+                {% for goal in goals %}
+                <li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" class="header-blue-lighter">{{goal.goal_name}}</a></li>
+                {% endfor %}
+                {% if user.goals_number < 4 %}
+                <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue-lighter">Create New Goal</a></li>
+                {% endif %} 
+                <li class="divider"></li>
+            {% endif %}
+            <li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
+            <li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
     {% else %}
-        <li><a href="{{url_for('index')}}" class="active">Home</a></li>
         <li><a href="{{url_for('login')}}">Login </a></li>
         <li><a href="{{url_for('signup')}}">Sign Up</a></li>
     {% endif %}
