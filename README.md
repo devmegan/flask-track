@@ -135,7 +135,7 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - If the user tries to access the log in page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
 
 ### Sign Up
-</>
+<img src="readme-assets/img/signup-mockup.jpg" style="margin: 0;">
 - The sign up page presents the user with a card containing the sign up form. At the top of the card is the sign up header.
 - The form has seven input fields: a currency switch, first name, last name, username, email address, password and password check. Each field is identified to the user by placeholder text and helper-text. 
 - Below the form is the sign up button, which submits the form for server-side validation and if successful, inserts the new user into the users collection in MongoDB. 
