@@ -123,7 +123,8 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - If the user is in session, each card displays a mockup to differnt parts of the app (dashboard, profile, savings history) to provide quick links to the user to reach each page. 
 
 ### Log In 
-<img src="readme-assets/img/login-mockup.jpg" style="margin: 0;">
+<img src="readme-assets/img/login-mockup.jpg" style="margin: 0;">  
+
 - The log in page presents the user with a card containing the login form. At the top of the card is the log in header. 
 - The log in form has two input fields, username and password. Each field is identified to the user by placeholder text and helper-text.
 - Below the form is a Log In button which submits the form for server-side user authentification.
@@ -136,12 +137,13 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 
 ### Sign Up
 <img src="readme-assets/img/signup-mockup.jpg" style="margin: 0;">
-- The sign up page presents the user with a card containing the sign up form. At the top of the card is the sign up header.
-- The form has seven input fields: a currency switch, first name, last name, username, email address, password and password check. Each field is identified to the user by placeholder text and helper-text. 
-- Below the form is the sign up button, which submits the form for server-side validation and if successful, inserts the new user into the users collection in MongoDB. 
-- Below the sign up button is a link which redirects the user to the log in page, and the user is prompted to log in if they already have an account. 
-- Client-side validation prevents the user from submitting the sign up form with any empty fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match. 
-- jQuery provides instant validation feedback to the user as they focus out of the input fields, and on keyup/keydown in fields with validation errors. 
+
+- The sign up page presents the user with a card containing the sign up form. At the top of the card is the sign up header.  
+- The form has seven input fields: a currency switch, first name, last name, username, email address, password and password check. Each field is identified to the user by placeholder text and helper-text.   
+- Below the form is the sign up button, which submits the form for server-side validation and if successful, inserts the new user into the users collection in MongoDB.   
+- Below the sign up button is a link which redirects the user to the log in page, and the user is prompted to log in if they already have an account.   
+- Client-side validation prevents the user from submitting the sign up form with any empty fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match.   
+- jQuery provides instant validation feedback to the user as they focus out of the input fields, and on keyup/keydown in fields with validation errors.   
 - If the user signs up succesfully, they are redirected to the login page and a message is flashed prompting them to log in with their new details. 
 If the user tries to access the sign up page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
 
