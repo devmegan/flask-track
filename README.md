@@ -148,8 +148,11 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - The sign up page presents the user with a card containing the sign up form. At the top of the card is the sign up header.  
 - The form has seven input fields: a currency switch, first name, last name, username, email address, password and password check. Each field is identified to the user by placeholder text and helper-text.   
 - Below the form is the sign up button, which submits the form for server-side validation and if successful, inserts the new user into the users collection in MongoDB.   
-- Below the sign up button is a link which redirects the user to the log in page, and the user is prompted to log in if they already have an account.   
-- Client-side validation prevents the user from submitting the sign up form with any empty fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match.   
+- Below the sign up button is a link which redirects the user to the log in page, and the user is prompted to log in if they already have an account. 
+
+<img src="readme-assets/img/signup-validation.jpg" style="margin: 0;">
+
+- Client-side validation prevents the user from submitting the sign up form with any empty or invalid fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match.   
 - jQuery provides instant validation feedback to the user as they focus out of the input fields, and on keyup/keydown in fields with validation errors.   
 - If the user signs up succesfully, they are redirected to the login page and a message is flashed prompting them to log in with their new details. 
 If the user tries to access the sign up page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
