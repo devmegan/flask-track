@@ -137,9 +137,17 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 <img src="readme-assets/img/login-invalid-flashes.jpg" style="margin: 0;">
 
 - Client-side validation prevents the user from submitting the log in form with empty or invalid fields. If the user does try to submit the form with invalid inputs, a message is flashed to the user feedingback which field(s) are invalid. 
+
+<img src="readme-assets/img/login-unregistered.jpg" style="margin: 0;">
 - If the user attempts to log in with a username that does not exist, they are redirected to the sign up page and a flashed message prompts the user to sign up. 
+
+<img src="readme-assets/img/login-wrongpassword.jpg" style="margin: 0;">
+
 - If the user attempts to log in with a username that does exist, but with the incorrect password, they are redirected to the login page and a flashed message feedsback to the user that the password was incorrect. 
 - If the user logs in successfully, they are redirected to their dashboard. 
+
+<img src="readme-assets/img/login-insession.jpg" style="margin: 0;">
+
 - If the user tries to access the log in page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
 
 ### Sign Up
@@ -155,7 +163,7 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 - Client-side validation prevents the user from submitting the sign up form with any empty or invalid fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match.   
 - jQuery provides instant validation feedback to the user as they focus out of the input fields, and on keyup/keydown in fields with validation errors. The jQuery for this can be found in the [signup.js](static/js/signup.js) file. 
 - If the user signs up succesfully, they are redirected to the login page and a message is flashed prompting them to log in with their new details. 
-If the user tries to access the sign up page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
+- If the user tries to access the sign up page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
 
 ### Dashboard
 </>
