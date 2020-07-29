@@ -42,7 +42,7 @@ i {
 
 /* Colours */
 .header-blue-lighter {
-    color: #318ddb;
+    color: #318ddb !important;
 }
 .header-blue {
     color: #2279c3 !important;
