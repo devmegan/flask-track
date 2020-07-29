@@ -63,8 +63,8 @@
             <li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
             <li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
     {% else %}
-        <li><a href="{{url_for('login')}}">Login </a></li>
-        <li><a href="{{url_for('signup')}}">Sign Up</a></li>
+        <li><a href="{{url_for('login')}}" class="header-blue">Login </a></li>
+        <li><a href="{{url_for('signup')}}" class="header-blue">Sign Up</a></li>
     {% endif %}
   </ul>
 </header>
