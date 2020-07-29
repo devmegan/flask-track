@@ -117,7 +117,6 @@ $('document').ready(function(){
         }
     });
 })
-});
 
 function userProfileNav(el1, el2, el3) {
     $(el1).click(function(){
