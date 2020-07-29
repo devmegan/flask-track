@@ -17,26 +17,29 @@ $('document').ready(function(){
     // clientside validation: delete user 
     $("#password_delete").on({
         focusout: function(){
-            if (!$(this).val()){
-                $(this).addClass("invalid");
-            }
-            $(this).removeClass("valid") // never want this to show as valid as not doing clientside password auth
-        }, 
-        keydown: function(e){
-            if (e.key === "Backspace" || e.key === "Delete"){
-                if ($(this).val().length == 6 ) {
-                    $(this).addClass("invalid");
-                }
+             if (!$(this).val()){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter your password");
+            } else if ($(this).val().length < 6) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length} characters`);
             }
         },
-        keyup: function(e){ 
-            if ($(this).val().length == 0) {
-                $(this).addClass("invalid");
-            } else if ($(this).val().length == 6) {
-                $(this).removeClass("invalid");
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length < 7) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length - 1} characters`)
+                }
+            } else if ($(this).val().length < 5 && $(this).hasClass("invalid")) {
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length + 1} characters`)
             }
-        }   
-    })
+        }, 
+        keyup: function(){
+            if($(this).val().length > 5){
+                $(this).removeClass("invalid").addClass("valid")
+            } else if ($(this).val().length == 0){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter your password")
+            }
+        }
+    });
     //clientside validation: update password
     $("#oldpassword").on({
        focusout: function(){
