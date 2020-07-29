@@ -94,7 +94,7 @@ $(document).ready(function(){
             if ($(this).val().includes("@") && $(this).val().charAt(0) != "@" && !$(this).val().endsWith("@")){
                 $(this).removeClass("invalid").addClass("valid")
             } else if ($(this).val().length == 0) {
-                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a username");
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter an email address");
             }
         }
     })
