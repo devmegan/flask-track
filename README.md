@@ -134,9 +134,7 @@ All app, user and goals data are stored in three MongoDB collections, ```"app_st
 
 - Client-side validation adds valid/invalid classes to the login form fields depending on user input. The jQuery that manages this validation can be found in the [login.js](#static/js/login.js) file. 
 
-<img src="readme-assets/img/login-invalid-flash-username.jpg" style="margin: 0;"> 
-<img src="readme-assets/img/login-invalid-flash-password.jpg" style="margin: 0;"> 
-<img src="readme-assets/img/login-invalid-flash-both.jpg" style="margin: 0;">  
+<img src="readme-assets/img/login-invalid-flashes.jpg" style="margin: 0;">
 
 - Client-side validation prevents the user from submitting the log in form with empty or invalid fields. If the user does try to submit the form with invalid inputs, a message is flashed to the user feedingback which field(s) are invalid. 
 - If the user attempts to log in with a username that does not exist, they are redirected to the sign up page and a flashed message prompts the user to sign up. 
