@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--load materialize icons-->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--load materialize css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!--load local css-->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
-    <title>track</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--load materialize icons-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--load materialize css-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+	<!--load local css-->
+	<link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link rel="icon" href="static/img/track-tab-logo.png">
+	<title>track</title>
 </head>
 <body>
-<header>
-  <nav>
-    <div class="nav-wrapper">
-        {% if user %}
-        <a href="{{ url_for('dashboard', username=user.username) }}" class="brand-logo header-blue"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
-        {% else %}
-        <a href="{{ url_for('index') }}" class="brand-logo header-blue"><strong>track</strong> <i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
-        {% endif %}
-        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons header-blue" id="nav-menu-bars">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="{{url_for('index')}}" class="header-blue">Home</a></li>
-            {% if user %}
-            <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue">Dashboard</a></li>
-            {% if user.goals_number != 0 %}
-            <li><a class="dropdown-trigger header-blue" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
-            <ul id="nav_goals" class="dropdown-content">
-                {% for goal in goals %}
-                <li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" class="header-blue-lighter">{{goal.goal_name}}</a></li>
-                {% endfor %}
-                {% if user.goals_number < 4 %}
-                <li class="divider"></li>
-                <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue-lighter"><i class="material-icons">add</i>New Goal</a></li>
-                {% endif %} 
-            </ul>
-            {% endif %}
-            <li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
-            <li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
-            {% else %}
-                <li><a href="{{url_for('login')}}" class="header-blue">Login </a></li>
-                <li><a href="{{url_for('signup')}}" class="header-blue">Sign Up</a></li>
-            {% endif %}
-        </ul>
-    </div>
-  </nav>
-   <ul class="sidenav" id="mobile-nav">
-        <li><a href="{{url_for('index')}}" class="header-blue">Home</a></li>
-            {% if user %}
-            <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue">Dashboard</a></li>
-            {% if user.goals_number != 0 %}
-                <li class="divider"></li>
-                {% for goal in goals %}
-                <li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" class="header-blue-lighter">{{goal.goal_name}}</a></li>
-                {% endfor %}
-                {% if user.goals_number < 4 %}
-                <li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue-lighter">Create New Goal</a></li>
-                {% endif %} 
-                <li class="divider"></li>
-            {% endif %}
-            <li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
-            <li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
-    {% else %}
-        <li><a href="{{url_for('login')}}" class="header-blue">Login </a></li>
-        <li><a href="{{url_for('signup')}}" class="header-blue">Sign Up</a></li>
-    {% endif %}
-  </ul>
-</header>
-        {% block content %}
-        {% endblock %}
-    <footer class="page-footer background-blue">
-          <div class="container-fluid">
-            <div class="row" style="margin-bottom: 0px;">
-              <div class="col s12 m6 l6 footer-col">
-                <h5 class="header-white" style="margin: 0px 0px 5px 10px;"><strong>track</strong> <i class="material-icons">trending_up</i></h5>
-              </div>
-              <div class="col s12 m6 l4 offset-l2 right-align footer-col">
-                    {% if user %}
-                    <a class="header-white" href="{{ url_for('index') }}">Home</a> |
-                    <a class="header-white" href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a> |
-                    <a class="header-white" href="{{ url_for('profile', username=user.username) }}">Profile</a> |
-                    <a class="header-white" href="{{url_for('logout')}}">Log Out</a>
-                    {% else %}
-                    <a class="header-white" href="{{ url_for('index') }}">Home</a> |
-                    <a class="header-white" href="{{ url_for('login') }}">Log In</a> |
-                    <a class="header-white" href="{{ url_for('signup') }}">Sign Up</a> 
-                    {% endif %}
-              </div>
-            </div>
-          </div>
-        </footer>
-    <!--load jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--load materialize js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!--load chart.js-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-    <!--load local js-->
-    <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
-    {% include 'ubiq_js.html' %}
-    {% block include_js_html %}
-    {% endblock %}
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				{% if user %}
+				<a href="{{ url_for('dashboard', username=user.username) }}"
+					class="brand-logo header-blue"><strong>track</strong>
+					<i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
+				{% else %}
+				<a href="{{ url_for('index') }}" class="brand-logo header-blue"><strong>track</strong>
+					<i class="material-icons right" id="nav-logo-icon">trending_up</i></a>
+				{% endif %}
+				<a href="#" data-target="mobile-nav"
+					class="sidenav-trigger"><i class="material-icons header-blue" id="nav-menu-bars">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="{{url_for('index')}}" class="header-blue">Home</a></li>
+					{% if user %}
+					<li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue">Dashboard</a>
+					</li>
+					{% if user.goals_number != 0 %}
+					<li><a class="dropdown-trigger header-blue"
+							data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
+					<ul id="nav_goals" class="dropdown-content">
+						{% for goal in goals %}
+						<li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}"
+								class="header-blue-lighter">{{goal.goal_name}}</a></li>
+						{% endfor %}
+						{% if user.goals_number < 4 %}
+						<li class="divider"></li>
+						<li><a href="{{ url_for('dashboard', username=user.username) }}"
+								class="header-blue-lighter"><i class="material-icons">add</i>New Goal</a></li>
+						{% endif %}
+					</ul>
+					{% endif %}
+					<li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
+					<li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
+					{% else %}
+					<li><a href="{{url_for('login')}}" class="header-blue">Login </a></li>
+					<li><a href="{{url_for('signup')}}" class="header-blue">Sign Up</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+		<ul class="sidenav" id="mobile-nav">
+			<li><a href="{{url_for('index')}}" class="header-blue">Home</a></li>
+			{% if user %}
+			<li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue">Dashboard</a></li>
+			{% if user.goals_number != 0 %}
+			<li class="divider"></li>
+			{% for goal in goals %}
+			<li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}"
+					class="header-blue-lighter">{{goal.goal_name}}</a></li>
+			{% endfor %}
+			{% if user.goals_number < 4 %}
+			<li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue-lighter">Create New
+					Goal</a></li>
+			{% endif %}
+			<li class="divider"></li>
+			{% endif %}
+			<li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
+			<li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
+			{% else %}
+			<li><a href="{{url_for('login')}}" class="header-blue">Login </a></li>
+			<li><a href="{{url_for('signup')}}" class="header-blue">Sign Up</a></li>
+			{% endif %}
+		</ul>
+	</header>
+	{% block content %}
+	{% endblock %}
+	<footer class="page-footer background-blue">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col s12 m6 l6 footer-col">
+					<h5 class="header-white" id="footer-brand-logo"><strong>track</strong>
+						<i class="material-icons">trending_up</i></h5>
+				</div>
+				<div class="col s12 m6 l4 offset-l2 right-align footer-col">
+					{% if user %}
+					<a class="header-white" href="{{ url_for('index') }}">Home</a> |
+					<a class="header-white" href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a> |
+					<a class="header-white" href="{{ url_for('profile', username=user.username) }}">Profile</a> |
+					<a class="header-white" href="{{url_for('logout')}}">Log Out</a>
+					{% else %}
+					<a class="header-white" href="{{ url_for('index') }}">Home</a> |
+					<a class="header-white" href="{{ url_for('login') }}">Log In</a> |
+					<a class="header-white" href="{{ url_for('signup') }}">Sign Up</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--load jquery-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--load materialize js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!--load chart.js-->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<!--load local js-->
+	<script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+	{% include 'ubiq_js.html' %}
+	{% block include_js_html %}
+	{% endblock %}
 </body>
-</html> 
+
+</html>
