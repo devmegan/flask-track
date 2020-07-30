@@ -262,12 +262,12 @@ nav .nav-wrapper {
     background-color: #f8f8f8;
 }
 
-
-
 nav .brand-logo:hover {
-   
+   color: #26b57c !important;
 }
-
+nav .sidenav-trigger i:hover {
+    color: #26b57c !important;
+}
 #nav-logo-icon {
     font-size: 130%;
     margin-top: 3%;
