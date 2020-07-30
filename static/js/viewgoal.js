@@ -62,7 +62,25 @@ $(document).ready(function(){
             }
         }
     })
-    
+    // prevent submit of edit goal form if any invalid fields or img url not secure
+    $('#edit-goal-submit-btn').click(function(e) {
+            e.preventDefault();
+            given_url = $('#image_url').val()
+            given_url_extension = given_url.split('.').pop();
+            if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
+                $("#edit-goal-form").submit();
+            } else if (given_url.slice(0,28) == "https://images.unsplash.com/"){
+                //if url was fetched from unsplash by keyword, doesn't have .jpg/.png at end of url, but still needs to submit
+                if ($("#goal_name, #img_url, #end_total").hasClass("invalid")){
+                    M.toast({html: 'It looks like some fields don\'t have a valid input', classes: 'flash'})
+                } else {
+                    alert("submitting")
+                    $("#edit-goal-form").submit();
+                }
+            } else {
+                M.toast({html: 'That doesn\'t look like an image URL', classes: 'flash'});
+            }
+        })
 /* Delete Goal Form Validation */
     // clientside validation: delete user 
     $("#password_delete").on({
@@ -140,19 +158,6 @@ $("#time-stats-card").hover(function() {
         $("#deposit-50").click(function(){
             $("#deposit_value").val("50.00")
         });
-        $('#edit-goal-submit-btn').click(function(e) {
-            e.preventDefault();
-            given_url = $('#image_url').val()
-            given_url_extension = given_url.split('.').pop();
-            if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
-                $("#edit-goal-form").submit();
-            } else if (given_url.slice(0,28) == "https://images.unsplash.com/"){
-                //if url was fetched from unsplash by keyword, doesn't have .jpg/.png at end of url, but still needs to submit
-                $("#edit-goal-form").submit();
-            } else {
-                M.toast({html: 'That doesn\'t look like an image URL', classes: 'flash'});
-            }
-        })
         $('.datepicker').datepicker({
             // set default date to goal end date
             setDefaultDate: '{{ goal.end_date.strftime("%b %d, %Y") }}',
