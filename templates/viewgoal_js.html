@@ -2,6 +2,15 @@
 $(document).ready(function(){
     progressPie({{ goal.percent_progress }})
     depositsGauge({{ goal.deposits_number }}, {{ goal.withdrawals_number }})
+    $("#withdraw-submit").click(function(e){
+        e.preventDefault();
+        if ($("#withdraw_value").val() > {{goal.current_total}}) {
+           M.toast({html: 'You can\'t withdraw more than your current total', classes: 'flash'});
+        }
+        else {
+            $("#withdraw-form").submit();
+        }
+    });
 })
 function progressPie (progress){
 // progress chart on viewgoal template
@@ -86,5 +95,6 @@ function depositsGauge (deposits, withdrawals){
     }
 });
 }
+
 
 </script>
