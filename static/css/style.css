@@ -670,9 +670,13 @@ padding: 10px;
     margin-bottom: 30px;
 }
 
-#savings-forecast-text {
+.savings-forecast-text {
     margin-bottom: 30px;
     line-height: 2;
+}
+
+.edit-goal-text {
+    margin-bottom: 8vh !important;
 }
 
 #savings-forecast-prompt {
