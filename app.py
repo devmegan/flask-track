@@ -242,9 +242,10 @@ def update_savings(goal_id, action):
     user_updated_savings_history = [goal_to_update['goal_name'], datetime.today(), update_value]
     # update goal 
     coll_goals.update_one({"_id": ObjectId(goal_id)}, {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved_bool}})
-    # pul new saves update go end of savings history arrays (goal and user)
+    # push new activity go end of savings history arrays (goal and user)
     coll_goals.update_one({"_id": ObjectId(goal_id)}, {'$push': {"savings_history": updated_savings_history}})
     coll_users.update_one({"username": username}, {'$push': {"user_savings_history": user_updated_savings_history}})
+    # update user's new deposits/withdrawals numbers
     coll_users.update_one({"username": username}, {'$set': {"deposits_number": deposits, "withdrawals_number": withdrawals}})
     # flash event to user - amount and whether deposited or withdrawn
     flash_currency = user_total_saved(username, update_value)
@@ -266,15 +267,15 @@ def update_goal(goal_id):
     end_total = float(request.form.get('end_total').replace(",", ""))
     if end_total <= goal_to_update['current_total']:
         achieved_bool = True
+        percent_progress = 100
         # app_goals_achieved(1, goal_to_update['current_total'])
+    else:
+        percent_progress = int((goal_to_update['current_total']/end_total) * 100)
+    # savings history for goal
+    # set maximum percent as 100, even if user saves over goal
+    # savings history for goal
     percent_progress = (goal_to_update['current_total'] / end_total) * 100
-    coll_goals.update_one({'_id': ObjectId(goal_id)}, {'$set': {
-        'goal_name':request.form.get('goal_name'), 'image_url':request.form.get('image_url'),
-        'end_total': end_total,
-        'percent_progress': percent_progress,
-        'end_date': date_end_date,
-        'achieved': achieved_bool
-    }})
+    coll_goals.update_one({'_id': ObjectId(goal_id)}, {'$set': {'goal_name':request.form.get('goal_name'), 'image_url':request.form.get('image_url'),'end_total': end_total,'percent_progress': percent_progress, 'end_date': date_end_date, 'achieved': achieved_bool}})
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
 
