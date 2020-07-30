@@ -458,6 +458,10 @@ padding: 10px;
     margin-bottom: 0px;
 }
 
+#saved-summary {
+    margin-top: 5vh;
+}
+
 .goal-image {
     width: 100%;
     border-radius: 4px;
