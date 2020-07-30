@@ -12,9 +12,9 @@
         {% endif %}
     </div>
     <div class="carousel-item" id="index-carousel-one" href="#one!">
-        <div class="row white" style="margin-top: 25vh;">
+        <div class="row white carousel-banner">
             <div class="col s12">
-                <h4 class="spaced-text header-blue" style="padding: 10px"><strong>{{ "{:,}".format(app_stats.users_total)}} savers use track</strong></h4>
+                <h4 class="spaced-text header-blue banner-heading uppercase"><strong>{{ "{:,}".format(app_stats.users_total)}} savers use track</strong></h4>
                 {% if user %}
                 <h5 class="header-blue uppercase spaced-text">We'd only be <strong>{{ "{:,}".format(app_stats.users_total - 1)}}</strong> without you!</h5>
                 {% else %}
@@ -24,12 +24,12 @@
         </div>
     </div>
     <div class="carousel-item " id="index-carousel-two" href="#two!">
-        <div class="row white" style="margin-top: 25vh;">
+        <div class="row white carousel-banner">
             <div class="col s12">
-                <h4 class="spaced-text header-blue" style="padding: 10px"><strong>{% if user %}{{ user.currency}}{% else %}£{% endif %}{{ "{:,.2f}".format(app_stats.saved_total)}} saved so far</strong></h4>
+                <h4 class="spaced-text header-blue banner-heading uppercase"><strong>{% if user %}{{ user.currency}}{% else %}£{% endif %}{{ "{:,}".format(app_stats.saved_total | int) }} saved so far</strong></h4>
                 {% if user %}
                 {% if user.total_currently_saved > 0 %}
-                <h5 class="header-blue uppercase spaced-text">{{ user.currency}}{{ "{:,.2f}".format(user.total_currently_saved) }} of this is yours!</h5>
+                <h5 class="header-blue uppercase spaced-text">{{ user.currency}}{{ "{:,.2f}".format(user.total_currently_saved | int) }} of this is yours!</h5>
                 {% else %}
                 <h5 class="header-blue uppercase spaced-text">Start saving towards a new goal to be a part of it</h5>
                 {% endif %}
@@ -40,9 +40,9 @@
         </div>
     </div>
     <div class="carousel-item" id="index-carousel-three" href="#three!">
-       <div class="row white" style="margin-top: 25vh;">
+       <div class="row white carousel-banner">
             <div class="col s12">
-                <h4 class="spaced-text header-blue" style="padding: 10px"><strong>{{ "{:,}".format(app_stats.achieved_goals)}} goals achieved with track</strong></h4>
+                <h4 class="spaced-text header-blue banner-heading uppercase"><strong>{{ "{:,}".format(app_stats.achieved_goals)}} goals achieved with track</strong></h4>
                 {% if user %}
                     {% if (user.goals_achieved | length) == 0 %}
                         {% if user.deposts_number %}
@@ -51,9 +51,9 @@
                         <h5 class="header-blue uppercase spaced-text">Start saving and soon it will be {{ "{:,}".format(app_stats.achieved_goals + 1)}}</h5>
                         {% endif %}
                      {% elif (user.goals_achieved | length) == 1 %}
-                      <h5 class="header-blue uppercase spaced-text">One of them is yours! </h5>
+                      <h5 class="header-blue uppercase spaced-text">And one of them is yours! </h5>
                      {% else %}
-                     <h5 class="header-blue uppercase spaced-text">{{ user.goals_achieved | length }} of them are yours! </h5>
+                     <h5 class="header-blue uppercase spaced-text">And {{ user.goals_achieved | length }} of them are yours! </h5>
                     {% endif %}
                 {% else %}
                 <h5 class="header-blue uppercase spaced-text">Track can help you achieve yours too </h5>
