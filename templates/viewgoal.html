@@ -241,16 +241,30 @@
                 <div class="card-content">    
                     <div class="row">
                         <div class="col s12">
-                            <h5 class="center uppercase spaced-text header-blue" id="savings-forecast-header"><strong>Savings Forecast</strong></h5>
                             {% if forecast_remaining_days != "unforcastable" %}
                             <div class="center">
                                 <div>
                                     {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
-                                    <h6 class="blue-grey-text text-darken-2" id="savings-forecast-text">Your recent savings activity suggests it will only be <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> until you meet your goal - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
-                                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
-                                    <h6 class="blue-grey-text text-darken-2" id="savings-forecast-text">You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days - <strong>That's right on time!</strong></h6>
+                                    <h5 class="header-green uppercase spaced-text"><strong>Ahead of schedule</strong></h5>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) > 1 %}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks like you're going to reach your goal in <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
                                     {% else %}
-                                    <h6 class="blue-grey-text text-darken-2" id="savings-forecast-text">Your recent savings activity suggests it will be <strong class="header-red-darken">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks like you're going to reach your goal <strong class="header-green-darker">tomorrow</strong> - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} day</strong> early! </h6>
+                                    {% endif %}
+                                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
+                                    <h5 class="header-green uppercase spaced-text"><strong>Right On Time</strong></h5>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) > 1 %}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">You're on track to reach your goal in <strong class="header-green">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days</h6>
+                                    {% else %}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">You're on track to reach your goal <strong class="header-green">tomorrow</strong>.</h6>
+                                    {% endif %}
+                                    {% else %}
+                                    <h5 class="header-red uppercase spaced-text"><strong>A little off track</strong></h5>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) > 1%}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks to be <strong class="header-red-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
+                                    {% else %}
+                                     <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks to be <strong class="header-red-darker">an extra day</strong> before you meet your goal.</h6>
+                                    {% endif %}
                                     {% endif %}
                                 </div>
                             </div>
@@ -261,9 +275,9 @@
                         <div class="col s12 center">
                         {% if forecast_remaining_days != "unforcastable" %}
                         {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
-                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Want to increase your goal? <a href="" class="uppercase savings-card-link header-blue card-link"><strong>Edit Goal</strong></a></p>
+                            <p class="blue-grey-text text-darken-1 uppercase edit-goal-text">Want to increase your goal? <span class="uppercase card-link header-blue card-link edit-goal-link"><strong>Edit Goal</strong></span></p>
                         {% elif (forecast_remaining_days| round(0, 'ceil') | int) > ((goal.end_date.date() - date_today).days) %}
-                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Need to extend your end date? <a href="" class="uppercase savings-card-link header-blue card-link"><strong>Edit Goal</strong></a></p>
+                            <p class="blue-grey-text text-darken-1 uppercase edit-goal-text">Need to extend your end date? <span class="uppercase card-link header-blue card-link edit-goal-link"><strong>Edit Goal</strong></span></p>
                         {% endif %}
                         {% endif %}
                         </div>
@@ -424,11 +438,26 @@
                             <div class="center">
                                 <div>
                                     {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
-                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">Your recent savings activity suggests it will only be <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> until you meet your goal - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
-                                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
-                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">You're on track to reach your goal in <strong>{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days - <strong>That's right on time!</strong></h6>
+                                    <h5 class="header-green uppercase spaced-text"><strong>Ahead of schedule</strong></h5>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) > 1 %}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks like you're going to reach your goal in <strong class="header-green-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }} days</strong> - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} days</strong> early! </h6>
                                     {% else %}
-                                    <h6 class="blue-grey-text text-darken-2 uppercase" id="savings-forecast-text">Your recent savings activity suggests it will be <strong class="header-red-darken">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks like you're going to reach your goal <strong class="header-green-darker">tomorrow</strong> - that's <strong class="header-green-darker">{{ (goal.end_date.date() - date_today).days - (forecast_remaining_days| round(0, 'ceil') | int) }} day</strong> early! </h6>
+                                    {% endif %}
+                                    {% elif (forecast_remaining_days| round(0, 'ceil') | int) == ((goal.end_date.date() - date_today).days) %}
+                                    <h5 class="header-green uppercase spaced-text"><strong>Right On Time</strong></h5>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) > 1 %}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">You're on track to reach your goal in <strong class="header-green">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days</h6>
+                                    {% else %}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">You're on track to reach your goal <strong class="header-green">tomorrow</strong>.</h6>
+                                    {% endif %}
+                                    {% else %}
+                                    <h5 class="header-red uppercase spaced-text"><strong>A little off track</strong></h5>
+                                    {% if (forecast_remaining_days| round(0, 'ceil') | int) > 1%}
+                                    <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks to be <strong class="header-red-darker">{{ forecast_remaining_days| round(0, 'ceil') | int }}</strong> days until you meet your goal - that's <strong class="header-red-darker">{{ (forecast_remaining_days| round(0, 'ceil') | int) - (goal.end_date.date() - date_today).days }}</strong> days past your chosen date.</h6>
+                                    {% else %}
+                                     <h6 class="blue-grey-text text-darken-2 spaced-text savings-forecast-text">It looks to be <strong class="header-red-darker">an extra day</strong> before you meet your goal.</h6>
+                                    {% endif %}
                                     {% endif %}
                                 </div>
                             </div>
@@ -439,9 +468,9 @@
                         <div class="col s12 center">
                         {% if forecast_remaining_days != "unforcastable" %}
                         {% if (forecast_remaining_days| round(0, 'ceil') | int) < ((goal.end_date.date() - date_today).days)  %}
-                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Want to increase your goal? <a href="" class="uppercase savings-card-link header-blue card-link"><strong>Edit Goal</strong></a></p>
+                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Want to increase your goal? <span class="uppercase card-link header-blue card-link edit-goal-link"><strong>Edit Goal</strong></span></p>
                         {% elif (forecast_remaining_days| round(0, 'ceil') | int) > ((goal.end_date.date() - date_today).days) %}
-                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Need to extend your end date? <a href="" class="uppercase savings-card-link header-blue card-link"><strong>Edit Goal</strong></a></p>
+                            <p class="blue-grey-text text-darken-1 uppercase" id="savings-forecast-prompt">Need to extend your end date? <span class="uppercase card-link header-blue card-link edit-goal-link"><strong>Edit Goal</strong></span></p>
                         {% endif %}
                         {% endif %}
                         </div>
