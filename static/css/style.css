@@ -112,7 +112,7 @@ i {
 .blue-border {
     color:#539fe1;
     border: 3px solid;
-    box-shadow: 0px;
+    box-shadow: none;
     margin-top: 2vh;
     padding: 2vh;
 }
