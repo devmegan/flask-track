@@ -75,6 +75,7 @@
             <div class="card display-none" id="create-goal-card">
                 <div class="card-content center">
                     <h4 class="center uppercase spaced-text header-blue"><strong>Create Goal</strong></h4>
+                    <span class="header-blue-lighter card-link" id="create-goal-cancel">Back to Dashboard</span>
                     <div class="grey-border">
                         <div class="row">
                             <div class="col s12">
@@ -123,7 +124,6 @@
                                     </div>
                                     <div class="row center">
                                         <div class="col s12">
-                                            <button class="btn waves-effect waves-light red-btn" type="button" id="create-goal-cancel">Cancel</button>
                                             <button class="btn waves-effect waves-dark blue-btn" id="create-goal-submit" type="submit" name="action">Create Goal</button>
                                         </div>
                                     </div>
@@ -229,7 +229,4 @@
 {% block include_js_html %}
 {% include 'dash_js.html'%}
 <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
-<script>
- 
-</script>
 {% endblock %}
