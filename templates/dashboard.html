@@ -48,9 +48,9 @@
                                 <p class="header-blue-darker spaced-text" >You'll recieve more savings insights as soon as you make your first deposit</p>
                                 <br>
                                 {% else %}
-                                <br>
-                                <h6 class="uppercase spaced-text header-blue">Saving towards one goal: <strong class="header-blue-darker">{{ goal.goal_name }}</strong> </h6>
-                                {% endif %}
+                                <h5 class="uppercase spaced-text header-blue-darker">Saving towards One Goal</h5>
+                        
+                                 {% endif %}
                             {% endfor %}
                         {% else %}
                         {% if user.goals_number == 0%}
@@ -134,43 +134,20 @@
                 </div> 
             </div>
         </div>
+        <style>
+        </style>
         <div class="col s12 center display-none" id="spinner-col">
             <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
+                <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
                     <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
                 </div>
-                <div class="spinner-layer spinner-red">
-                    <div class="circle-clipper left">
+                <div class="gap-patch">
                     <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
                 </div>
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
+                <div class="circle-clipper right">
                     <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
                 </div>
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                    <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -251,96 +228,8 @@
 {% endblock %} 
 {% block include_js_html %}
 {% include 'dash_js.html'%}
+<script src="{{ url_for('static', filename='js/dash.js') }}"></script>
 <script>
- $('.datepicker').datepicker({
-     // set default date to goal end date
-        setDefaultDate: new Date(),
-        // prevent selecting end date before todays date
-        minDate: new Date(),
-        // only allow years to be current/future years
-        yearRange: [2020, 2030]
- });
- $('.tooltipped').tooltip();
-
- //open datepicker on focusing on date field 
- $("#end_date").focus(function(){
-    $('#end_date').click();
- })
-
-$('#create-goal-btn').click(function(){
-    if ($("#create-goal-name").val()){
-        $("#goal_name").val($("#create-goal-name").val())
-        $("#create-goal-card").removeClass("display-none")
-        $("#main-card").addClass("display-none")
-    } else {
-        $("#create-goal-name").addClass("invalid")
-    }
-})
-
-// set img url input 
-$('input:radio[name="img-method"]').change(function () {
-    $("#image_url").removeAttr("disabled")
-     if ($(this).val() == "keyword") {
-        $("#image_url").attr("placeholder", "Enter Your Keyword").attr("type", "text").next().text('Enter Your Keyword (i.e. "beach", "car", "birthday")')
-    } 
-    else { 
-        $("#image_url").attr("placeholder", "Enter Your Image URL").attr("type", "url").next().text('Enter Image Url ("https://...")')
-    }  
-}) 
-//fetch image by url 
-$('#create-goal-submit').click(function(e) {
-    "stop form submitting, fetch url of image related to keyword"
-    e.preventDefault();
-    if ($('input:radio[name="img-method"]:checked').val() == "keyword") {
-        $("#create-goal-card").addClass("display-none")
-        $("#spinner-col").removeClass("display-none")
-        var search_keyword = $('input:text[name="image_url"]').val();
-        fetch(`https://source.unsplash.com/1600x900/?${search_keyword}`).then((response)=> { 
-            var fetched_url = response.url
-            if (fetched_url == "https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200"){
-                /* if the fetch returns an "image not found" url, going to use a placeholder savings image instead */
-                fetched_url = "https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            }
-            $('#image_url').val(fetched_url);
-            /* save keyword in hidden form input - keyword and image url will be stored as anonymised array in mongo*/ 
-            $('#search_keyword').val(search_keyword)
-            $("#create-goal-form").submit();
-        });
-    }  else {
-        /* check if it looks like an image url - basic client side security*/
-        given_url = $('#image_url').val()
-        given_url_extension = given_url.split('.').pop();
-        if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
-            $("#add-goal-form").submit();
-        }
-        else {
-            alert("That doesn't look like an image URL")
-        }
-    }
-})
-
-$("#add_goal_fab_card, #add-goal-btn").click(function(){
-   showCreateGoal()
-})
-
-$("#create-goal-cancel").click(function(){
-    hideCreateGoal()
-})
-
-$( document ).ready(function() {
-    if ({{ add_goal | tojson }}) {
-        showCreateGoal();
-    }
-});
-
-function showCreateGoal(){
-    $("#create-goal-card").removeClass("display-none")
-    $(".card:not('#create-goal-card')").addClass("display-none")
-}
-
-function hideCreateGoal(){
-    $("#create-goal-card").addClass("display-none")
-    $(".card:not('#create-goal-card')").removeClass("display-none")
-}
+ 
 </script>
 {% endblock %}
