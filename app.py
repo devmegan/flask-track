@@ -276,13 +276,20 @@ def update_goal(goal_id):
 
 """ delete goal """
 
-@app.route('/delete_goal/<goal_id>')
+@app.route('/delete_goal/<goal_id>', methods=['POST'])
 def delete_goal(goal_id):
-    username=session['username']
-    coll_goals.remove({'_id': ObjectId(goal_id)})
-    user_current_goals(-1)
-    app_current_goals(-1)
-    return redirect(url_for('dashboard', username=username))
+    username = session['username']
+    user = coll_users.find_one({'username': username})
+    if check_password_hash(user['password'], request.form.get('password_delete')):
+        coll_goals.remove({'_id': ObjectId(goal_id)})
+        user_current_goals(-1)
+        app_current_goals(-1)
+        flash("Your goal has been deleted")
+        return redirect(url_for('dashboard', username=username))
+    else:
+        # redirect user to profile if incorrect password
+        flash("That looks like the wrong password. Please try again.")
+        return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
 """ insert new goal """ 
 
@@ -409,7 +416,7 @@ def update_password(username):
 def delete_user(username):
     user_to_delete = coll_users.find_one({'username': username})
     # prevent users deleting test account
-    if username != "testacc" and username != "ascipio" and username != "ladama":
+    if username != "testuser":
         # only delete if user has confirmed password
         if check_password_hash(user_to_delete['password'], request.form.get('password_delete')):
             coll_users.remove({'username': username})
