@@ -34,37 +34,6 @@ $('input:radio[name="img-method"]').change(function () {
     else { 
         $("#image_url").attr("placeholder", "Enter Your Image URL").attr("type", "url").next().text('Enter Image Url ("https://...")')
     }  
-}) 
-//fetch image by url 
-$('#create-goal-submit').click(function(e) {
-    "stop form submitting, fetch url of image related to keyword"
-    e.preventDefault();
-    if ($('input:radio[name="img-method"]:checked').val() == "keyword") {
-        $("#create-goal-card").addClass("display-none")
-        $("#spinner-col").removeClass("display-none")
-        var search_keyword = $('input:text[name="image_url"]').val();
-        fetch(`https://source.unsplash.com/1600x900/?${search_keyword}`).then((response)=> { 
-            var fetched_url = response.url
-            if (fetched_url == "https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200"){
-                /* if the fetch returns an "image not found" url, going to use a placeholder savings image instead */
-                fetched_url = "https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            }
-            $('#image_url').val(fetched_url);
-            /* save keyword in hidden form input - keyword and image url will be stored as anonymised array in mongo*/ 
-            $('#search_keyword').val(search_keyword)
-            $("#create-goal-form").submit();
-        });
-    }  else {
-        /* check if it looks like an image url - basic client side security*/
-        given_url = $('#image_url').val()
-        given_url_extension = given_url.split('.').pop();
-        if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
-           $("#create-goal-form").submit();
-        }
-        else {
-            alert("That doesn't look like an image URL")
-        }
-    }
 })
 
 $("#add_goal_fab_card, #add-goal-btn").click(function(){
