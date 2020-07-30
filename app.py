@@ -270,6 +270,7 @@ def update_goal(goal_id):
         percent_progress = 100
         # app_goals_achieved(1, goal_to_update['current_total'])
     else:
+        achieved_bool = False
         percent_progress = int((goal_to_update['current_total']/end_total) * 100)
     # savings history for goal
     # set maximum percent as 100, even if user saves over goal
