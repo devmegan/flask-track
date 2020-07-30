@@ -34,9 +34,11 @@
 						{% endfor %}
 						{% if user.goals_number < 4 %}
 						<li class="divider"></li>
-						<li><a href="{{ url_for('dashboard', username=user.username) }}" class="header-blue-lighter"><i class="material-icons">add</i>New Goal</a></li>
+						<li><a href="{{ url_for('dashboard', username=user.username, add_goal='add') }}" class="header-blue-lighter"><i class="material-icons">add</i>Add new Goal</a></li>
 						{% endif %}
 					</ul>
+                    {% else %}
+                    <li><a href="{{ url_for('dashboard', username=user.username, add_goal='add') }}" class="header-blue">Create Goal</a></li>
 					{% endif %}
 					<li><a href="{{url_for('profile', username=user.username)}}" class="header-blue">Profile</a></li>
 					<li><a href="{{url_for('logout')}}" class="header-blue">Log Out</a></li>
