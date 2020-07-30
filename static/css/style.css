@@ -30,7 +30,10 @@ i {
 .datepicker-table td.is-selected {
     background-color: #05a780
 }
-  
+.datepicker-table td.is-disabled {
+    background-color: #d8d8d8;
+    border-radius: 0px;
+}
 .row {
     margin-bottom: 0px;
 }
