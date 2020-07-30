@@ -1,4 +1,5 @@
 $(document).ready(function(){
-    window.print();
-    setTimeout(transformBack(), 0);
+    $("#print-history-btn").click(function(){
+        window.print();
+    })
 });
