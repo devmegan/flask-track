@@ -299,7 +299,7 @@
                             <span class="uppercase blue-grey-text text-darken-2"><strong>Savings to reach Goal</strong></span>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
             {% endif %}
         </div>
@@ -475,8 +475,8 @@
                         {% endif %}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s6" id="user-savings-col">
+                     <div class="row">
+                        <div class="col s6 user-savings-col">
                             {% if avg_needed_perday > avg_saved_perday %}
                             <span class="header-red-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
                             <span class="header-red user-savings-figure"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7)) }}/week</strong></span>  
