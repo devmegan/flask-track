@@ -430,11 +430,6 @@ top: 10vh;
     margin-top: 25px;
 }
 
-#profile-container .card {
-    min-height: 85vh;
-}
-
-
 #update-pw-icon {
     font-size: 6vh;
     margin-bottom: 2vh
@@ -595,6 +590,15 @@ padding: 10px;
     background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
     min-height: 90vh;
 }
+/* Profile */
+#profile-container {
+    background: rgb(34,121,195);
+    background: linear-gradient(0deg, rgb(41, 199, 133) 0%, rgba(34,121,195,1) 100%);
+    min-height: 90vh;
+}
+#profile-container .card {
+    min-height: 85vh;
+}
 
 /* 404 */
 #container-404 {
@@ -653,6 +657,9 @@ padding: 10px;
     .goal-fab-card i {
         font-size: 6vh;
         line-height: 14vh;
+    }
+    #profile-container .card {
+        min-height: 0px;
     }
 }
     
