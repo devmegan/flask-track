@@ -137,7 +137,7 @@ i {
     width: 100%;
     text-align: left;
 }
-.input-field input[type=text] {
+.input-field input[type=text]:not(.select-dropdown) {
     border-bottom: 0px;
     border: 2px solid #2279c3;
     padding-left: 10px;
@@ -146,10 +146,10 @@ i {
     margin-bottom: 0px;
     width: 95%;
 }
-.input-field input[type=text]:hover {
+.input-field input[type=text]:not(.select-dropdown):hover {
     border: 2.5px solid #1f6fb2;
 }
-.input-field input[type=text]:focus {
+.input-field input[type=text]:not(.select-dropdown):focus {
     border: 2.5px solid #1f6fb2;
 }
 .input-field input[type=number] {
