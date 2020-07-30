@@ -414,6 +414,10 @@ top: 10vh;
     margin: 10px;
 }
 
+#spinner-col {
+    margin-top: 25vh;
+}
+
 /* new user card */
 
 .create-goal-prompt {
