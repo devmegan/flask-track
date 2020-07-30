@@ -66,6 +66,10 @@ i {
     color: #26b57c;
 }
 
+.green-card-link:hover {
+    color: #1f9566;
+}
+
 .red-btn {
     background-color: #e46378
 }
