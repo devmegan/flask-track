@@ -315,6 +315,7 @@ footer a:hover {
 .carousel {
     height: 90vh;
 }
+
 #index-carousel-one {
     background: rgb(34,121,195);
     background: linear-gradient(0deg,  rgba(141,255,191,1) 0%, rgba(34,121,195,1) 100%);
@@ -328,6 +329,10 @@ footer a:hover {
     background: linear-gradient(270deg, rgba(141,255,191,1) 0%, rgba(34,121,195,1) 100%);
 }
 
+#index-cards-row {
+    background: rgb(247,247,247);
+    background: linear-gradient(180deg, rgba(247,247,247,1),0%,rgba(247,247,247,1) 75%, rgba(33,121,195,1) 100%);
+}
 /* Log In and Sign Up */
 #login-signup-container {
     background: rgb(34,121,195);
@@ -538,8 +543,8 @@ top: 10vh;
 
 #title-card {
 padding: 0px;
-
 }
+
 #title-card .card-content {
 padding: 10px;
 }
@@ -548,6 +553,7 @@ padding: 10px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
 .goal-image {
     width: 100%;
     border-radius: 4px;
@@ -733,8 +739,7 @@ padding: 10px;
     }
     .goal-fab-card i {
         font-size: 6vh;
-        line-height: 14
-        vh;
+        line-height: 14vh;
     }
 }
     
