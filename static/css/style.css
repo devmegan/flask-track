@@ -71,10 +71,21 @@ i {
 }
 
 .red-btn {
-    background-color: #e46378
+    background-color: #d42541;
 }
 .red-btn:hover {
-    background-color: #d42541;
+    background-color: #e46378;
+}
+
+.red-card-link:hover {
+    color: #d42541;
+}
+
+.green-btn {
+    background-color: #26b57c;
+}
+.green-btn:hover {
+    background-color: #2fd392;
 }
 .header-blue-darker {
     color: #1f6fb2;
@@ -568,6 +579,10 @@ padding: 10px;
 #deposit-input {
     margin-bottom: 5vmin;
 }
+#withdraw-input {
+    margin-bottom: 5vmin;
+}
+
 
 .quick-cards-row {
     margin-bottom: 5vmin;
