@@ -472,8 +472,8 @@ def delete_user(username):
 
 
 @app.route('/logout')
-""" log user out and end session """
 def logout():
+    """ log user out and end session """
     session.clear()
     flash("You have logged out of your account")
     return redirect(url_for("index"))
