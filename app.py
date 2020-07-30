@@ -251,6 +251,7 @@ def update_savings(goal_id, action):
     # flash event to user - amount and whether deposited or withdrawn
     flash_currency = user_total_saved(username, update_value)
     flash(flash_currency + ('%.2f' % abs(update_value)) + action_complete)
+    app_total_value(update_value)
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
 
@@ -495,7 +496,15 @@ def app_total_users(direction):
     app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
     new_user_total = app_stats['users_total'] + direction
     coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"users_total": new_user_total}})
-    return 
+    return
+
+
+def app_total_value(amount):
+    """ increase/decrease total amount saved when user makes a deposit/withdrawal """
+    app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
+    new_saved_total = app_stats['saved_total'] + amount
+    coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"saved_total": new_saved_total}})
+    return
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
