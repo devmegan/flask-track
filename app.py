@@ -10,7 +10,7 @@ if path.exists("env.py"):
     import env
     print("env.py imported")
 
-""" config new app """ 
+""" config new app """
 
 # config flask
 app = Flask(__name__)
@@ -26,17 +26,22 @@ coll_users = mongo.db.users
 coll_goals = mongo.db.goals
 coll_app_stats = mongo.db.app_stats
 
-""" index """ 
+
+""" index """
+
+
 @app.route('/')
 @app.route('/index')
 def index():
     app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
-    if 'username' in session: 
-        username=session['username']
+    if 'username' in session:
+        """ load index page for user """
+        username = session['username']
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
         return render_template("index.html", user=current_user, app_stats=app_stats, goals=list_goals)
     else:
+        """ load index page for nonuser """
         return render_template("index.html", app_stats=app_stats)
 
 
@@ -46,7 +51,8 @@ def index():
 @app.route('/login')
 def login():
     if 'username' in session:
-        username=session['username']
+        """ redirect user to dash if in session """
+        username = session['username']
         flash("You are logged in already!")
         return redirect(url_for('dashboard', username=username))
     else:
@@ -88,6 +94,7 @@ def signup():
 
 @app.route('/register_user', methods=['POST'])
 def register_user():
+    # fetch existing user data - check username/email will be unique
     existing_email = coll_users.find_one({"email": request.form.get('email')})
     existing_user = coll_users.find_one({"username": request.form.get('username')})
     # prep currency switch val
@@ -140,54 +147,59 @@ def dashboard(username, add_goal):
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
         user_savings_history = current_user['user_savings_history']
+        # if add_goal decorator, first check if user has < 4 goals before routing to it
         if add_goal:
             # prevent user accessing add goal card if already 4 goals
             if current_user['goals_number'] == 4:
                 flash("You can't add more than four goals")
                 return render_template("dashboard.html", user=current_user, goals=list_goals, add_goal='', user_savings_history=user_savings_history)
-        return render_template("dashboard.html", user=current_user, goals=list_goals, add_goal=add_goal, user_savings_history=user_savings_history)
+            else:
+                return render_template("dashboard.html", user=current_user, goals=list_goals, add_goal=add_goal, user_savings_history=user_savings_history)
+        else:
+            return render_template("dashboard.html", user=current_user, goals=list_goals, add_goal='', user_savings_history=user_savings_history)
     else:
         flash("Please login to view your dashboard")
         return redirect(url_for("login"))
 
 
-""" user goals """ 
+""" user goals """
 
 
 @app.route('/view_goal/<username>/<goal_id>')
 def goal_view(username, goal_id):
     # check to make sure not accessing another usernames account
-    if 'username' in session and session['username']==username:
+    if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
-        current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)}) # convert goal id into bson, then find id in mongo db that matches it
-        
-        all_deposits =[]
+        # convert goal id into bson, then find id in mongo db that matches it
+        current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)})
+        all_deposits = []
         all_withdrawals = []
         for item in current_goal['savings_history']:
-                if item[1] > 0:
-                    all_deposits.append(item[1])
-                if item[1] < 0:
-                    all_withdrawals.append(abs(item[1]))
+            if item[1] > 0:
+                all_deposits.append(item[1])
+            if item[1] < 0:
+                all_withdrawals.append(abs(item[1]))
         # prep deposit/withdrawal stats
         date_today = date.today()
-        if current_goal['deposits_number'] != 0: # check there has been savings activity
+        if current_goal['deposits_number'] != 0:
             avg_deposit = sum(all_deposits)/len(all_deposits)
-        else: 
+        else:
             avg_deposit = 0
         if current_goal['withdrawals_number'] != 0:
             avg_withdrawal = sum(all_withdrawals)/len(all_withdrawals)
-        else: 
+        else:
             avg_withdrawal = 0
+        # prep savings forecast stats
         if current_goal['current_total'] != 0:
             if ((date_today - current_goal['start_date'].date()).days) != 0:
                 avg_saved_perday = current_goal['current_total'] / ((date_today - current_goal['start_date'].date()).days)
                 avg_needed_perday = current_goal['end_total'] / ((current_goal['end_date'].date() - date_today).days)
-            else: 
+            else:
                 avg_saved_perday = current_goal['current_total']
                 avg_needed_perday = avg_needed_perday = current_goal['end_total']
             forecast_remaining_days = (current_goal['end_total'] - current_goal['current_total']) / avg_saved_perday
-        else: 
+        else:
             avg_saved_perday = 0
             if ((current_goal['end_date'].date() - date_today).days) != 0:
                 avg_needed_perday = (current_goal['end_total']) / ((current_goal['end_date'].date() - date_today).days)
@@ -206,7 +218,6 @@ def goal_view(username, goal_id):
 @app.route('/update_savings/<goal_id>/<action>', methods=['POST'])
 def update_savings(goal_id, action):
     username = session['username']
-    current_user = coll_users.find_one({"username": username})
     goal_to_update = coll_goals.find_one({"_id": ObjectId(goal_id)})
     old_end_total = goal_to_update['end_total']
     achieved_bool = goal_to_update['achieved']
@@ -279,10 +290,6 @@ def update_goal(goal_id):
         achieved_bool = False
         app_goals_achieved(-1, goal_to_update['current_total'])
         percent_progress = int((goal_to_update['current_total']/end_total) * 100)
-    # savings history for goal
-    # set maximum percent as 100, even if user saves over goal
-    # savings history for goal
-    percent_progress = (goal_to_update['current_total'] / end_total) * 100
     coll_goals.update_one({'_id': ObjectId(goal_id)}, {'$set': {'goal_name':request.form.get('goal_name'), 'image_url':request.form.get('image_url'),'end_total': end_total,'percent_progress': percent_progress, 'end_date': date_end_date, 'achieved': achieved_bool}})
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
@@ -290,10 +297,13 @@ def update_goal(goal_id):
 
 """ delete goal """
 
+
 @app.route('/delete_goal/<goal_id>', methods=['POST'])
 def delete_goal(goal_id):
+    """ delete goal after password confirmed """
     username = session['username']
     user = coll_users.find_one({'username': username})
+    # check submitted pw matched pw in mongo
     if check_password_hash(user['password'], request.form.get('password_delete')):
         coll_goals.remove({'_id': ObjectId(goal_id)})
         user_current_goals(-1)
@@ -305,7 +315,8 @@ def delete_goal(goal_id):
         flash("That looks like the wrong password. Please try again.")
         return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
-""" insert new goal """ 
+
+""" insert new goal """
 
 
 @app.route('/insert_goal', methods=['POST'])
@@ -318,14 +329,14 @@ def insert_goal():
     date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
     # prepare start and goal var for insertion into mongodb
     end_total = float(request.form.get('end_total').replace(',', ''))
-    # insert new goal into mongodb 
+    # insert new goal into mongodb
     coll_goals.insert_one({
         'username': username,
-        'goal_name':request.form.get('goal_name'),
-        'image_url':request.form.get('image_url'),
+        'goal_name': request.form.get('goal_name'),
+        'image_url': request.form.get('image_url'),
         'current_total': 0,
         'end_total': end_total,
-        'percent_progress': 0, 
+        'percent_progress': 0,
         'start_date': datetime.today(),
         'deposits_number': 0,
         'withdrawals_number': 0,
@@ -333,9 +344,9 @@ def insert_goal():
         'end_date': date_end_date,
         'achieved': False
     })
-    if search_keyword: 
+    if search_keyword:
         """push anonymised list of keywords and returned images to db"""
-        new_pair = [search_keyword, request.form.get('image_url')]  # mongodb wont take tuples
+        new_pair = [search_keyword, request.form.get('image_url')]  # array as mongodb doesn't take tuples
         coll_app_stats.update_one({"rec_name": "keyword_image_pairs"}, {'$push': {"pairs": new_pair}})
     user_current_goals(1)
     app_current_goals(1)
@@ -348,18 +359,21 @@ def insert_goal():
 @app.route('/savingshistory/<username>', defaults={'goal_id': ''})
 @app.route("/savingshistory/<username>/<goal_id>")
 def savingshistory(username, goal_id):
+    """ display either user/goal history """
     if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
+        # display entire user savings history
         if not goal_id:
             list_goals = list(coll_goals.find({"username": username}))
             user_savings_history = []
             for goal in list_goals:
-                if goal['savings_history']: # don't execute if no savings activity yet
+                if goal['savings_history']:  # don't execute if no savings activity yet
                     for item in goal['savings_history']:
                         item.append(goal['goal_name'])
                         user_savings_history.append(item)
-                        user_savings_history.sort(key=lambda x: x[0])  # sort total savings by date
+                        user_savings_history.sort(key=lambda x: x[0])  # sort savings history by date
             return render_template("savingshistory.html", user=current_user, user_savings_history=user_savings_history, historytype="user", goals=list_goals)
+        # display history for a single goal
         elif goal_id:
             current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)})
             return render_template("savingshistory.html", user=current_user, historytype="goal", goal=current_goal, goals=list_goals)
@@ -368,12 +382,14 @@ def savingshistory(username, goal_id):
         return redirect(url_for("login"))
 
 
-""" user profile """ 
+""" user profile """
 
 
 @app.route('/profile/<username>')
 def profile(username):
-    if 'username' in session and session['username']==username:  # check to make sure not accessing another usernames account
+    """ load user profile populated with data from user collection """
+    # check to make sure not accessing another usernames account
+    if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
         return render_template("profile.html", user=current_user, goals=list_goals)
@@ -384,6 +400,7 @@ def profile(username):
 
 @app.route('/update_user/<username>', methods=['POST'])
 def update_user(username):
+    """ update user profile with new currency/name/email """
     existing_email = coll_users.find_one({"email": request.form.get('email')})
     existing_user = coll_users.find_one({'username': username})
     # prep currency if user has switched it
@@ -411,6 +428,7 @@ def update_user(username):
 
 @app.route('/update_password/<username>', methods=['POST'])
 def update_password(username):
+    """ update user pw if existing pw confirmed """
     existing_user = coll_users.find_one({'username': username})
     # if old pw correct and new passwords match, insert new pw hash into mongo
     if check_password_hash(existing_user['password'], request.form.get('oldpassword')):  
@@ -429,6 +447,7 @@ def update_password(username):
 
 @app.route('/delete_user/<username>', methods=['POST'])
 def delete_user(username):
+    """ delete user once user pw confirmed """
     user_to_delete = coll_users.find_one({'username': username})
     # prevent users deleting test account
     if username != "testuser":
@@ -450,7 +469,10 @@ def delete_user(username):
 
 
 """ logout """
+
+
 @app.route('/logout')
+""" log user out and end session """
 def logout():
     session.clear()
     flash("You have logged out of your account")
@@ -459,9 +481,11 @@ def logout():
 
 """ 404 ERROR """
 
+
 @app.errorhandler(404)
 def page_not_found(e):
-    if 'username' in session: 
+    """ 404 page if page not found """
+    if 'username' in session:
         username = session['username']
         current_user = coll_users.find_one({"username": username})
         list_goals = list(coll_goals.find({"username": username}))
