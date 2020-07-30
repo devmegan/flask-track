@@ -27,7 +27,7 @@ $(document).ready(function(){
         focusout: function(){
             if (!$(this).val()){
                 $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter your password");
-            } else if ($(this).val().length < 6) {
+            } else if ($(this).val().length < 6 && $(this).hasClass("valid")) {
                 $(this).removeClass("valid").addClass("invalid").next().attr("data-error", `Your password is longer than ${$(this).val().length} characters`);
             }
         },
