@@ -337,10 +337,10 @@ def savingshistory(username, goal_id):
                         item.append(goal['goal_name'])
                         user_savings_history.append(item)
                         user_savings_history.sort(key=lambda x: x[0])  # sort total savings by date
-            return render_template("savingshistory.html", user=current_user, user_savings_history=user_savings_history, historytype="user")
+            return render_template("savingshistory.html", user=current_user, user_savings_history=user_savings_history, historytype="user", goals=list_goals)
         elif goal_id:
             current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)})
-            return render_template("savingshistory.html", user=current_user, historytype="goal", goal=current_goal)
+            return render_template("savingshistory.html", user=current_user, historytype="goal", goal=current_goal, goals=list_goals)
     else:
         flash("Please login to view your savings history")
         return redirect(url_for("login"))
