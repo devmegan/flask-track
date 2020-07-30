@@ -2,13 +2,13 @@
 {% extends 'base.html' %} 
 {% block nav_links %}
 {% if user %}
-<li><a href="{{url_for('index')}}">Home</a></li>
+<li><a href="{{ url_for('index') }}">Home</a></li>
 <li><a href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a></li>
 {% if user.goals_number != 0 %}
 <li><a class="dropdown-trigger" href="#!" data-target="nav_goals">Goals<i class="material-icons right">arrow_drop_down</i></a></li>
 <ul id="nav_goals" class="dropdown-content">
     {% for goal in goals %}
-    <li><a href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" class="uppercase">{{goal.goal_name}}</a></li>
+    <li><a href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" class="uppercase">{{goal.goal_name}}</a></li>
     {% endfor %}
     {% if user.goals_number < 4 %}
     <li class="divider"></li>
@@ -16,12 +16,12 @@
     {% endif %} 
 </ul>
 {% endif %}
-<li><a href="{{url_for('profile', username=user.username)}}">Profile</a></li>
-<li><a href="{{url_for('logout')}}">Log Out</a></li>
+<li><a href="{{ url_for('profile', username=user.username) }}">Profile</a></li>
+<li><a href="{{ url_for('logout') }}">Log Out</a></li>
 {% else %}
-<li><a href="{{url_for('index')}}">Home</a></li>
-<li><a href="{{url_for('login')}}">Log In </a></li>
-<li><a href="{{url_for('signup')}}">Sign Up</a></li>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('login') }}">Log In </a></li>
+<li><a href="{{ url_for('signup') }}">Sign Up</a></li>
 {% endif %}
 {% endblock %}
 {% block content %}
@@ -39,7 +39,7 @@
                     {% if user %}
                     <a href="{{ url_for('dashboard', username=user.username) }}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong><span class="hide-on-med-and-down">Back to </span>Dashboard</strong></a>
                     {% else %}
-                    <a href="{{url_for('index')}}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong><span class="hide-on-med-and-down">Back to </span> Home</strong></a>
+                    <a href="{{ url_for('index') }}" class="waves-effect btn waves-light blue-btn" id="btn-404"><strong><span class="hide-on-med-and-down">Back to </span> Home</strong></a>
                     {% endif %}
                 </div>
             </div>    

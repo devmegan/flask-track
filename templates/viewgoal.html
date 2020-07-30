@@ -14,7 +14,7 @@
         </li>
         {% endif %} {% for goal in goals %}
         <li>
-            <a class="btn-floating darken-1 goal-fab-card" href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" style="background-image: url({{ goal.image_url }})"></a>
+            <a class="btn-floating darken-1 goal-fab-card" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" style="background-image: url({{ goal.image_url }})"></a>
         </li>
         {% endfor %}
         </ul>
@@ -94,10 +94,10 @@
                     <div class="grey-border">
                         <div class="row">
                             <div class="col s12">
-                                <form action="{{url_for('update_goal', goal_id=goal._id)}}" id="edit-goal-form" method="POST">
+                                <form action="{{ url_for('update_goal', goal_id=goal._id) }}" id="edit-goal-form" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input id="goal_name" name="goal_name" type="text" value="{{goal.goal_name}}" required>
+                                            <input id="goal_name" name="goal_name" type="text" value="{{ goal.goal_name }}" required>
                                             <span class="helper-text spaced-text">Goal Name</span>
                                         </div>
                                         <div class="input-field col s12 m8 offset-m2">
@@ -107,8 +107,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input id="end_total" name="end_total" type="number" value="{{'{:,.2f}'.format(goal.end_total) }}" required>
-                                            <span class="helper-text spaced-text">Goal Total ({{user.currency}}):</span>
+                                            <input id="end_total" name="end_total" type="number" value="{{ '{:,.2f}'.format(goal.end_total) }}" required>
+                                            <span class="helper-text spaced-text">Goal Total ({{ user.currency }}):</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -171,8 +171,8 @@
             <!--Main Card-->
              <div class="card" id="title-card">
                 <div class="card-content center">
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue-lighter {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{ goal.goal_name }}</strong></h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue-lighter {% endif %}">{{ user.currency }}{{ "{:,.2f}".format(goal.end_total)}} goal</h5>
                 </div>
              </div>
             <div class="card" id="goal-main-card">
@@ -183,8 +183,8 @@
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
                     <div id="progress-labels">
-                        <h6 class="left {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{user.currency}}{{"{:,.2f}".format(goal.current_total)}} saved </strong></h6>
-                        <h6 class="right {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{user.currency}}{{"{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
+                        <h6 class="left {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{ user.currency }}{{ "{:,.2f}".format(goal.current_total)}} saved </strong></h6>
+                        <h6 class="right {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{ user.currency }}{{ "{:,.2f}".format(goal.end_total - goal.current_total)}} left</strong></h6>   
                     </div>
                 </div> 
             </div>
@@ -218,11 +218,11 @@
                         <tr>
                             {% if item[1] > 0 %}
                             <td>
-                                <h6 class="header-green"><i class="material-icons tiny header-green-darker">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
+                                <h6 class="header-green"><i class="material-icons tiny header-green-darker">arrow_upward</i><strong class="deposits-main-figure">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
                             </td>
                             {% else %}
                             <td>
-                               <h6 class="header-red"><i class="material-icons tiny header-red-darker">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong></h6>
+                               <h6 class="header-red"><i class="material-icons tiny header-red-darker">arrow_downward</i><strong class="withdrawals-main-figure">{{ user.currency }}{{ "{:,.2f}".format(0 - item[1]) }}</strong></h6>
                             </td>
                             {% endif %}
                             <td class="right blue-grey-text text-darken-1"><h6><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></h6></td>
@@ -286,15 +286,15 @@
                         <div class="col s6" id="user-savings-col">
                             {% if avg_needed_perday > avg_saved_perday %}
                             <span class="header-red-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
-                            <span id="user-savings-figure" class="header-red"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}/week</strong></span>  
+                            <span id="user-savings-figure" class="header-red"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7)) }}/week</strong></span>  
                             {% else %}
                             <span class="header-green-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
-                            <span id="user-savings-figure" class="header-green"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
+                            <span id="user-savings-figure" class="header-green"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7)) }}</strong></span>  
                             {% endif %}
                             <span class="blue-grey-text text-darken-2 uppercase "><strong>Your average savings</strong></span>
                         </div>
                         <div class="col s6" id="needed-savings-col">
-                            <span class="header-blue-lighter">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
+                            <span class="header-blue-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
                             <span class="header-blue" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7)) }}/week </strong></span>
                             <span class="uppercase blue-grey-text text-darken-2"><strong>Savings to reach Goal</strong></span>
                         </div>
@@ -355,7 +355,7 @@
                     <i class="material-icons blue-grey-text text-darken-2">date_range</i>
                     <h5 class="center uppercase spaced-text blue-grey-text text-darken-3" id="time-stats-one">Day <strong class="header-blue-darker">{{ (date_today - goal.start_date.date()).days }}</strong> of <strong class="header-blue">{{ (goal.end_date.date() - goal.start_date.date()).days }}</strong> </h5>
                     <h5 class="center uppercase spaced-text display-none blue-grey-text text-darken-3" id="time-stats-two"><strong class="header-blue">{{ (goal.end_date.date() - date_today).days }}</strong> days left</h5>
-                    <h6 class="center blue-grey-text text-darken-2"><strong>{{goal.start_date.strftime("%d %b, %Y")}} - {{goal.end_date.strftime("%d %b, %Y") }}</strong></h6>
+                    <h6 class="center blue-grey-text text-darken-2"><strong>{{ goal.start_date.strftime("%d %b, %Y") }} - {{ goal.end_date.strftime("%d %b, %Y") }}</strong></h6>
                 </div>
             </div>
              {% if goal.deposits_number != 0%}
@@ -385,41 +385,41 @@
                 <div class="row">
                 <div class="col s6">
                     {% if goal.deposits_number == 0 %}
-                    <h5 class="header-green-lighter" id="smallest-deposit"><strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-green-lighter" id="smallest-deposit"><strong>{{ user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 class="header-green-lighter" id="smallest-deposit"><strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | min)) }}</strong></h5>
+                    <h5 class="header-green-lighter" id="smallest-deposit"><strong>{{ user.currency }}{{ "{:,.2f}".format((all_deposits | min)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Smallest Deposit</h6>
                     {% if goal.deposits_number == 0 %}
-                    <h5 class="header-green" id="biggest-deposit"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-green" id="biggest-deposit"> <strong>{{ user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 class="header-green" id="biggest-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_deposits | max)) }}</strong></h5>
+                    <h5 class="header-green" id="biggest-deposit"> <strong>{{ user.currency }}{{ "{:,.2f}".format((all_deposits | max)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Biggest Deposit</h6>
                     {% if goal.deposits_number == 0 %}
-                    <h5 class="header-green-darker" id="avg-deposit"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-green-darker" id="avg-deposit"> <strong>{{ user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 class="header-green-darker" id="avg-deposit"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_deposit) }}</strong></h5>
+                    <h5 class="header-green-darker" id="avg-deposit"> <strong>{{ user.currency }}{{ "{:,.2f}".format(avg_deposit) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Average Deposit</h6>  
                 </div>
                 <div class="col s6" style="text-align: right">
                     {% if goal.withdrawals_number == 0 %}
-                    <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{ user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format((all_withdrawals | min)) }}</strong></h5>
+                    <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{ user.currency }}{{ "{:,.2f}".format((all_withdrawals | min)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Smallest Withdrawal</h6>
                     {% if goal.withdrawals_number == 0 %}
-                    <h5 class="header-red" id="biggest-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-red" id="biggest-withdrawal"> <strong>{{ user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 class="header-red" id="biggest-withdrawal"> <strong>{{user.currency}}{{ "{:,.2f}".format((all_withdrawals | max)) }}</strong></h5>
+                    <h5 class="header-red" id="biggest-withdrawal"> <strong>{{ user.currency}}{{ "{:,.2f}".format((all_withdrawals | max)) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Biggest Withdrawal</h6>
                     {% if goal.withdrawals_number == 0 %}
-                    <h5 class="header-red-darker" id="avg-withdrawal"> <strong>{{user.currency }}--</strong></h5>
+                    <h5 class="header-red-darker" id="avg-withdrawal"> <strong>{{ user.currency }}--</strong></h5>
                     {% else %}
-                    <h5 class="header-red-darker" id="avg-withdrawal"> <strong>{{user.currency }}{{ "{:,.2f}".format(avg_withdrawal) }}</strong></h5>
+                    <h5 class="header-red-darker" id="avg-withdrawal"> <strong>{{ user.currency }}{{ "{:,.2f}".format(avg_withdrawal) }}</strong></h5>
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Average Withdrawal</h6>
                 </div>
@@ -479,15 +479,15 @@
                         <div class="col s6" id="user-savings-col">
                             {% if avg_needed_perday > avg_saved_perday %}
                             <span class="header-red-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
-                            <span id="user-savings-figure" class="header-red"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}/week</strong></span>  
+                            <span id="user-savings-figure" class="header-red"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7)) }}/week</strong></span>  
                             {% else %}
                             <span class="header-green-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_saved_perday) }}/day</span>
-                            <span id="user-savings-figure" class="header-green"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7))}}</strong></span>  
+                            <span id="user-savings-figure" class="header-green"><strong>{{ user.currency}}{{ "{:,.2f}".format((avg_saved_perday * 7)) }}</strong></span>  
                             {% endif %}
                             <span class="blue-grey-text text-darken-2 uppercase "><strong>Your average savings</strong></span>
                         </div>
                         <div class="col s6" id="needed-savings-col">
-                            <span class="header-blue-lighter">{{ user.currency}}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
+                            <span class="header-blue-lighter">{{ user.currency }}{{ "{:,.2f}".format(avg_needed_perday) }}/day</span>
                             <span class="header-blue" id="needed-savings-figure"><strong>{{ user.currency }}{{ "{:,.2f}".format((avg_needed_perday * 7)) }}/week </strong></span>
                             <span class="uppercase blue-grey-text text-darken-2"><strong>Savings to reach Goal</strong></span>
                         </div>

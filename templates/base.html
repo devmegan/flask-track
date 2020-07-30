@@ -8,7 +8,7 @@
 	<!--load materialize css-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 	<!--load local css-->
-	<link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="static/img/track-tab-logo.png">
 	<title>track</title>
 </head>
@@ -84,7 +84,7 @@
 					<a class="header-white" href="{{ url_for('index') }}">Home</a> |
 					<a class="header-white" href="{{ url_for('dashboard', username=user.username) }}">Dashboard</a> |
 					<a class="header-white" href="{{ url_for('profile', username=user.username) }}">Profile</a> |
-					<a class="header-white" href="{{url_for('logout')}}">Log Out</a>
+					<a class="header-white" href="{{ url_for('logout')}}">Log Out</a>
 					{% else %}
 					<a class="header-white" href="{{ url_for('index') }}">Home</a> |
 					<a class="header-white" href="{{ url_for('login') }}">Log In</a> |

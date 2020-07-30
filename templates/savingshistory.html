@@ -13,7 +13,7 @@
         </li>
         {% endif %} {% for goal in goals %}
         <li>
-            <a class="btn-floating darken-1 goal-fab-card" href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" style="background-image: url({{ goal.image_url }})"></a>
+            <a class="btn-floating darken-1 goal-fab-card" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" style="background-image: url({{ goal.image_url }})"></a>
         </li>
         {% endfor %}
         </ul>
@@ -55,11 +55,11 @@
                         <tr>
                             {% if item[1] > 0 %}
                             <td class="table-deposit header-green">
-                                <h6><i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
+                                <h6><i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</strong></h6>
                             </td>
                             {% else %}
                             <td class="table-withdrawal header-red">
-                                <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong><h6>
+                                <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{ user.currenc y}}{{ "{:,.2f}".format(0 - item[1]) }}</strong><h6>
                             </td>
                             {% endif %}
                             <td class="right header-blue"><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></td>
@@ -73,11 +73,11 @@
                     <tr>
                         {% if item[1] > 0 %}
                         <td class="table-deposit header-green print-transform">
-                            <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[1]) }}</strong>
+                            <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{ user.currency }}{{ "{:,.2f}".format(item[1]) }}</strong>
                         </td>
                         {% else %}
                         <td class="table-withdrawal header-red print-transform">
-                            <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
+                            <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{ user.currency }}{{ "{:,.2f}".format(0 - item[1]) }}</strong>
                         </td>
                         {% endif %}
                         <td class="center header-blue print-transform">{{ item[2] }}</td>

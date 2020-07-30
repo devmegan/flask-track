@@ -14,7 +14,7 @@
             </li>
             {% endif %} {% for goal in goals %}
             <li>
-                <a class="btn-floating darken-1 goal-fab-card" href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" style="background-image: url({{ goal.image_url }})"></a>
+                <a class="btn-floating darken-1 goal-fab-card" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" style="background-image: url({{ goal.image_url }})"></a>
             </li>
             {% endfor %}
             </ul>
@@ -26,13 +26,13 @@
                     <h4 id="main-card-title" class="center uppercase spaced-text header-blue"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
                         <strong><a class="header-blue-lighter card-link" id="update-profile-link">Update Profile</a><span class="header-blue"> | </span><a id="update-password-link" class="header-blue-lighter card-link">Update Password</a></strong>
                         <div class="grey-border">
-                            <h5 class="header-blue"><strong>{{user.username}}</strong></h5>
+                            <h5 class="header-blue"><strong>{{ user.username }}</strong></h5>
                             <p class="header-blue-darker uppercase spaced-text">Username</p>
-                            <h5 class="header-blue"><strong>{{user.email}}</strong></h5>
+                            <h5 class="header-blue"><strong>{{ user.email }}</strong></h5>
                             <p class="header-blue-darker uppercase spaced-text">Email Address</p>
-                            <h5 class="header-blue"><strong> {{user.signup_date.strftime('%d-%m-%Y')}}</strong></h5>
+                            <h5 class="header-blue"><strong> {{ user.signup_date.strftime('%d-%m-%Y') }}</strong></h5>
                             <p class="header-blue-darker uppercase spaced-text">Sign Up Date</p>
-                            <h5 class="header-blue"><strong>{{user.currency}} {% if user.currency == "£" %} GBP {% else %} EUR {% endif %}</strong></h5>
+                            <h5 class="header-blue"><strong>{{ user.currency }} {% if user.currency == "£" %} GBP {% else %} EUR {% endif %}</strong></h5>
                             <p class="header-blue-darker uppercase spaced-text">Currency</p>
                         </div>
                 </div> 
@@ -47,7 +47,7 @@
                     <div class="grey-border">
                         <div class="row">
                             <div class="col s12">
-                                <form action="{{url_for('update_user', username=user.username)}}" method="POST">
+                                <form action="{{ url_for('update_user', username=user.username) }}" method="POST">
                                     <div class="row">
                                         <div class="col s12">
                                             <div class="switch" >
@@ -63,19 +63,19 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input class="validate" value="{{user.fname}}" id="fname" name="fname" type="text" required>
+                                            <input class="validate" value="{{ user.fname }}" id="fname" name="fname" type="text" required>
                                             <span for="fname" class="helper-text spaced-text" data-success="First Name">First Name</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input class="validate" value="{{user.lname}}" id="lname" name="lname" type="text" required>
+                                            <input class="validate" value="{{ user.lname }}" id="lname" name="lname" type="text" required>
                                             <span for="lname" class="helper-text spaced-text" data-success="Last Name">Last Name</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
-                                            <input class="validate" value="{{user.email}}" id="email" name="email" type="email" required>
+                                            <input class="validate" value="{{ user.email }}" id="email" name="email" type="email" required>
                                             <span class="helper-text spaced-text" for="email" data-success="Email Address">Email Address</span>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                 <div class="center">
                                     <i class="material-icons header-blue" id="update-pw-icon">lock_outline</i>
                                 </div>
-                                <form id="update-pw-form" action="{{url_for('update_password', username=user.username)}}" method="POST">
+                                <form id="update-pw-form" action="{{ url_for('update_password', username=user.username) }}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 m8 offset-m2">
                                             <input class="reload-reset" id="oldpassword" name="oldpassword" type="password" placeholder="Current Password" required>
@@ -154,7 +154,7 @@
                                 <p class="header-blue-darker uppercase spaced-text">Are you sure you want to delete your profile and goals forever?</p>
                             </div>
                         </div>
-                        <form action="{{url_for('delete_user', username=user.username) }}" id="delete-user-form" method="POST">
+                        <form action="{{ url_for('delete_user', username=user.username) }}" id="delete-user-form" method="POST">
                             <div class="row">
                                 <div class="input-field col s12 m8 offset-m2">
                                     <p class="header-blue-darker uppercase spaced-text"><b>Please confirm your password to delete your profile</b></p>

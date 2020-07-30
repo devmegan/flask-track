@@ -13,7 +13,7 @@
         </li>
         {% endif %} {% for goal in goals %}
         <li>
-            <a class="btn-floating darken-1 goal-fab-card" href="{{url_for('goal_view', username=user.username, goal_id=goal._id)}}" style="background-image: url({{ goal.image_url }})"></a>
+            <a class="btn-floating darken-1 goal-fab-card" href="{{ url_for('goal_view', username=user.username, goal_id=goal._id) }}" style="background-image: url({{ goal.image_url }})"></a>
         </li>
         {% endfor %}
         </ul>
@@ -25,7 +25,7 @@
                 <div class="card-content center">
                     <div class="grey-border">
                         <h4 class="center uppercase spaced-text header-blue"><strong>{{ user.fname }} {{ user.lname }}</strong></h4>
-                        <span><a href="{{url_for('profile', username=user.username)}}" class="header-blue-lighter card-link modal-trigger center"><strong>View Profile</strong></a></span>
+                        <span><a href="{{ url_for('profile', username=user.username) }}" class="header-blue-lighter card-link modal-trigger center"><strong>View Profile</strong></a></span>
                         <br />
                         {% if user.goals_number == 0 and user.deposits_number == 0 %}
                         <h6 class="create-goal-prompt spaced-text uppercase header-blue-darker">Create a goal to start saving!</h6>
@@ -79,7 +79,7 @@
                     <div class="grey-border">
                         <div class="row">
                             <div class="col s12">
-                                 <form id="create-goal-form" action="{{url_for('insert_goal')}}" method="POST">
+                                 <form id="create-goal-form" action="{{ url_for('insert_goal') }}" method="POST">
                                     <div class="row">
                                         <div class="input-field col s12 l5 offset-l1">
                                             <input value="" class="reload-reset" minlength="1" maxlength="30" id="goal_name" name="goal_name" type="text" placeholder="Goal Name" required>
@@ -173,11 +173,11 @@
                         <tr>
                             {% if item[2] > 0 %}
                             <td class="table-deposit header-green">
-                                <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{user.currency}}{{ "{:,.2f}".format(item[2]) }}</strong>
+                                <i class="material-icons tiny">arrow_upward</i><strong class="deposits-main-figure">{{ user.currency }}{{ "{:,.2f}".format(item[2]) }}</strong>
                             </td>
                             {% else %}
                             <td class="table-withdrawal header-red">
-                               <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{user.currency}}{{ "{:,.2f}".format(0 - item[2]) }}</strong>
+                               <i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{ user.currency }}{{ "{:,.2f}".format(0 - item[2]) }}</strong>
                             </td>
                             {% endif %}
                             <td class="center header-blue-darker">{{ item[0] }}</td>
