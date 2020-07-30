@@ -225,9 +225,9 @@ def update_savings(goal_id, action):
         action_complete = " deposited"
         # if goal not achieved, check to see if goal will now be reached with this deposit
         if not goal_to_update['achieved']:
-            if (goal_to_update['current_total'] + update_value) < goal_to_update['end_total'] >= goal_to_update['end_total']:
+            if (goal_to_update['current_total'] + update_value) >= goal_to_update['end_total']:
                 achieved_bool = True
-                user_goals_achieved = [goal_to_update['goal_name'], updated_savings,  datetime.today()]
+                user_goals_achieved = [goal_to_update['goal_name'], goal_to_update['current_total'] + update_value,  datetime.today()]
                 coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
      # set new total after withdraw/deposit
     updated_savings = goal_to_update['current_total'] + update_value
