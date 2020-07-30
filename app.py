@@ -202,11 +202,15 @@ def update_savings(goal_id, action):
     current_user = current_user = coll_users.find_one({"username": username})
     goal_to_update = coll_goals.find_one({"_id": ObjectId(goal_id)})
     old_end_total = goal_to_update['end_total']
+    achieved_bool = goal_to_update['achieved']
     if action == 'withdraw':
         update_value = 0 - float(request.form.get('withdraw_value'))
         deposits = goal_to_update['deposits_number']
         withdrawals = goal_to_update['withdrawals_number'] + 1
         action_complete = " withdrawn"
+        if goal_to_update['achieved']:
+            if(goal_to_update['current_total'] + update_value) < goal_to_update['end_total']:
+                achieved_bool = False
     else:
         update_value = float(request.form.get('deposit_value'))
         deposits = goal_to_update['deposits_number'] + 1
@@ -218,11 +222,10 @@ def update_savings(goal_id, action):
         percent_progress = 100
     else:
         percent_progress = int((updated_savings/old_end_total) * 100)
-    achieved = goal_to_update['achieved']
     # check to see if goal will now be reached
     if not goal_to_update['achieved']:
         if (updated_savings >= goal_to_update['end_total']):
-            achieved = True
+            achieved_bool = True
             user_goals_achieved = [goal_to_update['goal_name'], updated_savings,  datetime.today()]
             coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
 
@@ -231,7 +234,7 @@ def update_savings(goal_id, action):
 
     coll_goals.update_one({
         "_id": ObjectId(goal_id)}, 
-        {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved}}
+        {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved_bool}}
     )
     coll_goals.update_one({
         "_id": ObjectId(goal_id)},
