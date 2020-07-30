@@ -90,7 +90,7 @@
             <div class="card s12 m8 offset-m2 l6 offset-l3 display-none" id="edit-goal-card">
                 <div class="card-content center">
                     <h4 class="header-blue uppercase spaced-text center">Edit Goal</h4>
-                    <strong><a class="header-blue-lighter card-link goal-card-back">Back to Goal</a><span class="header-blue"> | </span><a id="delete-goal-link" class="header-red-lighter red-card-link">Delete Goal</a></strong>
+                    <span class="header-blue-lighter card-link goal-card-back"><strong>Back to Goal</strong></span><span class="header-blue"> | </span><span id="delete-goal-link" class="header-red-lighter red-card-link"><strong>Delete Goal</strong></span>
                     <div class="grey-border">
                         <div class="row">
                             <div class="col s12">
@@ -460,6 +460,10 @@
 $("#edit-goal-link").click(function(){
      $("#edit-goal-card").removeClass("display-none");
      $(".card:not('#edit-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+})
+$("#delete-goal-link").click(function(){
+    $("#delete-goal-card").removeClass("display-none");
+    $("#edit-goal-card").addClass("display-none");
 })
 $("#withdraw-submit").click(function(e){
         e.preventDefault();
