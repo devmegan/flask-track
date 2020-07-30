@@ -26,7 +26,7 @@ $(document).ready(function(){
             }
         }
     });
-    $("#edit-goal-link").click(function(){
+    $(".edit-goal-link").click(function(){
         $("#edit-goal-card").removeClass("display-none");
         $(".card:not('#edit-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
     })
