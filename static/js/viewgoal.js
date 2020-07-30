@@ -1,5 +1,69 @@
 $(document).ready(function(){
-/* Delete User Form Validation */
+/* Edit Goal Validation */
+    // clientside validation: goal name
+    $("#goal_name").on({
+        focusout: function(){
+            if (!$(this).val()){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a goal name");
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 1 ) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a goal name")
+                }
+            }
+        },
+        keyup: function(e){
+            if ($(this).val().length > 1){
+                $(this).removeClass("invalid").addClass("valid").next().attr("data-success", "Goal Name")
+            }
+        }
+    })
+    // clientside validation: img url
+    $("#image_url").on({
+        focusout: function(){
+            if (!$(this).val()){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter an image url");
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 1 ) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter an image url")
+                }
+            }
+        },
+        keyup: function(e){
+            if ($(this).val().length > 0){
+                $(this).removeClass("invalid").next().text("Goal Image Url")
+            }
+        }
+    })
+    // clientside validation: end total
+    $("#end_total").on({
+        focusout: function(){
+            if (!$(this).val()){
+                $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a goal total");
+            }
+        },
+        keydown: function(e){
+            if (e.key === "Backspace" || e.key === "Delete"){
+                if ($(this).val().length == 1 ) {
+                    $(this).removeClass("valid").addClass("invalid").next().attr("data-error", "Please enter a goal total")
+                }
+            } else if (!(e.keyCode>= 48 && e.keyCode <= 57)){
+                 M.toast({html: 'Please enter a number', classes: 'flash'});
+            }
+        },
+        keyup: function(e){
+            if ($(this).val().length > 0){
+                $(this).removeClass("invalid").addClass(valid)
+            }
+        }
+    })
+    
+/* Delete Goal Form Validation */
     // clientside validation: delete user 
     $("#password_delete").on({
         focusout: function(){
