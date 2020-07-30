@@ -329,7 +329,6 @@ def savingshistory(username, goal_id):
     if 'username' in session and session['username'] == username:
         current_user = coll_users.find_one({"username": username})
         if not goal_id:
-            flash("fullhistory")
             list_goals = list(coll_goals.find({"username": username}))
             user_savings_history = []
             for goal in list_goals:
@@ -340,7 +339,6 @@ def savingshistory(username, goal_id):
                         user_savings_history.sort(key=lambda x: x[0])  # sort total savings by date
             return render_template("savingshistory.html", user=current_user, user_savings_history=user_savings_history, historytype="user")
         elif goal_id:
-            flash("goal history")
             current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)})
             return render_template("savingshistory.html", user=current_user, historytype="goal", goal=current_goal)
     else:
