@@ -120,7 +120,7 @@ i {
 .grey-border {
     color: #bcc8d2;
     border: 3px solid;
-    box-shadow: 0px;
+    box-shadow: none;
     padding: 2vh;
     margin-top: 2vh;
 }
@@ -148,7 +148,7 @@ i {
     border-bottom: 0px;
     border: 2px solid #2279c3;
     padding-left: 10px;
-    box-shadow: 0px;
+    box-shadow: none;
     height: 10vh;
     margin-bottom: 0px;
     width: 95%;
@@ -162,7 +162,7 @@ i {
 .input-field input[type=number] {
     border: 1px solid #2279c3;
     padding-left: 10px;
-    box-shadow: 0px;
+    box-shadow: none;
     height: 10vh;
     margin-bottom: 0px;
     width: 95%;
@@ -176,7 +176,7 @@ i {
 .input-field input[type=url] {
     border: 2px solid #2279c3;
     padding-left: 10px;
-    box-shadow: 0px;
+    box-shadow: none;
     height: 10vh;
     margin-bottom: 0px;
     width: 95%;
@@ -190,7 +190,7 @@ i {
 .input-field input[type=password] {
     border: 2px solid #2279c3;
     padding-left: 10px;
-    box-shadow: 0px;
+    box-shadow: none;
     height: 10vh;
     margin-bottom: 0px;
     width: 95%;
@@ -204,7 +204,7 @@ i {
 .input-field input[type=email] {
     border: 2px solid #2279c3;
     padding-left: 10px;
-    box-shadow: 0px;
+    box-shadow: none;
     height: 10vh;
     margin-bottom: 0px;
     width: 95%;
