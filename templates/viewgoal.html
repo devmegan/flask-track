@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div class="row" style="">
-        <div class="col s12 m8 offset-m2">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Deposit Card-->
             <div class="card display-none" id="deposit-card">
                  <div class="card-content center">
@@ -87,39 +87,46 @@
                 </div>
             </div>
             <!--Edit Goal Card-->
-            <div class="card display-none" id="edit-goal-card">
+            <div class="card s12 m8 offset-m2 l6 offset-l3 display-none" id="edit-goal-card">
                 <div class="card-content center">
-                    <h4 class="indigo-text center">Edit Goal</h4>
-                    <div class="row">
-                    <form action="{{url_for('update_goal', goal_id=goal._id)}}" method="POST"class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12 m6 offset-m3">
-                                    <input id="goal_name" name="goal_name" type="text" value="{{goal.goal_name}}" required>
-                                    <label for="goal_name" class="indigo-text">Goal Name</label>
-                                </div>
-                                <div class="input-field col s12 m6 offset-m3">
-                                    <input id="image_url" name="image_url" type="text" value="{{goal.image_url}}" required>
-                                    <label for="image_url" class="indigo-text">Goal Image URL</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 offset-m3">
-                                    <input id="end_total" name="end_total" type="text" value="{{'{:,.2f}'.format(goal.end_total) }}" required>
-                                    <label for="end_total" class="indigo-text">Goal Total ({{user.currency}}):</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                    <div class="input-field col s12 m6 offset-m3">
-                                        <input id="end_date" name="end_date" type="text" class="datepicker" value='{{ goal.end_date.strftime("%b %d, %Y") }}' required>
-                                        <label for="icon_prefix" class="indigo-text">Goal End Date</label>
+                    <h4 class="header-blue uppercase spaced-text center">Edit Goal</h4>
+                    <strong><a class="header-blue-lighter card-link goal-card-back">Back to Goal</a><span class="header-blue"> | </span><a id="delete-goal-link" class="header-red-lighter red-card-link">Delete Goal</a></strong>
+                    <div class="grey-border">
+                        <div class="row">
+                            <div class="col s12">
+                                <form action="{{url_for('update_goal', goal_id=goal._id)}}" id="edit-goal-form" method="POST">
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="goal_name" name="goal_name" type="text" value="{{goal.goal_name}}" required>
+                                            <span class="helper-text spaced-text">Goal Name</span>
+                                        </div>
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="image_url" name="image_url" type="text" value="{{ goal.image_url }}" required>
+                                            <span class="helper-text spaced-text">Goal Image URL</span>
+                                        </div>
                                     </div>
-                            </div>
-                            <div class="col s12 center">
-                            <button class="btn waves-effect waves-light modal-close teal lighten-2">Cancel</button>
-                            <button class="btn waves-effect waves-light indigo" type="submit" id="edit-goal-submit-btn" name="action">Edit Goal</button>
+                                    <div class="row">
+                                        <div class="input-field col s12 m8 offset-m2">
+                                            <input id="end_total" name="end_total" type="text" value="{{'{:,.2f}'.format(goal.end_total) }}" required>
+                                            <span class="helper-text spaced-text">Goal Total ({{user.currency}}):</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="input-field col s12 m8 offset-m2">
+                                                <input id="end_date" name="end_date" type="text" class="datepicker" value='{{ goal.end_date.strftime("%b %d, %Y") }}' required>
+                                                <span class="helper-text spaced-text">Goal End Date</span>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 center">
+                                            <button class="btn waves-effect waves-light blue-btn" type="submit" id="edit-goal-submit-btn" name="action">Edit Goal</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div> 
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <!--Delete Goal Card-->
             <div class="card display-none" id="delete-goal-card">
@@ -148,12 +155,13 @@
              <div class="card" id="title-card">
                 <div class="card-content center">
                     <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}"><strong>{{goal.goal_name}}</strong></h5>
-                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
+                    <h5 class="uppercase spaced-text center {% if goal.achieved %} header-gold {% else %} header-blue-lighter {% endif %}">{{user.currency}}{{"{:,.2f}".format(goal.end_total)}} goal</h5>
                 </div>
              </div>
             <div class="card" id="goal-main-card">
                 <div class="card-content center">
                     <img src="{{goal.image_url}}" class="goal-image">
+                    <span class="header-blue-lighter card-link" id="edit-goal-link"><strong><i class="material-icons tiny">edit</i> Edit Goal</strong></span><br>
                     <div class="progress">
                         <div class="determinate" style="width: {{ goal.percent_progress }}%"></div>
                     </div>
@@ -449,6 +457,10 @@
 <!--load chart.js-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script>
+$("#edit-goal-link").click(function(){
+     $("#edit-goal-card").removeClass("display-none");
+     $(".card:not('#edit-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+})
 $("#withdraw-submit").click(function(e){
         e.preventDefault();
         if ($("#withdraw_value").val() > {{goal.current_total}}) {
@@ -507,18 +519,20 @@ $("#time-stats-card").hover(function() {
         given_url = $('#image_url').val()
         given_url_extension = given_url.split('.').pop();
         if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
-            $("#add-goal-form").submit();
+            $("#edit-goal-form").submit();
+        } else if (given_url.slice(0,28) == "https://images.unsplash.com/"){
+            //if url was fetched from unsplash by keyword, doesn't have .jpg/.png at end of url, but still needs to submit
+            $("#edit-goal-form").submit();
+        } else {
+            M.toast({html: 'That doesn\'t look like an image URL', classes: 'flash'});
         }
-        else {
-            alert("That doesn't look like an image URL")
-            }
     })
 
 $('.datepicker').datepicker({
             // set default date to goal end date
             setDefaultDate: '{{ goal.end_date.strftime("%b %d, %Y") }}',
             // prevent selecting end date before todays date
-            minDate: new Date({{ date_today.strftime('%Y,%m,%d') }}),
+            minDate: new Date(),
             // only allow years to be current/future years
             yearRange: [2020, 2100]
         });
