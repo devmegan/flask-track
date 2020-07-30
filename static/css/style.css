@@ -313,7 +313,7 @@ footer a:hover {
 
 /* Index */
 .carousel {
-    min-height: 75vh;
+    height: 70vh !important;
 }
 #index-carousel-one {
     background: rgb(34,121,195);
@@ -333,7 +333,7 @@ footer a:hover {
     background: linear-gradient(180deg, rgba(247,247,247,1),0%,rgba(247,247,247,1) 75%, rgba(33,121,195,1) 100%);
 }
 .carousel-banner {
-    margin-top: 10vh;
+    margin-top: 10vmin;
 }
 .banner-heading {
     padding: 10px
@@ -665,6 +665,4 @@ padding: 10px;
     #profile-container .card {
         min-height: 0px;
     }
-}
-    
 }
