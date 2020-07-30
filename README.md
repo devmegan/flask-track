@@ -318,6 +318,9 @@ If the user tries to access their user profile but they are not in session, they
 - On succesfully deleting their profile, the user is logged out and redirected to the index page. The user's record is deleted from MongoDB and the user is no longer able to login to track with those details. 
 
 ### Savings History
+
+<img src="readme-assets/img/savingshistory/savingshistory-mockup.jpg">
+
 - The savings history page has one card on it. There is a savings history header at the top of the card. 
 - The user's first name and last name are also displayed below the header. 
 - Just above the savings history table is a print icon. If the user clicks on this icon, the print dialog box is opened so the user can easily print the page. 
