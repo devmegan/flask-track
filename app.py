@@ -333,6 +333,7 @@ def insert_goal():
         new_pair = [search_keyword, request.form.get('image_url')]  # mongodb wont take tuples
         coll_app_stats.update_one({"rec_name": "keyword_image_pairs"}, {'$push': {"pairs": new_pair}})
     user_current_goals(1)
+    app_current_goals(1)
     return redirect(url_for('dashboard', username=username))
 
 
@@ -504,6 +505,13 @@ def app_total_value(amount):
     app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
     new_saved_total = app_stats['saved_total'] + amount
     coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"saved_total": new_saved_total}})
+    return
+
+def app_current_goals(direction):
+    """ increase/decrease number of total goals in app when goal is added/deleted """
+    app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
+    new_goals_current = app_stats['goals_current'] + direction
+    coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"goals_current": new_goals_current}})
     return
 
 if __name__ == "__main__":
