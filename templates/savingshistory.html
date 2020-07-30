@@ -3,9 +3,7 @@
 <div class="container-fluid page-container" id="history-container">
 `   <!--Fab Menu-->
     <div class="fixed-action-btn hide-on-small-only" id="cards-fab">
-        <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn">
-        <i class="large material-icons">dashboard</i>
-        </a>
+        <a class="btn-floating horizontal btn-large red" id="cards-fab-main-btn"><i class="large material-icons">dashboard</i></a>
         <ul id="goal-fab-ul">
         {% if (goals | length) < 4%}
         <li>
@@ -29,7 +27,7 @@
                 {% endif %}
                 <h6 class="uppercase spaced-text header-blue print-transform">{{ user.fname }} {{ user.lname }}</h6>
                 <br />
-                <a id="print-history-btn" download><i class="material-icons header-blue-lighter card-link">print</i></a>
+                <span id="print-history-btn"><i class="material-icons header-blue-lighter card-link">print</i></span>
                 <br />
                 <span><a href="{{ url_for('dashboard', username=user.username) }}" class="center header-blue-lighter card-link"><strong>Back to Dashboard</strong></a></span>
                 <!--Savings History Table-->
@@ -59,7 +57,7 @@
                             </td>
                             {% else %}
                             <td class="table-withdrawal header-red">
-                                <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{ user.currenc y}}{{ "{:,.2f}".format(0 - item[1]) }}</strong><h6>
+                                <h6><i class="material-icons tiny">arrow_downward</i><strong class="withdrawals-main-figure">{{ user.currency}}{{ "{:,.2f}".format(0 - item[1]) }}</strong><h6>
                             </td>
                             {% endif %}
                             <td class="right header-blue"><strong>{{ item[0].strftime("%d %b, %Y") }}</strong></td>
