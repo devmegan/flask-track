@@ -24,7 +24,7 @@
             <!--Deposit Card-->
             <div class="card display-none" id="deposit-card">
                  <div class="card-content center">
-                    <h4 class="header-green uppercase spaced">Deposit</h4>
+                    <h4 class="header-green uppercase spaced-text">Deposit towards "{{ goal.goal_name }}"</h4>
                     <a class="header-green green-card-link goal-card-back" id="update-profile-link"><strong>Back to Goal</strong></a>
                     <h6 class="header-green-darker uppercase card-current-total">Current Total: {{ user.currency }}{{ "{:,.2f}".format(goal.current_total) }} </h6>
                
