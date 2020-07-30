@@ -19,7 +19,7 @@
         {% endfor %}
         </ul>
     </div>
-    <div class="row" style="">
+    <div class="row">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--Deposit Card-->
             <div class="card display-none" id="deposit-card">
@@ -191,10 +191,10 @@
             <!--Deposit/Withdraw Cards-->
             <div class="row hide-on-large-only">
                 <div class="col s6 center">
-                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn-sm"><strong>Deposit</strong></a>
+                    <a class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn-sm"><strong>Deposit</strong></a>
                 </div>
                 <div class="col s6">
-                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn-sm"><strong>Withdraw</strong></a>
+                    <a class="waves-effect waves-light btn background-red" id="withdraw-btn-sm"><strong>Withdraw</strong></a>
                 </div>
             </div>
             <!--Recent Activity Card-->
@@ -315,8 +315,7 @@
                                     <span class="header-blue uppercase">saved</span>
                                 </div>
                             </div>
-                            <h4 class="center uppercase header-blue" style="letter-spacing: 10px; margin-top: 50px;">Progress</h4>
-                  
+                            <h4 class="center uppercase header-blue" id="progress-header">Progress</h4>
                             <div class="header-gold spaced-text uppercase">
                             {% if goal.percent_progress == 0 %}
                             Make your first deposit and watch your progress increase!
@@ -343,10 +342,10 @@
             <!--Deposit/Withdraw Cards-->
             <div class="row hide-on-med-and-down">
                 <div class="col s6 center">
-                    <a style="width: 100%;" class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn"><strong>Deposit</strong></a>
+                    <a class="waves-effect waves-light btn jumbotron-btn background-green" id="deposit-btn"><strong>Deposit</strong></a>
                 </div>
                 <div class="col s6">
-                    <a style="width: 100%" class="waves-effect waves-light btn background-red" id="withdraw-btn"><strong>Withdraw</strong></a>
+                    <a class="waves-effect waves-light btn background-red" id="withdraw-btn"><strong>Withdraw</strong></a>
                 </div>
             </div>
             <!--Time Remaining-->
@@ -403,7 +402,7 @@
                     {% endif %}
                     <h6 class="blue-grey-text text-darken-2 insight-description"> Average Deposit</h6>  
                 </div>
-                <div class="col s6" style="text-align: right">
+                <div class="col s6" id="withdrawals-stats-col">
                     {% if goal.withdrawals_number == 0 %}
                     <h5 class="header-red-lighter" id="smallest-withdrawal"> <strong>{{ user.currency }}--</strong></h5>
                     {% else %}
