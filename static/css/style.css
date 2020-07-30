@@ -586,6 +586,9 @@ padding: 10px;
 .goal-card-back i {
     vertical-align: -1vh;
 }
+.card-current-total {
+    margin-top: 5vh;
+}
 
 #time-stats-card i {
     font-size: 3rem
