@@ -313,9 +313,8 @@ footer a:hover {
 
 /* Index */
 .carousel {
-    height: 90vh;
+    min-height: 75vh;
 }
-
 #index-carousel-one {
     background: rgb(34,121,195);
     background: linear-gradient(0deg,  rgba(141,255,191,1) 0%, rgba(34,121,195,1) 100%);
@@ -332,6 +331,12 @@ footer a:hover {
 #index-cards-row {
     background: rgb(247,247,247);
     background: linear-gradient(180deg, rgba(247,247,247,1),0%,rgba(247,247,247,1) 75%, rgba(33,121,195,1) 100%);
+}
+.carousel-banner {
+    margin-top: 10vh;
+}
+.banner-heading {
+    padding: 10px
 }
 /* Log In and Sign Up */
 #login-signup-container {
