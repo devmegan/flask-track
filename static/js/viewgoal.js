@@ -64,23 +64,23 @@ $(document).ready(function(){
     })
     // prevent submit of edit goal form if any invalid fields or img url not secure
     $('#edit-goal-submit-btn').click(function(e) {
-            e.preventDefault();
-            given_url = $('#image_url').val()
-            given_url_extension = given_url.split('.').pop();
-            if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
-                $("#edit-goal-form").submit();
-            } else if (given_url.slice(0,28) == "https://images.unsplash.com/"){
-                //if url was fetched from unsplash by keyword, doesn't have .jpg/.png at end of url, but still needs to submit
-                if ($("#goal_name, #img_url, #end_total").hasClass("invalid")){
-                    M.toast({html: 'It looks like some fields don\'t have a valid input', classes: 'flash'})
-                } else {
-                    alert("submitting")
-                    $("#edit-goal-form").submit();
-                }
+        e.preventDefault();
+        given_url = $('#image_url').val()
+        given_url_extension = given_url.split('.').pop();
+        if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
+            $("#edit-goal-form").submit();
+        } else if (given_url.slice(0,28) == "https://images.unsplash.com/"){
+            //if url was fetched from unsplash by keyword, doesn't have .jpg/.png at end of url, but still needs to submit
+            if ($("#goal_name, #img_url, #end_total").hasClass("invalid")){
+                M.toast({html: 'It looks like some fields don\'t have a valid input', classes: 'flash'})
             } else {
-                M.toast({html: 'That doesn\'t look like an image URL', classes: 'flash'});
+                alert("submitting")
+                $("#edit-goal-form").submit();
             }
-        })
+        } else {
+            M.toast({html: 'That doesn\'t look like an image URL', classes: 'flash'});
+        }
+    })
 /* Delete Goal Form Validation */
     // clientside validation: delete user 
     $("#password_delete").on({
@@ -108,64 +108,72 @@ $(document).ready(function(){
             }
         }
     });
+/* cards nav */
+    // nav to edit goal card
     $(".edit-goal-link").click(function(){
         $("#edit-goal-card").removeClass("display-none");
         $(".card:not('#edit-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
     })
+    // nav to delete goal card
     $("#delete-goal-link").click(function(){
         $("#delete-goal-card").removeClass("display-none");
         $("#edit-goal-card").addClass("display-none");
     })
+    // nav to deposit card
     $("#deposit-btn, #deposit-btn-sm").click(function(){
-    $("#deposit-card").removeClass("display-none")
-    $(".card:not('#deposit-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
- })
-  $("#withdraw-btn, #withdraw-btn-sm").click(function(){
-    $("#withdraw-card").removeClass("display-none")
-    $(".card:not('#withdraw-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
- })
+        $("#deposit-card").removeClass("display-none")
+        $(".card:not('#deposit-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+    })
+    // nav to withdraw card
+    $("#withdraw-btn, #withdraw-btn-sm").click(function(){
+        $("#withdraw-card").removeClass("display-none")
+        $(".card:not('#withdraw-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
+    })
+    // nav back to goal view
+    $(".goal-card-back").click(function(){
+        $(".card:not('#withdraw-card, #edit-goal-card, #delete-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").removeClass("display-none")
+        $("#withdraw-card, #deposit-card, #edit-goal-card, #delete-goal-card").addClass("display-none")
+    })
+/* switch time card text */
+    $("#time-stats-card").hover(function() {
+        $("#time-stats-one, #time-stats-two").toggleClass("display-none");
+    });
 
- $(".goal-card-back").click(function(){
-    $(".card:not('#withdraw-card, #edit-goal-card, #delete-goal-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").removeClass("display-none")
-    $("#withdraw-card, #deposit-card, #edit-goal-card, #delete-goal-card").addClass("display-none")
- })
-$("#time-stats-card").hover(function() {
-    $("#time-stats-one, #time-stats-two").toggleClass("display-none");
-});
+/* quick deposit / withdraw */
+    $("#withdraw-5").click(function(){
+        $("#withdraw_value").val("5.00")
+    });
+    $("#withdraw-10").click(function(){
+        $("#withdraw_value").val("10.00")
+    });
+    $("#withdraw-25").click(function(){
+        $("#withdraw_value").val("25.00")
+    });
+    $("#withdraw-50").click(function(){
+        $("#withdraw_value").val("50.00")
+    });
+    $("#deposit-5").click(function(){
+        $("#deposit_value").val("5.00")
+    });
+    $("#deposit-10").click(function(){
+        $("#deposit_value").val("10.00")
+    });
+    $("#deposit-25").click(function(){
+        $("#deposit_value").val("25.00")
+    });
+    $("#deposit-50").click(function(){
+        $("#deposit_value").val("50.00")
+    });
 
-
- $("#withdraw-5").click(function(){
-            $("#withdraw_value").val("5.00")
-        });
-        $("#withdraw-10").click(function(){
-            $("#withdraw_value").val("10.00")
-        });
-        $("#withdraw-25").click(function(){
-            $("#withdraw_value").val("25.00")
-        });
-        $("#withdraw-50").click(function(){
-            $("#withdraw_value").val("50.00")
-        });
-        $("#deposit-5").click(function(){
-            $("#deposit_value").val("5.00")
-        });
-        $("#deposit-10").click(function(){
-            $("#deposit_value").val("10.00")
-        });
-        $("#deposit-25").click(function(){
-            $("#deposit_value").val("25.00")
-        });
-        $("#deposit-50").click(function(){
-            $("#deposit_value").val("50.00")
-        });
-        $('.datepicker').datepicker({
-            // set default date to goal end date
-            setDefaultDate: '{{ goal.end_date.strftime("%b %d, %Y") }}',
-            // prevent selecting end date before todays date
-            minDate: new Date(),
-            // only allow years to be current/future years
-            yearRange: [2020, 2100]
-        });
+/* fire datepicker with default values */
+    $('.datepicker').datepicker({
+        // set default date to goal end date
+        setDefaultDate: '{{ goal.end_date.strftime("%b %d, %Y") }}',
+        // prevent selecting end date before todays date
+        minDate: new Date(),
+        // only allow years to be current/future years
+        yearRange: [2020, 2100]
+    });
     //open datepicker on focusing on date field 
     $("#end_date").focus(function(){
         $('#end_date').click();
