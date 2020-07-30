@@ -38,7 +38,7 @@ $(document).ready(function(){
     $("#deposit-card").removeClass("display-none")
     $(".card:not('#deposit-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
  })
-  $("#withdraw-btn").click(function(){
+  $("#withdraw-btn, #withdraw-btn-sm").click(function(){
     $("#withdraw-card").removeClass("display-none")
     $(".card:not('#withdraw-card'), #deposit-btn, #deposit-btn-sm, #withdraw-btn-sm, #withdraw-btn").addClass("display-none")
  })
