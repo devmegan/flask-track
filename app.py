@@ -219,6 +219,8 @@ def update_savings(goal_id, action):
         if goal_to_update['achieved']:
             if(goal_to_update['current_total'] + update_value) < goal_to_update['end_total']:
                 achieved_bool = False
+                removing_value = 0 - goal_to_update['current_total']
+                app_goals_achieved(-1, removing_value)
     else:
         update_value = float(request.form.get('deposit_value'))
         deposits = goal_to_update['deposits_number'] + 1
@@ -228,6 +230,8 @@ def update_savings(goal_id, action):
         if not goal_to_update['achieved']:
             if (goal_to_update['current_total'] + update_value) >= goal_to_update['end_total']:
                 achieved_bool = True
+                adding_value = update_value + goal_to_update['current_total']
+                app_goals_achieved(1, adding_value)
                 user_goals_achieved = [goal_to_update['goal_name'], goal_to_update['current_total'] + update_value,  datetime.today()]
                 coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
      # set new total after withdraw/deposit
@@ -270,9 +274,10 @@ def update_goal(goal_id):
     if end_total <= goal_to_update['current_total']:
         achieved_bool = True
         percent_progress = 100
-        # app_goals_achieved(1, goal_to_update['current_total'])
+        app_goals_achieved(1, goal_to_update['current_total'])
     else:
         achieved_bool = False
+        app_goals_achieved(-1, goal_to_update['current_total'])
         percent_progress = int((goal_to_update['current_total']/end_total) * 100)
     # savings history for goal
     # set maximum percent as 100, even if user saves over goal
@@ -507,11 +512,21 @@ def app_total_value(amount):
     coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"saved_total": new_saved_total}})
     return
 
+
 def app_current_goals(direction):
     """ increase/decrease number of total goals in app when goal is added/deleted """
     app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
     new_goals_current = app_stats['goals_current'] + direction
     coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"goals_current": new_goals_current}})
+    return
+
+
+def app_goals_achieved(direction, value):
+    """ increase/decreases goals achieved and achieved value """
+    app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
+    new_achieved_goals = app_stats['achieved_goals'] + direction
+    new_achieved_value = app_stats['achieved_value'] + value
+    coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"achieved_goals": new_achieved_goals, "achieved_value": new_achieved_value}})
     return
 
 if __name__ == "__main__":
