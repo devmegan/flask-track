@@ -116,7 +116,8 @@ def register_user():
                     'total_currently_saved': 0,
                     'total_achieved': 0,
                     'user_savings_history': []
-                }) 
+                })
+                app_total_users(1)
                 flash("Please login with your new details")
                 return redirect(url_for("login"))
             else:
@@ -429,6 +430,7 @@ def delete_user(username):
             coll_users.remove({'username': username})
             coll_goals.remove({'username': username})
             session.clear()
+            app_total_users(-1)
             flash("Your profile has been deleted from this app")
             return redirect(url_for('index'))
         else:
@@ -486,7 +488,14 @@ def user_total_saved(username, update_value):
     coll_users.update_one({"username": username}, {'$set': {"total_currently_saved": new_saved_total}})
     user_currency = user['currency']
     return user_currency
-    
+
+
+def app_total_users(direction):
+    """ increase/decrease total amount saved when user makes a signs up/deletes profile """
+    app_stats = coll_app_stats.find_one({"rec_name": "user_stats"})
+    new_user_total = app_stats['users_total'] + direction
+    coll_app_stats.update_one({"rec_name": "user_stats"}, {'$set': {"users_total": new_user_total}})
+    return 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
