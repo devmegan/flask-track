@@ -198,13 +198,14 @@ def goal_view(username, goal_id):
         flash("Please login to view your goals")
         return redirect(url_for("login"))
 
+
 """ deposit or withdraw """
 
 
 @app.route('/update_savings/<goal_id>/<action>', methods=['POST'])
 def update_savings(goal_id, action):
     username = session['username']
-    current_user = current_user = coll_users.find_one({"username": username})
+    current_user = coll_users.find_one({"username": username})
     goal_to_update = coll_goals.find_one({"_id": ObjectId(goal_id)})
     old_end_total = goal_to_update['end_total']
     achieved_bool = goal_to_update['achieved']
@@ -213,6 +214,7 @@ def update_savings(goal_id, action):
         deposits = goal_to_update['deposits_number']
         withdrawals = goal_to_update['withdrawals_number'] + 1
         action_complete = " withdrawn"
+        # if goal was achieved, need to check if withdrawing will unachieve it
         if goal_to_update['achieved']:
             if(goal_to_update['current_total'] + update_value) < goal_to_update['end_total']:
                 achieved_bool = False
@@ -221,33 +223,30 @@ def update_savings(goal_id, action):
         deposits = goal_to_update['deposits_number'] + 1
         withdrawals = goal_to_update['withdrawals_number']
         action_complete = " deposited"
-
+        # if goal not achieved, check to see if goal will now be reached with this deposit
+        if not goal_to_update['achieved']:
+            if (goal_to_update['current_total'] + update_value) < goal_to_update['end_total'] >= goal_to_update['end_total']:
+                achieved_bool = True
+                user_goals_achieved = [goal_to_update['goal_name'], updated_savings,  datetime.today()]
+                coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
+     # set new total after withdraw/deposit
     updated_savings = goal_to_update['current_total'] + update_value
+    # set maximum percent as 100, even if user saves over goal
     if int((updated_savings/old_end_total) * 100) > 100:
         percent_progress = 100
     else:
         percent_progress = int((updated_savings/old_end_total) * 100)
-    # check to see if goal will now be reached
-    if not goal_to_update['achieved']:
-        if (updated_savings >= goal_to_update['end_total']):
-            achieved_bool = True
-            user_goals_achieved = [goal_to_update['goal_name'], updated_savings,  datetime.today()]
-            coll_users.update_one({"username": username}, {'$push': {"goals_achieved": user_goals_achieved}})
-
+    # savings history for goal
     updated_savings_history = [datetime.today(), update_value]
+    # savings history for user (incl. goal name)
     user_updated_savings_history = [goal_to_update['goal_name'], datetime.today(), update_value]
-
-    coll_goals.update_one({
-        "_id": ObjectId(goal_id)}, 
-        {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved_bool}}
-    )
-    coll_goals.update_one({
-        "_id": ObjectId(goal_id)},
-        # add new savings update to end of array (unshift not supported by mongodb) 
-        {'$push': {"savings_history": updated_savings_history}})
+    # update goal 
+    coll_goals.update_one({"_id": ObjectId(goal_id)}, {'$set': {"current_total": updated_savings, "percent_progress": percent_progress, "deposits_number": deposits, "withdrawals_number": withdrawals, "achieved": achieved_bool}})
+    # pul new saves update go end of savings history arrays (goal and user)
+    coll_goals.update_one({"_id": ObjectId(goal_id)}, {'$push': {"savings_history": updated_savings_history}})
     coll_users.update_one({"username": username}, {'$push': {"user_savings_history": user_updated_savings_history}})
     coll_users.update_one({"username": username}, {'$set': {"deposits_number": deposits, "withdrawals_number": withdrawals}})
-   
+    # flash event to user - amount and whether deposited or withdrawn
     flash_currency = user_total_saved(username, update_value)
     flash(flash_currency + ('%.2f' % abs(update_value)) + action_complete)
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
@@ -265,19 +264,17 @@ def update_goal(goal_id):
     date_end_date = datetime.strptime(str_end_date, '%b %d, %Y')
     # prepare start and goal var for insertion into mongodb
     end_total = float(request.form.get('end_total').replace(",", ""))
-    if end_total <= goal_to_update['current_total']: 
+    if end_total <= goal_to_update['current_total']:
         achieved_bool = True
-        coll_users.update_one({"username": username}, {'$set': {'goals_achieved': (current_user['goals_achieved'] + 1),
-        'total_value_achieved': (current_user['total_value_achieved'] + goal_to_update['current_total'])}})
-        app_goals_achieved(1, goal_to_update['current_total'])
-    else: 
-        percent_progress = (goal_to_update['current_total'] / end_total) * 100
-        coll_goals.update_one({'_id': ObjectId(goal_id)}, {'$set': {
-            'goal_name':request.form.get('goal_name'), 'image_url':request.form.get('image_url'),
-            'end_total': end_total,
-            'percent_progress': percent_progress,
-            'end_date': date_end_date,
-        }})
+        # app_goals_achieved(1, goal_to_update['current_total'])
+    percent_progress = (goal_to_update['current_total'] / end_total) * 100
+    coll_goals.update_one({'_id': ObjectId(goal_id)}, {'$set': {
+        'goal_name':request.form.get('goal_name'), 'image_url':request.form.get('image_url'),
+        'end_total': end_total,
+        'percent_progress': percent_progress,
+        'end_date': date_end_date,
+        'achieved': achieved_bool
+    }})
     return redirect(url_for('goal_view', username=username, goal_id=goal_id))
 
 
@@ -487,7 +484,7 @@ def user_total_saved(username, update_value):
     coll_users.update_one({"username": username}, {'$set': {"total_currently_saved": new_saved_total}})
     user_currency = user['currency']
     return user_currency
-
+    
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=True)
