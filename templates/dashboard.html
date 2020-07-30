@@ -60,7 +60,7 @@
                         <h5 class="uppercase spaced-text header-blue-darker">Saving towards {{ user.goals_number }} Goals</h5>
                         {% endif %}
                         {% endif %}
-                        <h5 class="uppercase header-blue-darker"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved<strong></h5>
+                        <h6 id="saved-summary" class="uppercase header-blue-darker"><strong>{{ user.currency }}{{ "{:,.2f}".format(user.total_currently_saved) }} saved with track<strong></h5>
                         {% if (user.goals_achieved | length) == 1 %}
                         <h6 class="uppercase spaced-text header-gold">{{ user.goals_achieved | length }} Goal Achieved</h6>
                         {% elif (user.goals_achieved | length) > 1 %}
