@@ -59,7 +59,7 @@ $('#create-goal-submit').click(function(e) {
         given_url = $('#image_url').val()
         given_url_extension = given_url.split('.').pop();
         if (given_url_extension == "jpeg" || given_url_extension == "png" || given_url_extension == "jpg"){
-            $("#add-goal-form").submit();
+           $("#create-goal-form").submit();
         }
         else {
             alert("That doesn't look like an image URL")
