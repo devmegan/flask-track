@@ -542,6 +542,9 @@ padding: 10px;
 #goal-main-card {
     padding-bottom: 20px;
 }
+#withdrawals-stats-col {
+    text-align: right;
+}
 .progress {
     margin-bottom: 2px;
     margin-top: 30px;
