@@ -558,17 +558,17 @@ padding: 10px;
     padding-bottom: 5px;
 }
 
-  #user-savings-figure {
+.user-savings-figure {
     font-size: calc(15px + 1vmin);
 }
-#needed-savings-figure {
+.needed-savings-figure {
     font-size: calc(15px + 1vmin);
     display: block;
 }
-#user-savings-col span {
+.user-savings-col span {
     display:block;
 }
-#needed-savings-col span {
+.needed-savings-col span {
     display: block;
     text-align: right;
 }
