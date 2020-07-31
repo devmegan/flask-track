@@ -79,14 +79,14 @@ Based on the four user stories set out above, there are five main goals for this
 
 ### Wireframes
 These wireframes were sketched at the starat of the design process:
-- [Landing Page](</>)
-- [Log In Page](</>)
-- [Sign Up Page](</>)
-- [Dashboard](</>)
-- [Goal View](</>)
-- [User Profile](</>)
-- [Savings History](</>)
-- [404](</>)
+- [Landing Page](readme-assets/pdf/index_wireframe.pdf)
+- [Log In Page](readme-assets/pdf/login_wireframe.pdf)
+- [Sign Up Page](readme-assets/pdf/signup_wireframe.pdf)
+- [Dashboard](readme-assets/pdf/index_wireframes.pdf)
+- [Goal View](readme-assets/pdf/goal_wireframe.pdf)
+- [User Profile](readme-assets/pdf/profile_wireframe.pdf)
+- [Savings History](readme-assets/pdf/savingshistory_wireframe.pdf)
+- [404](readme-assets/pdf/404_wireframe.pdf)
 
 ## Information Architecture 
 
