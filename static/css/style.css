@@ -335,6 +335,7 @@ footer a:hover {
     background: rgb(247,247,247);
     background: linear-gradient(180deg, rgba(247,247,247,1),0%,rgba(247,247,247,1) 75%, rgba(33,121,195,1) 100%);
 }
+
 .carousel-banner {
     margin-top: 10vmin;
 }
@@ -652,6 +653,11 @@ padding: 10px;
         margin-right: 0px;
     }
 }
+@media only screen and (min-width: 600px) {
+    .index-card-content {
+        height: 20vh;
+    }
+}
 @media only screen and (min-width: 992px) {
         #keywordurl-input-field {
         padding: 0px;
@@ -681,5 +687,8 @@ padding: 10px;
     .goal-fab-card i {
         font-size: 6vh;
         line-height: 14vh;
+    }
+    .index-card-content {
+        height: 25vh;
     }
 }
