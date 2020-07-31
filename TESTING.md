@@ -40,7 +40,7 @@ HTML Validation has been carried out on all HTML pages using the [W3C Markup Val
 
 #### Testing: Index Page
 
-<img src="testing-assets/testmd-html-error-0.jpg" style="margin: 0;">
+<img src="testing-assets/testmd-html-error-0.png" style="margin: 0;">
 
 This error is caused by a an attribute injected by [Colourzilla](https://www.colorzilla.com/), a colour picker extension installed in my browser. Running the browser in incognito mode where the extension is disabled removes the error. 
 
@@ -51,7 +51,7 @@ These href attributes are part of the code from [Materialize's Carousel](https:/
 <img src="testing-assets/testmd-html-error-2.png" style="margin: 0;">
 
 JavaScript script links no longer need a type attribute. I have removed the type attribute from the JavaScript Script Link and this error has been resolved. 
-
+ 
 ### Testing: Log In Page/Sign Up Page 
 
 No HTML validation errors were found. 
@@ -120,14 +120,16 @@ I re-ran the app's CSS through the validator again and it passed with no errors 
 ### JavaScript
 JavaScript Validation has been carried out on all ```.js``` files in the app's [static/js](static/js) and any ```.html``` files that contain JavaScript that uses Jinja Templating. This was done by running the code through the JavaScript Linter, [JSHint](https://jshint.com/).
 
-When I ran all the files through the linter, each file flagged up about 20-30 missing semi-colons, which I have since added in to the files. 
+<img src="testing-assets/testmd-jshint-example.png" style="margin: 0;">
+
+When I ran all the files through the linter, each file flagged up about 20-30 missing semicolons, which I have since added in to the files. 
 
 All of the functions in the files have a reasonably low cyclomatic complexity value (between 1 and 6 across the files) which means that the JavaScript is not overly reliant on nesing several functions inside other functions inside other function within function within function. 
 
 <img src="testing-assets/testmd-jshint-variable-error-0.png" style="margin: 0;">
 
 When validating the JavaScript in the [dash.js](static/js/dash.js) file, an error showed that I had not declared the given_url variable within the promise that fetches the image URL from Unsplash based on the entered keyword. I fixed this by assiging the variable with ```let given_url = <fetched_url>```. I chose ```let``` as this given_url variable only needs block scope, as it is only used within the promise. 
-
+ 
 Also in the [dash.js](static/js/dash.js) file, I had used ```.addClass(invalid)``` when the invalid class to be added should be contained within quotation marks. I fixed this by editing it to ```.addClass("invalid")``` and the error was removed. 
 
 <img src="testing-assets/testmd-jshint-jinja-error-0.png" style="margin: 0;">
