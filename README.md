@@ -191,21 +191,21 @@ If the user tries to access the dashboard but they are not in session, they are 
 
 ##### Main Card: User's First Goal 
 
-<img src="readme-assets/img/dash/dash-firstgoal.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-firstgoal.jpg" height="400" style="margin: 0;">  
 
 - If the user has only just signed up to track, and has no goals yet, the main card prompts the user to create a goal to start saving. Below this prompt, an input box allows the user to enter a name for their goal. 
 - Once the user has entered a name for their goal, clicking the create goal button below the input field takes them to the create goal card. 
 
 ##### Main Card: User's First Deposit 
 
-<img src="readme-assets/img/dash/dash-pre-firstdeposit.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-pre-firstdeposit.jpg" height="400" style="margin: 0;">  
 
 - If the user has created their first goal, but has not yet made their first savings deposit, the main card displays their goal's name and a start saving button. Clicking on the button takes the user to their goal's page. 
 - Below the start saving button, the user is informed they will recieve saving insights as soon as they make their first deposit. 
 
 ##### Main Card: After First Deposit 
 
-<img src="readme-assets/img/dash/dash-post-firstdeposit.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-post-firstdeposit.jpg" height="400" style="margin: 0;">  
 
 - After the users first deposit, the main card displays how many goals the user is saving towards. If this is only one goal, it also displays the name of this goal. Clicking on the goal name redirects the user to the goal's page. 
 - Below this, the total amount that the user has saved with track is displayed. 
@@ -213,14 +213,14 @@ If the user tries to access the dashboard but they are not in session, they are 
 
 ##### Main Card: After First Achieved Goal
 
-<img src="readme-assets/img/dash/dash-main-card-achieved-goal.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-main-card-achieved-goal.jpg" height="400" style="margin: 0;">  
 
 - After the first goal is achieved, the amount of goals achieved is also displayed at the bottom of the main card, under the amount saved. 
 - The Achieved Goal card will also show at the bottom of the dashboard. 
 
 #### Recent Activitiy Card 
 
-<img src="readme-assets/img/dash/dash-recent-activity-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-recent-activity-card.jpg" height="400" style="margin: 0;">  
 
 - Once a user has made at least one deposit towards their first goal, the recent activity card shows on the dashboard below the main card. 
 - The recent activity heading is at the top of the card. Below this is a link to the savings history page, which from this route will display the users entire savings history. 
@@ -231,7 +231,7 @@ If the user tries to access the dashboard but they are not in session, they are 
     
 #### Achieved Goals Card
 
-<img src="readme-assets/img/dash/dash-achieved-goals-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-achieved-goals-card.jpg" height="400" style="margin: 0;">  
 
 - Once a user has achieved their first goal, the achieved goals card is shown underneath the recent activitiy card. 
 - The achieved goals heading is at the top of the card. Below this is the achieved goals table, which displays all of the users achieved goals. 
@@ -241,13 +241,13 @@ If the user tries to access the dashboard but they are not in session, they are 
     
 #### Add Goal 
 
-<img src="readme-assets/img/dash/dash-add-goal-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/dash/dash-add-goal-card.jpg" height="400" style="margin: 0;">  
 
 - Once the user navigates to the add goal card, all the other cards on the dashboard are hidden. 
 - Underneath the Create Goal header are five input fields.
     - The first two fields are for the goal name and the total amount the user is aiming to save for the goal. This must be a positive value. 
     
-    <img src="readme-assets/img/dash/dash-datepicker.jpg" style="margin: 0;">  
+    <img src="readme-assets/img/dash/dash-datepicker.jpg" height="400" style="margin: 0;">  
 
     - The third field allows the user to set a target end date for their goal. On focusing into this field, the datepicker is automatically opened. The user can only select a date that is in the future. Dates in the past are greyed out.
     - The fourth field allows the user to select how they would like to set the image for their goal. 
@@ -276,7 +276,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 ##### Deposits
 
-<img src="readme-assets/img/goalview/deposit-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/deposit-card.jpg" height="400" style="margin: 0;">  
 
 - Clicking on the deposit button takes the user to the deposit card and hides all other cards.
 - The deposits card has a deposit header, and below this, the current total of the goal is displayed. 
@@ -287,7 +287,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 ##### Withdrawals
 
-<img src="readme-assets/img/goalview/withdraw-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/withdraw-card.jpg" height="400" style="margin: 0;">  
 
 - If a user has not yet made any deposits (and therefore withdrawing would take their savings into negative numbers) the withdraw button is disabled and the withdraw card cannot be accessed.
 - If the user has a positive savings total, the disabled class is removed from the withdraw button. Clicking on the withdraw button takes the user to the withdraw card and hides all other cards.
@@ -295,27 +295,27 @@ If the user tries to access a goals page but they are not in session, they are r
 - The withdraw card has a withdraw header, and below this, the current total of the goal is displayed. 
 - An input field allows the user to enter the amount they would like to withdraw, to two decimal places. 
 
-<img src="readme-assets/img/goalview/disabled-quickwithdraw.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/disabled-quickwithdraw.jpg" height="400" style="margin: 0;">  
 
 - Four quick withdraw buttons allow the user to enter the amount they would like to deposit by clicking one of the four options with increasing amounts in. If the quick withdraw card contains a value that is greater than the users current total amount saved, the card is disabled, as the user cannot withdraw more than the current amount saved. 
 - Clicking on the withdraw button  subtracts the amount from the user's saved total and the user is redirected back to the main goal page. A flashed message feedsback to the user the amount that has been withdrawn. This withdrawal is then visible in the user's recent activitiy. 
 
 #### Progress Doughnut Card
 
-<img src="readme-assets/img/goalview/progress-doughnut.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/progress-doughnut.jpg" height="400" style="margin: 0;">  
 
 - The progress chart is visible as soon as the user creates the goal. The chart itself displays the users progress towards completing their goal. 
 - This doughnut chart is provided by [chart.js](https://www.chartjs.org/). 
 - The text inside the progress chart lets the user know what percentage of their end total they have already saved. 
 - Text below the progress header in the card gives the user some basic feedback on how close they are to completing their goal (one quarter, one third, half way...). 
 
-<img src="readme-assets/img/goalview/progress-doughnut-complete.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/progress-doughnut-complete.jpg" height="400" style="margin: 0;">  
 
 - If the user has completed their goal, this text congratulates them on reaching their target. 
 
 #### Recent Activity Card 
 
-<img src="readme-assets/img/goalview/recent-activity-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/recent-activity-card.jpg" height="400" style="margin: 0;">  
 
 - This card is visible once the user makes their first deposit towards the goal. 
 - Under the recent activtiy header there is a link which allows the user to view the full savings history for the goal. 
@@ -333,7 +333,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Deposits Gauge 
 
-<img src="readme-assets/img/goalview/deposits-gauge.jpg" style="margin: 0;"> 
+<img src="readme-assets/img/goalview/deposits-gauge.jpg" height="400" style="margin: 0;"> 
 
 - Once the user has made their first deposit towards the goal, the deposits gauge card becomes visbile. This card shows the user the number of deposits and withdrawals they have made. 
 - This deposits gauge is a doughnut chart provided by [chart.js](https://www.chartjs.org/), and set to display across only 180 degrees, to transform it into the gauge shape. 
@@ -342,7 +342,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Deposits/Withdrawals Statistics 
 
-<img src="readme-assets/img/goalview/deposit-withdraw-stats.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/deposit-withdraw-stats.jpg" height="400" style="margin: 0;">  
 
 - Once the user has made their first deposit towards the goal, this statistics card becomes visible. 
 - Infomration about the user's smallest, biggest and average deposit towards the goal is displayed in green on the left-hand side.
@@ -350,7 +350,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Savings Forecast
 
-<img src="readme-assets/img/goalview/savings-forecast-stats.jpg" style="margin: 0;"> 
+<img src="readme-assets/img/goalview/savings-forecast-stats.jpg" height="400" style="margin: 0;"> 
 
 - This card is visible to the user as soon as they create their goal. 
 - On the left hand side, the user can see their average deposit value per day/week. If this is above the necessary amount to meet their goal, it's text is green. If it is below it, its text is red.
@@ -365,14 +365,14 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Congratulations Card 
 
-<img src="readme-assets/img/goalview/congratulations-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/congratulations-card.jpg" height="300" style="margin: 0;">  
 
 - Once the goal is acheived, a card is displayed to the user at the top of the goal's page with a heading congratulating them on achieving their goal. 
 - Below the congratulations message, the amount the user has saved is displayed, including if they have exceeded their original target amount. 
 
 #### Edit Goal 
 
-<img src="readme-assets/img/goalview/edit-goal-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/edit-goal-card.jpg" height="400" style="margin: 0;">  
 
 - At the top of the edit goal card, the edit goal header is displayed. Below this are two links. One link which takes the user back to the goal's main view. The other takes the user to the delete goal card. 
 - The edit goal form has four input fields. They allow the user to change their goal name, image url, goal total and goal end date. 
@@ -382,7 +382,7 @@ If the user tries to access a goals page but they are not in session, they are r
 
 #### Delete Goal 
 
-<img src="readme-assets/img/goalview/delete-goal-card.jpg" style="margin: 0;">  
+<img src="readme-assets/img/goalview/delete-goal-card.jpg" height="400" style="margin: 0;">  
 
 - When the user navigates to the edit goal card, they are asked if they are sure they want to delete their goal
 - The user must succesfully confirm their password before they delete their goal. The form will not submit if there is no password entered, or if the entered password is less than six characters (as this is the minimum possible password length). 
@@ -445,7 +445,7 @@ If the user tries to access their user profile but they are not in session, they
 
 #### Full Savings History
 
-<img src="readme-assets/img/savingshistory/full-savingshistory.jpg" style="margin: 0;">  
+<img src="readme-assets/img/savingshistory/full-savingshistory.jpg" height="400" style="margin: 0;">  
 
 - If the user is routed to the savings history page from the dashboard, their full savings activity for all goals is displayed in a table. This is true even if the goal has since been deleted by the user, as the savings history is stored in the user's record. 
     - In the first column is the amount deposited/withdrawn. Deposits are displayed in green and withdrawals are displayed in red. 
@@ -454,7 +454,7 @@ If the user tries to access their user profile but they are not in session, they
     
 #### Goal Savings History
 
-<img src="readme-assets/img/savingshistory/goal-savingshistory.jpg" style="margin: 0;">  
+<img src="readme-assets/img/savingshistory/goal-savingshistory.jpg" height="400" style="margin: 0;">  
 
 - If the user is routed to the savings history page from an individual goal, only the savings activitiy for that goal is displayed in a table. This page is never visible once the goal has been deleted.
     - In the first column is the amount deposited/withdrawn. Deposits are displayed in green and withdrawals are displayed in red. 
@@ -475,17 +475,17 @@ If the user tries to access their user profile but they are not in session, they
 - On hovering over the main icon, the menu expands vertically. 
 - If the user already has goals, a menu card for each goal shows the image assigned to the goal. Clicking on these redirects the user to view the respective goal. 
 
-<img src="readme-assets/img/fab/fab-menu-nogoal.jpg" style="margin: 0;">  
+<img src="readme-assets/img/fab/fab-menu-nogoal.jpg" style="margin: 0;">
 
-    - If the user does not have any goals, this menu only displays a card with an add goal symbol which redirects the user to the add goal card on the dashboard. 
+- If the user does not have any goals, this menu only displays a card with an add goal symbol which redirects the user to the add goal card on the dashboard. 
     
-<img src="readme-assets/img/fab/fab-menu-twogoals.jpg" style="margin: 0;">  
+<img src="readme-assets/img/fab/fab-menu-twogoals.jpg" style="margin: 0;">
     
-    - If the user has less than four goals, this menu displays the card with the add goal symbol above the cards for their existing goals. 
+- If the user has less than four goals, this menu displays the card with the add goal symbol above the cards for their existing goals. 
 
-<img src="readme-assets/img/fab/fab-menu-maxgoals.jpg" style="margin: 0;">  
+<img src="readme-assets/img/fab/fab-menu-maxgoals.jpg" style="margin: 0;">
 
-    - If the user already as four goals, the card with the add goal symbol is not displayed. 
+- If the user already as four goals, the card with the add goal symbol is not displayed. 
     
 ### Flashed Messages
 
