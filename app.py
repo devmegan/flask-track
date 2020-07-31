@@ -186,11 +186,20 @@ def goal_view(username, goal_id):
             avg_deposit = sum(all_deposits)/len(all_deposits)
         else:
             avg_deposit = 0
-        if current_goal['withdrawals_number'] != 0 and len(all_withdrawals) != 0 and sum(all_withdrawals) !=0:
+        if current_goal['withdrawals_number'] != 0 and sum(all_withdrawals) != 0 and len(all_withdrawals) != 0:
             avg_withdrawal = sum(all_withdrawals)/len(all_withdrawals)
         else:
             avg_withdrawal = 0
         # prep savings forecast stats
+        if current_goal['current_total'] != 0:
+            if ((date_today - current_goal['start_date'].date()).days) != 0:
+                avg_saved_perday = current_goal['current_total'] / ((date_today - current_goal['start_date'].date()).days)
+                avg_needed_perday = current_goal['end_total'] / ((current_goal['end_date'].date() - date_today).days)
+            else:
+                avg_saved_perday = current_goal['current_total']
+                avg_needed_perday = avg_needed_perday = current_goal['end_total']
+            forecast_remaining_days = (current_goal['end_total'] - current_goal['current_total']) / avg_saved_perday
+        else:
             avg_saved_perday = 0
             if ((current_goal['end_date'].date() - date_today).days) != 0:
                 avg_needed_perday = (current_goal['end_total']) / ((current_goal['end_date'].date() - date_today).days)
@@ -213,16 +222,20 @@ def update_savings(goal_id, action):
     old_end_total = goal_to_update['end_total']
     achieved_bool = goal_to_update['achieved']
     if action == 'withdraw':
-        update_value = 0 - float(request.form.get('withdraw_value'))
-        deposits = goal_to_update['deposits_number']
-        withdrawals = goal_to_update['withdrawals_number'] + 1
-        action_complete = " withdrawn"
-        # if goal was achieved, need to check if withdrawing will unachieve it
-        if goal_to_update['achieved']:
-            if(goal_to_update['current_total'] + update_value) < goal_to_update['end_total']:
-                achieved_bool = False
-                removing_value = 0 - goal_to_update['current_total']
-                app_goals_achieved(-1, removing_value)
+        if abs(float((request.form.get('withdraw_value')))) > goal_to_update['current_total']:
+            flash("You can't withdraw more than your current total")
+            return redirect(url_for('goal_view', username=username, goal_id=goal_id))
+        else: 
+            update_value = 0 - abs(float((request.form.get('withdraw_value'))))
+            deposits = goal_to_update['deposits_number']
+            withdrawals = goal_to_update['withdrawals_number'] + 1
+            action_complete = " withdrawn"
+            # if goal was achieved, need to check if withdrawing will unachieve it
+            if goal_to_update['achieved']:
+                if(goal_to_update['current_total'] + update_value) < goal_to_update['end_total']:
+                    achieved_bool = False
+                    removing_value = 0 - goal_to_update['current_total']
+                    app_goals_achieved(-1, removing_value)
     else:
         update_value = float(request.form.get('deposit_value'))
         deposits = goal_to_update['deposits_number'] + 1
@@ -546,4 +559,4 @@ def app_goals_achieved(direction, value):
     return
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=False)
+    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')), debug=False
