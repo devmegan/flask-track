@@ -655,7 +655,7 @@ padding: 10px;
 }
 @media only screen and (min-width: 600px) {
     .index-card-content {
-        height: 20vh;
+        height: 35vh;
     }
 }
 @media only screen and (min-width: 992px) {
