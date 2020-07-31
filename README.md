@@ -41,6 +41,9 @@ The application has been deployed to Heroku and is accessible here: [track savin
     - [Testing Tools](#testing-tools)
 6. [Testing](#testing)
 7. [Deployment](#deployment)
+    - [Requirements](#requirements)
+    - [Git Instructions](#git-instructions)
+    - [Heroku Instructions](#heroku-instructions)
 8. [Credits](#credits)
     - [Content and Code](#content-and-code)
     - [Media](#media)
@@ -175,6 +178,7 @@ The font was left as ```Roboto``` which is Materialize's default font. This font
 
 - Client-side validation prevents the user from submitting the sign up form with any empty or invalid fields. In addtion, client side validation prevents the form beign submitted if any of the fields are not of the required length or type, and if the two passwords do not match.   
 - jQuery provides instant validation feedback to the user as they focus out of the input fields, and on keyup/keydown in fields with validation errors. The jQuery for this can be found in the [signup.js](static/js/signup.js) file. 
+- On registering a new user, the password is hashed so that it is never stored in MongoDB as plain-text. 
 - If the user signs up succesfully, they are redirected to the login page and a message is flashed prompting them to log in with their new details. 
 - If the user tries to access the sign up page but they are already in session, they are redirected to their dashboard and a message is flashed to feedback to the user why they have been redirected. 
 
@@ -254,7 +258,7 @@ If the user tries to access the dashboard but they are not in session, they are 
         - The first way a user can do this by supplying an image URL. If the user selects this option, the fifth field unfreezes and the uesr can enter the image URL there. As a basic security measure, the URL must end in .jpg, .jpeg or .png. This is validated on form submit. 
         - The second way a user can do this is by supplying a keyword for their image. If the user selects this option, the fith field unfreezes and prompts the user to enter a keyword for their goal. On form submit, a JavaScript promise fetches an image URL from [Unsplash](https://unsplash.com/) that relates to the keyword and writes this to the goal's record in MongoDB as the image URL. If no matching image is found, a URL for a generic savings image from [Unsplash](https://unsplash.com/) is provided instead. 
         - If a user does set the image for their goal by keyword, the keyword and image URL are stored as an array in the ```keyword_image_pairs``` record in the ```app_stats``` collection in MongoDB.
-    - All fields of the add goal form are validated by jQuery that can be found in the [dash.js]() file. If the user attempts to submit the form with invalid or empty fields, the form is prevented from submitting, and an error message is flashed to the user. 
+    - All fields of the add goal form are validated by jQuery that can be found in the [dash.js](static/js/dash.js) file. If the user attempts to submit the form with invalid or empty fields, the form is prevented from submitting, and an error message is flashed to the user. 
     - As the add goal form can take a few seconds to submit, especially if the user has selected the image by keyword and the promise must fetch the url before the form submits, a progress spinner is displayed to the user for visual feedback. 
         
 ### Goal View
@@ -517,11 +521,11 @@ The footer is displayed across the bottom of every page and takes up the full wi
 - If the user is in session, the brand logo links to the user's dashboard. The footer links displayed are for the index page, the user's dashboard and profile, and a link that logs the user out.
 
 ### Future Features
-1. The Savings History page would be more functional if users could select a specific date-range (filter by date) for the savings activity they would like to see. At present, this page displays the entire savings history for a single goal, or a user's entire savings history, depending on how they route to the page. 
-2. I would like to provide login/signup validation to the client before the form submits by making AJAX calls after the user stops typing for a period of time. 
-3. A users password is currently only restricted by the minimum length of six characters. I would like to improve user security by making sure the user is including a mix of characters, and that their password does not match their name, e.t.c. I would also like to offer a way for users to reset their password if it has been forgotten. 
-4. Admin account, where you can log in and see app stats. 
-5. On mobile devices, where the FAB menu is hidden, you have to navigated to the side menu to switch between goals. I should add goal cards to the dashboard to fix this. 
+- The ability to filter savings activity by date-range on the Savings History page would make this feature more functional by allowing the user to select the specific range of activity they would like to see. At present, this page displays the entire savings history for a single goal, or a user's entire savings history, depending on how the user route's to the page. 
+- Login/signup/password validation to the client before forms submit by making AJAX calls after the user stops typing for a period of time would increase the user-friendliness of these forms - currently if one of these fields is submitted incorrectly, the whole form reloads and an error message flashed to the user.
+- Password formatting to improve security. Currently when a new user creates a password, or a password is updated, its value is only restricted by the minimum length of six characters. I would like to improve user security by making sure the user is including a mix of characters, and for example, that their password does not match their name or username. I would also like to offer a way for users to reset their password if it has been forgotten. 
+- On mobile devices, where the FAB goals menu is hidden, a user has to navigate to the side menu to switch between goals. Having smaller cards on the dashboard for each goal, in place of, or in addition to the FAB goals menu, would make each goal easier and quicker to access. 
+- An admin account where logging into track with admin credentials allows you to view app statistics and manage the ```user```, ```goals``` and ```app_stats``` collections without having to separately sign in to MongoDB. 
 
 ## Technologies Used
 ### Frameworks 
@@ -559,7 +563,85 @@ For information about the testing of this app and the testing tools used, see th
 For information about the testing of this webpage, see the separate [testing.md](TESTING.md) file
 
 ## Deployment
-This site was developed as GitHub repository using GitPod. It has been deployed to Heroku and can be found here: [track savings app](https://track-savings-app.herokuapp.com/). 
+Track app was developed as GitHub repository using GitPod. It has been deployed to Heroku and can be found here: [track savings app](https://track-savings-app.herokuapp.com/). 
+
+The development version and deployed version of Track are identitical. The master branch is the only branch. 
+
+The GitHub repository for this app is located here: [track app repository](https://github.com/mvmolloy/milestone-project-3). 
+
+### Requirements 
+When you launch this app's code in your own IDE, the following requirements must be installed:
+
+- PIP3 
+- Python3
+- Git
+
+You will also need to have an account with [MongoDB](https://www.mongodb.com/) and [Heroku](https://www.heroku.com/)
+
+### Git Instructions 
+
+To save a copy of this repository locally, click on the "Clone or download" button at the top of the repository page. Click "Download ZIP" and save the file.
+
+To fork the github repository, click the "fork" button at the top of the repository page.
+
+To clone the github repository using HTTPS, in Git Bash go to the working directory that you want to clone the repository to and type: 
+
+```git clone https://github.com/mvmolloy/milestone-project-3```
+
+Then press ```enter``` to create the local clone. 
+
+Install the requirements using the following commpand: 
+
+```PIP3 -r requirements.txt```
+
+Create a file named ```env.py```. Add this file to your ```.gitignore```. 
+
+Inside your ```env.py``` file, you will need to create five environment variables: 
+- ```SECRET_KEY``` (assign your own secret key)
+- ```IP``` (assigned 0.0.0.0)
+- ```PORT``` (assigned 5000)
+- ```MONGO_URI``` (assign this your own [MONGO_URI](https://docs.atlas.mongodb.com/))
+- ```MONGO_DBNAME``` (assign this the name of your MongoDB Cluster)
+
+You will now be able to run the app locally with the following command:
+
+```python3 app.py```
+
+When building your MongoDB collections, it is easiest to follow the [information architecture](#information-architecture) set out for this app. If you do want to make any changes, be sure to also rename these variables in the ```app.py``` file as well as all ```.html``` and ```.js``` files. 
+
+### Heroku Instructions 
+
+To deploy this app to Heroku, ensure you have created (or maintained) the requirements file and procfile. 
+
+To create the ```requirements.txt``` file, use the following command: 
+
+```pip3 freeze > requirements.txt ```
+
+To create the ```Procfile```, use the following command:
+
+```echo web: python app.py > Procfile ```
+
+Procfile must begin with a capitial P. 
+
+Push ```requirements.txt``` and ```Procfile``` to your repository. 
+
+Log in to Heroku and create a new app. If you are located in or near the Europe, set the location to Europe. Otherwise, set the location to US.
+
+In the app's Settings tab, go to Config Vars > Reveal Config Vars and enter the five environment variables that were held in your ```env.py``` file. 
+
+In the app's Deploy tab, set the deployment method to GitHub.
+
+Get the app's Heroku Git URL from its Settings page. 
+
+In your Git terminal, login to Heroku using the command ```heroku login```.
+
+Link Heroku to your repository using the command ```git remote add heroku <heroku_git_url>. You will see that Heroku is now a remote repository using the command ```git remote -v```.
+
+Push the app to Heroku using the command ```git push -u heroku master```.
+
+Start a new web process by using the command ```heroku ps:scale web=1```.
+
+Go to your Heroku app>More and select ```restart all dynos```. Once this is complete, clicking ```open app``` should open your app in a new tab. If this does not work, go to More>View Logs to see why this is. 
 
 ## Credits
 
