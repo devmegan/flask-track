@@ -74,7 +74,6 @@ $(document).ready(function(){
             if ($("#goal_name, #img_url, #end_total").hasClass("invalid")){
                 M.toast({html: 'It looks like some fields don\'t have a valid input', classes: 'flash'});
             } else {
-                alert("submitting");
                 $("#edit-goal-form").submit();
             }
         } else {
