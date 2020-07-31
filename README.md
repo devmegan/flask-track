@@ -95,12 +95,12 @@ Tables showing the architecture of each collection are shown below:
 
 ### Colours
 
-<img src="readme-assets/img/colour-palette.jpg" style="margin: 0;">  
+<img src="readme-assets/img/colour-palette.jpg" width="600" style="margin: 0;">  
 
 The primary colour palette for this app consists of three colours: Bright Navy Blue ```#2279c3```, Green Crayola ```#26b57c``` and Candy Pink ```#e46378```. A lighter and darker shade for each colour is used for secondary text and elements, and to provide hover effects for links and buttons. 
 
 
-<img src="readme-assets/img/colour-gradient.jpg" style="margin: 0;">  
+<img src="readme-assets/img/colour-gradient.jpg" width="600" style="margin: 0;">  
 
 The main container of each page has a linear background gradient that ranges from Bright Navy Blue at the top of the gradient to Green Crayola at the base of the gradient. These colours are also used in the three gradients on the carousel panels on the index page. The gradients give consistency across the app, without distracting from its content. 
 
