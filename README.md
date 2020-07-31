@@ -25,6 +25,7 @@ The application has been deployed to Heroku and is accessible here: [track savin
      - [Dashboard](#dashboard)
      - [Goal View](#goal-view)
      - [User Profile](#user-profile)
+     - [Savings History](#savings-history)
      - [404](#404)
      - [Goals FAB Menu](#goals-fab-menu)
      - [Flashed Messages](#flashed-messages)
