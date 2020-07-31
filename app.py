@@ -186,7 +186,7 @@ def goal_view(username, goal_id):
             avg_deposit = sum(all_deposits)/len(all_deposits)
         else:
             avg_deposit = 0
-        if current_goal['withdrawals_number'] != 0:
+        if current_goal['withdrawals_number'] != 0 and len(all_withdrawals) != 0 and sum(all_withdrawals) !=0:
             avg_withdrawal = sum(all_withdrawals)/len(all_withdrawals)
         else:
             avg_withdrawal = 0
