@@ -191,15 +191,6 @@ def goal_view(username, goal_id):
         else:
             avg_withdrawal = 0
         # prep savings forecast stats
-        if current_goal['current_total'] != 0:
-            if ((date_today - current_goal['start_date'].date()).days) != 0:
-                avg_saved_perday = current_goal['current_total'] / ((date_today - current_goal['start_date'].date()).days)
-                avg_needed_perday = current_goal['end_total'] / ((current_goal['end_date'].date() - date_today).days)
-            else:
-                avg_saved_perday = current_goal['current_total']
-                avg_needed_perday = avg_needed_perday = current_goal['end_total']
-            forecast_remaining_days = (current_goal['end_total'] - current_goal['current_total']) / avg_saved_perday
-        else:
             avg_saved_perday = 0
             if ((current_goal['end_date'].date() - date_today).days) != 0:
                 avg_needed_perday = (current_goal['end_total']) / ((current_goal['end_date'].date() - date_today).days)
