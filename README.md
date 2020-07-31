@@ -635,7 +635,7 @@ Get the app's Heroku Git URL from its Settings page.
 
 In your Git terminal, login to Heroku using the command ```heroku login```.
 
-Link Heroku to your repository using the command ```git remote add heroku <heroku_git_url>. You will see that Heroku is now a remote repository using the command ```git remote -v```.
+Link Heroku to your repository using the command ```git remote add heroku <heroku_git_url>```. You will see that Heroku is now a remote repository using the command ```git remote -v```.
 
 Push the app to Heroku using the command ```git push -u heroku master```.
 
