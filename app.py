@@ -375,6 +375,7 @@ def savingshistory(username, goal_id):
             return render_template("savingshistory.html", user=current_user, user_savings_history=user_savings_history, historytype="user", goals=list_goals)
         # display history for a single goal
         elif goal_id:
+            list_goals = list(coll_goals.find({"username": username}))
             current_goal = coll_goals.find_one({"_id": ObjectId(goal_id)})
             return render_template("savingshistory.html", user=current_user, historytype="goal", goal=current_goal, goals=list_goals)
     else:
