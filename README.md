@@ -290,6 +290,9 @@ If the user tries to access a goals page but they are not in session, they are r
 <img src="readme-assets/img/goalview/withdraw-card.jpg" height="400" style="margin: 0;">  
 
 - If a user has not yet made any deposits (and therefore withdrawing would take their savings into negative numbers) the withdraw button is disabled and the withdraw card cannot be accessed.
+
+<img src="readme-assets/img/goalview/withdraw-btn-disabled.jpg" style="margin: 0;">  
+
 - If the user has a positive savings total, the disabled class is removed from the withdraw button. Clicking on the withdraw button takes the user to the withdraw card and hides all other cards.
 - A back link in the top corner of the card hides the withdrawal card and displays all of the goal's normal cards. 
 - The withdraw card has a withdraw header, and below this, the current total of the goal is displayed. 
