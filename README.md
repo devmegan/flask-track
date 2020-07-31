@@ -28,6 +28,7 @@ The application has been deployed to Heroku and is accessible here: [track savin
      - [404](#404)
      - [Goals FAB Menu](#goals-fab-menu)
      - [Flashed Messages](#flashed-messages)
+     - [Favicon](#favicon)
      - [Footer](#footer)
      - [Future Features](#future-features)
 5. [Technologies Used](#technologies-used)
@@ -493,6 +494,12 @@ If the user tries to access their user profile but they are not in session, they
 <img src="readme-assets/img/fab/fab-menu-maxgoals.jpg" style="margin: 0;">
 
 - If the user already as four goals, the card with the add goal symbol is not displayed. 
+
+### Favicon 
+
+<img src="readme-assets/img/favicon.jpg" style="margin: 0;">
+
+The favicon for this app features the trending_up icon and the blue-green gradient background. The favicon for the app is hosted externally on [imgbb](https://imgbb.com/) and can be found at the following address: [track favicon](https://i.ibb.co/PD8p7t8/track-tab-logo.png). 
     
 ### Flashed Messages
 
